@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asterra Networks — Competitive & UX Research</title>
+<meta name="description" content="Competitor analysis, benchmark, UX patterns and conclusions for the Asterra Networks redesign — solution-fit clarity + pre-contact trust.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b0d11; --bg2:#0f1218; --panel:#141821; --panel2:#1a1f2b;
+    --line:#242b38; --line2:#2f3949;
+    --text:#e8ebf2; --muted:#9aa5b8; --dim:#6f7c92;
+    --accent:#7aa2ff; --accent2:#5be9d6; --link:#8fb3ff;
+    --maxw:1180px;
+    --s1:rgba(255,107,107,.16); --s1c:#ff8b8b;
+    --s2:rgba(255,169,77,.16); --s2c:#ffb15e;
+    --s3:rgba(255,212,59,.14); --s3c:#ffe066;
+    --s4:rgba(169,227,75,.14); --s4c:#c0eb75;
+    --s5:rgba(81,207,102,.16); --s5c:#69db7c;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:radial-gradient(1200px 700px at 80% -200px,#161c2b 0,var(--bg) 60%) no-repeat, var(--bg);
+    color:var(--text); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+  /* Header */
+  header.hero{padding:56px 0 28px; border-bottom:1px solid var(--line)}
+  .eyebrow{color:var(--accent2); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:12px; margin:0 0 14px}
+  h1{font-size:clamp(28px,5vw,46px); line-height:1.08; letter-spacing:-.02em; margin:0 0 14px; font-weight:800}
+  .lede{color:var(--muted); font-size:clamp(15px,2vw,18px); max-width:760px; margin:0}
+  .meta{margin-top:18px; color:var(--dim); font-size:13px; display:flex; flex-wrap:wrap; gap:8px 18px}
+  .meta b{color:var(--muted); font-weight:600}
+  .note{margin-top:18px; background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; padding:12px 16px; color:var(--muted); font-size:14px}
+
+  /* Nav */
+  nav.toc{position:sticky; top:0; z-index:20; background:rgba(11,13,17,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex; flex-wrap:wrap; gap:6px; padding:10px 20px}
+  nav.toc a{color:var(--muted); font-size:13.5px; font-weight:600; padding:7px 12px; border-radius:999px; border:1px solid transparent}
+  nav.toc a:hover{color:var(--text); background:var(--panel); border-color:var(--line); text-decoration:none}
+
+  section{padding:44px 0; border-bottom:1px solid var(--line)}
+  section > .wrap > h2{font-size:clamp(22px,3.5vw,32px); letter-spacing:-.02em; margin:0 0 6px; font-weight:800}
+  .sec-sub{color:var(--muted); margin:0 0 24px; max-width:820px}
+  h3{font-size:19px; margin:30px 0 12px; letter-spacing:-.01em}
+  h4{font-size:15px; margin:20px 0 8px; color:var(--accent2); text-transform:uppercase; letter-spacing:.08em}
+  .kicker{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); margin-bottom:6px}
+
+  /* Tables */
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px; margin:14px 0 8px; background:var(--panel)}
+  table{border-collapse:collapse; width:100%; min-width:720px; font-size:13.5px}
+  .cmp{min-width:1040px}
+  th,td{text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line)}
+  th:last-child,td:last-child{border-right:0}
+  thead th{position:sticky; top:0; background:var(--panel2); color:var(--text); font-weight:700; font-size:12.5px; letter-spacing:.02em; z-index:1}
+  tbody tr:last-child td{border-bottom:0}
+  tbody th{background:var(--panel2); font-weight:700; white-space:nowrap; position:sticky; left:0; z-index:1}
+  td:first-child, th:first-child{border-right:1px solid var(--line2)}
+  tbody tr:nth-child(even) td{background:rgba(255,255,255,.012)}
+  .cmp td{min-width:180px}
+  caption{caption-side:top; text-align:left; color:var(--dim); font-size:12.5px; padding:8px 2px}
+
+  .ref{display:inline-block; margin-left:3px; color:var(--dim); font-size:12px; border:1px solid var(--line2); border-radius:4px; padding:0 4px; line-height:1.5; text-decoration:none}
+  .ref:hover{color:var(--accent); border-color:var(--accent); text-decoration:none}
+  .hyp{color:var(--s3c); font-weight:600}
+  .neg{color:var(--s1c)} .pos{color:var(--s5c)}
+
+  /* score chips */
+  .sc{display:inline-block; min-width:1.5em; text-align:center; border-radius:5px; padding:1px 7px; font-weight:800; font-variant-numeric:tabular-nums}
+  .s1{background:var(--s1); color:var(--s1c)} .s2{background:var(--s2); color:var(--s2c)}
+  .s3{background:var(--s3); color:var(--s3c)} .s4{background:var(--s4); color:var(--s4c)}
+  .s5{background:var(--s5); color:var(--s5c)}
+  .scoretable td{font-size:13px}
+  .scoretable td small{color:var(--muted); display:block; margin-top:3px; font-size:12px; line-height:1.45}
+
+  /* callouts / cards */
+  .grid{display:grid; gap:16px}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .card h4{margin-top:0; color:var(--accent)}
+  ul{margin:8px 0; padding-left:20px} li{margin:5px 0}
+  .best{border-left:3px solid var(--s5c)} .second{border-left:3px solid var(--s3c)} .no{border-left:3px solid var(--s1c)}
+  .lead-num{color:var(--accent); font-weight:800}
+
+  /* gallery */
+  .gallery{display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); margin:14px 0}
+  figure{margin:0; background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+  figure a{display:block}
+  figure img{display:block; width:100%; height:150px; object-fit:cover; object-position:top; background:var(--bg2); border-bottom:1px solid var(--line)}
+  figcaption{padding:8px 10px; font-size:12px; color:var(--muted)}
+  figcaption b{color:var(--text); font-weight:600}
+  .gallery.big figure img{height:200px}
+
+  details{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:2px 16px; margin:14px 0}
+  summary{cursor:pointer; padding:12px 0; font-weight:700}
+  summary::marker{color:var(--accent)}
+
+  footer{padding:36px 0 60px; color:var(--dim); font-size:13px}
+  .pill{display:inline-block; background:var(--panel); border:1px solid var(--line); color:var(--muted); border-radius:999px; padding:3px 10px; font-size:12px; margin:0 6px 6px 0}
+
+  @media(max-width:720px){
+    section{padding:34px 0}
+    .cols-2,.cols-3{grid-template-columns:1fr}
+    .meta{gap:6px 12px}
+    tbody th{position:static}
+    thead th{position:static}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Asterra Networks · Research Phase</p>
+    <h1>Competitive &amp; UX Research</h1>
+    <p class="lede">Everything the redesign needs to help a professional buyer <b>quickly find the right technology solution</b> and <b>trust the provider before first contact</b> — competitors, a scored benchmark, five UX patterns, and the resulting direction.</p>
+    <div class="meta">
+      <span><b>Collected</b> 2026-07-22, live sites</span>
+      <span><b>Evidence</b> 63 screenshots + verbatim sources</span>
+      <span><b>Sources</b> <a href="/research/research_compressed.md">research_compressed.md</a> · <a href="/research/research.md">research.md (full)</a></span>
+    </div>
+    <p class="note">Condensed for reading, but <b>no facts, scores, sources or research limitations were cut</b>. Every claim links to a source URL or a screenshot; unverified items are marked <span class="hyp">(hypothesis)</span> or <em>access restricted</em>. Full screenshot index, method and limitations are in the <a href="#appendix">Appendix</a>.</p>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#competitors">01 · Competitors</a>
+  <a href="#benchmark">02 · Benchmark</a>
+  <a href="#patterns">03 · UX Patterns</a>
+  <a href="#conclusions">04 · Conclusions</a>
+  <a href="#appendix">Appendix</a>
+</div></nav>
+
+<!-- ============ COMPETITORS ============ -->
+<section id="competitors"><div class="wrap">
+  <span class="kicker">Section 01</span>
+  <h2>Competitors</h2>
+  <p class="sec-sub">Three groups (max 5 each) chosen to inform IA, content model and visual direction. HARD = same product/market; SOFT = complex multi-product B2B (IA lessons); ASPIRATIONAL = international B2B-tech benchmarks.</p>
+
+  <h3>Group rationale</h3>
+  <div class="grid cols-3">
+    <div class="card">
+      <h4>HARD — our market</h4>
+      <p style="color:var(--muted);font-size:13px;margin:.2em 0 .6em">Maritime tech / connectivity. Study: portfolio, connectivity, cyber, industries, support, contact.</p>
+      <ul style="font-size:13px">
+        <li><b>Marlink</b> — closest analog (satcom + managed services + cyber + digital).</li>
+        <li><b>Navarino</b> — maritime connectivity + apps + cyber, support-led.</li>
+        <li><b>NSSLGlobal</b> — independent maritime/gov satcom + cyber.</li>
+        <li><b>IEC Telecom</b> — remote satcom managed services (OneGate) + cyber.</li>
+        <li><b>Speedcast</b> — global remote comms + managed IT + cyber.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>SOFT — same base task</h4>
+      <p style="color:var(--muted);font-size:13px;margin:.2em 0 .6em">Study: IA, mega-menu, industry segmentation, explaining technical services.</p>
+      <ul style="font-size:13px">
+        <li><b>Cisco</b> — huge connectivity/security catalog.</li>
+        <li><b>IBM</b> — Solutions × Industries at scale.</li>
+        <li><b>Schneider Electric</b> — industrial + digital + services.</li>
+        <li><b>Siemens</b> — best-in-class mega-menu (deep-dive).</li>
+        <li><b>Honeywell</b> — multi-sector industrial.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>ASPIRATIONAL — benchmarks</h4>
+      <p style="color:var(--muted);font-size:13px;margin:.2em 0 .6em">Study: composition, typography, storytelling, modularity, trust blocks, complex-made-simple.</p>
+      <ul style="font-size:13px">
+        <li><b>Stripe</b> — B2B-tech clarity + docs.</li>
+        <li><b>Palantir</b> — mission-critical tone, data storytelling.</li>
+        <li><b>Vercel</b> — editorial-tech, dark-first (our direction).</li>
+        <li><b>NVIDIA</b> — hyper-complex made understandable.</li>
+        <li><b>Cloudflare</b> — network/coverage storytelling.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="color:var(--muted);font-size:13.5px;margin-top:14px"><b>Side-references:</b> Inmarsat Maritime (Viasat) → <b>Safety &amp; Compliance</b> pillar; Palo Alto / CrowdStrike → <b>Cybersecurity</b> pillar; Linear <em>(optional)</em> → craft. <b>Notes:</b> Schneider+Siemens+Honeywell are conglomerates — deep-dive Siemens, skim the rest. Starlink Maritime excluded from HARD (site thin on "solution catalog").</p>
+
+  <h3>HARD — comparative table</h3>
+  <div class="table-wrap"><table class="cmp">
+    <thead><tr><th>Axis</th><th>Marlink</th><th>Navarino</th><th>NSSLGlobal</th><th>IEC Telecom</th><th>Speedcast</th></tr></thead>
+    <tbody>
+      <tr><th>Audience</th>
+        <td>Remote/maritime asset operators; Shipping/Cruise/Energy/Enterprise&amp;Telco/Gov&amp;Defence/Humanitarian <a class="ref" href="https://marlink.com/" target="_blank" title="home">↗</a></td>
+        <td>Maritime only — merchant fleets ("1 in 3 ocean-going merchant vessels") <a class="ref" href="/research/screens/hard/navarino-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>Maritime / Defence &amp; Government / Enterprise / Critical Rescue &amp; Infrastructure <a class="ref" href="https://nsslglobal.com/markets/maritime/" target="_blank" title="maritime">↗</a></td>
+        <td>Land (Gov/Humanitarian/Energy-Onshore/Enterprise/Media) + Maritime (Fishing/Energy-Offshore/Shipping/Superyachts) <a class="ref" href="https://www.iec-telecom.com" target="_blank" title="home">↗</a></td>
+        <td>12 industries; Maritime/Energy/Government priority <a class="ref" href="https://www.speedcast.com/contact/" target="_blank" title="contact">↗</a></td>
+      </tr>
+      <tr><th>Positioning</th>
+        <td>"…dependable network and digital solutions…Possibilities, Anywhere"; "Possibility Platform" <a class="ref" href="/research/screens/hard/marlink-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"The Leading Maritime Technology Partner" <a class="ref" href="/research/screens/hard/navarino-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>Rotating "Bringing Choice with Secure Solutions" / "Sea·Land·Air"; "brand agnostic" independence <a class="ref" href="https://nsslglobal.com/about/" target="_blank" title="about">↗</a></td>
+        <td>"DIGITALISATION ENABLED BY SATELLITE NETWORK MANAGEMENT…" <a class="ref" href="/research/screens/hard/iec-telecom-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"Your Satellite Communications Starts Here" <a class="ref" href="/research/screens/hard/speedcast-home-hero.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>Solutions / Industries</th>
+        <td>"Possibility Portfolio" — 5 categories (Connectivity, Cybersecurity, Network, Cloud&amp;IT, IIoT&amp;Apps); cyber page = 18 named offerings <a class="ref" href="/research/screens/hard/marlink-solutions-overview.png" target="_blank" title="solutions">▦</a> <a class="ref" href="/research/screens/hard/marlink-cybersecurity.png" target="_blank" title="cyber">▦</a></td>
+        <td>Product-category only (Technology/Connectivity/COSMO/Bridge&amp;Navigation); <b class="neg">no industries axis</b> <a class="ref" href="/research/screens/hard/navarino-solutions-technology.png" target="_blank" title="screen">▦</a></td>
+        <td>3 parallel trees (Solutions 15 / Communications / Markets 4) — same offerings repeat <a class="ref" href="/research/screens/hard/nsslglobal-solutions-overview.png" target="_blank" title="screen">▦</a></td>
+        <td>Vertical markets × Value-Added Services (OptiView/OptiSim/OptiShield/OneMail Pro/OneAssist/OneMonitor/OneHealth/Traksat) × catalog <a class="ref" href="https://iec-telecom.com/en/markets/maritime/" target="_blank" title="maritime">↗</a></td>
+        <td>Solutions axis (Starlink/OneWeb/Connectivity/Network Mgmt/Applications/Systems Integration/Professional Services/IoT/Cloud) × Industries <a class="ref" href="/research/screens/hard/speedcast-solutions-filter.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>Nav &amp; discovery</th>
+        <td>Single mega-menu, 3 axes (Portfolio/Industry/Services); site search; <b class="neg">no finder</b> <a class="ref" href="https://marlink.com/" target="_blank" title="home">↗</a></td>
+        <td>Single-axis; <b class="neg">no search/filters/finder</b> <a class="ref" href="https://kota.co.uk/work/navarino" target="_blank" title="KOTA">↗</a></td>
+        <td>3 axes + market sub-hubs; header search <a class="ref" href="https://nsslglobal.com/markets/maritime/" target="_blank" title="maritime">↗</a></td>
+        <td><b class="pos">Only true faceted finder in group</b> — Application/Set-up (COTP·COTM·Portable)/Service/Type/Operator(8)/Market(9)/Speed(6)/Coverage(10) <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a></td>
+        <td>Dual-axis + "Select a product" filter band + search <a class="ref" href="/research/screens/hard/speedcast-solutions-filter.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>CTAs &amp; contact</th>
+        <td>"Discover What's Possible"; "Book a consultancy"/"Call a specialist"; <b class="pos">single routed form</b> ("How can we help you?" + Solution of Interest + Sector/Industry) <a class="ref" href="/research/screens/hard/marlink-contact-form.png" target="_blank" title="screen">▦</a></td>
+        <td>Uniform "Get in touch" → <b class="neg">office directory, no form</b>; sales-vs-support via emails <a class="ref" href="/research/screens/hard/navarino-contact-directory.png" target="_blank" title="screen">▦</a></td>
+        <td>Uniform "Find out more"; minimal form (Name/Phone/Email/Message), no routing <a class="ref" href="/research/screens/hard/nsslglobal-contact-form.png" target="_blank" title="screen">▦</a></td>
+        <td>"Lets talk" (sic) → form w/ Interest dropdown (10 sectors); same form on most pages; "Submit a Ticket" → external portal <a class="ref" href="/research/screens/hard/iec-telecom-contact-form.png" target="_blank" title="screen">▦</a></td>
+        <td>"Get in Touch" → /sign-up/ (mismatch); "Request a Demo"; contact = <b class="neg">phone/email directory, no form</b> <a class="ref" href="/research/screens/hard/speedcast-contact-directory.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>Trust</th>
+        <td>"1,700+ specialists", "15k+ vessels", "99.9% uptime SLA", "24.7% market share" (Valour 2025); logos CMA CGM/MSC/MOL/NYK; ISO 27001/9001/14001, IACS UR E26/E27, NIS2, IEC 62443 <a class="ref" href="/research/screens/hard/marlink-industry-shipping.png" target="_blank" title="shipping">▦</a> <a class="ref" href="https://marlink.com/solutions/possibility-portfolio/possibility-solutions/cyber-security/" target="_blank" title="cyber">↗</a></td>
+        <td>"13,000+ vessels", "650+ clients", "25+ years", "1 in 3"; type approvals "UR E27" (Bureau Veritas), "IEC 62443-3-3" (DNV), IMO2021 <a class="ref" href="/research/screens/hard/navarino-home-hero.png" target="_blank" title="home">▦</a> <a class="ref" href="/research/screens/hard/navarino-cybersecurity-angel.png" target="_blank" title="Angel">▦</a></td>
+        <td>Longevity claims <b class="neg">inconsistent</b> ("over 50"/"55+"/"over 56 years"); ISO 27001/9001/14001/45001; partners NATO, Bundeswehr, Royal Navy/RFA <a class="ref" href="https://nsslglobal.com/about/" target="_blank" title="about">↗</a></td>
+        <td>Thinnest — lone "25+ years"; partners as categories, unnamed; "Standard/Premium SLA" <a class="ref" href="https://www.iec-telecom.com" target="_blank" title="home">↗</a></td>
+        <td>"95+ satellites", "35+ teleports"; maritime "442,532 vessels", "68%" breaches; "115 engineers", "24x7x365" <a class="ref" href="/research/screens/hard/speedcast-industry-maritime.png" target="_blank" title="maritime">▦</a> <a class="ref" href="/research/screens/hard/speedcast-support-center.png" target="_blank" title="support">▦</a></td>
+      </tr>
+      <tr><th>Technical info</th>
+        <td>Benefits narrative + diagrams; <b class="neg">no datasheets</b>; one gated PDF <a class="ref" href="https://marlink.com/solutions/possibility-portfolio/possibility-solutions/cyber-security/" target="_blank" title="cyber">↗</a></td>
+        <td>Plain-language + feature lists; antenna models without specs; one cert PDF <a class="ref" href="https://navarino.co.uk/solutions/angel/" target="_blank" title="Angel">↗</a></td>
+        <td>Mixed plain/jargon; <b class="neg">no datasheets</b> <a class="ref" href="https://nsslglobal.com/solution/cyber-security/" target="_blank" title="cyber">↗</a></td>
+        <td>Brochure-PDF model + Download Center <a class="ref" href="https://iec-telecom.com/en/value-added-services/optishield/" target="_blank" title="OptiShield">↗</a></td>
+        <td>Heaviest PDF model (17+ brochures, many 2020–21) <a class="ref" href="https://www.speedcast.com/our-solution/all-solutions/" target="_blank" title="all solutions">↗</a></td>
+      </tr>
+      <tr><th>UX +/−</th>
+        <td><span class="pos">+</span> routed form ("routed to a regional specialist"), trust density; <span class="neg">−</span> 4-level URLs, <b class="neg">stat drift 99.99 vs 99.9%</b> same page <a class="ref" href="https://marlink.com/solutions/industry/shipping/" target="_blank" title="shipping">↗</a></td>
+        <td><span class="pos">+</span> strongest visual craft (3D ship), cleanest portfolio pages; <span class="neg">−</span> no form, no search, /solutions/ 404 <a class="ref" href="/research/screens/hard/navarino-contact-directory.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> market sub-hubs; <span class="neg">−</span> duplicated trees, low-scent labels ("Drop us a Line"), no support in nav</td>
+        <td><span class="pos">+</span> only real finder, Download Center; <span class="neg">−</span> facet jargon (COTP/COTM), support across 3+ subdomains, thin maritime hub <a class="ref" href="/research/screens/hard/iec-telecom-industry-maritime.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> industry sub-verticals + Support Center; <span class="neg">−</span> no contact form, "Get in Touch"→/sign-up/, stale PDFs, exits to microsites</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="gallery">
+    <figure><a href="/research/screens/hard/marlink-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-home-hero.png" alt="Marlink home"></a><figcaption><b>Marlink</b> — home / trust density</figcaption></figure>
+    <figure><a href="/research/screens/hard/navarino-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/hard/navarino-home-hero.png" alt="Navarino home"></a><figcaption><b>Navarino</b> — hero stat + 3D craft</figcaption></figure>
+    <figure><a href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank"><img loading="lazy" src="/research/screens/hard/iec-telecom-solution-finder.png" alt="IEC finder"></a><figcaption><b>IEC Telecom</b> — 8-facet finder (jargon)</figcaption></figure>
+    <figure><a href="/research/screens/hard/marlink-contact-form.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-contact-form.png" alt="Marlink contact"></a><figcaption><b>Marlink</b> — routed inquiry form</figcaption></figure>
+  </div>
+
+  <h3>SOFT — comparative table</h3>
+  <div class="table-wrap"><table class="cmp">
+    <thead><tr><th>Axis</th><th>Cisco</th><th>IBM</th><th>Schneider</th><th>Siemens</th><th>Honeywell</th></tr></thead>
+    <tbody>
+      <tr><th>Audience</th>
+        <td>Enterprise + SMB + service providers + partners</td>
+        <td>Enterprise IT + developers + partners</td>
+        <td>Facility/plant operators, industry buyers, distributors ("Where to buy?")</td>
+        <td>Industrial engineers ("600,000 TIA Portal users"); 30 verticals <a class="ref" href="https://www.siemens.com/en-us/industries/" target="_blank" title="industries">↗</a></td>
+        <td>Industrial/enterprise via Industries+Outcomes+Businesses; B2C routed out</td>
+      </tr>
+      <tr><th>Positioning</th>
+        <td>Title "AI Infrastructure, Secure Networking, and Software Solutions"; hero unverified (bot-blocked) <a class="ref" href="/research/screens/soft/cisco-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"Realizing ROI with AI agents" / "USD 4.5 billion in productivity gains" — self as case study <a class="ref" href="/research/screens/soft/ibm-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>Hero = news carousel ("Named World's Most Sustainable Company 2026 by TIME") <a class="ref" href="/research/screens/soft/schneider-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"What if AI could do an engineer's most tedious work?" (Eigen Agent) <a class="ref" href="/research/screens/soft/siemens-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"Connections that drive true transformation." <a class="ref" href="/research/screens/soft/honeywell-home-full.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>Solutions / Industries</th>
+        <td>Networking/Security/Collaboration/Observability; solutions hub "Technology, Industry, Business Needs" <a class="ref" href="/research/screens/soft/cisco-solutions-overview.png" target="_blank" title="screen">▦</a></td>
+        <td>4 axes — products (flat 25+) / industries (19) / solutions / services <a class="ref" href="/research/screens/soft/ibm-industries.png" target="_blank" title="screen">▦</a></td>
+        <td><b>Industries ARE the taxonomy</b> — 18 industry solutions + EcoStruxure + cross-cutting needs <a class="ref" href="/research/screens/soft/schneider-solutions-industries.png" target="_blank" title="screen">▦</a></td>
+        <td>Marketplace catalog "1-12 of 2048 results" (incl. 3rd-party sellers); 30 industries flat <a class="ref" href="/research/screens/soft/siemens-products-catalog.png" target="_blank" title="catalog">▦</a> <a class="ref" href="/research/screens/soft/siemens-industries.png" target="_blank" title="industries">▦</a></td>
+        <td><b>3-axis hub</b> — Industries (12) × Outcomes (6) × Businesses (3 subdomains) <a class="ref" href="/research/screens/soft/honeywell-solutions-3axis.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>Nav &amp; discovery</th>
+        <td>Mega-menu L1 rail + promo panel; Portfolio Explorer (per-industry use-case) <a class="ref" href="/research/screens/soft/cisco-nav-megamenu.png" target="_blank" title="screen">▦</a></td>
+        <td>Primary mega-menu client-rendered (not captured); products flat without JS</td>
+        <td>Persistent 4-CTA rail (Product Selector/Get a Quote/Where to buy?/Help Center); mega-menu = redesign focus <span class="hyp">(hypothesis)</span></td>
+        <td><b>Filtered search, not tree</b> (2048-item catalog); nav client-rendered <a class="ref" href="/research/screens/soft/siemens-products-catalog.png" target="_blank" title="screen">▦</a></td>
+        <td>2-level menu; umbrella routing to segment subdomains; no site search on hubs</td>
+      </tr>
+      <tr><th>CTAs &amp; contact</th>
+        <td>"Trials and demos"; sales forms off-domain (engage2demand, 14+ fields, routing)</td>
+        <td>"Free Trial"/"Buy Now"; contact = router with <b>sales-vs-support split, no form</b></td>
+        <td>"Get a Quote…an expert will connect"; contact = <b>country selector (~100 sites), no global form</b></td>
+        <td>Building X "Request a consultation" + "Start the tour" demo; contact split by audience, form JS-injected</td>
+        <td>"Contact Sales" → Salesforce portal C3; contact hub <b class="neg">zero forms</b>; support page has the only form</td>
+      </tr>
+      <tr><th>Trust</th>
+        <td>Case-study hub + "Cisco on Cisco"; "70% of Fortune 100" SD-WAN <span class="hyp">(hypothesis — snippet)</span></td>
+        <td>"cut HR costs by 40%", "resolve 94%…"; Bradesco "65 million customers", Honda "67%" <a class="ref" href="https://www.ibm.com/industries" target="_blank" title="industries">↗</a></td>
+        <td>TIME award; McLaren story; "800-bed all-electric hospital"</td>
+        <td>Building X "30% Energy savings", ISO 27001:2022, UL Platinum</td>
+        <td>"up to $225 billion in production costs" (Honeywell/MIT); Motor Oil, Aruba stories</td>
+      </tr>
+      <tr><th>Technical info</th>
+        <td><b class="pos">Strongest</b> — HTML datasheets, At-a-Glance, FAQ, validated-design guides</td>
+        <td>Central Documentation hub + Fix Central; marketing outcomes-first</td>
+        <td>Selectors/docs/how-to videos; marketing sells outcomes, no product links in body</td>
+        <td>Interactive demo tour + API dev page + buying guide; deep docs → SiePortal <em>(access restricted)</em></td>
+        <td>Corporate story-led, no datasheets; depth on segment subdomains</td>
+      </tr>
+      <tr><th>UX +/−</th>
+        <td><span class="pos">+</span> L1-rail mega-menu + Portfolio Explorer finder; <span class="neg">−</span> dual URL architectures, off-domain lead forms <a class="ref" href="/research/screens/soft/cisco-nav-megamenu.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> explicit sales-vs-support split, industry outcome stats; <span class="neg">−</span> industries mix granularities, support JS-only shell <a class="ref" href="/research/screens/soft/ibm-industries.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> persistent 4-CTA conversion rail, industry-led taxonomy; <span class="neg">−</span> news-carousel hero, geo-fragmentation (~100 sites) <a class="ref" href="/research/screens/soft/schneider-solutions-industries.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> honest large-catalog model (search+facets), demo/tour; <span class="neg">−</span> 30-item flat industry list, client-rendered nav <a class="ref" href="/research/screens/soft/siemens-products-catalog.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> Outcome (need-based) axis rare/useful; <span class="neg">−</span> subdomain handoffs, no-form contact hub, slow loads <span class="hyp">(hypothesis)</span> <a class="ref" href="/research/screens/soft/honeywell-solutions-3axis.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>ASPIRATIONAL — comparative table</h3>
+  <div class="table-wrap"><table class="cmp">
+    <thead><tr><th>Axis</th><th>Stripe</th><th>Palantir</th><th>Vercel</th><th>NVIDIA</th><th>Cloudflare</th></tr></thead>
+    <tbody>
+      <tr><th>Audience</th>
+        <td>By stage (Enterprises/Startups) + platforms + developers</td>
+        <td>Defense/government + enterprise + developers</td>
+        <td>Developers self-serve + enterprise + AI/agent builders</td>
+        <td>Enterprise + consumer dual-track; Developers/Partners/Startups</td>
+        <td>Self-serve devs + tiered business + enterprise</td>
+      </tr>
+      <tr><th>Positioning</th>
+        <td>"Financial infrastructure to grow your revenue." <a class="ref" href="/research/screens/aspirational/stripe-home-full.png" target="_blank" title="screen">▦</a>; promo modal over hero on visit</td>
+        <td>"AI-Powered Automation for Every Decision" over product UI <a class="ref" href="/research/screens/aspirational/palantir-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"Agentic Infrastructure" — 2 words + dual CTA + logo wall <a class="ref" href="/research/screens/aspirational/vercel-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"Artificial Intelligence Computing Leadership"; news-carousel hero <a class="ref" href="/research/screens/aspirational/nvidia-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>"Connect, protect, and build everywhere"; "connectivity cloud" <a class="ref" href="/research/screens/aspirational/cloudflare-home-hero.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>Solutions / structure</th>
+        <td>4 product groups (Payments/Revenue/Money Management/Platforms&amp;Marketplaces) + use-cases (10) + industries (11)</td>
+        <td>Platforms (AIP/Foundry/Gotham/Ontology/Apollo) + 15+ industry offerings <a class="ref" href="/research/screens/aspirational/palantir-platform-aip.png" target="_blank" title="screen">▦</a></td>
+        <td>3 groups (Agent Stack/Core Platform/Tools)</td>
+        <td>3 axes — Products (11)/Solutions (6)/Industries (14) <a class="ref" href="/research/screens/aspirational/nvidia-industries.png" target="_blank" title="screen">▦</a></td>
+        <td>73 products in 7 groups + solution umbrellas</td>
+      </tr>
+      <tr><th>Nav &amp; discovery</th>
+        <td>product/stage/use-case+industry axes; "Guide me (Personalize)"</td>
+        <td>Slim header + shared modules site-wide</td>
+        <td>2 dropdowns + docs integrated (product CTAs → /docs)</td>
+        <td>Mega-menu grouped sub-columns; multi-property ecosystem</td>
+        <td>Axes platform/need/vertical; case-study finder facets</td>
+      </tr>
+      <tr><th>CTAs &amp; contact</th>
+        <td>Paired self-serve + sales; <b class="pos">multi-step qualifying sales form</b> (email+country→revenue→details) <a class="ref" href="/research/screens/aspirational/stripe-contact-sales.png" target="_blank" title="screen">▦</a></td>
+        <td>"Request a Demo"; contact = routing hub, no form</td>
+        <td>Dual-track "Deploy now" vs "Talk to sales"; 5-field form + proof sidebar <a class="ref" href="/research/screens/aspirational/vercel-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td>3-way split (Support/Sales/Partners); qualifying form (Industry + Job Role)</td>
+        <td>"Start for free" vs "Talk to an expert"; enterprise form bot-blocked</td>
+      </tr>
+      <tr><th>Trust</th>
+        <td>"$1.9T volume 2025", "99.999% uptime", "50% of Fortune 100"; cards ("$70M…Postmates"); <b class="neg">drift 500M vs 250M</b> API req/day</td>
+        <td>Outcome-stat stories (Sompo "$60M profit", Walgreens "384 billion decisions/day"); U.S. Army, UK Defence</td>
+        <td>Stat-in-sentence logo wall; "40B+ requests/day", "99.99% uptime SLA" <a class="ref" href="/research/screens/aspirational/vercel-enterprise.png" target="_blank" title="screen">▦</a></td>
+        <td>"81% of TOP500"; proprietary research ("Over 1,000 telecom professionals surveyed")</td>
+        <td>Network proof "337 cities · 8 regions", "95% within 50ms", "20% of all websites"; per-case pairs (Shopify "3.4T requests") <a class="ref" href="/research/screens/aspirational/cloudflare-network-coverage.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+      <tr><th>Technical info</th>
+        <td>Real API code "Under the hood"; task-based docs</td>
+        <td>Per-feature videos + live-product CTAs <em>(access restricted)</em></td>
+        <td>One-line install hero (<code>npm i ai</code>), SDK snippets, interactive demo, pricing estimator</td>
+        <td>Glossary + "What is X?" + spec PDFs</td>
+        <td>Learning Center + live "Test your latency" tool</td>
+      </tr>
+      <tr><th>UX +/−</th>
+        <td><span class="pos">+</span> best-in-class progressive lead qualification, complex-made-simple; <span class="neg">−</span> promo modal covering hero <a class="ref" href="/research/screens/aspirational/stripe-home-hero.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> product-UI-as-hero, outcome-stat carousel; <span class="neg">−</span> JS shell to fetchers, no direct contact form</td>
+        <td><span class="pos">+</span> 2-word hero + dual-track CTA + logo wall (fastest scannable), stat-in-sentence proof; <span class="neg">−</span> no marketing products hub</td>
+        <td><span class="pos">+</span> anchored page template (Overview→What is X→Use Cases→Resources→Next Steps), report-led funnel; <span class="neg">−</span> news-carousel hero buries value prop, many subdomains <a class="ref" href="/research/screens/aspirational/nvidia-industries.png" target="_blank" title="screen">▦</a></td>
+        <td><span class="pos">+</span> reusable module system, network/coverage storytelling (relevant to our Connectivity pillar); <span class="neg">−</span> vertical list not exposed on hub <a class="ref" href="/research/screens/aspirational/cloudflare-home-full.png" target="_blank" title="screen">▦</a></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="grid cols-2" style="margin-top:22px">
+    <div class="card">
+      <h4>Three shared market patterns</h4>
+      <ol style="padding-left:18px;font-size:14px">
+        <li><b>Dual-axis IA (capability × industry) is the default.</b> Every SOFT player runs an industries hub; HARD pairs solution trees with market hubs. Validates the brief's "two sections + cross-links". Navarino (single-axis) is the lone exception.</li>
+        <li><b>Trust is quantified, certified, placed early.</b> Hero stat bands + ISO/IACS cert strips are standard. <span class="neg">Caveat:</span> cross-page <b>stat drift</b> at Marlink (99.9/99.99), NSSLGlobal (50/55/56 yrs), Stripe (500M/250M).</li>
+        <li><b>Sales/support split; the contact page is the weakest link.</b> Two of five HARD sites have <b>no web form at all</b> (Navarino, Speedcast); aspirational tier qualifies leads progressively (Stripe).</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Three key differences</h4>
+      <ol style="padding-left:18px;font-size:14px">
+        <li><b>Discovery tooling ranges from nothing to faceted search</b> — no well-designed <em>mid-size</em> finder exists; they're absent or expert-jargon tools.</li>
+        <li><b>Curation vs catalog</b> — maritime players curate few pillars with narrative pages; conglomerates expose full catalogs behind filters. Asterra's 5 pillars sit firmly on the <b>curation</b> side.</li>
+        <li><b>Static PDF proof vs interactive proof</b> — HARD relies on brochure PDFs; aspirational players embed live proof (latency test, demo+estimator, "Under the hood", product tours).</li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ BENCHMARK ============ -->
+<section id="benchmark"><div class="wrap">
+  <span class="kicker">Section 02</span>
+  <h2>Benchmark — solution-fit clarity + pre-contact trust</h2>
+  <p class="sec-sub">One dimension scored 1–5: a user must <b>(a) quickly grasp which solution fits</b> and <b>(b) trust reliability before human contact</b>. Five examples span weak→strong: Marlink &amp; IEC (in-market); Cloudflare &amp; Stripe (aspirational); <b>NerdWallet</b> (new cross-category — best-in-class guided finder + trust apparatus; evidence in <a href="#nerdwallet">Appendix D</a>).</p>
+
+  <h3>Criteria</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>#</th><th>Criterion</th><th>1 =</th><th>5 =</th></tr></thead>
+    <tbody>
+      <tr><td>C1</td><td><b>Guided solution discovery</b></td><td>must browse raw catalog</td><td>guided finder routes situation → matched solution</td></tr>
+      <tr><td>C2</td><td><b>Industry / use-case framing</b></td><td>product-only</td><td>rich pages re-packaging solutions in the buyer's context</td></tr>
+      <tr><td>C3</td><td><b>Plain-language explanation</b></td><td>jargon or empty</td><td>layered plain language, progressive depth</td></tr>
+      <tr><td>C4</td><td><b>Quantified, specific proof</b></td><td>none / vague</td><td>dense, specific, verifiable stats placed early</td></tr>
+      <tr><td>C5</td><td><b>Certification / methodology visibility</b></td><td>none</td><td>clear contextual certs/compliance (or transparent "how we rate")</td></tr>
+      <tr><td>C6</td><td><b>Claim consistency</b></td><td>contradictory / stale</td><td>coherent, current, self-consistent</td></tr>
+      <tr><td>C7</td><td><b>Low-friction contextual next step</b></td><td>dead-end / off-domain</td><td>context-carrying inquiry, minimal friction</td></tr>
+      <tr><td>C8</td><td><b>Self-serve interactive validation</b></td><td>none</td><td>user can verify a claim before contact</td></tr>
+    </tbody>
+  </table></div>
+  <p style="color:var(--muted);font-size:13.5px">C1–C3 = "which fits me"; C4–C6, C8 = "can I trust them"; C7 = the bridge once convinced.</p>
+
+  <h3>Scores</h3>
+  <div class="table-wrap"><table class="scoretable cmp">
+    <thead><tr><th>Criterion</th><th>Marlink</th><th>IEC Telecom</th><th>Cloudflare</th><th>Stripe</th><th>NerdWallet</th></tr></thead>
+    <tbody>
+      <tr><th>C1 Guided discovery</th>
+        <td><span class="sc s2">2</span><small>no finder; mega-menu + search only</small></td>
+        <td><span class="sc s4">4</span><small>real 8-facet finder, but jargon (COTP/COTM) <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s4">4</span><small>"by need" taxonomy + "Get a recommendation" <em>(reported)</em></small></td>
+        <td><span class="sc s4">4</span><small>product/stage/use-case axes + "Guide me" <em>(reported)</em> <a class="ref" href="https://stripe.com/sitemap" target="_blank" title="sitemap">↗</a></small></td>
+        <td><span class="sc s5">5</span><small>dedicated quiz "I need a credit card for…→results in minutes" <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank" title="finder">▦</a></small></td>
+      </tr>
+      <tr><th>C2 Industry framing</th>
+        <td><span class="sc s5">5</span><small>industry submenu + sector-framed shipping page <a class="ref" href="/research/screens/hard/marlink-industry-shipping.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s3">3</span><small>vertical markets, thin maritime hub <a class="ref" href="/research/screens/hard/iec-telecom-industry-maritime.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s4">4</span><small>vertical pages (public sector, banking)</small></td>
+        <td><span class="sc s4">4</span><small>by-industry + by-use-case lists</small></td>
+        <td><span class="sc s4">4</span><small>goal/use-case tabs <em>(consumer use-case)</em> <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a></small></td>
+      </tr>
+      <tr><th>C3 Plain-language</th>
+        <td><span class="sc s4">4</span><small>benefits narrative + diagrams, low jargon</small></td>
+        <td><span class="sc s2">2</span><small>unexplained facet jargon <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s5">5</span><small>Learning Center + clear pillar props</small></td>
+        <td><span class="sc s5">5</span><small>complex-made-simple + "Under the hood" <a class="ref" href="/research/screens/aspirational/stripe-home-full.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s5">5</span><small>plain editorial + per-card pros/cons <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a></small></td>
+      </tr>
+      <tr><th>C4 Quantified proof</th>
+        <td><span class="sc s5">5</span><small>1,700+ specialists, 15k+ vessels, 99.9% SLA, 24.7% share <a class="ref" href="/research/screens/hard/marlink-industry-shipping.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s2">2</span><small>lone "25+ years"; partners unnamed <a class="ref" href="/research/screens/hard/iec-telecom-home-hero.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s5">5</span><small>20% of all websites, 234B threats/day, 337 cities <a class="ref" href="/research/screens/aspirational/cloudflare-network-coverage.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s5">5</span><small>$1.9T volume, 99.999% uptime, 50% of Fortune 100 <a class="ref" href="/research/screens/aspirational/stripe-home-full.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s4">4</span><small>per-card "rating 5.0" + concrete fees; few self-stats <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a></small></td>
+      </tr>
+      <tr><th>C5 Certs / methodology</th>
+        <td><span class="sc s5">5</span><small>ISO 27001/9001/14001, IACS UR E26/E27, NIS2, IEC 62443 <a class="ref" href="/research/screens/hard/marlink-cybersecurity.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s3">3</span><small>"IMO Compliance" + SLA tiers</small></td>
+        <td><span class="sc s4">4</span><small>Forrester Wave / IDC MarketScape <em>(reported)</em> <a class="ref" href="https://www.cloudflare.com/application-services/" target="_blank" title="app services">↗</a></small></td>
+        <td><span class="sc s4">4</span><small>PCI / compliance messaging</small></td>
+        <td><span class="sc s4">4</span><small>transparent "1 to 5" method + "FACT CHECKED / EDITORIAL INTEGRITY" + independence disclaimer <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a></small></td>
+      </tr>
+      <tr><th>C6 Claim consistency</th>
+        <td><span class="sc s2">2</span><small>stat drift 99.9/99.99%, 135+/200+ countries</small></td>
+        <td><span class="sc s3">3</span><small>nav-vs-form taxonomy mismatch</small></td>
+        <td><span class="sc s4">4</span><small>consistent, current <em>(not fully audited)</em></small></td>
+        <td><span class="sc s4">4</span><small>minor drift 500M/250M API req/day</small></td>
+        <td><span class="sc s4">4</span><small>"Last updated" + fact-check label <em>(not audited across pages)</em></small></td>
+      </tr>
+      <tr><th>C7 Contextual next step</th>
+        <td><span class="sc s5">5</span><small>single routed form, "routed to a regional specialist" <a class="ref" href="/research/screens/hard/marlink-contact-form.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s3">3</span><small>generic form everywhere; support across 3+ subdomains <a class="ref" href="/research/screens/hard/iec-telecom-contact-form.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s4">4</span><small>"Start for free" vs "Talk to an expert" <em>(form bot-blocked)</em></small></td>
+        <td><span class="sc s5">5</span><small>progressive multi-step qualification <a class="ref" href="/research/screens/aspirational/stripe-contact-sales.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s5">5</span><small>one-click "APPLY NOW", no account <em>(apply = contact analog)</em> <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a></small></td>
+      </tr>
+      <tr><th>C8 Interactive validation</th>
+        <td><span class="sc s2">2</span><small>one gated PDF; no live tool</small></td>
+        <td><span class="sc s2">2</span><small>brochure Download Center only</small></td>
+        <td><span class="sc s5">5</span><small>live "Test your latency" <a class="ref" href="/research/screens/aspirational/cloudflare-network-coverage.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s5">5</span><small>interactive demos + "Under the hood" <a class="ref" href="/research/screens/aspirational/stripe-home-full.png" target="_blank" title="screen">▦</a></small></td>
+        <td><span class="sc s5">5</span><small>finder + "Add to compare" + pros/cons, no-contact <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank" title="screen">▦</a></small></td>
+      </tr>
+      <tr style="font-weight:800"><th>Total (/40, unweighted)</th>
+        <td><span class="sc s3">30</span></td><td><span class="sc s2">22</span></td><td><span class="sc s5">35</span></td><td><span class="sc s5">36</span></td><td><span class="sc s5">36</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <p style="color:var(--dim);font-size:12.5px">Totals are an unweighted sum for orientation only — C1, C4, C7 arguably weigh most for our maritime-first buyer.</p>
+
+  <div class="gallery">
+    <figure><a href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank"><img loading="lazy" src="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" alt="NerdWallet finder"></a><figcaption><b>NerdWallet</b> — guided finder, "no contact required"</figcaption></figure>
+    <figure><a href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank"><img loading="lazy" src="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" alt="NerdWallet ratings"></a><figcaption><b>NerdWallet</b> — ratings + editorial integrity</figcaption></figure>
+    <figure><a href="/research/screens/aspirational/cloudflare-network-coverage.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/cloudflare-network-coverage.png" alt="Cloudflare network"></a><figcaption><b>Cloudflare</b> — live latency test + network proof</figcaption></figure>
+    <figure><a href="/research/screens/aspirational/stripe-contact-sales.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/stripe-contact-sales.png" alt="Stripe contact"></a><figcaption><b>Stripe</b> — progressive lead qualification</figcaption></figure>
+  </div>
+
+  <h3>Conclusions per criterion</h3>
+  <ul>
+    <li><b>C1 Discovery:</b> only NerdWallet scores 5; the direct market maxes at 4 (IEC, jargon-gated) → <b>biggest gap = biggest opportunity.</b></li>
+    <li><b>C2 Industry framing:</b> Marlink leads (5), all ≥3 → table stakes, <b>not a differentiator.</b></li>
+    <li><b>C3 Plain-language:</b> aspirational + NerdWallet at 5; IEC's jargon (2) is the cautionary floor.</li>
+    <li><b>C4 Proof:</b> Marlink/Cloudflare/Stripe at 5; IEC's lone stat (2) shows the floor.</li>
+    <li><b>C5 Certs/methodology:</b> Marlink strongest (5) via ISO/IACS; maritime buyers expect this — must match.</li>
+    <li><b>C6 Consistency:</b> <b>nobody scores 5</b>; Marlink lowest (2) via stat drift → universally under-managed → argues for a single-source proof block.</li>
+    <li><b>C7 Contextual contact:</b> Marlink/Stripe/NerdWallet at 5; the losers are dead-end directories.</li>
+    <li><b>C8 Interactive validation:</b> aspirational + NerdWallet at 5; <b>HARD group all ≤2</b> → absent in our market → opportunity.</li>
+  </ul>
+  <p class="note"><b>Overall read:</b> the two halves split cleanly. Marlink is strong on <em>trust</em> (C4/C5) and <em>contact</em> (C7) but weak on <em>discovery</em> (C1), <em>interactivity</em> (C8), <em>consistency</em> (C6). IEC is the only in-market player with a real finder, yet jargon (C3) and thin proof (C4) undercut it. High scorers (Stripe, NerdWallet, Cloudflare) win by combining a <b>guided/low-jargon path in + self-serve validation + consistent specific proof</b> — the combination no HARD player achieves.</p>
+</div></section>
+
+<!-- ============ PATTERNS ============ -->
+<section id="patterns"><div class="wrap">
+  <span class="kicker">Section 03</span>
+  <h2>UX Patterns</h2>
+  <p class="sec-sub">Five <b>principally different</b> paradigms for the combined task — different core mechanism each: interview / identity / attributes / experience / evidence.</p>
+
+  <div class="table-wrap"><table class="cmp">
+    <thead><tr><th>Pattern</th><th>How it works</th><th>Where applied</th><th>Fits when</th><th>Doesn't fit when</th></tr></thead>
+    <tbody>
+      <tr>
+        <th>P1 · Guided recommender<br><small style="color:var(--dim)">system-led interview (C1,+C3/C7)</small></th>
+        <td>A few plain questions → ranked personalized recommendation (pros/cons) + next step; user answers, system leads.</td>
+        <td>NerdWallet CardFinder <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank" title="screen">▦</a>; Stripe "Guide me"; Cloudflare "Get a recommendation" <em>(reported)</em>; Betterment/Wealthfront. In-market only IEC approximates (facet filter) <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a></td>
+        <td>Catalog confusing to a non-expert; few encodable variables; buyer early/unsure.</td>
+        <td>Portfolio tiny/obvious (overkill); fuzzy matching (wrong pick erodes trust); experts want direct access.</td>
+      </tr>
+      <tr>
+        <th>P2 · Segment/industry-led<br><small style="color:var(--dim)">"choose your world" (C2,+C5)</small></th>
+        <td>Entry by <em>who you are</em> (industry/segment); destination re-frames solutions in sector language + sector proof. Discovery by recognition.</td>
+        <td>Category default — Marlink industry submenu + shipping page <a class="ref" href="/research/screens/hard/marlink-industry-shipping.png" target="_blank" title="screen">▦</a>; Cisco/IBM/Siemens/Honeywell hubs <a class="ref" href="/research/screens/soft/ibm-industries.png" target="_blank" title="ibm">▦</a> <a class="ref" href="/research/screens/soft/honeywell-solutions-3axis.png" target="_blank" title="honeywell">▦</a>; Cloudflare verticals</td>
+        <td>Same capabilities serve very different sectors; buyers self-identify by industry; you have sector proof.</td>
+        <td>Sectors too alike (duplication); no sector proof → filler pages <a class="ref" href="/research/screens/hard/iec-telecom-industry-maritime.png" target="_blank" title="screen">▦</a>; need cuts across industries.</td>
+      </tr>
+      <tr>
+        <th>P3 · Faceted filter + comparison<br><small style="color:var(--dim)">self-directed attributes</small></th>
+        <td>User narrows a catalog by attribute filters and/or compares a shortlist on shared specs; no system recommendation.</td>
+        <td>Siemens 2048-item catalog <a class="ref" href="/research/screens/soft/siemens-products-catalog.png" target="_blank" title="screen">▦</a>; IEC facets <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a>; NerdWallet "Add to compare" <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a>; AWS/e-commerce filters</td>
+        <td>Large catalog, comparable attributes; expert buyers; late-stage choice between known options.</td>
+        <td>Small curated portfolio (nothing to filter); buyers don't know the vocabulary (jargon wall); offerings not cleanly attribute-comparable.</td>
+      </tr>
+      <tr>
+        <th>P4 · Interactive proof<br><small style="color:var(--dim)">trust by doing (C8,+C4)</small></th>
+        <td>User validates a capability themselves — live tool, sandbox, calculator, tour — turning a claim into first-hand experience.</td>
+        <td>Cloudflare "Test your latency" <a class="ref" href="/research/screens/aspirational/cloudflare-network-coverage.png" target="_blank" title="screen">▦</a>; Vercel Sandbox + estimator <a class="ref" href="/research/screens/aspirational/vercel-enterprise.png" target="_blank" title="screen">▦</a>; Stripe "Under the hood" <a class="ref" href="/research/screens/aspirational/stripe-home-full.png" target="_blank" title="screen">▦</a>; Siemens Building X tour <em>(reported)</em>. HARD ≤2</td>
+        <td>Value demonstrable digitally (coverage, speed, API, workflow); technical evaluators; safe to expose a slice.</td>
+        <td>Physical/managed-service with no digital surface; credible tool costly; shallow gimmick undercuts trust.</td>
+      </tr>
+      <tr>
+        <th>P5 · Evidence &amp; authority stack<br><small style="color:var(--dim)">substantiated reliability (C4/C5/C6)</small></th>
+        <td>Trust asserted but <em>proven</em> — quantified stats + certs + named-outcome cases + logos + editorial expertise, early and consistent.</td>
+        <td>Marlink stats+certs <a class="ref" href="/research/screens/hard/marlink-cybersecurity.png" target="_blank" title="screen">▦</a>; Palantir impact stories <a class="ref" href="/research/screens/aspirational/palantir-home-hero.png" target="_blank" title="screen">▦</a>; Stripe/Cloudflare stat bands; NVIDIA research <a class="ref" href="/research/screens/aspirational/nvidia-industries.png" target="_blank" title="screen">▦</a>; NerdWallet methodology <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a></td>
+        <td>Risk/compliance-sensitive buyers; real, specific proof; long/high-stakes cycles.</td>
+        <td>No concrete proof → vague claims; inconsistent claims (stat drift = unreliability). <em>Reinforces trust; nothing for discovery alone.</em></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3>Three mechanisms to port into Asterra</h3>
+  <div class="grid cols-3">
+    <div class="card">
+      <h4><span class="lead-num">1.</span> Plain-language Solution Finder</h4>
+      <p style="font-size:13.5px"><b>How:</b> one opening question in the buyer's words → 2–3 essential questions (industry, need, region) → ranked solution/bundle with pros/cons + context-carrying "Talk to an expert"; no login/contact to see results.</p>
+      <p style="font-size:13.5px"><b>Solves:</b> the core pain — can't self-map a complex catalog; removes browse-friction &amp; the jargon wall.</p>
+      <p style="font-size:13.5px"><b>From:</b> NerdWallet CardFinder <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank" title="screen">▦</a> — adopt its plain language, <b>not</b> IEC's COTP/COTM jargon.</p>
+    </div>
+    <div class="card">
+      <h4><span class="lead-num">2.</span> Single-source "Proof Block"</h4>
+      <p style="font-size:13.5px"><b>How:</b> one reusable, tokenized component from a <b>single data source</b> (no 99.9% here / 99.99% there) — stat trio (coverage/uptime/scale) + certification strip + 1–2 named-outcome case cards.</p>
+      <p style="font-size:13.5px"><b>Solves:</b> pre-contact trust with specifics <b>and</b> eliminates the stat drift at Marlink &amp; Stripe.</p>
+      <p style="font-size:13.5px"><b>From:</b> Cloudflare quantified proof <a class="ref" href="/research/screens/aspirational/cloudflare-network-coverage.png" target="_blank" title="screen">▦</a>; single-source rule motivated by Marlink drift.</p>
+    </div>
+    <div class="card">
+      <h4><span class="lead-num">3.</span> Contextual reassuring inquiry</h4>
+      <p style="font-size:13.5px"><b>How:</b> every solution page carries "Talk to an expert" → short 2-step form <b>pre-filled with solution + industry</b>, plus reassurance ("routed to a regional specialist — reply within one business day").</p>
+      <p style="font-size:13.5px"><b>Solves:</b> converts the just-convinced user in context; avoids dead-ends (no-form directories, off-domain forms).</p>
+      <p style="font-size:13.5px"><b>From:</b> Marlink routed form <a class="ref" href="/research/screens/hard/marlink-contact-form.png" target="_blank" title="screen">▦</a> + Stripe progressive qualification <a class="ref" href="/research/screens/aspirational/stripe-contact-sales.png" target="_blank" title="screen">▦</a>.</p>
+    </div>
+  </div>
+
+  <div class="card no" style="margin-top:16px">
+    <h4 style="color:var(--s1c)">Mechanism NOT to port — Expert faceted product catalog / spec-filter (P3)</h4>
+    <p style="font-size:14px;margin:.3em 0 0">IEC facets <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a>, Siemens 2048-item catalog <a class="ref" href="/research/screens/soft/siemens-products-catalog.png" target="_blank" title="screen">▦</a>. <b>Why not:</b> Asterra has ~5 curated pillars, not thousands of SKUs — little to filter; it presumes the user already knows the technical vocabulary (the opposite of our confused-buyer problem) and adds jargon that worsens "which fits me?". Facets only pay off at conglomerate scale; the guided finder (Mechanism 1) does the job.</p>
+  </div>
+</div></section>
+
+<!-- ============ CONCLUSIONS ============ -->
+<section id="conclusions"><div class="wrap">
+  <span class="kicker">Section 04</span>
+  <h2>Conclusions</h2>
+  <p class="sec-sub">Basis: <a href="/CLAUDE.md">CLAUDE.md</a> (maritime-first; ~5 curated pillars; primary conversion = qualified inquiry from a solution page; Solution Finder in scope; no homepage quote CTA) + the sections above.</p>
+
+  <h3>Direction</h3>
+  <div class="grid cols-3">
+    <div class="card best">
+      <h4 style="color:var(--s5c)">Primary → P1 Guided recommender</h4>
+      <p style="font-size:13.5px;color:var(--muted);margin:.2em 0 .5em">the in-scope "Solution Finder". Three reasons:</p>
+      <ol style="font-size:13.5px;padding-left:18px">
+        <li><b>Hits the unsolved pain &amp; differentiates</b> — of 15 sites only IEC has a real finder and it's jargon-gated; the rest force browsing. Already committed in CLAUDE.md §7.</li>
+        <li><b>Asterra's shape is ideal input</b> — ~5 pillars × a defined industry set = few, encodable variables (trustworthy recommendations); persona often non-expert → guidance beats browse.</li>
+        <li><b>Lands in the primary conversion, in context</b> — finder ends in a matched solution + pre-filled "Talk to an expert" (Mechanism 3), no dead-end.</li>
+      </ol>
+    </div>
+    <div class="card second">
+      <h4 style="color:var(--s3c)">Backup (conditional) → P2 Industry-led</h4>
+      <p style="font-size:13.5px">Category default; matches how buyers self-identify; built anyway as the Industries section. Becomes <em>primary</em> over the wizard <b>if</b> (a) research shows sector-first self-identification, <b>or</b> (b) trustworthy matching logic can't be encoded, <b>or</b> (c) build constraints defer the finder.</p>
+      <p style="font-size:13.5px">Ranks second: non-differentiating, and within a sector still leaves "which of our 5 pillars?" — complements, not replaces, P1; depends on real sector proof.</p>
+    </div>
+    <div class="card no">
+      <h4 style="color:var(--s1c)">Does not fit → P3 Faceted filter</h4>
+      <p style="font-size:13.5px">Small curated portfolio (little to filter); non-expert buyer; facets expose internal vocabulary (COTP/COTM); managed-service not cleanly attribute-comparable. Same conclusion as "mechanism not to port".</p>
+      <p style="font-size:13.5px;color:var(--muted)"><b>Complements, not alternatives:</b> P5 (Evidence) is a <b>mandatory trust layer</b> under whichever discovery pattern wins; P4 (Interactive proof) is a <b>strong optional enhancer</b> — scope to 1–2 credible tools (e.g. a coverage/uptime rail).</p>
+    </div>
+  </div>
+
+  <h3>Design decisions (adopt)</h3>
+  <ol>
+    <li><b>Solution Finder as the signature interaction</b> — plain-language industry × need, aspirational-grade presentation; returns solution pages/cards with inquiry CTAs, not a raw SKU list.</li>
+    <li><b>Contextual "Talk to an expert" inquiry</b> on every solution page — solution + industry pre-filled, reassurance line; avoid form-less directories, off-domain forms, label/URL mismatches.</li>
+    <li><b>Single-source tokenized Proof Block</b> — consistent stats + cert strip + named-outcome cases on every solution/industry page.</li>
+    <li><b>Industry section</b> as recognition-based entry (P2), cross-linked with solutions per the brief's "two sections + cross-links".</li>
+    <li><b>One lightweight interactive proof</b> (e.g. coverage/uptime rail) — the pattern HARD entirely lacks; full coverage map stays out of scope per brief.</li>
+  </ol>
+
+  <h3>Open questions for PM / designer</h3>
+  <ol>
+    <li><b>Contact model:</b> single routed form (Marlink), progressive multi-step (Stripe), or per-segment (Speedcast)? Routing fields (industry, solution of interest) at v1, and submissions to email vs CRM?</li>
+    <li><b>Catalog depth:</b> ≤ ~30 offerings → curation-first, Finder = guided filter; hardware/accessories listed → facets + product content model needed. Which — and does the Finder return <em>pages</em> or <em>cards with inquiry CTAs</em>?</li>
+    <li><b>Support surface at v1:</b> competitors treat support as a trust asset (Speedcast Support Center <a class="ref" href="/research/screens/hard/speedcast-support-center.png" target="_blank" title="screen">▦</a>) but fragment it (IEC ×3 subdomains). The brief defers the portal — 24/7 claim + contacts only, or a public FAQ/knowledge layer?</li>
+  </ol>
+</div></section>
+
+<!-- ============ APPENDIX ============ -->
+<section id="appendix"><div class="wrap">
+  <span class="kicker">Appendix</span>
+  <h2>Method, screenshots &amp; limitations</h2>
+
+  <h3>A. Method</h3>
+  <p style="color:var(--muted);font-size:14px">Collected 2026-07-22, live sites only. Text via direct fetches; visual evidence via Playwright (Chromium, 1440×900). <b>63 screenshots</b> in <code>screens/{hard,soft,aspirational,dimension-fit-trust}/</code> (homepages captured twice: <code>-home-hero</code> + <code>-home-full</code>). Every fact carries its source URL; quantitative claims quoted verbatim; unverifiable items marked <span class="hyp">(hypothesis)</span>. Login-gated portals treated as <em>access restricted</em> (no content assumed).</p>
+
+  <h3>B. Full screenshot index</h3>
+  <details open><summary>All 63 screenshots (click any to open full size)</summary>
+    <div class="gallery big">
+      <figure><a href="/research/screens/hard/marlink-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-home-hero.png" alt=""></a><figcaption><b>Marlink</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/hard/marlink-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-home-full.png" alt=""></a><figcaption><b>Marlink</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/hard/marlink-solutions-overview.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-solutions-overview.png" alt=""></a><figcaption><b>Marlink</b> solutions</figcaption></figure>
+      <figure><a href="/research/screens/hard/marlink-industry-shipping.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-industry-shipping.png" alt=""></a><figcaption><b>Marlink</b> industry-shipping</figcaption></figure>
+      <figure><a href="/research/screens/hard/marlink-cybersecurity.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-cybersecurity.png" alt=""></a><figcaption><b>Marlink</b> cybersecurity</figcaption></figure>
+      <figure><a href="/research/screens/hard/marlink-support.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-support.png" alt=""></a><figcaption><b>Marlink</b> support</figcaption></figure>
+      <figure><a href="/research/screens/hard/marlink-contact-top.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-contact-top.png" alt=""></a><figcaption><b>Marlink</b> contact-top</figcaption></figure>
+      <figure><a href="/research/screens/hard/marlink-contact-form.png" target="_blank"><img loading="lazy" src="/research/screens/hard/marlink-contact-form.png" alt=""></a><figcaption><b>Marlink</b> contact-form</figcaption></figure>
+      <figure><a href="/research/screens/hard/navarino-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/hard/navarino-home-hero.png" alt=""></a><figcaption><b>Navarino</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/hard/navarino-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/hard/navarino-home-full.png" alt=""></a><figcaption><b>Navarino</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/hard/navarino-solutions-technology.png" target="_blank"><img loading="lazy" src="/research/screens/hard/navarino-solutions-technology.png" alt=""></a><figcaption><b>Navarino</b> solutions</figcaption></figure>
+      <figure><a href="/research/screens/hard/navarino-cybersecurity-angel.png" target="_blank"><img loading="lazy" src="/research/screens/hard/navarino-cybersecurity-angel.png" alt=""></a><figcaption><b>Navarino</b> Angel cyber</figcaption></figure>
+      <figure><a href="/research/screens/hard/navarino-contact-directory.png" target="_blank"><img loading="lazy" src="/research/screens/hard/navarino-contact-directory.png" alt=""></a><figcaption><b>Navarino</b> contact-dir</figcaption></figure>
+      <figure><a href="/research/screens/hard/nsslglobal-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/hard/nsslglobal-home-hero.png" alt=""></a><figcaption><b>NSSLGlobal</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/hard/nsslglobal-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/hard/nsslglobal-home-full.png" alt=""></a><figcaption><b>NSSLGlobal</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/hard/nsslglobal-solutions-overview.png" target="_blank"><img loading="lazy" src="/research/screens/hard/nsslglobal-solutions-overview.png" alt=""></a><figcaption><b>NSSLGlobal</b> solutions</figcaption></figure>
+      <figure><a href="/research/screens/hard/nsslglobal-industry-maritime.png" target="_blank"><img loading="lazy" src="/research/screens/hard/nsslglobal-industry-maritime.png" alt=""></a><figcaption><b>NSSLGlobal</b> maritime</figcaption></figure>
+      <figure><a href="/research/screens/hard/nsslglobal-contact-form.png" target="_blank"><img loading="lazy" src="/research/screens/hard/nsslglobal-contact-form.png" alt=""></a><figcaption><b>NSSLGlobal</b> contact</figcaption></figure>
+      <figure><a href="/research/screens/hard/iec-telecom-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/hard/iec-telecom-home-hero.png" alt=""></a><figcaption><b>IEC</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/hard/iec-telecom-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/hard/iec-telecom-home-full.png" alt=""></a><figcaption><b>IEC</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank"><img loading="lazy" src="/research/screens/hard/iec-telecom-solution-finder.png" alt=""></a><figcaption><b>IEC</b> solution-finder</figcaption></figure>
+      <figure><a href="/research/screens/hard/iec-telecom-industry-maritime.png" target="_blank"><img loading="lazy" src="/research/screens/hard/iec-telecom-industry-maritime.png" alt=""></a><figcaption><b>IEC</b> maritime</figcaption></figure>
+      <figure><a href="/research/screens/hard/iec-telecom-contact-form.png" target="_blank"><img loading="lazy" src="/research/screens/hard/iec-telecom-contact-form.png" alt=""></a><figcaption><b>IEC</b> contact</figcaption></figure>
+      <figure><a href="/research/screens/hard/speedcast-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/hard/speedcast-home-hero.png" alt=""></a><figcaption><b>Speedcast</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/hard/speedcast-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/hard/speedcast-home-full.png" alt=""></a><figcaption><b>Speedcast</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/hard/speedcast-solutions-filter.png" target="_blank"><img loading="lazy" src="/research/screens/hard/speedcast-solutions-filter.png" alt=""></a><figcaption><b>Speedcast</b> solutions-filter</figcaption></figure>
+      <figure><a href="/research/screens/hard/speedcast-industry-maritime.png" target="_blank"><img loading="lazy" src="/research/screens/hard/speedcast-industry-maritime.png" alt=""></a><figcaption><b>Speedcast</b> maritime</figcaption></figure>
+      <figure><a href="/research/screens/hard/speedcast-support-center.png" target="_blank"><img loading="lazy" src="/research/screens/hard/speedcast-support-center.png" alt=""></a><figcaption><b>Speedcast</b> support-center</figcaption></figure>
+      <figure><a href="/research/screens/hard/speedcast-contact-directory.png" target="_blank"><img loading="lazy" src="/research/screens/hard/speedcast-contact-directory.png" alt=""></a><figcaption><b>Speedcast</b> contact-dir</figcaption></figure>
+      <figure><a href="/research/screens/soft/cisco-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/soft/cisco-home-hero.png" alt=""></a><figcaption><b>Cisco</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/soft/cisco-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/soft/cisco-home-full.png" alt=""></a><figcaption><b>Cisco</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/soft/cisco-nav-megamenu.png" target="_blank"><img loading="lazy" src="/research/screens/soft/cisco-nav-megamenu.png" alt=""></a><figcaption><b>Cisco</b> mega-menu</figcaption></figure>
+      <figure><a href="/research/screens/soft/cisco-solutions-overview.png" target="_blank"><img loading="lazy" src="/research/screens/soft/cisco-solutions-overview.png" alt=""></a><figcaption><b>Cisco</b> solutions</figcaption></figure>
+      <figure><a href="/research/screens/soft/cisco-industries.png" target="_blank"><img loading="lazy" src="/research/screens/soft/cisco-industries.png" alt=""></a><figcaption><b>Cisco</b> industries</figcaption></figure>
+      <figure><a href="/research/screens/soft/ibm-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/soft/ibm-home-hero.png" alt=""></a><figcaption><b>IBM</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/soft/ibm-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/soft/ibm-home-full.png" alt=""></a><figcaption><b>IBM</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/soft/ibm-industries.png" target="_blank"><img loading="lazy" src="/research/screens/soft/ibm-industries.png" alt=""></a><figcaption><b>IBM</b> industries</figcaption></figure>
+      <figure><a href="/research/screens/soft/schneider-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/soft/schneider-home-hero.png" alt=""></a><figcaption><b>Schneider</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/soft/schneider-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/soft/schneider-home-full.png" alt=""></a><figcaption><b>Schneider</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/soft/schneider-solutions-industries.png" target="_blank"><img loading="lazy" src="/research/screens/soft/schneider-solutions-industries.png" alt=""></a><figcaption><b>Schneider</b> solutions</figcaption></figure>
+      <figure><a href="/research/screens/soft/siemens-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/soft/siemens-home-hero.png" alt=""></a><figcaption><b>Siemens</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/soft/siemens-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/soft/siemens-home-full.png" alt=""></a><figcaption><b>Siemens</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/soft/siemens-products-catalog.png" target="_blank"><img loading="lazy" src="/research/screens/soft/siemens-products-catalog.png" alt=""></a><figcaption><b>Siemens</b> catalog (2048)</figcaption></figure>
+      <figure><a href="/research/screens/soft/siemens-industries.png" target="_blank"><img loading="lazy" src="/research/screens/soft/siemens-industries.png" alt=""></a><figcaption><b>Siemens</b> industries</figcaption></figure>
+      <figure><a href="/research/screens/soft/honeywell-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/soft/honeywell-home-full.png" alt=""></a><figcaption><b>Honeywell</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/soft/honeywell-solutions-3axis.png" target="_blank"><img loading="lazy" src="/research/screens/soft/honeywell-solutions-3axis.png" alt=""></a><figcaption><b>Honeywell</b> 3-axis hub</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/stripe-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/stripe-home-hero.png" alt=""></a><figcaption><b>Stripe</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/stripe-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/stripe-home-full.png" alt=""></a><figcaption><b>Stripe</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/stripe-contact-sales.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/stripe-contact-sales.png" alt=""></a><figcaption><b>Stripe</b> contact-sales</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/palantir-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/palantir-home-hero.png" alt=""></a><figcaption><b>Palantir</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/palantir-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/palantir-home-full.png" alt=""></a><figcaption><b>Palantir</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/palantir-platform-aip.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/palantir-platform-aip.png" alt=""></a><figcaption><b>Palantir</b> platform-AIP</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/vercel-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/vercel-home-hero.png" alt=""></a><figcaption><b>Vercel</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/vercel-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/vercel-home-full.png" alt=""></a><figcaption><b>Vercel</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/vercel-enterprise.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/vercel-enterprise.png" alt=""></a><figcaption><b>Vercel</b> enterprise</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/nvidia-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/nvidia-home-hero.png" alt=""></a><figcaption><b>NVIDIA</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/nvidia-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/nvidia-home-full.png" alt=""></a><figcaption><b>NVIDIA</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/nvidia-industries.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/nvidia-industries.png" alt=""></a><figcaption><b>NVIDIA</b> industries</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/cloudflare-home-hero.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/cloudflare-home-hero.png" alt=""></a><figcaption><b>Cloudflare</b> home-hero</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/cloudflare-home-full.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/cloudflare-home-full.png" alt=""></a><figcaption><b>Cloudflare</b> home-full</figcaption></figure>
+      <figure><a href="/research/screens/aspirational/cloudflare-network-coverage.png" target="_blank"><img loading="lazy" src="/research/screens/aspirational/cloudflare-network-coverage.png" alt=""></a><figcaption><b>Cloudflare</b> network</figcaption></figure>
+      <figure><a href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank"><img loading="lazy" src="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" alt=""></a><figcaption><b>NerdWallet</b> card-finder</figcaption></figure>
+      <figure><a href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank"><img loading="lazy" src="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" alt=""></a><figcaption><b>NerdWallet</b> ratings</figcaption></figure>
+    </div>
+  </details>
+
+  <h3>C. Limitations &amp; access notes</h3>
+  <ul style="font-size:13.5px;color:var(--muted)">
+    <li><b>Bot-blocked to text fetchers (403):</b> cisco.com, ibm.com, se.com, Cloudflare contact pages — facts via rendered-text proxies + search snippets; browser captures succeeded. Snippet-sourced claims marked <span class="hyp">(hypothesis)</span> (e.g. Cisco "70% of Fortune 100"). NerdWallet also 404s fetchers — captured via real browser.</li>
+    <li><b>Client-rendered navigation</b> (IBM, Siemens, Cloudflare top nav) — mega-menu internals documented from markup/URL only, not screenshots.</li>
+    <li><b>Access restricted (login-gated), content not assumed:</b> Marlink Portal360/OnePortal/SkyFile, Navarino COSMO, Siemens SiePortal, Palantir aip./build.palantir.com, Honeywell C3 Salesforce portal.</li>
+    <li><b>Visit-specific artifacts:</b> Stripe promo modal over hero; Vercel light theme (system-preference dependent); Cisco Ukrainian-localized cookie banner (geo-IP); Speedcast interior cookie banners; Honeywell intermittently very slow (5/9 fetches timed out) — perceived-performance = <span class="hyp">(hypothesis)</span>. Palantir serves a JS-only shell to non-browser clients (facts via proxy).</li>
+    <li><b>UX write-ups found:</b> Navarino redesign by <a href="https://kota.co.uk/work/navarino" target="_blank">KOTA</a>; Speedcast rebrand by <a href="https://ever.house/work/speedcast/" target="_blank">Everhouse</a>; Cisco redesign metrics by <a href="https://tendocom.com/case-studies/cisco-website-redesign/" target="_blank">Tendo</a> <span class="hyp">(hypothesis — vendor-reported)</span>; Schneider mega-menu by <a href="https://contentsquare.com/customers/schneider-electric/" target="_blank">Contentsquare</a>; <a href="https://baymard.com/ux-benchmark/case-studies/schneider-electric" target="_blank">Baymard</a> benchmark for se.com; Stripe/Vercel design systems (<a href="https://stripe.design/" target="_blank">stripe.design</a>, <a href="https://vercel.com/geist/introduction" target="_blank">Geist</a>).</li>
+  </ul>
+
+  <h3 id="nerdwallet">D. NerdWallet verbatim evidence <span style="color:var(--dim);font-weight:400;font-size:14px">(gathered 2026-07-22, live via Playwright)</span></h3>
+  <ul style="font-size:13.5px;color:var(--muted)">
+    <li><b>CardFinder</b> <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank" title="screen">▦</a> — "CardFinder: Credit Card Recommendation Quiz"; "Get results in minutes:"; "Why are you looking for a new credit card? → I need a credit card for… → GET STARTED"; "This service is FREE, will not affect your credit score, and no contact information is required."; "There's no hard credit check required to see your results."; "We only ask questions that are essential. No contact info required."; "See the pros and cons of each credit card we recommend." (<a href="https://www.nerdwallet.com/card-finder-jump" target="_blank">source</a>)</li>
+    <li><b>Best Cash Back list</b> <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-ratings-comparison.png" target="_blank" title="screen">▦</a> — "13 Best Cash Back Credit Cards of July 2026"; "Written by Jae Bratton, Reviewed by Caitlin Mims, Edited by Paul Soucy — Last updated on July 16, 2026 — FACT CHECKED — EDITORIAL INTEGRITY"; "Our pick for: All-around cash back"; "NerdWallet rating ★★★★★ 5.0"; "Add to compare"; "APPLY NOW on Chase's website"; method: "Our star ratings… assess the features of a card, score those features according to how they compare with other options on the market, and assign the card a rating of 1 to 5."; independence: card info "has been collected by NerdWallet and has not been reviewed or provided by the issuer of this card." (<a href="https://www.nerdwallet.com/credit-cards/best/cash-back" target="_blank">source</a>) — <em>Caveat:</em> no explicit "Why you can trust NerdWallet" box on this page; trust apparatus = byline + FACT CHECKED/EDITORIAL INTEGRITY + methodology + independence disclaimer.</li>
+  </ul>
+</div></section>
+
+<footer><div class="wrap">
+  <span class="pill">Asterra Networks</span><span class="pill">Research phase</span><span class="pill">2026-07-22</span>
+  <p>Fictional B2B brand — independent UX/UI case study. Full sources: <a href="/research/research_compressed.md">research_compressed.md</a> · <a href="/research/research.md">research.md</a> · <a href="/CLAUDE.md">CLAUDE.md</a>.</p>
+</div></footer>
+
+</body>
+</html>
