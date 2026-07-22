@@ -199,3 +199,224 @@ trust blocks, making complex technology understandable.
 - **Visit-specific artifacts:** Stripe showed a promotional modal over the hero; Vercel rendered in light theme (system-preference dependent); Cisco showed a Ukrainian-localized cookie banner (geo-IP); Speedcast interior pages show the cookie banner (consent was per-page-load on our run). Honeywell loads were intermittently very slow (5 of 9 research fetches timed out) — treat perceived-performance conclusions as **(hypothesis)**.
 - Palantir's site serves a JS-only shell to non-browser clients; its page facts were read via a rendered-text proxy of the same URLs.
 - UX write-ups located during research: Navarino redesign by KOTA ([kota.co.uk/work/navarino](https://kota.co.uk/work/navarino)); Speedcast rebrand by Everhouse ([ever.house/work/speedcast](https://ever.house/work/speedcast/)); Cisco redesign metrics by Tendo ([tendocom.com](https://tendocom.com/case-studies/cisco-website-redesign/)) **(hypothesis — vendor-reported)**; Schneider mega-menu study by Contentsquare ([contentsquare.com](https://contentsquare.com/customers/schneider-electric/)); Baymard benchmark for se.com ([baymard.com](https://baymard.com/ux-benchmark/case-studies/schneider-electric)); Stripe/Vercel design-system write-ups ([stripe.design](https://stripe.design/), [Geist](https://vercel.com/geist/introduction)).
+
+---
+
+## 9. Focused dimension — solution-fit clarity + pre-contact trust
+
+The shared pain from §6: a user struggles to **(a) quickly grasp which solution fits
+them** and **(b) trust the provider's reliability before any human contact**. This
+section scores that single dimension. It does **not** re-run the §3–§5 competitor
+analysis — it reuses already-gathered sources/screenshots for four examples and adds
+one new cross-category benchmark (**NerdWallet**, gathered fresh — see §9.4).
+
+**Examples chosen** (span weak→strong on this dimension): **Marlink** and **IEC Telecom**
+(in-market, from §3), **Cloudflare** and **Stripe** (aspirational, from §5), **NerdWallet**
+(new cross-category — best-in-class guided "find the right option + trust before you
+commit").
+
+### 9.1 Evaluation criteria (1–5)
+
+| # | Criterion | 1 = | 5 = |
+|---|---|---|---|
+| C1 | **Guided solution discovery** | must browse raw catalog | guided finder routes situation → matched solution |
+| C2 | **Industry / use-case framing** | product-only | rich pages re-packaging solutions in the buyer's own context |
+| C3 | **Plain-language explanation** | jargon or empty | layered plain language, progressive depth |
+| C4 | **Quantified, specific proof** | none / vague | dense, specific, verifiable stats placed early |
+| C5 | **Certification / methodology visibility** | none | clear, contextual certs/compliance (or transparent "how we rate") |
+| C6 | **Claim consistency** | contradictory / stale numbers | coherent, current, self-consistent |
+| C7 | **Low-friction contextual next step** | dead-end directory / off-domain | context-carrying inquiry, minimal friction |
+| C8 | **Self-serve interactive validation** | none | user can verify a claim before contact (demo / tool / compare) |
+
+C1–C3 = "which solution fits me"; C4–C6, C8 = "can I trust them"; C7 = the bridge once convinced.
+
+### 9.2 Scores
+
+| Criterion | Marlink | IEC Telecom | Cloudflare | Stripe | NerdWallet |
+|---|---|---|---|---|---|
+| **C1 Guided discovery** | **2** — no finder; mega-menu + site search only (§3) | **4** — real 8-facet finder, but expert jargon (COTP/COTM) ([finder](./screens/hard/iec-telecom-solution-finder.png)) | **4** — "by need" taxonomy + "Get a recommendation" *(reported, not captured)* (§5) | **4** — product/stage/use-case axes + "Guide me" *(reported)* ([sitemap](https://stripe.com/sitemap)) | **5** — dedicated quiz "I need a credit card for… → Get results in minutes" ([finder](./screens/dimension-fit-trust/nerdwallet-card-finder.png)) |
+| **C2 Industry/use-case framing** | **5** — industry submenu + sector-framed shipping page ([shipping](./screens/hard/marlink-industry-shipping.png)) | **3** — vertical markets, but thin maritime lead-form hub ([maritime](./screens/hard/iec-telecom-industry-maritime.png)) | **4** — vertical pages (public sector, banking) (§5) | **4** — by-industry + by-use-case lists ([sitemap](https://stripe.com/sitemap)) | **4** — goal/use-case tabs (Cash Back, Balance Transfer, Travel, College Student) ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)) *(consumer use-case, not industry)* |
+| **C3 Plain-language** | **4** — benefits narrative + concept diagrams, low jargon (§3) | **2** — unexplained facet jargon (COTP/COTM) ([finder](./screens/hard/iec-telecom-solution-finder.png)) | **5** — Learning Center + clear pillar value props (§5) | **5** — complex-made-simple + "Under the hood" ([home](./screens/aspirational/stripe-home-full.png)) | **5** — plain editorial + per-card pros/cons ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)) |
+| **C4 Quantified proof** | **5** — 1,700+ specialists, 15k+ vessels, 99.9% SLA, 24.7% market share ([home](./screens/hard/marlink-home-hero.png), [shipping](./screens/hard/marlink-industry-shipping.png)) | **2** — lone "25+ years"; partners unnamed ([home](./screens/hard/iec-telecom-home-hero.png)) | **5** — 20% of all websites, 234B threats/day, 337 cities ([network](./screens/aspirational/cloudflare-network-coverage.png)) | **5** — $1.9T volume, 99.999% uptime, 50% of Fortune 100 ([home](./screens/aspirational/stripe-home-full.png)) | **4** — per-card "NerdWallet rating 5.0" + concrete fees/rewards; few self-stats ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)) |
+| **C5 Certs / methodology** | **5** — ISO 27001/9001/14001, IACS UR E26/E27, NIS2, IEC 62443 ([cyber](./screens/hard/marlink-cybersecurity.png)) | **3** — "IMO Compliance (Cybersecurity)" + SLA tiers (§3) | **4** — Forrester Wave / IDC MarketScape *(reported, not captured)* ([app services](https://www.cloudflare.com/application-services/)) | **4** — PCI / compliance messaging (§5) | **4** — transparent "1 to 5" rating method + "FACT CHECKED / EDITORIAL INTEGRITY" + issuer-independence disclaimer ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)) |
+| **C6 Claim consistency** | **2** — stat drift 99.9% vs 99.99%, 135+ vs 200+ countries (§3, §6) | **3** — nav-vs-form taxonomy mismatch (§3) | **4** — consistent, current numbers *(not fully audited)* (§5) | **4** — minor drift 500M vs 250M API req/day (§5) | **4** — "Last updated" date + fact-check label aid currency *(not audited across pages)* ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)) |
+| **C7 Contextual next step** | **5** — single routed form, "routed to a regional specialist" ([contact](./screens/hard/marlink-contact-form.png)) | **3** — generic "SEND" form everywhere; support split across 3+ subdomains ([contact](./screens/hard/iec-telecom-contact-form.png)) | **4** — "Start for free" vs "Talk to an expert" split *(form bot-blocked)* (§5) | **5** — progressive multi-step qualification ([contact-sales](./screens/aspirational/stripe-contact-sales.png)) | **5** — one-click "APPLY NOW" from the recommendation, no account ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)) *(apply = contact analog)* |
+| **C8 Interactive validation** | **2** — one gated PDF; no live tool (§3) | **2** — brochure Download Center only (§3) | **5** — live "Test your latency" tool ([network](./screens/aspirational/cloudflare-network-coverage.png)) | **5** — interactive demos + "Under the hood" code ([home](./screens/aspirational/stripe-home-full.png)) | **5** — finder + "Add to compare" side-by-side + pros/cons, all no-contact ([finder](./screens/dimension-fit-trust/nerdwallet-card-finder.png)) |
+| **Total (/40, unweighted)** | **30** | **22** | **35** | **36** | **36** |
+
+*Totals are an unweighted sum for orientation only — the criteria are not equally
+important for Asterra (C1, C4, C7 arguably weigh most for our maritime-first buyer).*
+
+**Read of the scores:** the two halves of the pain split cleanly. Marlink is strong on
+*trust* (C4/C5) and *contact* (C7) but weak on *discovery* (C1), *interactivity* (C8),
+and *consistency* (C6). IEC is the only in-market player with a real finder, yet its
+jargon (C3) and thin proof (C4) undercut it. The high scorers (Stripe, NerdWallet,
+Cloudflare) win by combining a guided/low-jargon path in with self-serve validation and
+consistent, specific proof — exactly the combination none of the HARD group achieves.
+
+### 9.3 Mechanisms to port into Asterra
+
+**1. Plain-language Solution Finder (situation → recommended solution, no gate).**
+- *How it works:* one opening question in the buyer's own words ("What do you need
+  connectivity / security for?"), then 2–3 essential questions (industry, primary need,
+  optional region) → a ranked recommended solution/bundle with pros/cons and a
+  context-carrying "Talk to an expert" CTA. No login, no contact info required to see
+  results.
+- *Problem solved:* the core pain — the user can't self-map a complex catalog to their
+  situation. Removes both the "browse everything yourself" friction and the jargon wall.
+- *Example from:* **NerdWallet CardFinder** — "I need a credit card for… → Get results in
+  minutes", "no contact information is required", pros/cons per pick ([finder](./screens/dimension-fit-trust/nerdwallet-card-finder.png)).
+  In-market proof it's expected: IEC Telecom's finder ([finder](./screens/hard/iec-telecom-solution-finder.png)) — but adopt NerdWallet's plain language, **not** IEC's COTP/COTM jargon.
+
+**2. Single-source "Proof Block" (coverage/uptime stats + certifications + named-outcome cases).**
+- *How it works:* one reusable, tokenized component fed from a **single data source** so a
+  figure can't read 99.9% in one place and 99.99% in another; combines a compact stat trio
+  (coverage / uptime / scale) + a certification/compliance strip + 1–2 named-outcome case
+  cards (claim + number + source).
+- *Problem solved:* builds pre-contact trust with verifiable specifics **and** eliminates
+  the credibility-eroding stat drift we documented at Marlink (99.9 vs 99.99) and Stripe
+  (500M vs 250M) — inconsistency is itself a reliability signal.
+- *Example from:* **Cloudflare's** quantified network proof ([network](./screens/aspirational/cloudflare-network-coverage.png)); the single-source rule is motivated by Marlink's drift (§6).
+
+**3. Contextual, reassuring inquiry with light progressive qualification.**
+- *How it works:* every solution/service page carries a "Talk to an expert" CTA that opens
+  a short 2-step form **pre-filled with the solution + industry being viewed**, plus a
+  reassurance line ("routed to a regional specialist — reply within one business day").
+  Qualifies the lead (industry, need) without a heavy wizard.
+- *Problem solved:* converts the just-convinced user in context, avoiding the group's
+  dead-ends — Navarino and Speedcast have **no form at all** (directory only), Honeywell/
+  Cisco push to off-domain forms.
+- *Example from:* **Marlink's** routed form + "routed to a regional specialist" ([contact](./screens/hard/marlink-contact-form.png)); progressive qualification from **Stripe's** contact-sales flow ([contact-sales](./screens/aspirational/stripe-contact-sales.png)).
+
+### Mechanism NOT to port
+
+**Expert faceted product catalog / spec-filter** (technical facets like operator, speed
+tier, set-up type over a large SKU list) — as used by IEC Telecom's finder (COTP/COTM/
+operator/speed facets, [finder](./screens/hard/iec-telecom-solution-finder.png)) and Siemens' 2048-item filtered catalog ([catalog](./screens/soft/siemens-products-catalog.png)).
+*Why it won't work for Asterra:* we have ~5 curated solution pillars, not thousands of
+SKUs. A heavy facet filter (a) presumes the user already knows the technical vocabulary —
+the opposite of our confused-buyer problem — and (b) adds cognitive load and internal
+jargon that worsens "which fits me?". The facet catalog only pays off at conglomerate SKU
+scale; for a small curated portfolio the plain-language guided finder (Mechanism 1) does
+the job.
+
+### 9.4 New evidence — NerdWallet (gathered 2026-07-22)
+
+Captured live via Playwright (fetchers get HTTP 404; real-browser render used). Screenshots
+in [`screens/dimension-fit-trust/`](./screens/dimension-fit-trust/).
+
+- **CardFinder quiz** ([nerdwallet-card-finder.png](./screens/dimension-fit-trust/nerdwallet-card-finder.png)) — verbatim: "CardFinder: Credit Card Recommendation Quiz"; "Get results in minutes:"; "Why are you looking for a new credit card? → I need a credit card for… → GET STARTED"; "This service is FREE, will not affect your credit score, and no contact information is required."; "It won't affect your credit score — There's no hard credit check required to see your results."; "See smart recommendations in minutes — We only ask questions that are essential. No contact info required."; "Tap into objective ratings — See the pros and cons of each credit card we recommend." (https://www.nerdwallet.com/card-finder-jump)
+- **Best Cash Back list** ([nerdwallet-ratings-comparison.png](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)) — verbatim: "13 Best Cash Back Credit Cards of July 2026"; "Written by Jae Bratton, Reviewed by Caitlin Mims, Edited by Paul Soucy — Last updated on July 16, 2026 — FACT CHECKED — EDITORIAL INTEGRITY"; "Our pick for: All-around cash back"; "NerdWallet rating ★★★★★ 5.0"; "Add to compare"; "APPLY NOW on Chase's website"; methodology: "Our star ratings… assess the features of a card, score those features according to how they compare with other options on the market, and assign the card a rating of 1 to 5."; independence disclaimer: card info "has been collected by NerdWallet and has not been reviewed or provided by the issuer of this card." (https://www.nerdwallet.com/credit-cards/best/cash-back)
+- *Caveat:* an explicit "Why you can trust NerdWallet" box was **not found** on the cash-back page — the trust apparatus there is the byline + FACT CHECKED/EDITORIAL INTEGRITY labels + ratings methodology + independence disclaimer above.
+
+---
+
+## 10. Five distinct discovery-and-trust UX patterns
+
+Five **principally different** paradigms for the combined task — *help the user quickly
+find the right solution AND trust the provider before first contact*. These are not
+variations of one idea: each has a different core mechanism (interview vs. identity vs.
+attributes vs. experience vs. evidence). Grounded in the examples already gathered in
+§3–§9. C-refs point to the §9.1 criteria the pattern primarily serves.
+
+### 10.1 Guided recommender (diagnostic wizard) — *system-led interview → recommendation*
+- **How it works:** the system asks a short sequence of plain-language questions about the
+  user's context/need, then returns a ranked, personalized recommendation (with pros/cons)
+  and a next step. The user *answers*, the system *leads*. Serves C1 (discovery) with a
+  side of C3/C7.
+- **Where applied:** NerdWallet CardFinder ("I need a credit card for… → results in
+  minutes", [finder](./screens/dimension-fit-trust/nerdwallet-card-finder.png)); Stripe "Guide me (Personalize)" ([sitemap](https://stripe.com/sitemap)); Cloudflare "Get a recommendation" *(reported, §5)*; onboarding recommenders (Betterment/Wealthfront). In our market only IEC approximates it — as a self-directed facet filter, not a guided interview ([finder](./screens/hard/iec-telecom-solution-finder.png)).
+- **Fits when:** the catalog is confusing to a non-expert; decision variables are few and
+  encodable; the buyer is early/unsure.
+- **Doesn't fit when:** the portfolio is tiny/obvious (overkill); matching logic is fuzzy
+  or political (a wrong recommendation erodes the very trust you want); buyers are experts
+  who resent being "walked through" and want direct access.
+
+### 10.2 Segment/industry-led self-identification — *"choose your world" → curated framed page*
+- **How it works:** the top-level entry is *who you are* (industry / segment / role). The
+  user self-selects their sector; the destination re-frames the same solutions in that
+  sector's language and shows sector-specific proof (cases, compliance). Discovery by
+  recognition, not Q&A. Serves C2 (+ C5 via sector proof).
+- **Where applied:** the category default (§6, pattern 1) — Marlink industry submenu +
+  shipping page ([shipping](./screens/hard/marlink-industry-shipping.png)); Speedcast industries hub; Cisco/IBM/Siemens/Honeywell industries hubs ([ibm](./screens/soft/ibm-industries.png), [honeywell](./screens/soft/honeywell-solutions-3axis.png)); Cloudflare verticals.
+- **Fits when:** the same capabilities serve very different sectors with different language,
+  priorities and compliance; buyers self-identify strongly by industry (maritime,
+  government, energy); you actually have sector proof.
+- **Doesn't fit when:** sectors are too alike to justify separate pages (duplication cost);
+  you lack sector proof, so pages read as filler (IEC's thin maritime hub, [maritime](./screens/hard/iec-telecom-industry-maritime.png)); or the buyer's need cuts across industries.
+
+### 10.3 Faceted filter + side-by-side comparison — *self-directed attribute selection*
+- **How it works:** the user narrows a catalog by applying attribute filters and/or compares
+  a shortlist on shared specs to decide. Analytical and user-led; the system offers no
+  recommendation. Serves C1/decision, no C-trust of its own.
+- **Where applied:** Siemens' 2048-item faceted catalog ([catalog](./screens/soft/siemens-products-catalog.png)); IEC's operator/speed/set-up facets ([finder](./screens/hard/iec-telecom-solution-finder.png)); NerdWallet "Add to compare" ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)); AWS/e-commerce filters; plan-comparison tables.
+- **Fits when:** a large catalog with well-defined, comparable attributes; expert buyers who
+  already know their criteria; a late-stage choice between known options.
+- **Doesn't fit when:** a small curated portfolio (nothing to filter); buyers don't know the
+  vocabulary, so facets become a jargon wall (COTP/COTM, §9); or offerings aren't cleanly
+  attribute-comparable.
+
+### 10.4 Interactive proof / self-serve validation — *trust by doing, not reading*
+- **How it works:** the user validates a capability *themselves* before contact — a live
+  tool, sandbox, calculator/estimator, or interactive product tour turns a claim into
+  first-hand experience. Serves C8 (+ strong C4 credibility).
+- **Where applied:** Cloudflare "Test your latency" ([network](./screens/aspirational/cloudflare-network-coverage.png)); Vercel Sandbox + pricing estimator ([enterprise](./screens/aspirational/vercel-enterprise.png)); Stripe "Under the hood" live code + demos ([home](./screens/aspirational/stripe-home-full.png)); Siemens Building X live tour *(reported, §4)*. The HARD group has essentially none (§9, C8 all ≤2).
+- **Fits when:** the value is demonstrable digitally (coverage, speed, an API, a workflow);
+  technical evaluators want evidence over assertions; you can safely expose a slice.
+- **Doesn't fit when:** the offering is physical / managed-service with no digital surface to
+  try (much of maritime hardware + installation); a credible tool is costly to build; or a
+  shallow gimmick would undercut trust more than it helps.
+
+### 10.5 Evidence & authority stack — *substantiated assertion of reliability*
+- **How it works:** trust is asserted but *proven* — quantified stats (coverage/uptime/scale)
+  + certifications/compliance + named-outcome case studies + logos/testimonials +
+  demonstrated editorial expertise, placed early and kept consistent. Serves C4/C5/C6.
+- **Where applied:** Marlink stats + certs ([cyber](./screens/hard/marlink-cybersecurity.png), [home](./screens/hard/marlink-home-hero.png)); Palantir outcome-stat impact stories ([home](./screens/aspirational/palantir-home-hero.png)); Stripe/Cloudflare stat bands ([stripe](./screens/aspirational/stripe-home-full.png), [cloudflare](./screens/aspirational/cloudflare-network-coverage.png)); NVIDIA proprietary research ([industries](./screens/aspirational/nvidia-industries.png)); NerdWallet ratings methodology + editorial integrity ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)).
+- **Fits when:** buyers are risk/compliance-sensitive and won't reach out without confidence;
+  you have real, specific, verifiable proof; long/high-stakes cycles.
+- **Doesn't fit when:** you lack concrete proof, so claims stay vague (IEC's lone "25+ years",
+  §9); or claims are inconsistent — stat drift itself signals unreliability (Marlink
+  99.9↔99.99, §6). Note: it *reinforces* trust but does nothing for discovery on its own.
+
+### 10.6 Fit for Asterra Networks
+
+Basis: [`../CLAUDE.md`](../CLAUDE.md) (maritime-first; ~5 curated solution pillars; primary
+conversion = qualified inquiry from a solution page; Solution Finder in scope; no homepage
+quote CTA) + the findings in §6 and §9.
+
+**Best fit → Pattern 1, Guided recommender (the in-scope "Solution Finder").** Three reasons:
+1. **It hits the market's unsolved pain and differentiates.** Across all 15 sites (§9), only
+   IEC has a real finder and it's jargon-gated; the rest force catalog-browsing. A
+   plain-language guided finder is a genuine differentiator — and it is already committed in
+   [`../CLAUDE.md`](../CLAUDE.md) §7 scope.
+2. **Asterra's shape is ideal input.** ~5 curated pillars × a defined industry set =
+   *few* decision variables and *encodable* matching logic — the exact condition under which
+   a wizard yields trustworthy recommendations (unlike a 2048-SKU catalog). The maritime-first
+   fleet-operator persona is often non-expert across the full stack, so guidance beats browse.
+3. **It lands straight in the primary conversion, in context.** The conversion model is a
+   qualified inquiry from a solution page with no homepage quote CTA; a finder that ends in a
+   matched solution + pre-filled "Talk to an expert" (the §9.3 contextual-inquiry mechanism)
+   converts the just-oriented buyer without a dead-end.
+
+**Second, conditionally → Pattern 2, Industry-led self-identification.** It is the category
+default, matches how these buyers self-identify (maritime / government / energy), and is being
+built anyway as the Industries section. It should become the *primary* discovery path over the
+wizard **if** (a) discovery research shows buyers self-identify by sector faster than by need,
+**or** (b) we cannot encode trustworthy matching logic (bad recommendations would poison
+trust), **or** (c) build constraints defer the finder. It ranks second because it is
+non-differentiating and, within a sector, still leaves "which of our five pillars do I need?"
+partly unanswered — so it complements rather than replaces Pattern 1, and it depends on having
+real sector proof (else it reads as filler, §9).
+
+**Does not fit → Pattern 3, Faceted filter / comparison.** Asterra has ~5 curated pillars, not
+a large comparable-SKU catalog, so there is little to filter and faceting is overkill; the
+primary buyer is often non-expert, and facets expose internal vocabulary (the COTP/COTM failure
+at IEC, §9); and a managed-service/solution offering is not cleanly attribute-comparable
+line-by-line. This is the same conclusion as the §9 "mechanism not to port."
+
+**Complements, not ranked alternatives:** Pattern 5 (Evidence & authority) is a **mandatory
+trust layer under whichever discovery pattern wins** — it is the §9.3 single-source proof
+block, and the maritime buyer's reliability/compliance sensitivity makes it non-optional.
+Pattern 4 (Interactive proof) is a **strong optional enhancer** — high-value where a digital
+surface exists (e.g., a coverage/uptime rail) but limited by Asterra's physical/managed-service
+nature, so it should be scoped to one or two credible tools rather than promised broadly.
