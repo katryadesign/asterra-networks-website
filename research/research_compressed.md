@@ -167,7 +167,7 @@ attributes / experience / evidence). C-refs = §2.1 criteria served.
 
 | # | Pattern | How it works | Where applied | Fits when | Doesn't fit when |
 |---|---|---|---|---|---|
-| **P1** | **Guided recommender (diagnostic wizard)** — system-led interview → recommendation (C1, +C3/C7) | System asks a few plain questions → ranked personalized recommendation (pros/cons) + next step; user answers, system leads | NerdWallet CardFinder ([finder](./screens/dimension-fit-trust/nerdwallet-card-finder.png)); Stripe "Guide me"; Cloudflare "Get a recommendation" *(reported)*; Betterment/Wealthfront. In-market only IEC approximates (as a facet filter) ([finder](./screens/hard/iec-telecom-solution-finder.png)) | Catalog confusing to a non-expert; few, encodable decision variables; buyer early/unsure | Portfolio tiny/obvious (overkill); fuzzy matching logic (wrong pick erodes trust); experts who want direct access |
+| **P1** | **Guided recommender (diagnostic wizard)** — system-led interview → recommendation (C1, +C3/C7) | System asks a few plain questions → ranked personalized recommendation (pros/cons) + next step; user answers, system leads | NerdWallet CardFinder ([finder](./screens/dimension-fit-trust/nerdwallet-card-finder.png)); Stripe "Guide me"; Cloudflare "Get a recommendation" *(reported)*; Betterment/Wealthfront. In-market only IEC approximates (as a facet filter) ([finder](./screens/hard/iec-telecom-solution-finder.png)) | Catalog hard to self-map even for a domain expert; few, encodable decision variables; buyer early/unsure | Portfolio tiny/obvious (overkill); fuzzy matching logic (wrong pick erodes trust); experts who want direct access |
 | **P2** | **Segment/industry-led self-identification** — "choose your world" → curated page (C2, +C5) | Entry by *who you are* (industry/segment); destination re-frames solutions in sector language + sector proof; discovery by recognition | Category default — Marlink industry submenu + shipping page ([shipping](./screens/hard/marlink-industry-shipping.png)); Cisco/IBM/Siemens/Honeywell hubs ([ibm](./screens/soft/ibm-industries.png), [honeywell](./screens/soft/honeywell-solutions-3axis.png)); Cloudflare verticals | Same capabilities serve very different sectors; buyers self-identify strongly by industry; you have sector proof | Sectors too alike (duplication); no sector proof → filler pages (IEC thin hub, [maritime](./screens/hard/iec-telecom-industry-maritime.png)); need cuts across industries |
 | **P3** | **Faceted filter + side-by-side comparison** — self-directed attribute selection (C1/decision) | User narrows a catalog by attribute filters and/or compares a shortlist on shared specs; no system recommendation | Siemens 2048-item catalog ([catalog](./screens/soft/siemens-products-catalog.png)); IEC facets ([finder](./screens/hard/iec-telecom-solution-finder.png)); NerdWallet "Add to compare" ([ratings](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)); AWS/e-commerce filters | Large catalog, well-defined comparable attributes; expert buyers; late-stage choice between known options | Small curated portfolio (nothing to filter); buyers don't know the vocabulary (jargon wall, COTP/COTM); offerings not cleanly attribute-comparable |
 | **P4** | **Interactive proof / self-serve validation** — trust by doing (C8, +C4) | User validates a capability themselves — live tool, sandbox, calculator, product tour — turning a claim into first-hand experience | Cloudflare "Test your latency" ([network](./screens/aspirational/cloudflare-network-coverage.png)); Vercel Sandbox + estimator ([enterprise](./screens/aspirational/vercel-enterprise.png)); Stripe "Under the hood" ([home](./screens/aspirational/stripe-home-full.png)); Siemens Building X tour *(reported)*. HARD group ≤2 | Value is demonstrable digitally (coverage, speed, API, workflow); technical evaluators want evidence; safe to expose a slice | Physical/managed-service with no digital surface (much of maritime hardware/installation); credible tool costly; shallow gimmick undercuts trust |
@@ -177,11 +177,11 @@ attributes / experience / evidence). C-refs = §2.1 criteria served.
 
 1. **Plain-language Solution Finder (situation → recommendation, no gate).** *How:* one opening question in the buyer's words → 2–3 essential questions (industry, need, region) → ranked solution/bundle with pros/cons + context-carrying "Talk to an expert"; no login/contact info to see results. *Solves:* the core pain — can't self-map a complex catalog; removes browse-friction and the jargon wall. *From:* NerdWallet CardFinder ([finder](./screens/dimension-fit-trust/nerdwallet-card-finder.png)); in-market proof it's expected = IEC's finder — but adopt NerdWallet's plain language, **not** COTP/COTM jargon.
 2. **Single-source "Proof Block" (stats + certs + named-outcome cases).** *How:* one reusable, tokenized component fed from a **single data source** (a figure can't read 99.9% one place, 99.99% another) — stat trio (coverage/uptime/scale) + certification strip + 1–2 case cards (claim + number + source). *Solves:* pre-contact trust with specifics **and** eliminates the stat drift at Marlink (99.9/99.99) and Stripe (500M/250M). *From:* Cloudflare quantified proof ([network](./screens/aspirational/cloudflare-network-coverage.png)); single-source rule motivated by Marlink drift.
-3. **Contextual, reassuring inquiry with light progressive qualification.** *How:* every solution page carries "Talk to an expert" opening a short 2-step form **pre-filled with the solution + industry**, plus reassurance ("routed to a regional specialist — reply within one business day"). *Solves:* converts the just-convinced user in context; avoids the dead-ends (Navarino/Speedcast no form, Honeywell/Cisco off-domain). *From:* Marlink routed form ([contact](./screens/hard/marlink-contact-form.png)) + Stripe progressive qualification ([contact-sales](./screens/aspirational/stripe-contact-sales.png)).
+3. **Contextual, reassuring inquiry — a simple form, pre-filled in context.** *How:* every solution page carries "Talk to an expert" opening a **simple, single-step contact form pre-filled with the solution + industry** (both fields the brief specifies), plus reassurance ("routed to a regional specialist — reply within one business day"); captures name, company, industry, message, contact in one step — **no multi-step quote wizard** (per [`../CLAUDE.md`](../CLAUDE.md) §6–§7). *Solves:* converts the just-convinced user in context; avoids the dead-ends (Navarino/Speedcast no form, Honeywell/Cisco off-domain). *From:* Marlink routed form ([contact](./screens/hard/marlink-contact-form.png)) + Stripe's clarity/reassurance ([contact-sales](./screens/aspirational/stripe-contact-sales.png)) — **not** its multi-step qualification, which the brief excludes.
 
 ### 3.2 Mechanism NOT to port
 
-**Expert faceted product catalog / spec-filter** (P3) — IEC facets ([finder](./screens/hard/iec-telecom-solution-finder.png)), Siemens 2048-item catalog ([catalog](./screens/soft/siemens-products-catalog.png)). *Why not:* Asterra has ~5 curated pillars, not thousands of SKUs, so there's little to filter; it presumes the user already knows the technical vocabulary (the opposite of our confused-buyer problem) and adds jargon that worsens "which fits me?". Facets only pay off at conglomerate scale; the guided finder (Mechanism 1) does the job.
+**Expert faceted product catalog / spec-filter** (P3) — IEC facets ([finder](./screens/hard/iec-telecom-solution-finder.png)), Siemens 2048-item catalog ([catalog](./screens/soft/siemens-products-catalog.png)). *Why not:* Asterra has ~5 curated pillars, not thousands of SKUs, so there's little to filter; it presumes the user already speaks each pillar's internal vocabulary — which our buyer, technical in their own domain but rarely a specialist across all five pillars, often does not — and adds cross-domain jargon that worsens "which fits me?". Facets only pay off at conglomerate scale; the guided finder (Mechanism 1) does the job.
 
 ---
 
@@ -194,24 +194,27 @@ qualified inquiry from a solution page; Solution Finder in scope; no homepage qu
 
 **Primary → P1 Guided recommender (the in-scope "Solution Finder").** Three reasons:
 1. **Hits the market's unsolved pain and differentiates** — of 15 sites, only IEC has a real finder and it's jargon-gated; the rest force catalog-browsing. A plain-language guided finder is a genuine differentiator, already committed in [`../CLAUDE.md`](../CLAUDE.md) §7.
-2. **Asterra's shape is ideal input** — ~5 pillars × a defined industry set = *few, encodable* decision variables (the condition under which a wizard gives trustworthy recommendations, unlike a 2048-SKU catalog); the maritime fleet-operator persona is often non-expert across the stack, so guidance beats browse.
+2. **Asterra's shape is ideal input** — ~5 pillars × a defined industry set = *few, encodable* decision variables (the condition under which a guided finder gives trustworthy recommendations, unlike a 2048-SKU catalog); the maritime fleet-operator persona — technical in their own domain, but rarely a specialist across all five pillars — is served better by guidance than by raw browse.
 3. **Lands straight in the primary conversion, in context** — a finder ending in a matched solution + pre-filled "Talk to an expert" (Mechanism 3) converts without a dead-end.
 
-**Backup, conditionally → P2 Industry-led self-identification.** Category default; matches how
+**Backup, complementary → P2 Industry-led self-identification.** Category default; matches how
 buyers self-identify (maritime/government/energy); built anyway as the Industries section.
-Becomes *primary* over the wizard **if** (a) research shows buyers self-identify by sector faster
-than by need, **or** (b) trustworthy matching logic can't be encoded (bad recommendations poison
-trust), **or** (c) build constraints defer the finder. Ranks second: non-differentiating, and
-within a sector still leaves "which of our 5 pillars?" partly unanswered — complements, not
-replaces, P1; depends on real sector proof (else filler).
+Carries **more of the discovery load, relative to the finder,** **if** (a) research shows buyers
+self-identify by sector faster than by need, **or** (b) trustworthy matching logic can't be
+encoded (bad recommendations poison trust), **or** (c) build sequencing defers the finder (build
+order TBD — [`../CLAUDE.md`](../CLAUDE.md) §13). The Solution Finder stays the **committed in-scope
+discovery feature** (§7). Ranks second: non-differentiating, and within a sector still leaves
+"which of our 5 pillars?" partly unanswered — complements, not replaces, P1; depends on real
+sector proof (else filler).
 
-**Does not fit → P3 Faceted filter / comparison** — see §3.2 (small curated portfolio;
-non-expert buyer; jargon; not cleanly attribute-comparable).
+**Does not fit → P3 Faceted filter / comparison** — see §3.2 (small curated portfolio; buyer
+technical but not fluent in every pillar's vocabulary; jargon; not cleanly attribute-comparable).
 
 **Complements, not alternatives:** P5 (Evidence & authority) is a **mandatory trust layer** under
 whichever discovery pattern wins (= the single-source proof block; the maritime buyer's
 reliability/compliance sensitivity makes it non-optional). P4 (Interactive proof) is a **strong
-optional enhancer** — high-value where a digital surface exists (e.g., a coverage/uptime rail),
+optional enhancer** — high-value where a digital surface exists (e.g., an uptime/coverage stat
+rail, **not** the out-of-scope interactive coverage map — [`../CLAUDE.md`](../CLAUDE.md) §7),
 limited by Asterra's physical/managed-service nature → scope to one or two credible tools.
 
 ### 4.2 Design decisions (adopt)
@@ -220,11 +223,11 @@ limited by Asterra's physical/managed-service nature → scope to one or two cre
 2. **Contextual "Talk to an expert" inquiry** on every solution page — solution + industry pre-filled, reassurance line; avoid form-less directories, off-domain forms, label/URL mismatches.
 3. **Single-source tokenized Proof Block** — consistent stats + cert strip + named-outcome cases on every solution/industry page.
 4. **Industry section** as the recognition-based entry (P2), cross-linked with solutions per the brief's "two sections + cross-links."
-5. **One lightweight interactive proof** (e.g., coverage/uptime rail) — the pattern HARD entirely lacks; full coverage map stays out of scope per brief.
+5. **One lightweight interactive proof** (e.g., a non-map coverage/uptime stat rail) — the pattern HARD entirely lacks; the interactive coverage map stays out of scope per [`../CLAUDE.md`](../CLAUDE.md) §7.
 
 ### 4.3 Open questions for PM / designer
 
-1. **Contact model:** single routed form (Marlink), progressive multi-step (Stripe), or per-segment (Speedcast)? Do we add routing fields (industry, solution of interest) at v1, and where do submissions go (email vs CRM)?
+1. **Contact model:** the brief specifies a **simple, single-step routed form** (Marlink) — not multi-step qualification (Stripe) or per-segment directories (Speedcast). Open at v1: alongside the specified industry field, do we also pre-fill / route on solution-of-interest, and where do submissions go (email vs CRM)?
 2. **Catalog depth:** if the portfolio stays ≤ ~30 named offerings, curation-first IA needs no facets and the Finder is a guided filter; if hardware/accessories get listed (IEC/Siemens scenario), we need facets + a product content model. Which — and does the Finder return *pages* or *cards with inquiry CTAs*?
 3. **Support surface at v1:** competitors treat support as a trust asset (Speedcast Support Center, [screen](./screens/hard/speedcast-support-center.png)) but fragment it (IEC ×3 subdomains). The brief defers the portal — what's the marketing-site support promise: 24/7 claim + contacts only, or a public FAQ/knowledge layer?
 

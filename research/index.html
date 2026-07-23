@@ -521,7 +521,7 @@
         <th>P1 · Guided recommender<br><small style="color:var(--dim)">system-led interview (C1,+C3/C7)</small></th>
         <td>A few plain questions → ranked personalized recommendation (pros/cons) + next step; user answers, system leads.</td>
         <td>NerdWallet CardFinder <a class="ref" href="/research/screens/dimension-fit-trust/nerdwallet-card-finder.png" target="_blank" title="screen">▦</a>; Stripe "Guide me"; Cloudflare "Get a recommendation" <em>(reported)</em>; Betterment/Wealthfront. In-market only IEC approximates (facet filter) <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a></td>
-        <td>Catalog confusing to a non-expert; few encodable variables; buyer early/unsure.</td>
+        <td>Catalog hard to self-map even for a domain expert; few encodable variables; buyer early/unsure.</td>
         <td>Portfolio tiny/obvious (overkill); fuzzy matching (wrong pick erodes trust); experts want direct access.</td>
       </tr>
       <tr>
@@ -571,15 +571,15 @@
     </div>
     <div class="card">
       <h4><span class="lead-num">3.</span> Contextual reassuring inquiry</h4>
-      <p style="font-size:13.5px"><b>How:</b> every solution page carries "Talk to an expert" → short 2-step form <b>pre-filled with solution + industry</b>, plus reassurance ("routed to a regional specialist — reply within one business day").</p>
+      <p style="font-size:13.5px"><b>How:</b> every solution page carries "Talk to an expert" → <b>simple, single-step form pre-filled with solution + industry</b> (both fields the brief specifies), plus reassurance ("routed to a regional specialist — reply within one business day") — <b>no multi-step quote wizard</b> (CLAUDE.md §6–§7).</p>
       <p style="font-size:13.5px"><b>Solves:</b> converts the just-convinced user in context; avoids dead-ends (no-form directories, off-domain forms).</p>
-      <p style="font-size:13.5px"><b>From:</b> Marlink routed form <a class="ref" href="/research/screens/hard/marlink-contact-form.png" target="_blank" title="screen">▦</a> + Stripe progressive qualification <a class="ref" href="/research/screens/aspirational/stripe-contact-sales.png" target="_blank" title="screen">▦</a>.</p>
+      <p style="font-size:13.5px"><b>From:</b> Marlink routed form <a class="ref" href="/research/screens/hard/marlink-contact-form.png" target="_blank" title="screen">▦</a> + Stripe's clarity/reassurance <a class="ref" href="/research/screens/aspirational/stripe-contact-sales.png" target="_blank" title="screen">▦</a> — <b>not</b> its multi-step qualification, which the brief excludes.</p>
     </div>
   </div>
 
   <div class="card no" style="margin-top:16px">
     <h4 style="color:var(--s1c)">Mechanism NOT to port — Expert faceted product catalog / spec-filter (P3)</h4>
-    <p style="font-size:14px;margin:.3em 0 0">IEC facets <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a>, Siemens 2048-item catalog <a class="ref" href="/research/screens/soft/siemens-products-catalog.png" target="_blank" title="screen">▦</a>. <b>Why not:</b> Asterra has ~5 curated pillars, not thousands of SKUs — little to filter; it presumes the user already knows the technical vocabulary (the opposite of our confused-buyer problem) and adds jargon that worsens "which fits me?". Facets only pay off at conglomerate scale; the guided finder (Mechanism 1) does the job.</p>
+    <p style="font-size:14px;margin:.3em 0 0">IEC facets <a class="ref" href="/research/screens/hard/iec-telecom-solution-finder.png" target="_blank" title="screen">▦</a>, Siemens 2048-item catalog <a class="ref" href="/research/screens/soft/siemens-products-catalog.png" target="_blank" title="screen">▦</a>. <b>Why not:</b> Asterra has ~5 curated pillars, not thousands of SKUs — little to filter; it presumes the user already speaks each pillar's internal vocabulary — which our buyer, technical in their own domain but rarely a specialist across all five pillars, often does not — and adds cross-domain jargon that worsens "which fits me?". Facets only pay off at conglomerate scale; the guided finder (Mechanism 1) does the job.</p>
   </div>
 </div></section>
 
@@ -596,19 +596,19 @@
       <p style="font-size:13.5px;color:var(--muted);margin:.2em 0 .5em">the in-scope "Solution Finder". Three reasons:</p>
       <ol style="font-size:13.5px;padding-left:18px">
         <li><b>Hits the unsolved pain &amp; differentiates</b> — of 15 sites only IEC has a real finder and it's jargon-gated; the rest force browsing. Already committed in CLAUDE.md §7.</li>
-        <li><b>Asterra's shape is ideal input</b> — ~5 pillars × a defined industry set = few, encodable variables (trustworthy recommendations); persona often non-expert → guidance beats browse.</li>
+        <li><b>Asterra's shape is ideal input</b> — ~5 pillars × a defined industry set = few, encodable variables (trustworthy recommendations); persona is technical in its own domain but rarely a specialist across all five pillars → guidance beats browse.</li>
         <li><b>Lands in the primary conversion, in context</b> — finder ends in a matched solution + pre-filled "Talk to an expert" (Mechanism 3), no dead-end.</li>
       </ol>
     </div>
     <div class="card second">
-      <h4 style="color:var(--s3c)">Backup (conditional) → P2 Industry-led</h4>
-      <p style="font-size:13.5px">Category default; matches how buyers self-identify; built anyway as the Industries section. Becomes <em>primary</em> over the wizard <b>if</b> (a) research shows sector-first self-identification, <b>or</b> (b) trustworthy matching logic can't be encoded, <b>or</b> (c) build constraints defer the finder.</p>
+      <h4 style="color:var(--s3c)">Backup (complementary) → P2 Industry-led</h4>
+      <p style="font-size:13.5px">Category default; matches how buyers self-identify; built anyway as the Industries section. Carries <em>more of the discovery load, relative to the finder,</em> <b>if</b> (a) research shows sector-first self-identification, <b>or</b> (b) trustworthy matching logic can't be encoded, <b>or</b> (c) build sequencing defers the finder (build order TBD — §13). The Solution Finder stays the <b>committed in-scope discovery feature</b> (§7).</p>
       <p style="font-size:13.5px">Ranks second: non-differentiating, and within a sector still leaves "which of our 5 pillars?" — complements, not replaces, P1; depends on real sector proof.</p>
     </div>
     <div class="card no">
       <h4 style="color:var(--s1c)">Does not fit → P3 Faceted filter</h4>
-      <p style="font-size:13.5px">Small curated portfolio (little to filter); non-expert buyer; facets expose internal vocabulary (COTP/COTM); managed-service not cleanly attribute-comparable. Same conclusion as "mechanism not to port".</p>
-      <p style="font-size:13.5px;color:var(--muted)"><b>Complements, not alternatives:</b> P5 (Evidence) is a <b>mandatory trust layer</b> under whichever discovery pattern wins; P4 (Interactive proof) is a <b>strong optional enhancer</b> — scope to 1–2 credible tools (e.g. a coverage/uptime rail).</p>
+      <p style="font-size:13.5px">Small curated portfolio (little to filter); buyer technical but not fluent in every pillar's vocabulary; facets expose internal vocabulary (COTP/COTM); managed-service not cleanly attribute-comparable. Same conclusion as "mechanism not to port".</p>
+      <p style="font-size:13.5px;color:var(--muted)"><b>Complements, not alternatives:</b> P5 (Evidence) is a <b>mandatory trust layer</b> under whichever discovery pattern wins; P4 (Interactive proof) is a <b>strong optional enhancer</b> — scope to 1–2 credible tools (e.g. a non-map coverage/uptime stat rail, <b>not</b> the out-of-scope interactive coverage map — §7).</p>
     </div>
   </div>
 
@@ -618,12 +618,12 @@
     <li><b>Contextual "Talk to an expert" inquiry</b> on every solution page — solution + industry pre-filled, reassurance line; avoid form-less directories, off-domain forms, label/URL mismatches.</li>
     <li><b>Single-source tokenized Proof Block</b> — consistent stats + cert strip + named-outcome cases on every solution/industry page.</li>
     <li><b>Industry section</b> as recognition-based entry (P2), cross-linked with solutions per the brief's "two sections + cross-links".</li>
-    <li><b>One lightweight interactive proof</b> (e.g. coverage/uptime rail) — the pattern HARD entirely lacks; full coverage map stays out of scope per brief.</li>
+    <li><b>One lightweight interactive proof</b> (e.g. a non-map coverage/uptime stat rail) — the pattern HARD entirely lacks; the interactive coverage map stays out of scope per CLAUDE.md §7.</li>
   </ol>
 
   <h3>Open questions for PM / designer</h3>
   <ol>
-    <li><b>Contact model:</b> single routed form (Marlink), progressive multi-step (Stripe), or per-segment (Speedcast)? Routing fields (industry, solution of interest) at v1, and submissions to email vs CRM?</li>
+    <li><b>Contact model:</b> the brief specifies a <b>simple, single-step routed form</b> (Marlink) — not multi-step qualification (Stripe) or per-segment directories (Speedcast). Open at v1: alongside the specified industry field, also pre-fill/route on solution-of-interest? Submissions to email vs CRM?</li>
     <li><b>Catalog depth:</b> ≤ ~30 offerings → curation-first, Finder = guided filter; hardware/accessories listed → facets + product content model needed. Which — and does the Finder return <em>pages</em> or <em>cards with inquiry CTAs</em>?</li>
     <li><b>Support surface at v1:</b> competitors treat support as a trust asset (Speedcast Support Center <a class="ref" href="/research/screens/hard/speedcast-support-center.png" target="_blank" title="screen">▦</a>) but fragment it (IEC ×3 subdomains). The brief defers the portal — 24/7 claim + contacts only, or a public FAQ/knowledge layer?</li>
   </ol>
