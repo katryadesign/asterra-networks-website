@@ -51,8 +51,9 @@ See [`CLAUDE.md`](./CLAUDE.md) for the complete design brief.
 ## People (research layer)
 
 Who buys, what progress they seek, and how well the market serves it — built without primary
-research, every claim carries a visible evidence label (`ФАКТ` / `2-ГЕ ДЖЕРЕЛО` / `АУДИТ` /
-`ВИВЕДЕНО` / `[?]`). One-page view: [`research/personas.html`](./research/personas.html).
+research, every claim carries a visible evidence label (`[FACT]` / `[2ND-HAND]` / `[SURVEY]` /
+`[AUDIT]` / `[INFERRED]` / `[?]`). One-page view: [`research/personas.html`](./research/personas.html)
+— every figure there links to its source, or says "not confirmed" in words.
 
 - [`research/personas.md`](./research/personas.md) — **proto-personas**: ⭐ P1 Technical
   Superintendent (primary; approves communication invoices, thinks class/ISM/budget),

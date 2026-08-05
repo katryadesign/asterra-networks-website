@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Asterra Networks — Прото-персони та JTBD</title>
-<meta name="description" content="Прото-персони, ієрархія jobs to be done та JTBD-матриця для редизайну Asterra Networks — з видимими рівнями доказовості та гіпотезами.">
+<title>Asterra Networks — Proto-personas & JTBD</title>
+<meta name="description" content="Proto-personas, the jobs-to-be-done hierarchy and the JTBD matrix for the Asterra Networks redesign — with visible evidence levels and stated hypotheses.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
 <style>
   :root{
@@ -66,6 +66,11 @@
 
   .hyp{color:var(--s3c); font-weight:700}
   .neg{color:var(--s1c)} .pos{color:var(--s5c)}
+
+  /* source refs */
+  .ref{display:inline-block; margin-left:3px; color:var(--dim); font-size:12px; border:1px solid var(--line2); border-radius:4px; padding:0 4px; line-height:1.5; text-decoration:none; white-space:nowrap}
+  .ref:hover{color:var(--accent); border-color:var(--accent); text-decoration:none}
+  .nosrc{color:var(--s1c); font-size:12px; font-weight:700; border:1px dashed var(--s1c); border-radius:4px; padding:0 5px; line-height:1.5; white-space:nowrap}
 
   /* evidence chips */
   .tag{display:inline-block; border-radius:5px; padding:0 7px; font-weight:700; font-size:11.5px; letter-spacing:.02em; line-height:1.7; vertical-align:middle; white-space:nowrap}
@@ -139,425 +144,427 @@
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">Asterra Networks · Research Phase</p>
-    <h1>Прото-персони та Jobs&nbsp;to&nbsp;be&nbsp;Done</h1>
-    <p class="lede">Хто купує морський connectivity/cyber, який прогрес ці люди намагаються зробити, і що з цього має закривати сайт. Кожне твердження несе <b>видиму мітку доказовості</b>; де даних немає — стоїть <span class="hyp">[?]</span>, а не правдоподібна здогадка.</p>
+    <h1>Proto-personas and Jobs&nbsp;to&nbsp;be&nbsp;Done</h1>
+    <p class="lede">Who buys maritime connectivity/cyber, what progress these people are trying to make, and which part of it the site has to serve. Every statement carries a <b>visible evidence label</b>; where there is no data, a <span class="hyp">[?]</span> stands instead of a plausible guess.</p>
     <div class="meta">
-      <span><b>Складено</b> 2026-08-05</span>
-      <span><b>Статус</b> прото-персони · валідація не проводилась</span>
-      <span><b>Джерела</b> <a href="personas.md">personas.md</a> · <a href="jtbd.md">jtbd.md</a> · <a href="audit.md">audit.md</a> · <a href="research.md">research.md</a></span>
+      <span><b>Compiled</b> 2026-08-05</span>
+      <span><b>Status</b> proto-personas · not validated</span>
+      <span><b>Sources</b> <a href="personas.md">personas.md</a> · <a href="jtbd.md">jtbd.md</a> · <a href="audit.md">audit.md</a> · <a href="research.md">research.md</a></span>
     </div>
-    <p class="note warn"><b>Тип артефакту: прото-персони, не персони.</b> Зібрані з публічних документів (вакансії, регуляції, схема закупівлі, галузеві опитування) і конкурентного аудиту — <b>без жодного інтерв'ю</b>. Персона описує, що люди роблять; прото-персона — що ми <i>припускаємо</i>, що вони роблять. Усе нижче — друге.</p>
+    <p class="note warn"><b>Artifact type: proto-personas, not personas.</b> Assembled from public documents (job ads, regulations, the procurement structure, industry surveys) and a competitor audit — <b>with no interviews whatsoever</b>. A persona describes what people do; a proto-persona describes what we <i>assume</i> they do. Everything below is the second.</p>
     <div class="meta" style="margin-top:14px">
-      <span class="tag t-fact">ФАКТ</span><span style="font-size:12.5px">першоджерело прочитано</span>
-      <span class="tag t-sec">2-ГЕ ДЖЕРЕЛО</span><span style="font-size:12.5px">з переказу, першоджерело не відкрилося</span>
-      <span class="tag t-surv">ОПИТУВАННЯ</span><span style="font-size:12.5px">заявлена вибірка</span>
-      <span class="tag t-audit">АУДИТ</span><span style="font-size:12.5px">зафіксовано на сайті конкурента</span>
-      <span class="tag t-inf">ВИВЕДЕНО</span><span style="font-size:12.5px">наш висновок</span>
-      <span class="tag t-q">[?]</span><span style="font-size:12.5px">гіпотеза — даних немає</span>
+      <span class="tag t-fact">FACT</span><span style="font-size:12.5px">primary source read</span>
+      <span class="tag t-sec">2ND-HAND</span><span style="font-size:12.5px">from a paraphrase; primary source did not open</span>
+      <span class="tag t-surv">SURVEY</span><span style="font-size:12.5px">published sample</span>
+      <span class="tag t-audit">AUDIT</span><span style="font-size:12.5px">recorded on a competitor site</span>
+      <span class="tag t-inf">INFERRED</span><span style="font-size:12.5px">our conclusion</span>
+      <span class="tag t-q">[?]</span><span style="font-size:12.5px">hypothesis — no data</span>
     </div>
+    <p class="note"><b>Every figure on this page carries its source.</b> <a class="ref" href="#">↗</a> the primary source (an external page that was opened) · <a class="ref" href="#">▦</a> a screenshot in our audit · <a class="ref" href="#">§</a> a section of our own research files. Where a figure has no source, it says <span class="nosrc">not confirmed</span> in words rather than carrying a plausible-looking link. Figures marked <span class="tag t-sec">2ND-HAND</span> reached us through a paraphrase — the link opens the page we actually read, not necessarily the primary document.</p>
   </div>
 </header>
 
 <nav class="toc"><div class="wrap">
-  <a href="#personas">01 · Персони</a>
+  <a href="#personas">01 · Personas</a>
   <a href="#jobs">02 · Jobs</a>
-  <a href="#matrix">03 · Матриця</a>
-  <a href="#mvp">04 · Ядро MVP</a>
-  <a href="#hypotheses">05 · Гіпотези</a>
+  <a href="#matrix">03 · Matrix</a>
+  <a href="#mvp">04 · MVP core</a>
+  <a href="#hypotheses">05 · Hypotheses</a>
 </div></nav>
 
 <!-- ============ PERSONAS ============ -->
 <section id="personas"><div class="wrap">
-  <span class="kicker">Секція 01</span>
-  <h2>Персони</h2>
-  <p class="sec-sub">Три діючі + одна знята після перевірки. Ролі взяті з відкритих вакансій і схеми судноплавної закупівлі, болі — з аудиту 15 конкурентних сайтів. Жодна роль не вигадана; що НЕ підтверджено — позначено.</p>
+  <span class="kicker">Section 01</span>
+  <h2>Personas</h2>
+  <p class="sec-sub">Three active + one removed after verification. Roles taken from open job ads and the shipping procurement structure <a class="ref" href="people-desk.md" target="_blank" title="people-desk.md — desk research: vacancies, procurement structure, regulation calendar">§</a>; pains from an audit of <b>15</b> competitor sites <a class="ref" href="research.md" target="_blank" title="research.md §1 — 15 competitors in three groups (HARD/SOFT/ASPIRATIONAL), plus NerdWallet as a cross-category reference. Collected 2026-07-22 on live sites">§</a>. No role is invented; whatever is NOT confirmed is labelled.</p>
+  <p class="note warn" style="margin:-10px 0 22px"><b>A drift caught in our own numbers, left visible.</b> The screenshot count differs between our files: <code>research.md</code> §2 states <b>61</b>, the research index page states <b>63</b>, and <b>63</b> files currently sit in <code>screens/</code>. The audit was collected 2026-07-22 and material was added afterwards, which is the likely cause — but since this page criticises competitors for exactly this, the discrepancy is recorded rather than quietly resolved. Verifiable figure: <b>63 files on disk</b>; <b>61</b> is what research.md claimed at collection time.</p>
 
   <!-- P1 -->
   <article class="persona primary">
     <span class="p-badge">⭐ Primary</span>
     <h3>P1 · Technical Superintendent</h3>
-    <p class="p-sub">Береговий технічний менеджер групи суден. Колишній судновий механік — Class II CoC, «sea-going Engineer», ISM. <span class="tag t-fact">ФАКТ</span> <a class="jmeta" href="https://www.seacareer.com/i31473/technical-superintendent/">вакансія</a></p>
+    <p class="p-sub">Shore-based technical manager of a vessel group. A former ship's engineer — Class II CoC, "sea-going Engineer", ISM. <span class="tag t-fact">FACT</span> <a class="jmeta" href="https://www.seacareer.com/i31473/technical-superintendent/">vacancy</a></p>
     <div class="p-grid">
       <div class="p-block">
-        <h5>Контекст</h5>
+        <h5>Context</h5>
         <ul>
-          <li><b>Підписує рахунки за зв'язок</b> — «approve all… communication invoices» <span class="tag t-fact">ФАКТ</span></li>
-          <li>Готує бюджети докування; стежить за класом і сертифікатами <span class="tag t-fact">ФАКТ</span></li>
-          <li>Входи: вікно докування ~2,5 роки <span class="tag t-sec">2-ГЕ</span> · MLC 2006 + PSC <span class="tag t-fact">ФАКТ</span> · новобуд E26/E27 <span class="tag t-fact">ФАКТ</span></li>
-          <li>Мислить класом, ISM і бюджетом — <b>не IT</b> <span class="tag t-inf">ВИВЕДЕНО</span></li>
+          <li><b>Signs off communication invoices</b> — "approve all… communication invoices" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.seacareer.com/i31473/technical-superintendent/" target="_blank" title="Technical Superintendent vacancy, seacareer.com">↗</a></li>
+          <li>Prepares dry-docking budgets; monitors class and certificates <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.seacareer.com/i31473/technical-superintendent/" target="_blank" title="same vacancy — 'prepare… dry-docking… budgets', 'monitor vessels Class and trading certificates'">↗</a></li>
+          <li>Entry points: docking window — two dockings per 5 years, intermediate at <b>≈2.5 years</b> <span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://www.marinepublic.com/blogs/marine-law/899246-complete-guide-to-periodical-surveys-in-ship-classification" target="_blank" title="Marine Public — periodical surveys guide. A blog, not a class society: personas.md §9 flags this figure for re-checking at DNV/ABS">↗</a> · MLC 2006 in force <b>23.12.2024</b>, enforced via PSC <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.ilo.org/resource/news/new-important-set-amendments-mlc-2006-will-enter-force-23-december-2024" target="_blank" title="ILO — MLC 2006 amendments in force 23.12.2024">↗</a><a class="ref" href="https://chambers.com/articles/mlc-2006-amendments-new-seafarer-rights-and-psc-compliance-obligations" target="_blank" title="Chambers — PSC enforcement of the MLC amendments">↗</a> · newbuilds E26/E27 — ships contracted from <b>01.07.2024</b> <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html" target="_blank" title="ClassNK UR E26/E27 — opened and read directly 05.08.2026 (audit.md §5)">↗</a></li>
+          <li>Thinks in class, ISM and budget — <b>not IT</b> <span class="tag t-inf">INFERRED</span> <a class="ref" href="personas.md" target="_blank" title="personas.md, P1 → 'Key design point' — inferred from the vacancy text, not observed">§</a></li>
         </ul>
       </div>
       <div class="p-block">
         <h5>Jobs</h5>
         <ul>
-          <li>Зрозуміти, який піллар стосується його судна, без вивчення каталогу <span class="tag t-audit">АУДИТ</span></li>
-          <li>Переконатися, що вибір витримає перевірку класу/аудитора <span class="tag t-fact">ФАКТ</span></li>
-          <li>Отримати цифру в бюджет докування — чи шукає на сайті: <span class="hyp">[?]</span></li>
-          <li>Узгодити з тим, хто тримає CAPEX (→ P4) <span class="tag t-fact">ФАКТ</span></li>
+          <li>Work out which pillar applies to their vessel without studying the catalog <span class="tag t-audit">AUDIT</span> <a class="ref" href="research.md" target="_blank" title="research.md §9 — the category's core pain, verbatim: '(a) quickly grasp which solution fits them'">§</a></li>
+          <li>Make sure the choice survives a class/auditor inspection <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.seacareer.com/i31473/technical-superintendent/" target="_blank" title="vacancy: 'monitor vessels Class and trading certificates', 'knowledge… covered by ISM'">↗</a></li>
+          <li>Get a figure for the docking budget — whether they look for it on a website: <span class="hyp">[?]</span> <span class="nosrc">not confirmed</span></li>
+          <li>Align with whoever holds CAPEX (→ P4) <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.avsglobalsupply.com/blog-detail/ship-owner-ship-manager-procurement-decision" target="_blank" title="AVS — ship owner vs ship manager procurement: 'approval matrix', 'frame agreements'">↗</a></li>
         </ul>
       </div>
       <div class="p-block">
-        <h5>Болі <span style="color:var(--dim); text-transform:none; letter-spacing:0">(вади конкурентних сайтів; прив'язка до персони — ВИВЕДЕНО)</span></h5>
+        <h5>Pains <span style="color:var(--dim); text-transform:none; letter-spacing:0">(flaws of competitor sites; the link to this persona is INFERRED)</span></h5>
         <ul>
-          <li>Жаргон чужої дисципліни: COTP/COTM, «OSI model» <span class="tag t-audit">АУДИТ</span></li>
-          <li>Нема специфікацій — «no datasheets on fetched pages» <span class="tag t-audit">АУДИТ</span></li>
-          <li>Складна навігація — <b>єдина біль із незалежним поведінковим доказом</b> (Contentsquare × Schneider; редизайн Navarino) <span class="tag t-fact">ФАКТ</span></li>
-          <li>Дрейф цифр: 99.9↔99.99, 50/55/56 років <span class="tag t-audit">АУДИТ</span></li>
-          <li>Контакт у нікуди: 2 з 5 конкурентів без форми <span class="tag t-audit">АУДИТ</span></li>
+          <li>Jargon from another discipline: COTP/COTM, "OSI model" <span class="tag t-audit">AUDIT</span> <a class="ref" href="screens/hard/iec-telecom-solution-finder.png" target="_blank" title="IEC Telecom finder — unexplained COTP/COTM facets">▦</a><a class="ref" href="https://nsslglobal.com/solution/cyber-security/" target="_blank" title="NSSLGlobal — 'application layer of the OSI model'">↗</a></li>
+          <li>No specifications — "no datasheets on fetched pages" <span class="tag t-audit">AUDIT</span> <a class="ref" href="research.md" target="_blank" title="research.md §3, 'Technical info' row. Note research.md's own hedge: absence of a finding on the pages fetched, not proven absence">§</a></li>
+          <li>Difficult navigation — <b>the only pain with independent behavioural evidence</b>: session replay traced Schneider drop-offs to the mega menu <span class="tag t-fact">FACT</span> <a class="ref" href="https://contentsquare.com/customers/schneider-electric/" target="_blank" title="Contentsquare × Schneider Electric — named employees, session replay and journey analysis">↗</a>; Navarino's old site was diagnosed with an "overwhelming navigation system" by the agency paid to fix it <a class="ref" href="https://kota.co.uk/work/navarino" target="_blank" title="KOTA × Navarino redesign case study — an interested source (the agency's own write-up)">↗</a></li>
+          <li>Number drift: Marlink <b>99.9 ↔ 99.99%</b> on one page; NSSLGlobal "over 50" / "55+" / "over 56 years" <span class="tag t-audit">AUDIT</span> <a class="ref" href="https://marlink.com/solutions/industry/shipping/" target="_blank" title="Marlink shipping page — where the 99.99% vs 99.9% SLA drift was recorded">↗</a><a class="ref" href="https://nsslglobal.com/about/" target="_blank" title="NSSLGlobal About — the inconsistent longevity claims">↗</a><a class="ref" href="research.md" target="_blank" title="research.md §6 — cross-market synthesis, stat drift">§</a></li>
+          <li>Contact leading nowhere: <b>2 of the 5</b> direct competitors have no form at all <span class="tag t-audit">AUDIT</span> <a class="ref" href="screens/hard/navarino-contact-directory.png" target="_blank" title="Navarino — office directory, no form">▦</a><a class="ref" href="screens/hard/speedcast-contact-directory.png" target="_blank" title="Speedcast — phone/email directory, no form">▦</a></li>
         </ul>
       </div>
       <div class="p-block">
-        <h5>Тригери довіри <span style="color:var(--dim); text-transform:none; letter-spacing:0">(що конкуренти роблять; що це діє — [?])</span></h5>
+        <h5>Trust triggers <span style="color:var(--dim); text-transform:none; letter-spacing:0">(what competitors do; that it works — [?])</span></h5>
         <ul>
-          <li>Класифікаційне товариство поіменно: «UR E27 Type Approved» (Bureau Veritas), IEC 62443-3-3 (DNV) <span class="tag t-audit">АУДИТ</span></li>
-          <li>Сертифікації: ISO, IACS UR E26/E27, NIS2 <span class="tag t-audit">АУДИТ</span></li>
-          <li>Підтримка числом: «115 engineers», 24x7x365 — норма очікування й у галузевій пресі <span class="tag t-audit">АУДИТ</span></li>
-          <li>Відлякує: дрейф цифр, PDF 2020–21, «Lets talk», контакт без наступного кроку <span class="tag t-audit">АУДИТ</span></li>
+          <li>The classification society by name: "UR E27 Type Approved" (Bureau Veritas), IEC 62443-3-3 (DNV) <span class="tag t-audit">AUDIT</span> <a class="ref" href="screens/hard/navarino-cybersecurity-angel.png" target="_blank" title="Navarino Angel — type approvals with the certifying body named">▦</a></li>
+          <li>Certifications: ISO 27001/9001/14001, IACS UR E26/E27, NIS2, IEC 62443 <span class="tag t-audit">AUDIT</span> <a class="ref" href="screens/hard/marlink-cybersecurity.png" target="_blank" title="Marlink cybersecurity page — the certification list">▦</a></li>
+          <li>Support quantified: Speedcast's "<b>115 engineers</b>", 24x7x365 <span class="tag t-audit">AUDIT</span> <a class="ref" href="screens/hard/speedcast-support-center.png" target="_blank" title="Speedcast Support Center — '115 engineers', '24x7x365'">▦</a> — matching an expectation the trade press states independently <a class="ref" href="https://splash247.com/five-questions-maritime-connectivity-provider/" target="_blank" title="Splash247, 2017 — support must be '24x7x365 and multi-lingual'. A column authored by a vendor president (Globecomm)">↗</a></li>
+          <li>Deterrents: number drift, Speedcast's <b>17+</b> brochures "many dated 2020–2021", "Lets talk", contact with no next step <span class="tag t-audit">AUDIT</span> <a class="ref" href="research.md" target="_blank" title="research.md §3 — 'Technical info' row (Speedcast: heaviest PDF model, 17+ brochures, many 2020–21) and the CTA/contact rows">§</a></li>
         </ul>
       </div>
     </div>
     <div class="quote">
-      <span class="hyp">[?] Справжньої цитати superintendent-а немає в жодному джерелі.</span> Найближчий артефакт — текст вакансії (голос ролі, не людини):<br>
-      <em>«approve all maintenance, repair, dry-docking and <b>communication invoices</b>» · «Extensive experience as a <b>sea-going Engineer</b>»</em>
+      <span class="hyp">[?] No genuine superintendent quote exists in any source.</span> The nearest artifact is the vacancy text (the voice of the role, not of a person):<br>
+      <em>"approve all maintenance, repair, dry-docking and <b>communication invoices</b>" · "Extensive experience as a <b>sea-going Engineer</b>"</em>
       <span class="src">Technical Superintendent vacancy — seacareer.com</span>
     </div>
-    <div class="falsify"><b>Що спростувало б:</b> якщо superintendent не заходить на сайти постачальників, а зв'язок веде корпоративний IT — primary хибний. <b>Накопичені сигнали:</b> клієнтські цитати у вендорів 5:0 на користь IT/COO; у брифі редизайну Navarino аудиторії — «ship owners, IT managers, or partners», superintendent відсутній. Пріоритет не змінено — рішення ухвалюється явно, не тихо.</div>
+    <div class="falsify"><b>What would falsify this:</b> if superintendents don't visit supplier websites and connectivity is run by corporate IT, the primary is wrong. <b>Accumulated signals:</b> customer quotes in vendor press releases and case studies run <b>5:0</b> in favour of IT/COO — five named people (IT Manager, VP of IT Connectivity, two COOs, Head of ICT), not one superintendent <a class="ref" href="audit.md" target="_blank" title="audit.md §5, question 1 — the five quotes tabulated with their vendor pages (Marlink×Gedenlines, Starlink×Carnival, Starlink×Seaspan, OSG, Beluga)">§</a>; the Navarino redesign brief names the audiences as "ship owners, IT managers, or partners" — no superintendent <a class="ref" href="https://kota.co.uk/work/navarino" target="_blank" title="KOTA × Navarino — the redesign brief's stated audiences">↗</a>. Priority unchanged — the decision is to be made explicitly, not quietly.</div>
   </article>
 
   <!-- P2 -->
   <article class="persona">
-    <span class="p-badge sec">Secondary · кандидат у primary</span>
+    <span class="p-badge sec">Secondary · candidate for primary</span>
     <h3>P2 · Fleet IT / IT Manager</h3>
-    <p class="p-sub">Володіє мережею й кібером по флоту. Підтверджений у торговельному флоті та по всій морській Європі: Афіни, Пірей, Гамбург, Лімасол. <span class="tag t-fact">ФАКТ</span> <a class="jmeta" href="https://www.mazurecruitment.com/jobs/it-manager-915339">жива вакансія</a></p>
+    <p class="p-sub">Owns the network and cyber across the fleet. Confirmed in the merchant fleet <span class="tag t-fact">FACT</span> <a class="jmeta" href="https://www.mazurecruitment.com/jobs/it-manager-915339">live vacancy</a> and across maritime Europe — Athens, Piraeus, Hamburg, Limassol (6 postings tabulated) <span class="tag t-sec">2ND-HAND</span> <a class="ref" href="jtbd.md" target="_blank" title="jtbd.md §0 — the European verification table: Anglo-Eastern (Athens), Newport S.A. (Piraeus), Hapag-Lloyd (Hamburg), CareerFinders (Limassol), FLEETWORK (Athens), Consortio (Hamburg). Job-board listings, read as search results">§</a></p>
     <div class="p-grid">
       <div class="p-block">
-        <h5>Контекст</h5>
+        <h5>Context</h5>
         <ul>
-          <li>«Review and standardise <b>vessel IT systems, connectivity solutions</b>… across the fleet» <span class="tag t-fact">ФАКТ</span></li>
-          <li><b>«Manage relationships with technology vendors»</b> · «Evaluate existing systems… recommendations for future technology investments» <span class="tag t-fact">ФАКТ</span></li>
-          <li>«<b>Prepare business cases</b>… balancing operational needs with commercial considerations» <span class="tag t-fact">ФАКТ</span></li>
-          <li>Кіберкомплаєнс зверху (MSC.428(98), щорічний DOC-аудит) <span class="tag t-sec">2-ГЕ</span></li>
-          <li>Бюджетна рамка: половина власників &lt;$100k/рік на кібер <span class="tag t-surv">ОПИТУВАННЯ</span><span class="tag t-sec">2-ГЕ</span></li>
+          <li>"Review and standardise <b>vessel IT systems, connectivity solutions</b>… across the fleet" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.mazurecruitment.com/jobs/it-manager-915339" target="_blank" title="IT Manager vacancy, Mazu Recruitment ref. 1118549 — page read directly 05.08.2026">↗</a></li>
+          <li><b>"Manage relationships with technology vendors"</b> · "Evaluate existing systems… recommendations for future technology investments" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.mazurecruitment.com/jobs/it-manager-915339" target="_blank" title="same vacancy — duties, verbatim">↗</a></li>
+          <li>"<b>Prepare business cases</b>… balancing operational needs with commercial considerations" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.mazurecruitment.com/jobs/it-manager-915339" target="_blank" title="same vacancy — duties, verbatim">↗</a></li>
+          <li>Cyber compliance pressure from above — MSC.428(98) requires cyber risk in the SMS by the first annual DOC verification after 01.01.2021, so the deadline recurs yearly <span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://www.imo.org/en/ourwork/security/pages/cyber-security.aspx" target="_blank" title="IMO maritime cyber risk page. ⚠️ The resolution PDF itself failed to parse — the DOC wording reached us via paraphrase; personas.md §9 item 2.3 lists it for manual re-checking">↗</a></li>
+          <li>Budget frame: "more than <b>half</b> of shipowners spend <b>less than US$100,000 per year</b>" on cyber security management <span class="tag t-surv">SURVEY</span><span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://cyberowl.io/cyberowl-hfw-report-maritime-industry-pays-average-3m-ransom-in-cyberattacks/" target="_blank" title="CyberOwl / HFW report page. The underlying PDF did not open — figure taken from this summary, not the primary report">↗</a></li>
         </ul>
       </div>
       <div class="p-block">
-        <h5>Jobs · Болі</h5>
+        <h5>Jobs · Pains</h5>
         <ul>
-          <li>Оцінити рішення до розмови з продажами — у HARD-групі перевірити нічого не можна (C8=2 у 2 оцінених з 5) <span class="tag t-audit">АУДИТ</span></li>
-          <li>Перевірити кіберпроцедури постачальника — але 45% покупців доказів не питають <span class="tag t-surv">ОПИТУВАННЯ</span></li>
-          <li>Біль: каталог замість пропозиції — 18 named offerings на одній сторінці Marlink <span class="tag t-audit">АУДИТ</span></li>
-          <li>Біль: єдиний технічний артефакт — гейтований PDF <span class="tag t-audit">АУДИТ</span></li>
+          <li>Evaluate a solution before talking to sales — in the HARD group there is nothing to check: <b>C8 = 2</b>, but scored for only <b>2 of the 5</b> (Marlink, IEC); the other three were never scored <span class="tag t-audit">AUDIT</span> <a class="ref" href="research.md" target="_blank" title="research.md §9.2 — the C8 'self-serve interactive validation' row. §10.4's 'the HARD group has essentially none' is research.md's own extrapolation from 2 cases to 5">§</a></li>
+          <li>Verify the supplier's cyber procedures — yet only <b>55%</b> of suppliers are ever asked to prove they have them, i.e. <b>45%</b> of buyers never ask <span class="tag t-surv">SURVEY</span><span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://cyberowl.io/cyberowl-hfw-report-maritime-industry-pays-average-3m-ransom-in-cyberattacks/" target="_blank" title="CyberOwl / HFW — the 55% figure. The 45% is its arithmetic complement, not a separately published number. Note this stat arguably refutes the job rather than supporting it">↗</a></li>
+          <li>Pain: a catalog instead of a proposition — <b>18 named offerings</b> on a single Marlink page <span class="tag t-audit">AUDIT</span> <a class="ref" href="screens/hard/marlink-cybersecurity.png" target="_blank" title="Marlink cybersecurity page — 18 named offerings counted in the audit">▦</a></li>
+          <li>Pain: the only technical artifact is a gated PDF (Marlink, "2026 Cyber Intelligence report") <span class="tag t-audit">AUDIT</span> <a class="ref" href="research.md" target="_blank" title="research.md §3 — 'Technical info' row: no datasheets, one gated PDF">§</a></li>
         </ul>
-        <h5>Хто ще цілить у цю роль</h5>
+        <h5>Who else targets this role</h5>
         <ul>
-          <li>Бриф редизайну Navarino називає «IT managers» серед трьох аудиторій сайту <span class="tag t-fact">ФАКТ</span></li>
-          <li>Navarino Infinity сегментує бенефіти: Ship Owners / Captains / Crew / <b>IT Management</b> <span class="tag t-fact">ФАКТ</span></li>
+          <li>The Navarino redesign brief names "IT managers" among the site's <b>three</b> audiences <span class="tag t-fact">FACT</span> <a class="ref" href="https://kota.co.uk/work/navarino" target="_blank" title="KOTA × Navarino — 'ship owners, IT managers, or partners'">↗</a></li>
+          <li>Navarino Infinity segments benefits by <b>4</b> roles: Ship Owners / Captains / Crew / <b>IT Management</b> <span class="tag t-fact">FACT</span> <a class="ref" href="https://navarino.co.uk/solutions/infinity/" target="_blank" title="Navarino Infinity — page opened and read directly 05.08.2026 (audit.md §5, question 3)">↗</a></li>
         </ul>
       </div>
     </div>
     <div class="quote">
-      <span class="hyp">[?] Прямої цитати немає.</span> Найближче — знахідка галузевого звіту (150+ стейкхолдерів), <b>переказ, лапки зняті</b>:<br>
+      <span class="hyp">[?] No direct quote exists.</span> The nearest is an industry-report finding (<b>150+</b> stakeholders — shipowners, charterers, OEMs, seafarers, insurers, shipyards), <b>a paraphrase — quotation marks removed</b>:<br>
       <em>Only 1 in 6 shipowners fully understand what a cyber-secure vessel should look like upon delivery</em>
-      <span class="src">Thetius / CyberOwl (DNV) / HFW, The Lifecycle Dilemma — <span class="tag t-sec">2-ГЕ ДЖЕРЕЛО</span></span>
+      <span class="src">Thetius / CyberOwl (DNV) / HFW, The Lifecycle Dilemma — <span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://www.hfw.com/about-us/news/hfw-cyberowl-highlight-urgency-maritime-industry-tackling-growing-cyber-threats/" target="_blank" title="HFW press release. ⚠️ The page was not opened — both the '1 in 6' and the '150+' sample reached us through a search-result paraphrase. personas.md §9 item 2.1 marks this the most important figure to verify by hand">↗</a></span>
     </div>
-    <div class="falsify"><b>Що спростувало б:</b> якщо кібер у маритаймі купують через зовнішнього MSP/інтегратора — P2 стає впливачем без бюджету. <span class="hyp">[?]</span></div>
+    <div class="falsify"><b>What would falsify this:</b> if maritime cyber is bought through an external MSP/integrator, P2 becomes an influencer without a budget. <span class="hyp">[?]</span></div>
   </article>
 
   <!-- P4 -->
   <article class="persona">
     <span class="p-badge sec">Secondary</span>
-    <h3>P4 · Власник / затверджувач CAPEX <span style="font-weight:400; color:var(--muted)">(і шип-менеджер)</span></h3>
-    <p class="p-sub">Не обов'язково відвідувач сайту — але без нього угоди немає. Розподіл повноважень задокументовано. <span class="tag t-fact">ФАКТ</span></p>
+    <h3>P4 · Owner / CAPEX approver <span style="font-weight:400; color:var(--muted)">(and ship manager)</span></h3>
+    <p class="p-sub">Not necessarily a site visitor — but without them there is no deal. The split of authority is documented. <span class="tag t-fact">FACT</span></p>
     <div class="p-grid">
       <div class="p-block">
-        <h5>Контекст</h5>
+        <h5>Context</h5>
         <ul>
-          <li>Власник: «Major capital expenditure», фреймові угоди · Менеджер: OPEX у межах «approval matrix» <span class="tag t-fact">ФАКТ</span></li>
-          <li><b>Структурний блокер:</b> «Supplier change may require approval when a frame agreement already exists» <span class="tag t-fact">ФАКТ</span></li>
-          <li>~25% світового флоту під третіми менеджерами → одна угода з менеджером = десятки суден <span class="tag t-fact">ФАКТ</span></li>
-          <li>Контракти менеджменту «negotiated mainly on price» <span class="tag t-fact">ФАКТ</span></li>
+          <li>Owner: "Major capital expenditure", frame agreements · Manager: OPEX within the "approval matrix" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.avsglobalsupply.com/blog-detail/ship-owner-ship-manager-procurement-decision" target="_blank" title="AVS Global Supply — ship owner vs ship manager procurement decision. Read directly">↗</a></li>
+          <li><b>Structural blocker:</b> "Supplier change may require approval when a frame agreement already exists" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.avsglobalsupply.com/blog-detail/ship-owner-ship-manager-procurement-decision" target="_blank" title="AVS — verbatim, same page">↗</a></li>
+          <li>"Around <b>25% of the world's international trading fleet</b>… is reliant on services provided by third party managers" → one deal with a manager = dozens of vessels <span class="tag t-fact">FACT</span> <a class="ref" href="https://valourconsultancy.com/loose-specs-sink-shipmanagers-maritime-ecosystem/" target="_blank" title="Valour Consultancy — verbatim. The '= dozens of vessels' inference is ours">↗</a></li>
+          <li>Management contracts are "negotiated <b>mainly on price</b>, margins… are squeezed" <span class="tag t-fact">FACT</span> <a class="ref" href="https://valourconsultancy.com/loose-specs-sink-shipmanagers-maritime-ecosystem/" target="_blank" title="Valour Consultancy — verbatim, same source">↗</a></li>
         </ul>
       </div>
       <div class="p-block">
         <h5>Jobs</h5>
         <ul>
-          <li>Зрозуміти, чи це взагалі можна купити при чинній фреймовій угоді <span class="tag t-inf">ВИВЕДЕНО</span></li>
-          <li>Отримати аргумент, який можна переслати — business case готує P2, P4 приймає; «Consensus creation» — universальний B2B job за Gartner <span class="tag t-fact">ФАКТ</span></li>
-          <li>Оцінити постачальника як довгостроковий ризик — <span class="hyp">[?]</span> з частковим підкріпленням: галузева колонка радить due diligence на фінансову стійкість (лізинг обладнання 3–5 років)</li>
+          <li>Work out whether this can be bought at all under the existing frame agreement <span class="tag t-inf">INFERRED</span> <a class="ref" href="https://www.avsglobalsupply.com/blog-detail/ship-owner-ship-manager-procurement-decision" target="_blank" title="AVS — inferred directly from 'Supplier change may require approval when a frame agreement already exists'">↗</a></li>
+          <li>Get an argument that can be forwarded — P2 prepares the business case, P4 decides; "Consensus creation" and "Validation" sit among the <b>six</b> universal B2B buying jobs <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.gartner.com/en/sales/insights/b2b-buying-journey" target="_blank" title="Gartner — the B2B buying journey: six jobs, buying as 'looping' rather than a funnel">↗</a></li>
+          <li>Assess the supplier as a long-term risk — <span class="hyp">[?]</span> with partial backing: a trade column urges due diligence on financial viability, since equipment leasing runs "<b>three to five years</b>" <a class="ref" href="https://splash247.com/five-questions-maritime-connectivity-provider/" target="_blank" title="Splash247, 2017 — verbatim. ⚠️ The author is the president of vendor Globecomm: a vendor advising, not a buyer testifying">↗</a></li>
         </ul>
       </div>
     </div>
     <div class="quote">
-      <span class="pos">✅ Єдина справжня цитата особи, що ухвалює рішення, в усій базі:</span><br>
-      <em>«Our crew identified this as important, and we listened.»</em>
-      <span class="src">Patrick O'Halloran, COO, Overseas Shipholding Group — про встановлення супутникового інтернету на весь флот, BusinessWire 19.12.2023 · <span class="tag t-fact">ФАКТ</span></span>
+      <span class="pos">✅ The only genuine quote from a decision-maker in the entire base:</span><br>
+      <em>"Our crew identified this as important, and we listened."</em>
+      <span class="src">Patrick O'Halloran, COO, Overseas Shipholding Group — on fitting satellite internet across the whole fleet, BusinessWire 19.12.2023 · <span class="tag t-fact">FACT</span> <a class="ref" href="https://markets.financialcontent.com/ms.intelvalue/article/bizwire-2023-12-19-overseas-shipholding-group-installs-starlink-satellite-internet-service-on-entire-fleet" target="_blank" title="BusinessWire release, 19.12.2023 — read directly">↗</a></span>
     </div>
-    <div class="falsify"><b>Що спростувало б:</b> якщо власник ніколи не дивиться сайт постачальника — P4 стає вимогою до контенту («сторінка, яку можна переслати нагору»), а не персоною. <span class="hyp">[?]</span></div>
+    <div class="falsify"><b>What would falsify this:</b> if the owner never looks at a supplier's website, P4 becomes a content requirement ("a page you can forward upstairs") rather than a persona. <span class="hyp">[?]</span></div>
   </article>
 
   <!-- P3 removed -->
   <article class="persona removed">
-    <span class="p-badge rm">⛔ Знято з набору · 05.08.2026</span>
-    <h3>P3 · Відповідальний за SMS і комплаєнс</h3>
-    <p class="p-sub">Функція існує (її вимагають MSC.428(98) та ISM Code), але перевірка обов'язків DPA показала: нагляд за SMS, аудит суден, координація, звітність — <b>закупівлі й вибору вендорів серед них немає</b>. P3 — не покупець. <span class="tag t-fact">ФАКТ</span></p>
-    <p style="font-size:13.5px; color:var(--muted); margin:0">Її дедлайни (щорічний DOC-аудит, PSC-інспекція) перенесені в контекст P1 і P2 як тригери. Комплаєнс лишається <b>вимогою до контенту</b> — документ, який кладуть у теку до аудиту.</p>
+    <span class="p-badge rm">⛔ Removed from the set · 2026-08-05</span>
+    <h3>P3 · SMS &amp; compliance owner</h3>
+    <p class="p-sub">The function exists (MSC.428(98) <a class="ref" href="https://www.imo.org/en/ourwork/security/pages/cyber-security.aspx" target="_blank" title="IMO — maritime cyber risk management">↗</a> and the ISM Code require it), but checking the DPA's <b>five</b> listed duties showed: SMS oversight, ISM compliance, vessel audits, ship–shore coordination, safety reporting — <b>procurement and vendor selection are not among them</b>. P3 is not a buyer. <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.qmii.com/key-responsibilities-of-the-designated-person-ashore-dpa/" target="_blank" title="QMII — key responsibilities of the Designated Person Ashore, 05.12.2024. Read directly">↗</a></p>
+    <p style="font-size:13.5px; color:var(--muted); margin:0">Their deadlines (the annual DOC audit, PSC inspection) have been moved into the context of P1 and P2 as triggers. Compliance remains a <b>content requirement</b> — the document that goes into the folder before an audit.</p>
   </article>
 </div></section>
 
 <!-- ============ JOBS ============ -->
 <section id="jobs"><div class="wrap">
-  <span class="kicker">Секція 02</span>
-  <h2>Ієрархія jobs</h2>
-  <p class="sec-sub">Формат: «Коли [ситуація], я хочу [мотивація], щоб [результат]». У жодному «я хочу» немає назви функції — тільки прогрес людини. Jobs описують прогрес у роботі, задокументований обов'язками й нормами; що він відбувається <b>на сайті постачальника</b> — проєктна ставка <span class="hyp">[?]</span>.</p>
+  <span class="kicker">Section 02</span>
+  <h2>Jobs hierarchy</h2>
+  <p class="sec-sub">Format: "When [situation], I want [motivation], so that [outcome]". No "I want" names a feature — only human progress. The jobs describe progress in work documented by duties and regulations; that it happens <b>on a supplier's website</b> is the project's bet <span class="hyp">[?]</span>.</p>
 
   <div class="job-main">
     <span class="kicker" style="color:var(--accent)">🎯 Main job</span>
-    <p class="jtxt">Коли мені треба закрити конкретну вимогу до флоту, <b>я хочу впевнено визначити, що саме нам потрібно і кому це можна доручити</b>, щоб зайти в розмову з постачальником із готовою позицією, а не з питанням «а що у вас є?»</p>
-    <p class="jmeta"><b>P1 + P2</b> (P2 обирає, P1 платить) · Докази: біль категорії «which solution fits them» <span class="tag t-audit">АУДИТ</span> · «Evaluate existing systems…» у вакансії P2 <span class="tag t-fact">ФАКТ</span> · Marlink закриває це людиною: «Not sure where to start? Talk to our team» <span class="tag t-fact">ФАКТ</span></p>
+    <p class="jtxt">When I need to close a specific fleet requirement, <b>I want to confidently determine what we need and who to entrust it to</b>, so that I enter the supplier conversation with a position rather than with "so what do you offer?"</p>
+    <p class="jmeta"><b>P1 + P2</b> (P2 chooses, P1 pays) · Evidence: the category pain "which solution fits them", from an audit of <b>15</b> competitor sites <span class="tag t-audit">AUDIT</span> <a class="ref" href="research.md" target="_blank" title="research.md §9 — verbatim: the user cannot '(a) quickly grasp which solution fits them'">§</a> · "Evaluate existing systems…" in P2's vacancy <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.mazurecruitment.com/jobs/it-manager-915339" target="_blank" title="Mazu Recruitment ref. 1118549">↗</a> · Marlink closes this with a human: "Not sure where to start? Talk to our team" <span class="tag t-fact">FACT</span> <a class="ref" href="personas.md" target="_blank" title="personas.md §10.5 — the line at the bottom of Marlink's Solutions mega menu, verified by hand 05.08.2026">§</a></p>
   </div>
 
-  <h3>Related — по дорозі до main</h3>
+  <h3>Related — on the way to the main job</h3>
 
   <div class="job">
-    <span class="kicker">R1 · звужено після перевірки ClassNK</span>
-    <p class="jtxt">Коли з'являється вимога з датою, <b>я хочу зрозуміти, що вона означає для моїх суден</b>, щоб не дізнатися про невідповідність у момент перевірки.</p>
-    <p class="jmeta"><b>P1, P2</b> · MLC 2006 в силі 23.12.2024 + PSC <span class="tag t-fact">ФАКТ</span> · MSC.428(98) щорічний DOC-аудит <span class="tag t-sec">2-ГЕ</span> · E26/E27 новобуди від 01.07.2024 <span class="tag t-fact">ФАКТ</span> · ⚠️ «Пояснити норму» вже забрав клас (ClassNK: гайдлайни, 137 Q&A). Вільна лише зв'язка <b>«норма → рішення → папір»</b> · Чи веде дедлайн на сайт вендора — <span class="hyp">[?]</span></p>
+    <span class="kicker">R1 · narrowed after the ClassNK check</span>
+    <p class="jtxt">When a requirement with a date appears, <b>I want to understand what it means for my vessels</b>, so that I don't learn about non-compliance at the moment of inspection.</p>
+    <p class="jmeta"><b>P1, P2</b> · MLC 2006 in force <b>23.12.2024</b> + PSC <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.ilo.org/resource/news/new-important-set-amendments-mlc-2006-will-enter-force-23-december-2024" target="_blank" title="ILO — regulation text read directly">↗</a> · MSC.428(98) annual DOC audit <span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://www.imo.org/en/ourwork/security/pages/cyber-security.aspx" target="_blank" title="IMO. The resolution PDF failed to parse; the DOC wording came from paraphrase">↗</a> · E26/E27 newbuilds contracted from <b>01.07.2024</b> <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html" target="_blank" title="ClassNK — verified at the primary source 05.08.2026, upgraded from 2ND-HAND to FACT (audit.md §5)">↗</a> · ⚠️ "Explain the regulation" is already owned by class societies — ClassNK keeps guidelines, <b>137 Q&amp;As</b> filterable by stakeholder, document samples and videos <a class="ref" href="https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html" target="_blank" title="ClassNK UR E26/E27 hub — 137 Q&As counted on the page, updated 14.07.2026">↗</a>. Only the link <b>"regulation → solution → paper"</b> is unclaimed · Whether a deadline actually leads to a vendor site — <span class="hyp">[?]</span> <span class="nosrc">not confirmed</span></p>
   </div>
 
   <div class="job">
     <span class="kicker">R2</span>
-    <p class="jtxt">Коли я розглядаю постачальника, <b>я хочу переконатися, що його рішення витримає перевірку класу, аудитора чи інспектора</b>, щоб не підставити компанію через власний вибір.</p>
-    <p class="jmeta"><b>P1</b> (первинно), P2 · Обов'язок «monitor vessels Class and trading certificates» <span class="tag t-fact">ФАКТ</span> · «Validation» — універсальний B2B job за Gartner <span class="tag t-fact">ФАКТ</span> · Але: 45% покупців доказів не питають <span class="tag t-surv">ОПИТУВАННЯ</span></p>
+    <p class="jtxt">When I'm considering a supplier, <b>I want to be sure their solution will survive scrutiny from class, an auditor or an inspector</b>, so that I don't expose the company through my own choice.</p>
+    <p class="jmeta"><b>P1</b> (primarily), P2 · The duty to "monitor vessels Class and trading certificates" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.seacareer.com/i31473/technical-superintendent/" target="_blank" title="Technical Superintendent vacancy — verbatim">↗</a> · "Validation" is a universal B2B job per Gartner <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.gartner.com/en/sales/insights/b2b-buying-journey" target="_blank" title="Gartner — the six B2B buying jobs">↗</a> · But: only <b>55%</b> of suppliers are ever asked to prove cyber procedures — so <b>45%</b> of buyers don't perform this job <span class="tag t-surv">SURVEY</span><span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://cyberowl.io/cyberowl-hfw-report-maritime-industry-pays-average-3m-ransom-in-cyberattacks/" target="_blank" title="CyberOwl / HFW — the 55% figure; 45% is its complement, not a published number">↗</a></p>
   </div>
 
   <div class="job">
-    <span class="kicker">R3 · найкраще підкріплений документально</span>
-    <p class="jtxt">Коли я вже знаю, що нам потрібно, <b>я хочу зібрати обґрунтування, яке переконає того, хто розпоряджається грошима</b>, щоб рішення не застрягло на погодженні.</p>
-    <p class="jmeta"><b>P2 готує → P4 приймає</b> · «Prepare business cases… balancing operational needs with commercial considerations» дослівно з вакансії <span class="tag t-fact">ФАКТ</span> · «Consensus creation» — Gartner <span class="tag t-fact">ФАКТ</span> · approval matrix + ціновий тиск <span class="tag t-fact">ФАКТ</span></p>
+    <span class="kicker">R3 · best documented</span>
+    <p class="jtxt">When I already know what we need, <b>I want to assemble a rationale that will convince whoever controls the money</b>, so that the decision doesn't stall in approval.</p>
+    <p class="jmeta"><b>P2 prepares → P4 decides</b> · "Prepare business cases… balancing operational needs with commercial considerations" verbatim from the vacancy <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.mazurecruitment.com/jobs/it-manager-915339" target="_blank" title="Mazu Recruitment ref. 1118549 — duties, verbatim">↗</a> · "Consensus creation" — Gartner <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.gartner.com/en/sales/insights/b2b-buying-journey" target="_blank" title="Gartner — 'We need to get everyone on board'">↗</a> · approval matrix <a class="ref" href="https://www.avsglobalsupply.com/blog-detail/ship-owner-ship-manager-procurement-decision" target="_blank" title="AVS — the approval matrix and CAPEX/OPEX split">↗</a> + price pressure <span class="tag t-fact">FACT</span> <a class="ref" href="https://valourconsultancy.com/loose-specs-sink-shipmanagers-maritime-ecosystem/" target="_blank" title="Valour — 'negotiated mainly on price'">↗</a></p>
   </div>
 
   <div class="job">
     <span class="kicker">R4</span>
-    <p class="jtxt">Коли я знаходжу відповідне рішення, <b>я хочу завчасно зрозуміти, чи можемо ми його купити при чинних домовленостях</b>, щоб не витратити місяці на варіант, який усе одно заблокують.</p>
-    <p class="jmeta"><b>P4</b>, P2 · «Supplier change may require approval when a frame agreement already exists» <span class="tag t-fact">ФАКТ</span> · Слід у категорії: типи запиту Reseller / Partnership у формі Marlink <span class="tag t-audit">АУДИТ</span></p>
+    <p class="jtxt">When I find a suitable solution, <b>I want to understand early whether we can even buy it under our existing agreements</b>, so that I don't spend months on an option that gets blocked anyway.</p>
+    <p class="jmeta"><b>P4</b>, P2 · "Supplier change may require approval when a frame agreement already exists" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.avsglobalsupply.com/blog-detail/ship-owner-ship-manager-procurement-decision" target="_blank" title="AVS — verbatim">↗</a> · Trace in the category: Reseller / Partnership request types in Marlink's form <span class="tag t-audit">AUDIT</span> <a class="ref" href="screens/hard/marlink-contact-form.png" target="_blank" title="Marlink contact form — request-type dropdown">▦</a></p>
   </div>
 
   <div class="job best">
-    <span class="kicker">R5 · найкраще підкріплений загалом — три незалежні шляхи</span>
-    <p class="jtxt">Коли екіпаж вимагає нормального інтернету, а я відповідаю за витрати й порядок на борту, <b>я хочу знайти баланс між доступом і контролем</b>, щоб утримувати людей і не втратити ні бюджет, ні керованість.</p>
-    <p class="jmeta"><b>P1, P4</b> · Цитата COO OSG <span class="tag t-fact">ФАКТ</span> · Inmarsat: власники просять «time-restricted access» <span class="tag t-fact">ФАКТ</span> · ~20 суден у треді r/maritime описують не канал, а політику: квоти, ранги, фільтри, гео-правила, резервний канал <span class="tag t-fact">ФАКТ</span> · Критерій вибору в пресі ще з 2017 <span class="tag t-fact">ФАКТ</span> · ⚠️ На рівні продукту вже продається (Navarino Infinity: «Crew Internet access control during shifts») — вільна <b>висота подачі</b>, не тема</p>
+    <span class="kicker">R5 · best supported overall — three independent paths</span>
+    <p class="jtxt">When the crew demands proper internet and I'm answerable for cost and order on board, <b>I want to find the balance between access and control</b>, so that I keep the people without losing either the budget or manageability.</p>
+    <p class="jmeta"><b>P1, P4</b> · The OSG COO quote <span class="tag t-fact">FACT</span> <a class="ref" href="https://markets.financialcontent.com/ms.intelvalue/article/bizwire-2023-12-19-overseas-shipholding-group-installs-starlink-satellite-internet-service-on-entire-fleet" target="_blank" title="BusinessWire, 19.12.2023">↗</a> · Inmarsat at Geneva Dry 2025: owners ask for "time-restricted access – perhaps a couple of hours daily"; <b>13%</b> of vessels operate with no crew internet at all <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.rivieramm.com/news-content-hub/13-of-vessels-operate-without-crew-internet-highlighting-maritime-connectivity-gap-84738" target="_blank" title="Riviera Maritime Media — Geneva Dry 2025, Audra Drablos (Inmarsat). Read directly">↗</a> · <b>≈20</b> distinct vessels across a <b>35-comment</b> r/maritime thread describe not the link but the policy: quotas (450 MB–1.5 GB/day), ranks, filters, geo-rules, a backup channel <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.reddit.com/r/maritime/comments/1u6p9qq/what_internet_do_you_use_onboard_how_much_does_it/" target="_blank" title="r/maritime thread, June 2026 — read in full. ⚠️ This is the crew, not the buyer: evidence of consequences, not of how suppliers were chosen">↗</a> · An articulated selection criterion in the trade press since <b>2017</b> <a class="ref" href="https://splash247.com/five-questions-maritime-connectivity-provider/" target="_blank" title="Splash247, 2017 — 'Can your provider segment, prioritise and manage crew access…?' A vendor-authored column">↗</a> · ⚠️ Already sold at product level (Navarino Infinity: "Crew Internet access control during shifts", "+10,000 vessels") <a class="ref" href="https://navarino.co.uk/solutions/infinity/" target="_blank" title="Navarino Infinity — opened and read directly 05.08.2026">↗</a> — what's unclaimed is the <b>altitude of the message</b>, not the topic</p>
   </div>
 
   <div class="grid cols-2" style="margin-top:26px">
     <div class="card">
-      <h4>Emotional <span class="tag t-inf" style="margin-left:6px">завжди інтерпретація</span></h4>
-      <p class="jtxt" style="font-size:14px">Коли тема виходить за межі моєї спеціальності, я хочу розібратися в ній сам, щоб говорити з експертом на рівних.</p>
-      <p class="jmeta">P1 · Розрив знання — факт; небажання його показати — <span class="tag t-inf">ВИВЕДЕНО</span></p>
-      <p class="jtxt" style="font-size:14px">Коли я несу рішення нагору, я хочу бути певним у своїх цифрах, щоб не виглядати несерйозно.</p>
-      <p class="jmeta">P2 → P4 · «justify investments» — факт; страх за репутацію — <span class="tag t-inf">ВИВЕДЕНО</span></p>
+      <h4>Emotional <span class="tag t-inf" style="margin-left:6px">always interpretation</span></h4>
+      <p class="jtxt" style="font-size:14px">When the topic falls outside my specialism, I want to work it out myself, so that I can talk to an expert as an equal.</p>
+      <p class="jmeta">P1 · An ex-engineer, "Class II Certificate of Competency" <a class="ref" href="https://www.seacareer.com/i31473/technical-superintendent/" target="_blank" title="vacancy — qualifications, verbatim">↗</a>; the knowledge gap is documented <a class="ref" href="https://www.hfw.com/about-us/news/hfw-cyberowl-highlight-urgency-maritime-industry-tackling-growing-cyber-threats/" target="_blank" title="HFW/CyberOwl/Thetius — '1 in 6', 2ND-HAND. Note it measures shipowners and newbuild cyber, not superintendents across five pillars">↗</a>; the reluctance to show it is <span class="tag t-inf">INFERRED</span> <span class="nosrc">not confirmed</span></p>
+      <p class="jtxt" style="font-size:14px">When I take a decision upstairs, I want to be certain of my numbers, so that I don't look unserious.</p>
+      <p class="jmeta">P2 → P4 · "ability to justify investments" is a fact <a class="ref" href="https://www.mazurecruitment.com/jobs/it-manager-915339" target="_blank" title="Mazu vacancy — requirements, verbatim">↗</a>; fear for one's reputation is <span class="tag t-inf">INFERRED</span> <span class="nosrc">not confirmed</span></p>
     </div>
     <div class="card">
       <h4>Social</h4>
-      <p class="jtxt" style="font-size:14px">Коли ми конкуруємо за екіпаж, я хочу, щоб наші судна вважали хорошим місцем роботи, щоб люди приходили й залишалися.</p>
-      <p class="jmeta">P4, P1 · Цитата COO + «first question potential crew ask» <span class="tag t-fact">ФАКТ</span> · 92% (Futurenautics 2018, до Starlink) <span class="tag t-sec">2-ГЕ</span></p>
-      <p class="jtxt" style="font-size:14px">Коли я звітую керівництву, я хочу показати, що флот під контролем, щоб мене питали й наступного разу.</p>
-      <p class="jmeta">P1, P2 · Ієрархія — факт; бажання статусу — <span class="tag t-inf">ВИВЕДЕНО</span> · <span class="neg">найслабший job — перший кандидат на виріз</span></p>
+      <p class="jtxt" style="font-size:14px">When we compete for crew, I want our vessels seen as a good place to work, so that people come and stay.</p>
+      <p class="jmeta">P4, P1 · The COO quote <a class="ref" href="https://markets.financialcontent.com/ms.intelvalue/article/bizwire-2023-12-19-overseas-shipholding-group-installs-starlink-satellite-internet-service-on-entire-fleet" target="_blank" title="BusinessWire, 19.12.2023">↗</a> + "the first question potential crew ask is whether there's internet on board" <span class="tag t-fact">FACT</span> <a class="ref" href="https://www.rivieramm.com/news-content-hub/13-of-vessels-operate-without-crew-internet-highlighting-maritime-connectivity-gap-84738" target="_blank" title="Riviera — Inmarsat at Geneva Dry 2025">↗</a> · <b>92%</b> of seafarers strongly influenced by internet access when choosing where to work, n=<b>6,000</b> (Futurenautics 2018, pre-Starlink) <span class="tag t-sec">2ND-HAND</span> <a class="ref" href="https://www.globenewswire.com/news-release/2018/03/28/1454366/0/en/92-of-Seafarers-Strongly-Influenced-By-Internet-Access-When-Choosing-Where-to-Work-According-to-Futurenautics-Survey.html" target="_blank" title="GlobeNewswire release on the Futurenautics Crew Connectivity 2018 survey. The full report PDF was not opened; sponsors were KVH and Intelsat">↗</a></p>
+      <p class="jtxt" style="font-size:14px">When I report to management, I want to show the fleet is under control, so that they ask me again next time.</p>
+      <p class="jmeta">P1, P2 · The hierarchy is a fact — P1 reports to a Fleet Group Manager <a class="ref" href="https://www.maersk.com/careers/vacancies/wd/Ship-Superintendent_R117749/jt-ship-superintendent" target="_blank" title="Maersk Ship Superintendent vacancy — the reporting line. 2ND-HAND">↗</a>; the desire for status is <span class="tag t-inf">INFERRED</span> <span class="nosrc">not confirmed</span> · <span class="neg">the weakest job — first candidate to cut</span></p>
     </div>
   </div>
 </div></section>
 
 <!-- ============ MATRIX ============ -->
 <section id="matrix"><div class="wrap">
-  <span class="kicker">Секція 03</span>
-  <h2>JTBD-матриця</h2>
-  <p class="sec-sub"><b>Шкала міряє не «важливість»</b> — даних про переваги немає, і ставити їх означало б вигадати. Цифра показує, наскільки job належить до <b>задокументованих обов'язків</b> персони: <span class="sc m3">3</span> прямо записаний · <span class="sc m2">2</span> випливає з обов'язку · <span class="sc m1">1</span> дотична роль · <span class="sc mq">?</span> доказів немає — і це не «середнє».</p>
+  <span class="kicker">Section 03</span>
+  <h2>JTBD matrix</h2>
+  <p class="sec-sub"><b>The scale does not measure "importance"</b> — there is no preference data, and assigning it would mean inventing it. The number shows how far a job belongs to the persona's <b>documented duties</b>: <span class="sc m3">3</span> written down directly · <span class="sc m2">2</span> follows from a duty · <span class="sc m1">1</span> adjacent role · <span class="sc mq">?</span> no evidence — and that is not an "average".</p>
 
   <div class="table-wrap"><table class="cmp">
     <thead><tr>
       <th>Job</th><th style="min-width:120px">P1 ⭐</th><th style="min-width:120px">P2</th><th style="min-width:120px">P4</th>
-      <th style="min-width:190px">Функція в продукті</th><th style="min-width:260px">Конкуренти</th>
+      <th style="min-width:190px">Product function</th><th style="min-width:260px">Competitors</th>
     </tr></thead>
     <tbody>
       <tr>
-        <th>MAIN · що нам треба + кому доручити</th>
-        <td><span class="sc m3">3</span><small>бюджети, рахунки за зв'язок</small></td>
-        <td><span class="sc m3">3</span><small>«evaluate… recommendations»</small></td>
-        <td><span class="sc m1">1</span><small>стратегія, не добір</small></td>
-        <td>Solution Finder · сторінки рішень · крослінки</td>
-        <td><span class="neg">🔴 майже не закрито.</span> Фіндер був лише в IEC — і зник із меню (05.08). Marlink відповідає людиною</td>
+        <th>MAIN · what we need + who to entrust it to</th>
+        <td><span class="sc m3">3</span><small>budgets, communication invoices</small></td>
+        <td><span class="sc m3">3</span><small>"evaluate… recommendations"</small></td>
+        <td><span class="sc m1">1</span><small>strategy, not selection</small></td>
+        <td>Solution Finder · solution pages · cross-links</td>
+        <td><span class="neg">🔴 barely covered.</span> Of <b>15</b> audited sites a finder existed only at IEC <a class="ref" href="screens/hard/iec-telecom-solution-finder.png" target="_blank" title="IEC Telecom — the only true faceted finder in the HARD group">▦</a> — and on the 05.08 re-check its URL redirects to the homepage with no finder in the mega menu <a class="ref" href="personas.md" target="_blank" title="personas.md §10.4 — an observation, not a proven removal: the page may have moved">§</a>. Marlink answers with a human <a class="ref" href="personas.md" target="_blank" title="personas.md §10.5 — 'Not sure where to start? Talk to our team'">§</a></td>
       </tr>
       <tr>
-        <th>R1 · норма → вимога до суден</th>
-        <td><span class="sc m3">3</span><small>клас, сертифікати, ISM</small></td>
+        <th>R1 · regulation → requirement for the vessels</th>
+        <td><span class="sc m3">3</span><small>class, certificates, ISM</small></td>
         <td><span class="sc m3">3</span><small>newbuild ICT, policies</small></td>
         <td><span class="sc mq">?</span></td>
-        <td><span class="neg">немає в скоупі</span> — регуляторний вхід не передбачений сітмапом</td>
-        <td><span class="hyp">🟠 вендорами — ні,</span> але «зрозуміти норму» вже закрив клас (ClassNK: 137 Q&A). Вільна зв'язка «норма → рішення → папір»</td>
+        <td><span class="neg">not in scope</span> — the sitemap provides no regulatory entry point</td>
+        <td><span class="hyp">🟠 not by vendors</span> — all <b>5</b> HARD navs walked by hand, no norm-based axis <a class="ref" href="personas.md" target="_blank" title="personas.md §10.3 — the five navigation axes tabulated per competitor">§</a>; but "understand the regulation" is already owned by class (ClassNK: <b>137</b> Q&amp;As) <a class="ref" href="https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html" target="_blank" title="ClassNK UR E26/E27 hub — read directly">↗</a>. The link "regulation → solution → paper" is unclaimed</td>
       </tr>
       <tr>
-        <th>R2 · витримає зовнішню перевірку</th>
-        <td><span class="sc m3">3</span><small>прямий обов'язок</small></td>
+        <th>R2 · will survive external scrutiny</th>
+        <td><span class="sc m3">3</span><small>direct duty</small></td>
         <td><span class="sc m2">2</span><small>manage vendors</small></td>
         <td><span class="sc m2">2</span><small>approved supplier lists</small></td>
-        <td>Proof-блок: норма + ім'я органу (DNV/BV) + сертифікації</td>
-        <td><span class="pos">🟢 закрито добре</span> (Navarino type approval, Marlink чипи). <b>Table stakes</b> — виграти цим не можна</td>
+        <td>Proof block: regulation + the body by name (DNV/BV) + certifications</td>
+        <td><span class="pos">🟢 well covered</span> — Navarino type approvals from DNV and Bureau Veritas <a class="ref" href="screens/hard/navarino-cybersecurity-angel.png" target="_blank" title="Navarino Angel — type approvals">▦</a>; Marlink's homepage chip row ISO 9001 · 14001 · 27001 · IACS UR E26/E27 · NIS 2 · DORA <a class="ref" href="personas.md" target="_blank" title="personas.md §10.3 — verified by hand 05.08.2026; DOM-checked, the chips are static text, not links">§</a>. <b>Table stakes</b> — you cannot win on this</td>
       </tr>
       <tr>
-        <th>R3 · обґрунтування для того, хто платить</th>
-        <td><span class="sc m2">2</span><small>бюджети</small></td>
-        <td><span class="sc m3">3</span><small>«prepare business cases»</small></td>
+        <th>R3 · rationale for whoever pays</th>
+        <td><span class="sc m2">2</span><small>budgets</small></td>
+        <td><span class="sc m3">3</span><small>"prepare business cases"</small></td>
         <td><span class="sc m3">3</span><small>CAPEX, approval matrix</small></td>
-        <td>«Пересилабельна» сторінка рішення · кейс-картка «твердження + число + джерело»</td>
-        <td><span class="hyp">🟠 у прямому ринку — ні;</span> формат є лише в aspirational (Palantir, Stripe)</td>
+        <td>A "forwardable" solution page · case card "claim + number + source"</td>
+        <td><span class="hyp">🟠 not in the direct market;</span> the format exists only in the aspirational set — Palantir/Sompo "$60 million improvement in profit", Stripe/Postmates "$70M total increase" <a class="ref" href="research.md" target="_blank" title="research.md §5 — ASPIRATIONAL comparative table, Trust row">§</a></td>
       </tr>
       <tr>
-        <th>R4 · чи це взагалі можна купити</th>
+        <th>R4 · can this be bought at all</th>
         <td><span class="sc mq">?</span></td>
-        <td><span class="sc m2">2</span><small>веде вендорів</small></td>
+        <td><span class="sc m2">2</span><small>runs vendors</small></td>
         <td><span class="sc m3">3</span><small>frame agreements</small></td>
-        <td>Поле «роль» у формі · партнерський трек</td>
-        <td><span class="neg">🔴 майже не закрито.</span> Дотично — Reseller/Partnership у формі Marlink</td>
+        <td>A "role" field in the form · a partner track</td>
+        <td><span class="neg">🔴 barely covered.</span> Tangentially — Reseller/Partnership in Marlink's form <a class="ref" href="screens/hard/marlink-contact-form.png" target="_blank" title="Marlink contact form — request-type dropdown">▦</a></td>
       </tr>
       <tr>
-        <th>R5 · доступ vs контроль для екіпажу</th>
-        <td><span class="sc m3">3</span><small>рахунки; MLC + PSC</small></td>
+        <th>R5 · access vs control for the crew</th>
+        <td><span class="sc m3">3</span><small>invoices; MLC + PSC</small></td>
         <td><span class="sc m2">2</span><small>connectivity, policies</small></td>
-        <td><span class="sc m3">3</span><small>рішення рівня COO</small></td>
-        <td><span class="neg">немає в скоупі</span> — сітмап не говорить про політику доступу</td>
-        <td><span class="hyp">🟠 закрито на рівні продукту</span> (Navarino Infinity), вільно на рівні повідомлення — керованістю не веде ніхто</td>
+        <td><span class="sc m3">3</span><small>a COO-level decision</small></td>
+        <td><span class="neg">not in scope</span> — the sitemap says nothing about access policy</td>
+        <td><span class="hyp">🟠 covered at product level</span> — Navarino Infinity sells "Crew Internet access control during shifts", QoS, firewall, "+10,000 vessels" <a class="ref" href="https://navarino.co.uk/solutions/infinity/" target="_blank" title="Navarino Infinity — opened and read directly 05.08.2026 (audit.md §5, question 3)">↗</a> — open at message level: nobody leads with manageability</td>
       </tr>
       <tr>
-        <th>E1 · не виглядати некомпетентним</th>
-        <td><span class="sc m3">3</span><small>ex-механік, не мережевик</small></td>
-        <td><span class="sc m1">1</span><small>він і є фахівець</small></td>
+        <th>E1 · not looking incompetent</th>
+        <td><span class="sc m3">3</span><small>ex-engineer, not a network specialist</small></td>
+        <td><span class="sc m1">1</span><small>they are the specialist</small></td>
         <td><span class="sc mq">?</span></td>
-        <td>Мова: клас / сертифікат / ISM / док / бюджет — без жаргону</td>
-        <td><span class="hyp">🟠 частково:</span> Marlink C3=4; IEC C3=2 (COTP/COTM), NSSL — «OSI model»</td>
+        <td>Language: class / certificate / ISM / dock / budget — no jargon</td>
+        <td><span class="hyp">🟠 partly:</span> our own 1–5 scoring — Marlink <b>C3=4</b>, IEC <b>C3=2</b> (COTP/COTM) <a class="ref" href="research.md" target="_blank" title="research.md §9.2 — C3 'plain-language explanation' row. Our scoring against our own §9.1 criteria, not user data">§</a>; NSSLGlobal — "application layer of the OSI model" <a class="ref" href="https://nsslglobal.com/solution/cyber-security/" target="_blank" title="NSSLGlobal cyber security page">↗</a></td>
       </tr>
       <tr>
-        <th>E2 · обґрунтування не розсиплеться</th>
+        <th>E2 · the rationale won't fall apart</th>
         <td><span class="sc m2">2</span></td>
-        <td><span class="sc m3">3</span><small>«justify investments»</small></td>
+        <td><span class="sc m3">3</span><small>"justify investments"</small></td>
         <td><span class="sc mq">?</span></td>
-        <td>Єдине джерело правди для цифр — без дрейфу</td>
-        <td><span class="neg">🔴 ринок програє активно:</span> дрейф у Marlink, NSSL, Stripe</td>
+        <td>A single source of truth for numbers — no drift</td>
+        <td><span class="neg">🔴 the market actively loses here:</span> drift at Marlink (99.9 ↔ 99.99%), NSSLGlobal (50 / 55+ / 56 years), Stripe (500M ↔ 250M API req/day) <a class="ref" href="research.md" target="_blank" title="research.md §6 — cross-market synthesis, stat drift. Recorded by our audit alone; §11 notes no independent confirmation that drift causes drop-off">§</a></td>
       </tr>
       <tr>
-        <th>S1 · роботодавець, до якого йдуть</th>
+        <th>S1 · an employer people come to</th>
         <td><span class="sc m1">1</span></td>
         <td><span class="sc mq">?</span></td>
-        <td><span class="sc m3">3</span><small>цитата COO</small></td>
-        <td>Maritime-сторінка в рамці утримання екіпажу, не «welfare»</td>
-        <td><span class="neg">🔴 не закрито ніким</span> — ніхто не подає зв'язок як аргумент найму</td>
+        <td><span class="sc m3">3</span><small>the COO quote</small></td>
+        <td>The Maritime page framed around crew retention, not "welfare"</td>
+        <td><span class="neg">🔴 covered by nobody</span> — across the <b>15</b> audited sites no one frames connectivity as a hiring argument <a class="ref" href="research.md" target="_blank" title="research.md §3–§5 — the three comparative tables. An absence-of-finding across the pages audited">§</a></td>
       </tr>
       <tr>
-        <th>S2 · щоб мою думку враховували</th>
+        <th>S2 · so that my view is taken into account</th>
         <td><span class="sc m2">2</span></td>
         <td><span class="sc m2">2</span></td>
         <td><span class="sc m1">1</span></td>
-        <td>— прямої функції немає</td>
-        <td>⚪ ніхто; попиту не зафіксовано. <span class="neg">Найслабший рядок</span></td>
+        <td>— no direct function</td>
+        <td>⚪ nobody; no demand recorded. <span class="neg">The weakest row</span></td>
       </tr>
     </tbody>
   </table></div>
-  <p style="color:var(--dim); font-size:12.5px">Повні клітинки з цитатами й посиланнями — у <a href="jtbd.md">jtbd.md</a> §8.1. Болі та тригери — це вади/патерни чужих сайтів; що вони діють саме на цих людей — <span class="hyp">[?]</span>.</p>
+  <p style="color:var(--dim); font-size:12.5px">Full cells with quotes and links are in <a href="jtbd.md">jtbd.md</a> §8.1. Pains and triggers are flaws/patterns of other people's sites; that they act on these specific people is <span class="hyp">[?]</span>.</p>
 </div></section>
 
 <!-- ============ MVP ============ -->
 <section id="mvp"><div class="wrap">
-  <span class="kicker">Секція 04</span>
-  <h2>Ядро MVP і кандидати на виліт</h2>
-  <p class="sec-sub">Критерій ядра: <b>важливо для primary (P1 = 3)</b> × <b>ринок не закриває</b>. Матриця відповідає на два питання: що робити спочатку і що не робити взагалі.</p>
+  <span class="kicker">Section 04</span>
+  <h2>MVP core and cut candidates</h2>
+  <p class="sec-sub">Core criterion: <b>important to the primary (P1 = 3)</b> × <b>not served by the market</b>. The matrix answers two questions: what to do first and what not to do at all.</p>
 
   <div class="grid cols-3">
     <div class="card best">
       <h4>1 · MAIN</h4>
-      <p style="font-size:13.5px; margin:0">«Що саме нам потрібно і кому доручити». Фіндер був лише в IEC — і зник; Marlink закриває це людиною. Без цього job сайт не має сенсу.</p>
+      <p style="font-size:13.5px; margin:0">"What exactly we need and who to entrust it to." A finder existed only at IEC — and vanished from the menu by the 05.08 re-check <a class="ref" href="personas.md" target="_blank" title="personas.md §10.4">§</a>; Marlink closes this with a human <a class="ref" href="personas.md" target="_blank" title="personas.md §10.5">§</a>. Without this job the site has no point.</p>
     </div>
     <div class="card best">
-      <h4>2 · R1 <span class="tag t-inf" style="margin-left:4px">звужено</span></h4>
-      <p style="font-size:13.5px; margin:0">Не «пояснити норму» (це територія класу), а зв'язка <b>«норма → яке рішення закриває → який папір отримаєш»</b>. Єдиний вхід із датою і зовнішнім примусом; не потребує вигаданих цифр. Ризик: чи веде дедлайн на сайт — <span class="hyp">[?]</span></p>
+      <h4>2 · R1 <span class="tag t-inf" style="margin-left:4px">narrowed</span></h4>
+      <p style="font-size:13.5px; margin:0">Not "explain the regulation" (that's class-society territory — ClassNK keeps <b>137</b> Q&amp;As, guidelines and document samples <a class="ref" href="https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html" target="_blank" title="ClassNK UR E26/E27 hub — read directly 05.08.2026">↗</a>), but the link <b>"regulation → which solution closes it → what paper you get"</b>. The only entry point with a date and external enforcement; requires no invented numbers. Risk: whether a deadline leads to the site — <span class="hyp">[?]</span> <span class="nosrc">not confirmed</span></p>
     </div>
     <div class="card best">
-      <h4>3 · R5 <span class="tag t-fact" style="margin-left:4px">найміцніший</span></h4>
-      <p style="font-size:13.5px; margin:0">Доступ vs контроль. Три незалежні шляхи доказу: цитата COO, галузева преса з 2017, ~20 живих описів із борту. Продається в глибині (Navarino Infinity) — вільна <b>висота повідомлення</b>. Єдиний елемент ядра без жодної небезпечної гіпотези під собою.</p>
+      <h4>3 · R5 <span class="tag t-fact" style="margin-left:4px">strongest</span></h4>
+      <p style="font-size:13.5px; margin:0">Access vs control. Three independent evidence paths: the COO quote <a class="ref" href="https://markets.financialcontent.com/ms.intelvalue/article/bizwire-2023-12-19-overseas-shipholding-group-installs-starlink-satellite-internet-service-on-entire-fleet" target="_blank" title="BusinessWire, 19.12.2023">↗</a>, trade press since <b>2017</b> <a class="ref" href="https://splash247.com/five-questions-maritime-connectivity-provider/" target="_blank" title="Splash247, 2017 — a vendor-authored column">↗</a>, <b>≈20</b> live accounts from on board <a class="ref" href="https://www.reddit.com/r/maritime/comments/1u6p9qq/what_internet_do_you_use_onboard_how_much_does_it/" target="_blank" title="r/maritime thread, June 2026, 35 comments — the crew's voice, not the buyer's">↗</a>. Sold in the depths (Navarino Infinity) <a class="ref" href="https://navarino.co.uk/solutions/infinity/" target="_blank" title="Navarino Infinity — read directly">↗</a> — what's unclaimed is the <b>altitude of the message</b>. The only core element with no dangerous hypothesis underneath it.</p>
     </div>
   </div>
 
-  <h3>Свідомо не в ядрі</h3>
+  <h3>Deliberately not in the core</h3>
   <div class="grid cols-2">
-    <div class="card second"><h4>R2 — table stakes</h4><p style="font-size:13.5px; margin:0">P1 = 3, але ринок закриває добре (Navarino type approval, Marlink чипи). Не зробити не можна, виграти цим не можна.</p></div>
-    <div class="card second"><h4>R3 — формат, не блок робіт</h4><p style="font-size:13.5px; margin:0">Сильний для P2/P4, для primary — 2. Лягає на ядро як спосіб подачі кожної сторінки рішення («пересилабельність»).</p></div>
+    <div class="card second"><h4>R2 — table stakes</h4><p style="font-size:13.5px; margin:0">P1 = 3, but the market covers it well (Navarino type approval, Marlink chips). You can't skip it, and you can't win with it.</p></div>
+    <div class="card second"><h4>R3 — a format, not a work block</h4><p style="font-size:13.5px; margin:0">Strong for P2/P4, a 2 for the primary. It lands on the core as the way every solution page is presented ("forwardability").</p></div>
   </div>
 
-  <h3>✂️ Кандидати на виліт — не закривають жодного job</h3>
+  <h3>✂️ Cut candidates — they close no job</h3>
   <div class="table-wrap"><table>
-    <thead><tr><th>Кандидат</th><th>Чому</th></tr></thead>
+    <thead><tr><th>Candidate</th><th>Why</th></tr></thead>
     <tbody>
-      <tr><td><b>Порівняльна таблиця / side-by-side</b></td><td>Попиту не зафіксовано ніде; єдиний приклад — споживчий ринок (NerdWallet) з іншою моделлю рішення</td></tr>
-      <tr><td><b>Інтерактивні інструменти самоперевірки</b></td><td>⚠️ Суперечить research.md §10.4: C8 говорить, чого бракує <i>постачальникам</i>, а не чого хочуть <i>покупці</i>. Жодного job у матриці не закриває</td></tr>
-      <tr><td><b>Гейтований Resource Center</b></td><td>R3 обслуговує сторінка, яку можна переслати, а не гейт. Бриф уже каже «ungated by default» — матриця це підтверджує</td></tr>
-      <tr><td><b>Insights / News як пріоритет</b></td><td>Не мапиться на жоден job. Є в усіх конкурентів — це не аргумент</td></tr>
-      <tr><td><b>Фасетний каталог продуктів</b></td><td>~5 пілларів — фільтрувати нічого; жаргонні фасети відтворили б провал IEC (COTP/COTM)</td></tr>
+      <tr><td><b>Comparison table / side-by-side</b></td><td>No demand recorded anywhere; the only example is a consumer market (NerdWallet) with a different decision model</td></tr>
+      <tr><td><b>Interactive self-assessment tools</b></td><td>⚠️ Contradicts research.md §10.4: C8 says what <i>suppliers</i> lack, not what <i>buyers</i> want. Closes no job in the matrix</td></tr>
+      <tr><td><b>Gated Resource Center</b></td><td>R3 is served by a page you can forward, not by a gate. The brief already says "ungated by default" — the matrix confirms it</td></tr>
+      <tr><td><b>Insights / News as a priority</b></td><td>Maps to no job. Every competitor has it — that is not an argument</td></tr>
+      <tr><td><b>A faceted product catalog</b></td><td>The brief defines <b>5</b> pillars <a class="ref" href="../CLAUDE.md" target="_blank" title="CLAUDE.md §5 — the sitemap: Connectivity, Cybersecurity, Digital Solutions, Safety & Compliance, Technical Services">§</a> — there's nothing to filter; jargon facets would reproduce IEC's failure (COTP/COTM) <a class="ref" href="research.md" target="_blank" title="research.md §9.3 — 'mechanism NOT to port'">§</a></td></tr>
     </tbody>
   </table></div>
 
-  <p class="note warn" style="margin-top:18px"><b>Якщо primary стане P2</b> (питання відкрите — сигнали 5:0 на користь IT): R3 підніметься в ядро, R5 опуститься до 2. <b>MAIN і R1 лишаються в ядрі за будь-якого варіанту</b> — на них ставку можна робити вже зараз.</p>
+  <p class="note warn" style="margin-top:18px"><b>If the primary becomes P2</b> (the question is open — signals run 5:0 in favour of IT): R3 rises into the core, R5 drops to 2. <b>MAIN and R1 stay in the core under either outcome</b> — they can be bet on right now.</p>
 </div></section>
 
 <!-- ============ HYPOTHESES ============ -->
 <section id="hypotheses"><div class="wrap">
-  <span class="kicker">Секція 05</span>
-  <h2>Гіпотези, що несуть дизайн-рішення</h2>
-  <p class="sec-sub">Найнебезпечніший список: твердження, які вже впливають на спроєктоване, але доказу не мають. Відсортовано за ціною помилки. Повний аудит 62 тверджень — в <a href="audit.md">audit.md</a>.</p>
+  <span class="kicker">Section 05</span>
+  <h2>Hypotheses carrying design decisions</h2>
+  <p class="sec-sub">The most dangerous list: statements that already shape what has been designed but have no evidence. Sorted by the cost of being wrong. The full audit covers <b>62</b> claims — <b>34</b> confirmed by primary sources, <b>9</b> resting on paraphrase, <b>21</b> explicit hypotheses <a class="ref" href="audit.md" target="_blank" title="audit.md §6 — the summary paragraph; §1 holds the full claims table">§</a>.</p>
 
   <div class="table-wrap"><table>
-    <thead><tr><th>Гіпотеза</th><th>Що на ній стоїть</th><th>Стан доказів</th></tr></thead>
+    <thead><tr><th>Hypothesis</th><th>What rests on it</th><th>State of evidence</th></tr></thead>
     <tbody>
       <tr>
-        <td><b>D1 · P1 відвідує сайти постачальників</b> <span class="hyp">[?]</span></td>
-        <td>Вибір primary → наратив головної → мова всього сайту</td>
-        <td class="neg">Три сигнали проти: «manage vendors» у P2; клієнтські цитати 5:0 IT/COO; аудиторії Navarino без superintendent-а. Рішення по primary — відкрите</td>
+        <td><b>D1 · P1 visits supplier websites</b> <span class="hyp">[?]</span></td>
+        <td>The choice of primary → the homepage narrative → the language of the whole site</td>
+        <td class="neg">Three signals against: "manage vendors" in P2's vacancy <a class="ref" href="https://www.mazurecruitment.com/jobs/it-manager-915339" target="_blank" title="Mazu Recruitment ref. 1118549">↗</a>; customer quotes <b>5:0</b> IT/COO <a class="ref" href="audit.md" target="_blank" title="audit.md §5 question 1 — the five quotes tabulated with sources">§</a>; Navarino's audiences with no superintendent <a class="ref" href="https://kota.co.uk/work/navarino" target="_blank" title="KOTA × Navarino redesign brief">↗</a>. The primary decision is open</td>
       </tr>
       <tr>
-        <td><b>D2 · Дедлайн приводить на сайт</b> <span class="hyp">[?]</span></td>
-        <td>R1 — job №2 ядра; фіндер, що питає про тригер</td>
-        <td>Тригери купівлі задокументовані; зв'язок «дедлайн → пошук у вебі» — ні. «Пояснити норму» вже забрав клас</td>
+        <td><b>D2 · A deadline brings people to the site</b> <span class="hyp">[?]</span></td>
+        <td>R1 — job #2 of the core; a finder that asks about the trigger</td>
+        <td>Buying triggers are documented (MLC, MSC.428(98), E26/E27, the docking cycle); the link "deadline → web search" is <span class="nosrc">not confirmed</span> by any source. "Explain the regulation" is already taken by class societies <a class="ref" href="audit.md" target="_blank" title="audit.md §5 question 2 — ClassNK's compliance infrastructure, read directly">§</a></td>
       </tr>
       <tr>
-        <td><b>D3 · «Не спеціаліст у 5 пілларах»</b> <span class="hyp">[?]</span></td>
-        <td>Solution Finder як головний патерн — головна ставка роботи</td>
-        <td>Спроба підперти цифрою «1 із 6» виявилась екстраполяцією і знята. Перевіряється tree test-ом, n=5</td>
+        <td><b>D3 · "Not a specialist across the 5 pillars"</b> <span class="hyp">[?]</span></td>
+        <td>Solution Finder as the lead pattern — the project's main bet</td>
+        <td>The attempt to back this with the "1 in 6" figure turned out to be extrapolation and was withdrawn — the stat measures shipowners and newbuild cyber, not superintendents across five pillars <a class="ref" href="personas.md" target="_blank" title="personas.md §8.1 item 1 — the correction logged during self-audit">§</a>. To be tested with a tree test on the five pillar names (a proposed method, not a result)</td>
       </tr>
       <tr>
-        <td><b>D4 · Тригери довіри діють</b> <span class="hyp">[?]</span></td>
-        <td>Proof-блок, ставка на імена класифікаційних органів</td>
-        <td>Знаємо лише, що конкуренти їх застосовують</td>
+        <td><b>D4 · Trust triggers work</b> <span class="hyp">[?]</span></td>
+        <td>The proof block, the bet on classification-body names</td>
+        <td>All we know is that competitors use them <span class="nosrc">effect not confirmed</span> <a class="ref" href="research.md" target="_blank" title="research.md §9.1–§9.2 — what competitors do, scored against our own criteria; no audience data">§</a></td>
       </tr>
       <tr>
-        <td><b>D5 · Вади конкурентів спричиняють зрив</b> <span class="hyp">[?]</span></td>
-        <td>Уся секція «болі» в персонах</td>
-        <td>Незалежно підтверджена лише навігація (Contentsquare, поведінкові дані). Жаргон, PDF, дрейф, «без форми» — тільки наш аудит</td>
+        <td><b>D5 · Competitor flaws cause abandonment</b> <span class="hyp">[?]</span></td>
+        <td>The entire "pains" section of the personas</td>
+        <td>Only <b>2 of the 8</b> checked assumptions are independently confirmed; navigation is the strongest, with behavioural data <a class="ref" href="https://contentsquare.com/customers/schneider-electric/" target="_blank" title="Contentsquare × Schneider Electric — session replay and journey analysis">↗</a>. Jargon, stale PDFs, drift, "no form" rest on our audit alone <a class="ref" href="research.md" target="_blank" title="research.md §11.1–§11.3 — the eight assumptions and the honest verdict">§</a></td>
       </tr>
     </tbody>
   </table></div>
 
   <div class="card" style="margin-top:18px">
-    <h4>Найбільша гіпотеза — під усім документом</h4>
-    <p style="font-size:14px; margin:0">Що ця робота взагалі виконується <b>на сайті постачальника</b>. Публічного шару відгуків покупців у категорії не існує (перевірено: Trustpilot/Reddit по 4 конкурентах — нуль) — <b>кінцевий користувач гучний онлайн, покупець мовчить</b>. Це властивість ринку, не провал пошуку. Знімається одним питанням до відділу продажів: хто фактично надсилає вхідні запити і після чого.</p>
+    <h4>The biggest hypothesis — underneath the whole document</h4>
+    <p style="font-size:14px; margin:0">That this work is done <b>on a supplier's website</b> at all. No public layer of buyer feedback exists in this category — Trustpilot and Reddit searched for Marlink, Navarino, Speedcast and NSSLGlobal returned <b>zero</b> customer reviews; a reference company has <b>8</b> Glassdoor reviews, all from employees <a class="ref" href="jtbd.md" target="_blank" title="jtbd.md §9.1 — the forum and review check, 05.08.2026">§</a>. <b>The end user is loud online, the buyer is silent</b>. That is a property of the market, not a failure of searching. It is settled by one question to sales: who actually sends inbound enquiries, and after what.</p>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <p><b>Ланцюжок доказів:</b>
-    <span class="pill"><a href="research.md">research.md</a> — аудит 15 сайтів</span>
-    <span class="pill"><a href="people.md">people.md</a> — що аудит знає про людей</span>
+  <p><b>Evidence chain:</b>
+    <span class="pill"><a href="research.md">research.md</a> — audit of 15 sites</span>
+    <span class="pill"><a href="people.md">people.md</a> — what the audit knows about people</span>
     <span class="pill"><a href="people-desk.md">people-desk.md</a> — desk research</span>
-    <span class="pill"><a href="personas.md">personas.md</a> — прото-персони + перевірки</span>
-    <span class="pill"><a href="jtbd.md">jtbd.md</a> — jobs + матриця</span>
-    <span class="pill"><a href="audit.md">audit.md</a> — аудит 62 тверджень</span>
+    <span class="pill"><a href="personas.md">personas.md</a> — proto-personas + verification</span>
+    <span class="pill"><a href="jtbd.md">jtbd.md</a> — jobs + matrix</span>
+    <span class="pill"><a href="audit.md">audit.md</a> — audit of 62 statements</span>
   </p>
-  <p>Asterra Networks — вигаданий бренд для навчального UX/UI-кейсу. Прото-персони складено 2026-08-05 без первинного дослідження; усі [?] — чесні дірки, не недбалість.</p>
+  <p>Asterra Networks is an invented brand for an educational UX/UI case study. Proto-personas compiled 2026-08-05 with no primary research; every [?] is an honest gap, not carelessness.</p>
 </div></footer>
 
 </body>
