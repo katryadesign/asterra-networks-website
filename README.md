@@ -72,6 +72,28 @@ research, every claim carries a visible evidence label (`[FACT]` / `[2ND-HAND]` 
 
 ---
 
+## Structure (IA layer)
+
+The information architecture, derived from the research layer above — entities from
+jobs, screens from entities, navigation from screens, flows on top. One-page view:
+[`ia.html`](./ia.html) (sitemap tree, Mermaid flows, traceability matrix).
+
+- [`sitemap.md`](./sitemap.md) — four sections, each closed by its own quality-check
+  block: **§1 Entities** (8 objects O1–O8 with fields, evidence labels, generating
+  jobs and relations; borderline calls documented — e.g. proof as one typed entity,
+  homepage as a screen, not an object) · **§5 Screens** (8 job-backed + 4 declared
+  [ORPHAN] hygiene; states and components explicitly not screens) · **§6 Navigation**
+  (5 global items = job clusters; 3 transitions to the main job; level ≠ importance) ·
+  **§7 Traceability** (10 jobs × 12 screens, 28 ✓ with E/P/C roles; orphans kept
+  visible: S2 and the hygiene columns).
+- [`flows.md`](./flows.md) — Mermaid `flowchart TD` per job (MAIN verbatim + R1, R2,
+  R5), each with decisions, loading/empty/error/success states, and both endings —
+  success and dead ends. Includes the adversarial-critique pass: 11 dead-end traps
+  fixed (recoverable failures now offer a forward branch; trust collapses stay
+  terminal), 6 state gaps closed.
+
+---
+
 ## How to navigate
 
 1. Read the brief → [`CLAUDE.md`](./CLAUDE.md).

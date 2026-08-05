@@ -473,3 +473,29 @@ people) · `[TRADE]` an article in the trade press (here — a vendor-authored c
 - **Five assumptions (#2, 3, 4, 7, 8) rest on our audit alone.** That doesn't make them false — the sites really are like this, the screenshots exist. But **the harm these flaws cause the buyer has been measured by no one**, and in the personas they must remain [INFERRED]/[?].
 - The most valuable findings came **outside the list**: the distributor leak, supplier financial viability as a criterion, independent confirmation of the consensus/validation jobs, and a third proof of R5.
 - The signal against P1-primary repeated twice: in Navarino's redesign brief and in the Splash247 column the superintendent is either absent from the audiences or named only as the one pained by crew access.
+
+---
+
+## 12. Gap surfaced during IA construction (2026-08-05)
+
+Recorded while building [`../flows.md`](../flows.md) (user flows with loading / empty /
+error states), not sought deliberately.
+
+**This audit covered happy paths only.** All §3–§5 observations describe competitor
+pages *as they render on success*: navigation, content, forms, proof. **No failure
+surface was ever recorded** — what IEC's finder shows on zero results, what Marlink's
+routed form does on a submission error, whether Speedcast's stale-PDF links fail
+gracefully, what any empty industry hub looks like. The C-criteria in §9.1 do not
+measure it either.
+
+**Consequence:** every state and recovery branch in `flows.md` (empty matching result,
+proof-load failure, form-error retry) rests on **general UX practice, not market
+evidence** — there is no data on whether competitors handle these moments well or at
+all, and therefore none on whether handling them is table stakes or a differentiator
+in this category.
+
+**Cheap to close:** re-visit 3–5 already-audited surfaces and deliberately break them —
+submit an empty finder query (IEC), a failing form (Marlink, NSSLGlobal), a
+non-existent URL per site (their 404s). One session, screenshots into
+[`screens/`](./screens/); would upgrade the `flows.md` state designs from
+practice-based to evidence-based.

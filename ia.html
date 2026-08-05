@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asterra Networks — Information Architecture</title>
+<meta name="description" content="The designed IA for Asterra Networks: job-derived sitemap, navigation model, user flows and the job × screen traceability matrix — with orphans and hypotheses kept visible.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%97%BA%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b0d11; --bg2:#0f1218; --panel:#141821; --panel2:#1a1f2b;
+    --line:#242b38; --line2:#2f3949;
+    --text:#e8ebf2; --muted:#9aa5b8; --dim:#6f7c92;
+    --accent:#7aa2ff; --accent2:#5be9d6; --link:#8fb3ff;
+    --maxw:1180px;
+    --s1:rgba(255,107,107,.16); --s1c:#ff8b8b;
+    --s2:rgba(255,169,77,.16); --s2c:#ffb15e;
+    --s3:rgba(255,212,59,.14); --s3c:#ffe066;
+    --s5:rgba(81,207,102,.16); --s5c:#69db7c;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:radial-gradient(1200px 700px at 80% -200px,#161c2b 0,var(--bg) 60%) no-repeat, var(--bg);
+    color:var(--text); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+  header.hero{padding:56px 0 28px; border-bottom:1px solid var(--line)}
+  .eyebrow{color:var(--accent2); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:12px; margin:0 0 14px}
+  h1{font-size:clamp(28px,5vw,46px); line-height:1.08; letter-spacing:-.02em; margin:0 0 14px; font-weight:800}
+  .lede{color:var(--muted); font-size:clamp(15px,2vw,18px); max-width:860px; margin:0}
+  .meta{margin-top:18px; color:var(--dim); font-size:13px; display:flex; flex-wrap:wrap; gap:8px 18px}
+  .meta b{color:var(--muted); font-weight:600}
+  .note{margin-top:18px; background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; padding:12px 16px; color:var(--muted); font-size:14px}
+  .note.warn{border-left-color:var(--s2c)}
+
+  nav.toc{position:sticky; top:0; z-index:20; background:rgba(11,13,17,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex; flex-wrap:wrap; gap:6px; padding:10px 20px}
+  nav.toc a{color:var(--muted); font-size:13.5px; font-weight:600; padding:7px 12px; border-radius:999px; border:1px solid transparent}
+  nav.toc a:hover{color:var(--text); background:var(--panel); border-color:var(--line); text-decoration:none}
+
+  section{padding:44px 0; border-bottom:1px solid var(--line)}
+  section > .wrap > h2{font-size:clamp(22px,3.5vw,32px); letter-spacing:-.02em; margin:0 0 6px; font-weight:800}
+  .sec-sub{color:var(--muted); margin:0 0 24px; max-width:880px}
+  h3{font-size:19px; margin:30px 0 12px; letter-spacing:-.01em}
+
+  /* chips */
+  .tag{display:inline-block; border-radius:5px; padding:0 7px; font-weight:700; font-size:11.5px; letter-spacing:.02em; line-height:1.8; vertical-align:middle; white-space:nowrap; margin:1px 2px 1px 0}
+  .t-job{background:rgba(122,162,255,.16); color:var(--accent)}
+  .t-jobmain{background:var(--accent); color:#0b0d11}
+  .t-pers{background:rgba(91,233,214,.14); color:var(--accent2)}
+  .t-lvl{background:var(--panel2); color:var(--muted); border:1px solid var(--line2)}
+  .t-ent{background:rgba(255,255,255,.06); color:var(--dim)}
+  .t-q{background:var(--s3); color:var(--s3c)}
+  .t-orph{background:var(--s1); color:var(--s1c)}
+
+  /* sitemap tree */
+  .tree{margin:14px 0}
+  .tgroup{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:14px 0}
+  .tgroup > h3{margin:0 0 4px; color:var(--accent)}
+  .tgroup > .gjob{color:var(--dim); font-size:13px; margin:0 0 12px}
+  .tgroup.orphan{border-style:dashed; opacity:.8}
+  .tgroup.orphan > h3{color:var(--s1c)}
+  .screen{border-left:2px solid var(--line2); padding:10px 0 10px 16px; margin:6px 0 6px 6px}
+  .screen b.sname{font-size:15.5px}
+  .screen .srow{margin-top:5px}
+  .screen .swhy{color:var(--muted); font-size:13.5px; margin-top:5px; max-width:820px}
+  .screen.hyp{border-left-color:var(--s3c)}
+  .screen.orph{border-left-color:var(--s1c)}
+
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px; margin:14px 0 8px; background:var(--panel)}
+  table{border-collapse:collapse; width:100%; min-width:720px; font-size:13.5px}
+  th,td{text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line)}
+  th:last-child,td:last-child{border-right:0}
+  thead th{position:sticky; top:0; background:var(--panel2); color:var(--text); font-weight:700; font-size:12.5px; letter-spacing:.02em; z-index:1}
+  tbody tr:last-child td{border-bottom:0}
+  tbody th{background:var(--panel2); font-weight:700; position:sticky; left:0; z-index:1; min-width:170px}
+  tbody tr:nth-child(even) td{background:rgba(255,255,255,.012)}
+  caption{caption-side:top; text-align:left; color:var(--dim); font-size:12.5px; padding:8px 2px}
+
+  /* matrix */
+  .mx td{text-align:center; font-weight:700; font-variant-numeric:tabular-nums}
+  .mx td.mark{color:var(--s5c); background:rgba(81,207,102,.07)}
+  .mx td.orphcol, .mx th.orphcol{background:rgba(255,107,107,.06)}
+  .mx tr.orphrow td, .mx tr.orphrow th{background:rgba(255,107,107,.08)}
+  .mx tr.orphrow th{color:var(--s1c)}
+  .mx thead th.orphcol{color:var(--s1c)}
+
+  /* path */
+  .path{display:flex; flex-wrap:wrap; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:12px 0}
+  .path .pstep{background:var(--panel2); border:1px solid var(--line2); border-radius:8px; padding:6px 12px; font-weight:700; font-size:13.5px}
+  .path .parrow{color:var(--dim); font-size:13px; text-align:center}
+  .path .parrow small{display:block; color:var(--accent2); font-size:11px}
+
+  /* mermaid */
+  .mermaid-wrap{overflow-x:auto; background:var(--bg2); border:1px solid var(--line); border-radius:12px; padding:14px; margin:14px 0}
+  pre.mermaid{margin:0; background:transparent; display:flex; justify-content:center}
+  .flow-head{margin-top:34px}
+  .flow-quote{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent2); border-radius:10px; padding:12px 16px; color:var(--muted); font-size:14px; max-width:900px}
+  .flow-quote em{color:var(--text)}
+
+  .grid{display:grid; gap:16px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .card h4{margin:0 0 8px; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent2)}
+  .big{font-size:30px; font-weight:800; letter-spacing:-.02em}
+  .card small{color:var(--muted); display:block; margin-top:4px}
+  ul{margin:8px 0; padding-left:20px} li{margin:5px 0}
+
+  footer{padding:34px 0 60px; color:var(--dim); font-size:13.5px}
+  @media (max-width:860px){ .cols-3{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Asterra Networks · UX case study</p>
+    <h1>Information Architecture</h1>
+    <p class="lede">The IA derived from jobs, not from the B2B template: an entity inventory → 8 job-backed
+    screens → a 5-item navigation model → 4 user flows with states and dead ends → a job × screen
+    traceability matrix. Orphans and hypotheses are kept visible, not hidden.</p>
+    <div class="meta">
+      <span><b>Sources:</b> <a href="sitemap.md">sitemap.md</a> · <a href="flows.md">flows.md</a> · <a href="research/jtbd.md">jtbd.md</a> · <a href="research/personas.md">personas.md</a></span>
+      <span><b>Compiled:</b> 2026-08-05</span>
+    </div>
+    <div class="note warn"><b>Standing caveat:</b> every structure below inherits the site-visit bet
+    (jtbd.md §6) — purchase triggers are documented, visit triggers are not. This is designed support,
+    not observed behaviour. Markers: <span class="tag t-q">[?]</span> hypothesis ·
+    <span class="tag t-orph">[ORPHAN]</span> no confirmed job.</div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#sitemap">Sitemap</a>
+  <a href="#nav">Navigation</a>
+  <a href="#flows">Flows</a>
+  <a href="#matrix">Traceability</a>
+</div></nav>
+
+<!-- ============ SITEMAP ============ -->
+<section id="sitemap">
+  <div class="wrap">
+    <h2>Sitemap — screens grouped by user logic</h2>
+    <p class="sec-sub">Each screen exists because a job needs a way to act on an entity (sitemap.md §5).
+    Jobs are labeled per screen; groups appear only where jobs confirm them. One expected group —
+    “compare the options” — is deliberately absent: demand for comparison is recorded nowhere (jtbd.md §6, §8.3).</p>
+
+    <div class="tree">
+
+      <div class="tgroup">
+        <h3>ORIENT — “which solution fits us?”</h3>
+        <p class="gjob">Job cluster: MAIN</p>
+        <div class="screen">
+          <b class="sname">Entry screen</b>
+          <div class="srow"><span class="tag t-jobmain">MAIN — start</span> <span class="tag t-pers">P1 + P2/P4</span> <span class="tag t-lvl">GLOBAL · site root</span> <span class="tag t-ent">O3 Industry + O4 Situation</span></div>
+          <p class="swhy">The shop-window of the buyer’s own objects: industries, situations, dated norms. The
+          five-pillar list lives here as a <em>section</em> (a standalone overview screen failed verification).
+          Exploration only — no quote CTA (brief §6).</p>
+        </div>
+        <div class="screen">
+          <b class="sname">Guided matching screen</b>
+          <div class="srow"><span class="tag t-jobmain">MAIN</span> <span class="tag t-job">R1 (norm entry)</span> <span class="tag t-pers">P1 + P2</span> <span class="tag t-lvl">GLOBAL · item 1</span> <span class="tag t-ent">O4 → O1</span></div>
+          <p class="swhy">Situation → recommended solution; asks about the trigger, not the technology.
+          <span class="tag t-q">[?]</span> its <em>lead</em> over recognition entry rests on the untested
+          “no specialist across five pillars” thesis (personas.md §8.4).</p>
+        </div>
+        <div class="screen">
+          <b class="sname">Industry screen <span style="color:var(--dim)">· one per industry, Maritime leads</span></b>
+          <div class="srow"><span class="tag t-jobmain">MAIN — self-id</span> <span class="tag t-job">E1 language</span> <span class="tag t-job">S1 (Maritime)</span> <span class="tag t-pers">P1 ⭐ / P4</span> <span class="tag t-lvl">GLOBAL · item 2</span> <span class="tag t-ent">O3</span></div>
+          <p class="swhy">Discovery by recognition; Maritime carries the crew-retention argument natively.
+          <span class="tag t-q">[?]</span> industry-vs-situation lead is open (research.md §10.6).</p>
+        </div>
+      </div>
+
+      <div class="tgroup">
+        <h3>UNDERSTAND FIT — “is this it, and will it survive scrutiny?”</h3>
+        <p class="gjob">Job cluster: MAIN · R1 · R2 · R5</p>
+        <div class="screen">
+          <b class="sname">Solution detail screen <span style="color:var(--dim)">· one per solution</span></b>
+          <div class="srow"><span class="tag t-jobmain">MAIN</span> <span class="tag t-job">R2 proof</span> <span class="tag t-job">R3 forwardable</span> <span class="tag t-job">R1 norms closed</span> <span class="tag t-pers">P1 + P2</span> <span class="tag t-lvl">CONTEXTUAL</span> <span class="tag t-ent">O1 + O5</span></div>
+          <p class="swhy">The forwardable core object of the site. Proof (named body, single-source numbers) is an
+          attribute here — R2 is deliberately screen-less. Reached via matching, industry, norm, or the entry pillar section.</p>
+        </div>
+        <div class="screen">
+          <b class="sname">Crew access &amp; control screen</b>
+          <div class="srow"><span class="tag t-jobmain">R5</span> <span class="tag t-job">S1 hiring</span> <span class="tag t-job">R1 MLC</span> <span class="tag t-pers">P1 ⭐ + P4</span> <span class="tag t-lvl">GLOBAL · item 4</span> <span class="tag t-ent">O8</span></div>
+          <p class="swhy">The rule set sold at message level: quotas, ranks, filters, geo, backup channel, cost
+          visibility. The altitude bet — nobody in the market leads with this (jtbd.md §8.2.3).</p>
+        </div>
+        <div class="screen">
+          <b class="sname">Norm screen <span style="color:var(--dim)">· one per dated norm</span></b>
+          <div class="srow"><span class="tag t-jobmain">R1</span> <span class="tag t-job">R2 via paper</span> <span class="tag t-pers">P1 + P2</span> <span class="tag t-lvl">GLOBAL · item 3</span> <span class="tag t-ent">O2</span></div>
+          <p class="swhy">Norm → which solution closes it → what paper you get. The unclaimed vendor-side link.
+          <span class="tag t-q">[?]</span> that buyers bring the norm question to a supplier at all (jtbd.md §3 R1).</p>
+        </div>
+      </div>
+
+      <div class="tgroup">
+        <h3>VERIFY THE PROVIDER — deliberately not a screen</h3>
+        <p class="gjob">Job cluster: R2 (table stakes)</p>
+        <p class="swhy" style="color:var(--muted); font-size:14px; margin:0">R2 is served by O5 Proof Items
+        distributed as attributes on solution, industry and crew screens under the E2 single-source constraint.
+        A standalone “trust page” would detach proof from the object it proves.</p>
+      </div>
+
+      <div class="tgroup">
+        <h3>PREPARE INTERNAL APPROVAL — “it must survive whoever pays”</h3>
+        <p class="gjob">Job cluster: R3 · E2</p>
+        <div class="screen hyp">
+          <b class="sname">Approval materials screen</b> <span class="tag t-q">[?]</span>
+          <div class="srow"><span class="tag t-jobmain">R3</span> <span class="tag t-job">E2 constraint</span> <span class="tag t-pers">P2 → P4 (P1 = 2)</span> <span class="tag t-lvl">DEEP</span> <span class="tag t-ent">O6</span></div>
+          <p class="swhy">Ungated library of forwardable, dated, self-consistent artifacts. Hypothesis: R3’s primary
+          carrier is the forwardable solution page; contents are undefined (personas.md §7.4). Rises if the primary
+          flips to P2. Onward path → Inquiry.</p>
+        </div>
+      </div>
+
+      <div class="tgroup">
+        <h3>REACH THE EXPERT — the end state of the main job</h3>
+        <p class="gjob">Job cluster: MAIN · R4</p>
+        <div class="screen">
+          <b class="sname">Inquiry screen</b>
+          <div class="srow"><span class="tag t-jobmain">MAIN — end state</span> <span class="tag t-job">R4 role field</span> <span class="tag t-job">E1 routing</span> <span class="tag t-pers">P1 ⭐ + P2/P4</span> <span class="tag t-lvl">GLOBAL · item 5</span> <span class="tag t-ent">O7</span></div>
+          <p class="swhy">Single-step request carrying solution + industry context, the role field (catches frame
+          agreements early) and the routing promise. Every flow terminates here — its error/retry loop is the
+          single highest-leverage state in the model.</p>
+        </div>
+      </div>
+
+      <div class="tgroup orphan">
+        <h3>HYGIENE — declared, not designed</h3>
+        <p class="gjob">No buyer job (jtbd.md §8.3) — must not compete with the core</p>
+        <div class="screen orph"><b class="sname">Company</b> <span class="tag t-orph">[ORPHAN]</span> <span class="tag t-lvl">DEEP · footer</span> <span class="tag t-ent">backlog — hygiene</span></div>
+        <div class="screen orph"><b class="sname">Careers</b> <span class="tag t-orph">[ORPHAN]</span> <span class="tag t-lvl">DEEP · footer</span> <span class="tag t-ent">backlog — hygiene</span></div>
+        <div class="screen orph"><b class="sname">Legal</b> <span class="tag t-orph">[ORPHAN]</span> <span class="tag t-lvl">DEEP · footer</span> <span class="tag t-ent">backlog — mandatory hygiene</span></div>
+        <div class="screen orph"><b class="sname">Insights / News</b> <span class="tag t-orph">[ORPHAN]</span> <span class="tag t-lvl">deleted from MVP scope</span> <span class="tag t-ent">jtbd.md §8.3 cut candidate</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ NAVIGATION ============ -->
+<section id="nav">
+  <div class="wrap">
+    <h2>Navigation model</h2>
+    <p class="sec-sub">Five global items — each an entry into a confirmed job cluster, ordered by the MVP core
+    (jtbd.md §8.2: MAIN → R1 → R5) plus the brief-mandated contact slot. Labels are working labels, not final copy.</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>Working label</th><th>Job behind it</th><th>Persona first</th><th>Why global</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>“Find what fits”</b> → Guided matching</td><td><span class="tag t-jobmain">MAIN</span></td><td>P1 ⭐ + P2</td><td>The core job must be reachable from anywhere. <span class="tag t-q">[?]</span> lead position vs item 2</td></tr>
+        <tr><td>2</td><td><b>“Your industry”</b> → Industry screens</td><td><span class="tag t-jobmain">MAIN</span> <span class="tag t-job">E1 · S1</span></td><td>P1 ⭐ (Maritime)</td><td>The second confirmed MAIN mechanism — kept because our jobs need the sector frame, not because competitors have it</td></tr>
+        <tr><td>3</td><td><b>“Regulations &amp; deadlines”</b> → Norm screens</td><td><span class="tag t-job">R1</span></td><td>P1 + P2</td><td>The niche’s whole value <em>is</em> entry: “certificate as a badge vs norm as navigation” <span class="tag t-q">[?]</span></td></tr>
+        <tr><td>4</td><td><b>“Crew connectivity”</b> → Crew screen</td><td><span class="tag t-job">R5</span></td><td>P1 ⭐ + P4</td><td>Global placement <em>is</em> the altitude bet — burying it repeats the market’s failure</td></tr>
+        <tr><td>5</td><td><b>“Talk to an expert”</b> → Inquiry</td><td><span class="tag t-jobmain">MAIN end</span> <span class="tag t-job">R4</span></td><td>P1 ⭐</td><td>Brief-mandated header slot; the finish line is never more than one transition away</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Depth to the main job — 3 transitions (canonical path)</h3>
+    <div class="path">
+      <span class="pstep">Entry screen</span>
+      <span class="parrow">→<small>MAIN: orientation</small></span>
+      <span class="pstep">Guided matching</span>
+      <span class="parrow">→<small>MAIN: matched</small></span>
+      <span class="pstep">Solution detail</span>
+      <span class="parrow">→<small>MAIN end · R4</small></span>
+      <span class="pstep">Inquiry</span>
+    </div>
+    <p class="sec-sub" style="margin-top:8px">Fit rationale and reliability proof cost <b>0 extra transitions</b> —
+    both live on the Solution detail screen (the “R2 screen-less” decision). Alternative paths: via Industry — 3 ·
+    via Norm — 3 · crew trigger — <b>2</b> (Entry → Crew → Inquiry). Excluded from counting: scroll, menu, tabs, accordions.</p>
+  </div>
+</section>
+
+<!-- ============ FLOWS ============ -->
+<section id="flows">
+  <div class="wrap">
+    <h2>User flows</h2>
+    <p class="sec-sub">One flow per job, headed by the verbatim jtbd.md phrasing. Rectangles are §5 screens; diamonds are
+    decisions; stadium nodes are states (loading / empty / error / success); circles are dead ends. Policy: recoverable
+    situations offer a forward branch before terminating; trust collapses terminate without one.</p>
+
+    <h3 class="flow-head">MAIN JOB</h3>
+    <div class="flow-quote"><em>“When I need to close a specific fleet requirement, I want to confidently determine what
+    exactly we need and who can be trusted with it, so that I enter the supplier conversation with a ready position rather
+    than the question ‘so what do you offer?’”</em> — jtbd.md §2</div>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+    trigger(["Trigger: a specific fleet requirement&lt;br/&gt;docking · PSC · budget line · newbuild"]) --> entry["Entry screen"]
+    entry --> needClear{"Can they already name what they need?"}
+    needClear -->|"no — the need is unclear"| matching["Guided matching screen"]
+    needClear -->|"recognizes their sector first"| industry["Industry screen — Maritime"]
+    needClear -->|"yes — knows their pillar"| solution["Solution detail screen"]
+    matching --> mLoading(["State: loading — matching in progress"])
+    mLoading --> loadOk{"Results loaded?"}
+    loadOk -->|no| mError(["State: error — matching unavailable"])
+    loadOk -->|yes| mResult{"Relevant solution matched?"}
+    mResult -->|yes| solution
+    mResult -->|"no / unsure"| mEmpty(["State: empty — no confident match"])
+    mEmpty --> fallback{"Try another entry?"}
+    mError --> fallback
+    fallback -->|"yes — by industry"| industry
+    fallback -->|no| deadHuman(("Dead end: leaves to ask a human&lt;br/&gt;instead — the market's default"))
+    industry --> iLoading(["State: loading — sector content"])
+    iLoading --> iOk{"Loaded?"}
+    iOk -->|no| iError(["State: error — sector content unavailable"])
+    iError --> fallback
+    iOk -->|yes| recog{"Do they recognize their situation on the page?"}
+    recog -->|yes| solution
+    recog -->|no| tryMatch{"Try guided matching instead?"}
+    tryMatch -->|yes| matching
+    tryMatch -->|no| deadFiller(("Dead end: sector page reads&lt;br/&gt;as filler — leaves"))
+    solution --> sLoading(["State: loading — page and proof load"])
+    sLoading --> sOk{"Loaded?"}
+    sOk -->|no| sError(["State: error — page unavailable"])
+    sError --> sRetry{"Retry?"}
+    sRetry -->|yes| solution
+    sRetry -->|no| deadTech(("Dead end: lost to a&lt;br/&gt;technical failure"))
+    sOk -->|yes| fit{"Does it close the requirement?"}
+    fit -->|no| another{"Try another solution or entry?"}
+    another -->|yes| matching
+    another -->|no| deadNoFit(("Dead end: leaves without&lt;br/&gt;a position"))
+    fit -->|yes| proof{"Is the proof enough for external scrutiny?"}
+    proof -->|yes| ready{"Ready to contact the expert?"}
+    proof -->|no| deadTrust(("Dead end: trust not built —&lt;br/&gt;generic claims or number drift"))
+    proof -->|"not sure — wants to check the paper"| norm["Norm screen"]
+    norm --> paperOk{"Does the paper check out?"}
+    paperOk -->|yes| ready
+    paperOk -->|no| deadTrust
+    ready -->|"needs internal approval first"| approval["Approval materials screen [?]"]
+    ready -->|yes| inquiry["Inquiry screen"]
+    approval --> aLoading(["State: loading — materials list"])
+    aLoading --> aOk{"Loaded?"}
+    aOk -->|no| aError(["State: error — library unavailable"])
+    aOk -->|yes| aRelevant{"Material for their case available?"}
+    aRelevant -->|no| aEmpty(["State: empty — nothing for this case"])
+    aError --> aFallback{"Use the forwardable solution&lt;br/&gt;page itself instead?"}
+    aEmpty --> aFallback
+    aRelevant -->|yes| inquiry
+    aFallback -->|yes| inquiry
+    aFallback -->|no| deadStall(("Dead end: rationale not assembled —&lt;br/&gt;internal approval stalls"))
+    inquiry --> sending(["State: loading — request submitting"])
+    sending --> sent{"Request sent?"}
+    sent -->|yes| success(["State: success — context passed,&lt;br/&gt;ready position achieved"])
+    sent -->|no| sErr(["State: error — submission failed"])
+    sErr --> retry{"Retry?"}
+    retry -->|yes| inquiry
+    retry -->|no| deadForm(("Dead end: qualified lead lost&lt;br/&gt;to a form failure"))
+    </pre></div>
+
+    <h3 class="flow-head">R1 — Translate a norm into a requirement for one’s own vessels</h3>
+    <div class="flow-quote"><em>“When a dated requirement appears — a port inspection, the annual audit, a newbuild rule —
+    I want to understand what exactly it means for my vessels, so that I don’t discover non-compliance at inspection
+    time.”</em> — jtbd.md §3 R1</div>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+    trigger(["Trigger: a dated requirement appears —&lt;br/&gt;MLC amendment · DOC audit · UR E26/E27 newbuild"]) --> arrive{"How do they arrive?"}
+    arrive -->|"global nav — the norm entry"| norm["Norm screen"]
+    arrive -->|"lands on the site root first"| entry["Entry screen"]
+    entry --> norm
+    norm --> nLoading(["State: loading — norm content"])
+    nLoading --> nOk{"Content loaded?"}
+    nOk -->|no| nError(["State: error — norm data unavailable"])
+    nError --> nRetry{"Retry?"}
+    nRetry -->|yes| norm
+    nRetry -->|no| deadClass1(("Dead end: leaves for the&lt;br/&gt;class society's site"))
+    nOk -->|yes| applies{"Does it apply to their vessels?"}
+    applies -->|"no"| doneOk(["State: success — non-applicability&lt;br/&gt;verified, no purchase needed"])
+    applies -->|"cannot tell"| askExpert{"Ask the expert instead?"}
+    askExpert -->|yes| inquiry["Inquiry screen"]
+    askExpert -->|no| deadClass2(("Dead end: comprehension gap —&lt;br/&gt;goes to ClassNK Q-and-As instead"))
+    applies -->|yes| closes{"Is a closing solution linked?"}
+    closes -->|no| nEmpty(["State: empty — no solution&lt;br/&gt;linked to this norm"])
+    nEmpty --> emptyAsk{"Ask about this norm anyway?"}
+    emptyAsk -->|yes| inquiry
+    emptyAsk -->|no| deadGap(("Dead end: norm understood, vendor&lt;br/&gt;link missing — the niche wasted"))
+    closes -->|yes| solution["Solution detail screen"]
+    solution --> paper{"Is the resulting paper clear —&lt;br/&gt;what the auditor will accept?"}
+    paper -->|no| paperAsk{"Ask which paper they would get?"}
+    paperAsk -->|yes| inquiry
+    paperAsk -->|no| deadPaper(("Dead end: no paper named —&lt;br/&gt;the choice cannot survive scrutiny"))
+    paper -->|yes| inquiry
+    inquiry --> nSending(["State: loading — request submitting"])
+    nSending --> sent{"Request sent?"}
+    sent -->|yes| success(["State: success — inquiry carries&lt;br/&gt;the norm as its context"])
+    sent -->|no| sErr(["State: error — submission failed"])
+    sErr --> rRetry{"Retry?"}
+    rRetry -->|yes| inquiry
+    rRetry -->|no| deadFormR1(("Dead end: qualified lead lost&lt;br/&gt;to a form failure"))
+    </pre></div>
+
+    <h3 class="flow-head">R2 — Make sure the choice survives external scrutiny</h3>
+    <div class="flow-quote"><em>“When I consider a supplier, I want to make sure their solution will survive the scrutiny
+    of class, the auditor or the inspector, so that my own choice doesn’t compromise the company.”</em> — jtbd.md §3 R2</div>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+    trigger(["Trigger: a candidate solution is on the table —&lt;br/&gt;their own choice must not compromise the company"]) --> solution["Solution detail screen"]
+    solution --> pLoading(["State: loading — page and proof load"])
+    pLoading --> pOk{"Loaded?"}
+    pOk -->|no| pError(["State: error — proof data unavailable"])
+    pError --> pRetry{"Retry?"}
+    pRetry -->|yes| solution
+    pRetry -->|no| deadNoVerify(("Dead end: cannot verify —&lt;br/&gt;the candidate is postponed or dropped"))
+    pOk -->|yes| present{"Are proof items present at all?"}
+    present -->|no| pEmpty(["State: empty — no proof attached&lt;br/&gt;to this solution"])
+    pEmpty --> deadGeneric(("Dead end: generic claims —&lt;br/&gt;the lone-25-plus-years pattern, trust lost"))
+    present -->|yes| body{"Is the certifying body named —&lt;br/&gt;DNV · Bureau Veritas?"}
+    body -->|no| deadBadge(("Dead end: a badge without a body —&lt;br/&gt;will not survive the auditor"))
+    body -->|yes| consistent{"Are the numbers consistent?"}
+    consistent -->|no| deadDrift(("Dead end: number drift —&lt;br/&gt;inconsistency itself signals unreliability"))
+    consistent -->|yes| paperCheck{"Verify the paper against the norm?"}
+    paperCheck -->|yes| norm["Norm screen"]
+    norm --> matches{"Does the paper close their requirement?"}
+    matches -->|no| tryAnother{"Look for another solution?"}
+    tryAnother -->|yes| rematch["Guided matching screen"]
+    tryAnother -->|no| deadMismatch(("Dead end: the paper does not close&lt;br/&gt;their specific requirement"))
+    matches -->|yes| validated(["State: success — the choice&lt;br/&gt;will survive scrutiny"])
+    paperCheck -->|"no — proof suffices as shown"| validated
+    validated --> next{"Proceed to expert contact now?"}
+    next -->|yes| inquiry["Inquiry screen"]
+    inquiry --> r2Sending(["State: loading — request submitting"])
+    r2Sending --> sent{"Request sent?"}
+    sent -->|yes| done(["State: success — validated choice,&lt;br/&gt;context passed"])
+    sent -->|no| sErr(["State: error — submission failed"])
+    sErr --> r2Retry{"Retry?"}
+    r2Retry -->|yes| inquiry
+    r2Retry -->|no| deadFormR2(("Dead end: qualified lead lost&lt;br/&gt;to a form failure"))
+    next -->|"later — takes the validated choice away"| exitLater(("Exit: returns with a validated&lt;br/&gt;choice — a pause, not a loss"))
+    </pre></div>
+
+    <h3 class="flow-head">R5 — Give the crew what it demands without losing control</h3>
+    <div class="flow-quote"><em>“When the crew demands decent internet and I answer for costs and order on board, I want to
+    find the balance between access and control, so that I retain people without losing either the budget or the
+    manageability.”</em> — jtbd.md §3 R5</div>
+    <div class="mermaid-wrap"><pre class="mermaid">
+flowchart TD
+    trigger(["Trigger: crew demands decent internet —&lt;br/&gt;and they answer for costs and order on board"]) --> arrive{"How do they arrive?"}
+    arrive -->|"global nav — the crew entry"| crew["Crew access &amp; control screen"]
+    arrive -->|"via the sector frame"| industry["Industry screen — Maritime"]
+    industry --> crew
+    crew --> cLoading(["State: loading — policy content"])
+    cLoading --> cOk{"Loaded?"}
+    cOk -->|no| cError(["State: error — content unavailable"])
+    cError --> cRetry{"Retry?"}
+    cRetry -->|yes| crew
+    cRetry -->|no| deadPostponed(("Dead end: postponed —&lt;br/&gt;the trigger stays live on board"))
+    cOk -->|yes| altitude{"Does it speak policy — quotas · ranks ·&lt;br/&gt;geo · costs — not bandwidth?"}
+    altitude -->|no| deadPitch(("Dead end: reads as a bandwidth pitch —&lt;br/&gt;the market's existing failure repeated"))
+    altitude -->|yes| covers{"Does the rule set cover their case?"}
+    covers -->|no| cEmpty(["State: empty — their policy need&lt;br/&gt;is not addressed"])
+    cEmpty --> customAsk{"Ask with the custom policy need?"}
+    customAsk -->|yes| inquiry["Inquiry screen"]
+    customAsk -->|no| deadUnmatched(("Dead end: leaves with the&lt;br/&gt;need unmet"))
+    covers -->|yes| proofNeed{"Do they need type-approval-grade proof?"}
+    proofNeed -->|yes| solution["Solution detail screen"]
+    solution --> inquiry
+    proofNeed -->|"no — commitment claims suffice"| inquiry
+    inquiry --> r5Sending(["State: loading — request submitting"])
+    r5Sending --> sent{"Request sent?"}
+    sent -->|yes| success(["State: success — balance found:&lt;br/&gt;access granted, control and budget retained"])
+    sent -->|no| sErr(["State: error — submission failed"])
+    sErr --> r5Retry{"Retry?"}
+    r5Retry -->|yes| inquiry
+    r5Retry -->|no| deadFormR5(("Dead end: qualified lead lost&lt;br/&gt;to a form failure"))
+    </pre></div>
+  </div>
+</section>
+
+<!-- ============ TRACEABILITY ============ -->
+<section id="matrix">
+  <div class="wrap">
+    <h2>Traceability — jobs × screens</h2>
+    <p class="sec-sub">A cell is marked only where the link is confirmed by the screen’s purpose, a flow, or the job’s
+    description. <b>E</b> = entry into the job · <b>P</b> = supports progress · <b>C</b> = helps complete.
+    Orphan rows and columns are highlighted red — they are recorded defects and decisions, not omissions.</p>
+
+    <div class="table-wrap"><table class="mx">
+      <caption>28 ✓ across 9 jobs and 8 screens (sitemap.md §7.1). Orphans: 1 job row (S2) · 4 screen columns (hygiene).</caption>
+      <thead><tr>
+        <th>Job \ Screen</th><th>Entry</th><th>Guided matching</th><th>Industry</th><th>Solution detail</th>
+        <th>Crew access</th><th>Norm</th><th>Approval [?]</th><th>Inquiry</th>
+        <th class="orphcol">Company</th><th class="orphcol">Careers</th><th class="orphcol">Legal</th><th class="orphcol">Insights</th>
+      </tr></thead>
+      <tbody>
+        <tr><th>MAIN <small>(main)</small></th><td class="mark">E</td><td class="mark">EP</td><td class="mark">EP</td><td class="mark">P</td><td></td><td class="mark">P</td><td></td><td class="mark">C</td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>R1 <small>norm → requirement</small></th><td class="mark">E</td><td class="mark">E</td><td></td><td class="mark">P</td><td></td><td class="mark">EP</td><td></td><td class="mark">C</td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>R2 <small>survives scrutiny</small></th><td></td><td></td><td></td><td class="mark">EPC</td><td></td><td class="mark">P</td><td></td><td></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>R3 <small>rationale for payer</small></th><td></td><td></td><td></td><td class="mark">EP</td><td></td><td></td><td class="mark">C</td><td></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>R4 <small>can this be bought</small></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="mark">EC</td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>R5 <small>crew access vs control</small></th><td></td><td></td><td class="mark">E</td><td class="mark">P</td><td class="mark">EP</td><td></td><td></td><td class="mark">C</td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>E1 <small>not look incompetent</small></th><td></td><td class="mark">P</td><td class="mark">P</td><td class="mark">P</td><td></td><td></td><td></td><td class="mark">P</td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>E2 <small>rationale won’t crumble</small></th><td></td><td></td><td></td><td class="mark">P</td><td></td><td></td><td class="mark">P</td><td></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr><th>S1 <small>employer people come to</small></th><td></td><td></td><td class="mark">P</td><td></td><td class="mark">P</td><td></td><td></td><td></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td><td class="orphcol"></td></tr>
+        <tr class="orphrow"><th>S2 <small>opinion counted next time</small></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="grid cols-3" style="margin-top:20px">
+      <div class="card"><h4>Job coverage</h4><div class="big">90%</div><small>9 of 10 jobs covered. Orphan: S2 → backlog
+      as unconfirmed — jtbd.md’s own verdict (“the weakest job; if something must be cut — cut this”). The gap is a
+      missing demand signal, not a missing screen.</small></div>
+      <div class="card"><h4>Screen coverage</h4><div class="big">100%</div><small>of job-backed screens (8/8, each with a
+      C-role path to completion). Overall 8/12 — the 4 hygiene orphans are declared: Company / Careers / Legal → backlog;
+      Insights → deleted from MVP scope.</small></div>
+      <div class="card"><h4>Open hypotheses</h4><div class="big">[?]</div><small>The site-visit bet under every ✓ ·
+      norm→supplier visit trigger (item 3) · matching-vs-recognition lead (first-click test) · P1-vs-P2 primary flip
+      (swaps Crew ↔ Approval weight) · the Approval materials screen itself.</small></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Asterra Networks — fictional brand, independent UX/UI case study. Sources:
+    <a href="sitemap.md">sitemap.md</a> (entities · screens · navigation · traceability, each with quality-check blocks) ·
+    <a href="flows.md">flows.md</a> (flows + adversarial critique pass) ·
+    <a href="research/jtbd.md">jtbd.md</a> · <a href="research/personas.md">personas.md</a> ·
+    <a href="research/index.html">research.html</a> · <a href="research/personas.html">personas.html</a>
+  </div>
+</footer>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark',
+    themeVariables: {
+      darkMode: true,
+      background: '#0f1218',
+      primaryColor: '#1a1f2b',
+      primaryTextColor: '#e8ebf2',
+      primaryBorderColor: '#2f3949',
+      lineColor: '#6f7c92',
+      secondaryColor: '#141821',
+      tertiaryColor: '#0f1218',
+      fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+      fontSize: '13px'
+    },
+    flowchart: { curve: 'basis', htmlLabels: true, useMaxWidth: true }
+  });
+</script>
+
+</body>
+</html>

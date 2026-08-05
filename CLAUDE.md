@@ -218,3 +218,38 @@ paused until then.
 Items marked *(proposed)* above are sensible defaults chosen to keep momentum; all
 are easily revised: KPIs, tone words, fictional product names, differentiator,
 content source (MDX vs headless CMS), forms backend, analytics, WCAG target.
+
+---
+
+## 15. Designed IA (2026-08-05)
+
+The IA has been derived from the research layer (entities ← jobs ← personas), not from
+the §5 template sitemap — which remains above as the original brief. Full detail:
+[`sitemap.md`](./sitemap.md) (entities · screens · navigation · traceability, each with
+a quality-check block) · [`flows.md`](./flows.md) (user flows) · one-page view:
+[`ia.html`](./ia.html).
+
+**Top-level sitemap — 8 job-backed screens** (+ 4 declared hygiene orphans):
+
+```
+ORIENT (MAIN)            Entry screen · Guided matching · Industry screens (Maritime leads)
+UNDERSTAND FIT           Solution detail (forwardable core; proof as attributes — R2 is
+(MAIN·R1·R2·R5)          screen-less by design) · Crew access & control (R5) · Norm screens (R1)
+PREPARE APPROVAL (R3)    Approval materials [?] — the only hypothesis screen
+REACH THE EXPERT         Inquiry (single-step, context-carrying, role field for R4)
+HYGIENE [ORPHAN]         Company · Careers · Legal (backlog) · Insights (cut from MVP)
+```
+
+**Global navigation — 5 working items** (order = the MVP core, `jtbd.md` §8.2):
+"Find what fits" (MAIN) · "Your industry" (MAIN/E1/S1) · "Regulations & deadlines"
+(R1 [?]) · "Crew connectivity" (R5 — the altitude bet) · "Talk to an expert"
+(MAIN end + R4, the §6 header slot).
+
+**Main flow & depth:** Entry → Guided matching → Solution detail → Inquiry —
+**3 meaningful transitions** to the main job's end state ("a ready position"); fit
+rationale and reliability proof cost 0 extra transitions (both live on Solution
+detail). Alternative paths: via Industry — 3 · via Norm — 3 · crew trigger — 2.
+
+**Coverage:** 90% of jobs (9/10; S2 backlogged per `jtbd.md`'s own verdict), 100% of
+job-backed screens. Open hypotheses that gate the next iteration: the site-visit bet,
+P1-vs-P2 primary, matching-vs-recognition lead, the norm→supplier visit trigger.
