@@ -48,6 +48,29 @@ See [`CLAUDE.md`](./CLAUDE.md) for the complete design brief.
 
 ---
 
+## People (research layer)
+
+Who buys, what progress they seek, and how well the market serves it — built without primary
+research, every claim carries a visible evidence label (`ФАКТ` / `2-ГЕ ДЖЕРЕЛО` / `АУДИТ` /
+`ВИВЕДЕНО` / `[?]`). One-page view: [`research/personas.html`](./research/personas.html).
+
+- [`research/personas.md`](./research/personas.md) — **proto-personas**: ⭐ P1 Technical
+  Superintendent (primary; approves communication invoices, thinks class/ISM/budget),
+  P2 Fleet IT Manager (vendor selection & business cases; candidate for primary), P4 Owner /
+  CAPEX approver (frame agreements gate the deal). P3 (compliance) was removed after
+  verification — not a buyer. Includes self-audit log, manual verification results (EU job
+  boards, competitor navs) and per-persona falsification criteria.
+- [`research/jtbd.md`](./research/jtbd.md) — **jobs to be done**: main job + 5 related +
+  emotional/social (long and card formats), the JTBD matrix (job × persona × product function
+  × competitor coverage), the 3-job MVP core, cut candidates, and live-voice checks
+  (r/maritime thread, vendor case quotes).
+- Supporting: [`research/people.md`](./research/people.md) (what the competitor audit knows
+  about people), [`research/people-desk.md`](./research/people-desk.md) (desk research: job
+  ads, procurement structure, regulation calendar), [`research/audit.md`](./research/audit.md)
+  (62-claim evidence audit + dangerous-hypotheses list).
+
+---
+
 ## How to navigate
 
 1. Read the brief → [`CLAUDE.md`](./CLAUDE.md).

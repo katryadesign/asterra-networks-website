@@ -74,6 +74,17 @@ coverage, reliability/uptime, maritime safety, standards compliance, support.
 Shared decision drivers across all: **reliability, global coverage, security,
 compliance, access to technical support.**
 
+### 4.1 Evidence-based proto-personas & jobs (research layer, 2026-08-05)
+
+Full evidence chain: [`research/personas.md`](./research/personas.md) · [`research/jtbd.md`](./research/jtbd.md) · [`research/audit.md`](./research/audit.md). Proto-personas — no primary research; every claim carries an evidence label.
+
+- **Primary — P1 · Technical Superintendent.** Shore-based technical manager of a vessel group; an ex-seagoing engineer (Class II CoC, ISM) who **approves communication invoices** and prepares dry-docking budgets. Thinks in class / certificates / ISM / budget language — **not IT**. ⚠️ Open question: accumulated signals (vendor case quotes 5:0 IT/COO) suggest **P2 · Fleet IT Manager** may be the real initiator — decide explicitly before build.
+- **Main job:** *When I need to close a specific fleet requirement, I want to confidently determine what we need and who to entrust it to — so I enter the supplier conversation with a position, not with "so what do you offer?"*
+- **Top-3 jobs for MVP** (important to primary × not served by the market):
+  1. **MAIN** — figure out what fits without studying the whole catalog (only real market finder disappeared; Marlink answers with a human).
+  2. **R1** — regulation with a date → *which solution closes it and what paper you get* (norm-explaining is owned by class societies; the vendor-side link is unclaimed).
+  3. **R5** — give crew internet without losing cost/control (best-evidenced job: COO quote + MLC/PSC + ~20 live vessel accounts; sold deep in product pages, unclaimed at positioning level).
+
 ---
 
 ## 5. Information architecture / sitemap
