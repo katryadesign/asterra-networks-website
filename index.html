@@ -109,7 +109,7 @@
     <p class="lede">A redesign worked <b>lesson by lesson</b> — from competitive research through personas and jobs, to a design system and developer handoff. Each lesson ships as a readable one-page view, with its full working files underneath.</p>
     <div class="meta">
       <span><b>Phase</b> research / discovery</span>
-      <span><b>Lessons published</b> 2 of 8</span>
+      <span><b>Lessons published</b> 2 of 12</span>
       <span><b>Last updated</b> 2026-08-05</span>
       <span><b>Brief</b> <a href="/CLAUDE.md">CLAUDE.md</a></span>
     </div>
@@ -121,7 +121,7 @@
 <section id="lessons"><div class="wrap">
   <span class="kicker">The work</span>
   <h2>Lessons</h2>
-  <p class="sec-sub">The design flows top to bottom: research feeds wireframes → concept → tokens → components → the assembled system → handoff. Published lessons are linked; the rest are stages waiting to be filled.</p>
+  <p class="sec-sub">Twelve lessons, worked in order on one product end to end: research → people → structure → screens → language → visual direction → system → handoff. Published lessons are linked; the rest are stages waiting to be filled.</p>
 
   <!-- L1 -->
   <article class="lesson live">
@@ -179,48 +179,80 @@
   <article class="lesson soon">
     <div class="lnum">03</div>
     <div>
-      <div class="lhead"><h3>Wireframes</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">Low-fidelity layout and flow explorations — turning the MVP core into screens: the solution finder, the solution page built to be forwarded upward, and the regulation-led entry.</p>
+      <div class="lhead"><h3>Information Architecture</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">The bridge from people to interface: turning the personas and the MVP-core jobs into a sitemap, a navigation model, and the key user flows — versioned as diagrams in the repo rather than drawn once and left behind.</p>
     </div>
   </article>
 
   <article class="lesson soon">
     <div class="lnum">04</div>
     <div>
-      <div class="lhead"><h3>Visual Concept</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">Art direction: editorial tech, dark-first, oversized display type, bento grids, photography layered with data motifs.</p>
+      <div class="lhead"><h3>Prototyping &amp; Wireframing</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">Key screens as HTML wireframes with real semantics — the solution finder, the solution page built to be forwarded upward, the regulation-led entry. Empty, error, loading and success states closed up front instead of at the end.</p>
     </div>
   </article>
 
   <article class="lesson soon">
     <div class="lnum">05</div>
     <div>
-      <div class="lhead"><h3>Design Tokens</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">Colour, type, spacing and motion as the single source of truth — including the reduced-motion and colour-scheme contracts.</p>
+      <div class="lhead"><h3>Tone of Voice &amp; Microcopy</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">Voice as a working document rather than a slide of adjectives — derived from the personas, then applied as microcopy across every wireframe state. Critical here, because P1's language is class, certificate, ISM and budget, not Zero Trust and OSI layers.</p>
     </div>
   </article>
 
   <article class="lesson soon">
     <div class="lnum">06</div>
     <div>
-      <div class="lhead"><h3>Components</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">Component inventory and specs — variants, states and accessibility behaviour for each.</p>
+      <div class="lhead"><h3>Concept</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">The visual language, explored as HTML+CSS directions on key screens: editorial tech, dark-first, oversized display type, bento grids, photography layered with data motifs. References read for principles, not copied.</p>
     </div>
   </article>
 
   <article class="lesson soon">
     <div class="lnum">07</div>
     <div>
-      <div class="lhead"><h3>Design System</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">The assembled system: foundations, components, patterns and the guidelines that hold them together.</p>
+      <div class="lhead"><h3>UI Assembly</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">From concept to finished screens — components composed into the real thing, with actual imagery and icons instead of "illustration goes here" placeholders.</p>
     </div>
   </article>
 
   <article class="lesson soon">
     <div class="lnum">08</div>
     <div>
-      <div class="lhead"><h3>Handoff</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">Developer-ready specs, token exports and asset exports — the point where the case study becomes buildable.</p>
+      <div class="lhead"><h3>Design Tokens &amp; Components</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">Tokens pulled out of the concept into CSS variables across three levels — primitive, semantic, component — then a set of clean, semantic base components with no hardcoded values.</p>
+    </div>
+  </article>
+
+  <article class="lesson soon">
+    <div class="lnum">09</div>
+    <div>
+      <div class="lhead"><h3>Design System</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">The assembled system as a living project, not a file: tokens, components, patterns and examples, with documentation that updates the same way the product does.</p>
+    </div>
+  </article>
+
+  <article class="lesson soon">
+    <div class="lnum">10</div>
+    <div>
+      <div class="lhead"><h3>Responsive</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">Breakpoints treated as a product decision rather than a technical one — mobile, tablet and desktop across every key screen, with the adaptive behaviour written down and what breaks first identified.</p>
+    </div>
+  </article>
+
+  <article class="lesson soon">
+    <div class="lnum">11</div>
+    <div>
+      <div class="lhead"><h3>Animation &amp; Microinteractions</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">Motion added to the system rather than bolted onto one button — timing, easing and sequencing as principles, with the expressive direction from the brief kept performant and respectful of <code>prefers-reduced-motion</code>.</p>
+    </div>
+  </article>
+
+  <article class="lesson soon">
+    <div class="lnum">12</div>
+    <div>
+      <div class="lhead"><h3>Handoff &amp; Documentation</h3><span class="status st-soon">Planned</span></div>
+      <p class="ldesc">The full developer-ready package: component behaviour, edge cases, accessibility and dependencies, with the README as the single source of truth. The point where the case study becomes buildable.</p>
     </div>
   </article>
 </div></section>
