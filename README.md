@@ -20,7 +20,7 @@ components → the assembled system → developer handoff.
 
 | # | Folder | What lives here | Status |
 |---|---|---|---|
-| 1 | [`research/`](./research/) | Discovery: [`research.md`](./research/research.md) + [`screens/`](./research/screens/) reference captures | 🟡 In progress |
+| 1 | [`research/`](./research/) | Discovery: [`research.md`](./research/research.md) (competitor audit) + [`screens/`](./research/screens/) captures · evidence about people: [`people.md`](./research/people.md), [`people-desk.md`](./research/people-desk.md), [`personas.md`](./research/personas.md) (proto-personas — validation pending), [`jtbd.md`](./research/jtbd.md), [`audit.md`](./research/audit.md) (evidence audit) | 🟡 In progress |
 | 2 | [`wireframes/`](./wireframes/) | Low-fi layout & flow explorations | ⚪ Planned |
 | 3 | [`concept/`](./concept/) | Visual concept / art direction (editorial tech, dark-first) | ⚪ Planned |
 | 4 | [`tokens/`](./tokens/) | Design tokens — color, type, spacing, motion (source of truth) | ⚪ Planned |

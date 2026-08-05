@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asterra Networks — Прото-персони та JTBD</title>
+<meta name="description" content="Прото-персони, ієрархія jobs to be done та JTBD-матриця для редизайну Asterra Networks — з видимими рівнями доказовості та гіпотезами.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b0d11; --bg2:#0f1218; --panel:#141821; --panel2:#1a1f2b;
+    --line:#242b38; --line2:#2f3949;
+    --text:#e8ebf2; --muted:#9aa5b8; --dim:#6f7c92;
+    --accent:#7aa2ff; --accent2:#5be9d6; --link:#8fb3ff;
+    --maxw:1180px;
+    --s1:rgba(255,107,107,.16); --s1c:#ff8b8b;
+    --s2:rgba(255,169,77,.16); --s2c:#ffb15e;
+    --s3:rgba(255,212,59,.14); --s3c:#ffe066;
+    --s4:rgba(169,227,75,.14); --s4c:#c0eb75;
+    --s5:rgba(81,207,102,.16); --s5c:#69db7c;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:radial-gradient(1200px 700px at 80% -200px,#161c2b 0,var(--bg) 60%) no-repeat, var(--bg);
+    color:var(--text); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+  header.hero{padding:56px 0 28px; border-bottom:1px solid var(--line)}
+  .eyebrow{color:var(--accent2); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:12px; margin:0 0 14px}
+  h1{font-size:clamp(28px,5vw,46px); line-height:1.08; letter-spacing:-.02em; margin:0 0 14px; font-weight:800}
+  .lede{color:var(--muted); font-size:clamp(15px,2vw,18px); max-width:820px; margin:0}
+  .meta{margin-top:18px; color:var(--dim); font-size:13px; display:flex; flex-wrap:wrap; gap:8px 18px}
+  .meta b{color:var(--muted); font-weight:600}
+  .note{margin-top:18px; background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; padding:12px 16px; color:var(--muted); font-size:14px}
+  .note.warn{border-left-color:var(--s2c)}
+
+  nav.toc{position:sticky; top:0; z-index:20; background:rgba(11,13,17,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex; flex-wrap:wrap; gap:6px; padding:10px 20px}
+  nav.toc a{color:var(--muted); font-size:13.5px; font-weight:600; padding:7px 12px; border-radius:999px; border:1px solid transparent}
+  nav.toc a:hover{color:var(--text); background:var(--panel); border-color:var(--line); text-decoration:none}
+
+  section{padding:44px 0; border-bottom:1px solid var(--line)}
+  section > .wrap > h2{font-size:clamp(22px,3.5vw,32px); letter-spacing:-.02em; margin:0 0 6px; font-weight:800}
+  .sec-sub{color:var(--muted); margin:0 0 24px; max-width:860px}
+  h3{font-size:19px; margin:30px 0 12px; letter-spacing:-.01em}
+  h4{font-size:15px; margin:20px 0 8px; color:var(--accent2); text-transform:uppercase; letter-spacing:.08em}
+  .kicker{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); margin-bottom:6px}
+
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px; margin:14px 0 8px; background:var(--panel)}
+  table{border-collapse:collapse; width:100%; min-width:720px; font-size:13.5px}
+  .cmp{min-width:1060px}
+  th,td{text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line)}
+  th:last-child,td:last-child{border-right:0}
+  thead th{position:sticky; top:0; background:var(--panel2); color:var(--text); font-weight:700; font-size:12.5px; letter-spacing:.02em; z-index:1}
+  tbody tr:last-child td{border-bottom:0}
+  tbody th{background:var(--panel2); font-weight:700; position:sticky; left:0; z-index:1; min-width:190px}
+  td:first-child, th:first-child{border-right:1px solid var(--line2)}
+  tbody tr:nth-child(even) td{background:rgba(255,255,255,.012)}
+  caption{caption-side:top; text-align:left; color:var(--dim); font-size:12.5px; padding:8px 2px}
+  td small{color:var(--muted); display:block; margin-top:3px; font-size:12px; line-height:1.45}
+
+  .hyp{color:var(--s3c); font-weight:700}
+  .neg{color:var(--s1c)} .pos{color:var(--s5c)}
+
+  /* evidence chips */
+  .tag{display:inline-block; border-radius:5px; padding:0 7px; font-weight:700; font-size:11.5px; letter-spacing:.02em; line-height:1.7; vertical-align:middle; white-space:nowrap}
+  .t-fact{background:var(--s5); color:var(--s5c)}
+  .t-sec{background:var(--s2); color:var(--s2c)}
+  .t-surv{background:rgba(122,162,255,.16); color:var(--accent)}
+  .t-audit{background:rgba(91,233,214,.14); color:var(--accent2)}
+  .t-inf{background:var(--s3); color:var(--s3c)}
+  .t-q{background:var(--s1); color:var(--s1c)}
+
+  .sc{display:inline-block; min-width:1.5em; text-align:center; border-radius:5px; padding:1px 7px; font-weight:800; font-variant-numeric:tabular-nums}
+  .m3{background:var(--s5); color:var(--s5c)}
+  .m2{background:var(--s3); color:var(--s3c)}
+  .m1{background:var(--s2); color:var(--s2c)}
+  .mq{background:var(--s1); color:var(--s1c)}
+
+  .grid{display:grid; gap:16px}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .card h4{margin-top:0; color:var(--accent)}
+  ul{margin:8px 0; padding-left:20px} li{margin:5px 0}
+  .best{border-left:3px solid var(--s5c)} .second{border-left:3px solid var(--s3c)} .no{border-left:3px solid var(--s1c)}
+
+  /* persona cards */
+  .persona{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 24px; margin:18px 0; position:relative}
+  .persona.primary{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), 0 12px 40px -18px rgba(122,162,255,.35)}
+  .persona.removed{opacity:.66; border-style:dashed}
+  .p-badge{position:absolute; top:-11px; left:20px; background:var(--accent); color:#0b0d11; font-weight:800; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; border-radius:999px; padding:3px 12px}
+  .p-badge.sec{background:var(--panel2); color:var(--muted); border:1px solid var(--line2)}
+  .p-badge.rm{background:var(--s1); color:var(--s1c); border:1px solid var(--s1c)}
+  .persona h3{margin:6px 0 2px; font-size:22px}
+  .p-sub{color:var(--muted); margin:0 0 14px; font-size:14.5px}
+  .p-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:6px 26px}
+  .p-block h5{margin:12px 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent2)}
+  .p-block ul{margin:0; padding-left:18px; font-size:13.5px}
+  .p-block li{margin:4px 0}
+  .quote{margin:14px 0 0; background:var(--bg2); border:1px solid var(--line); border-left:3px solid var(--accent2); border-radius:10px; padding:12px 16px; font-size:14px}
+  .quote em{color:var(--text)}
+  .quote .src{display:block; margin-top:6px; color:var(--dim); font-size:12.5px; font-style:normal}
+  .falsify{margin:14px 0 0; font-size:13px; color:var(--muted); background:rgba(255,107,107,.05); border:1px solid rgba(255,107,107,.2); border-radius:10px; padding:10px 14px}
+  .falsify b{color:var(--s1c)}
+
+  /* job cards */
+  .job-main{background:linear-gradient(160deg,rgba(122,162,255,.10),var(--panel) 55%); border:1px solid var(--accent); border-radius:14px; padding:22px 24px; margin:18px 0}
+  .job-main .jtxt{font-size:clamp(17px,2.4vw,21px); font-weight:700; line-height:1.45; margin:8px 0 10px}
+  .job{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:12px 0}
+  .job .jtxt{font-size:15px; font-weight:600; line-height:1.5; margin:4px 0 8px}
+  .jtxt b{color:var(--accent2)}
+  .jmeta{color:var(--dim); font-size:12.5px}
+  .jmeta b{color:var(--muted)}
+
+  details{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:2px 16px; margin:14px 0}
+  summary{cursor:pointer; padding:12px 0; font-weight:700}
+  summary::marker{color:var(--accent)}
+
+  footer{padding:36px 0 60px; color:var(--dim); font-size:13px}
+  .pill{display:inline-block; background:var(--panel); border:1px solid var(--line); color:var(--muted); border-radius:999px; padding:3px 10px; font-size:12px; margin:0 6px 6px 0}
+
+  @media(max-width:760px){
+    section{padding:34px 0}
+    .cols-2,.cols-3{grid-template-columns:1fr}
+    .p-grid{grid-template-columns:1fr}
+    tbody th{position:static}
+    thead th{position:static}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Asterra Networks · Research Phase</p>
+    <h1>Прото-персони та Jobs&nbsp;to&nbsp;be&nbsp;Done</h1>
+    <p class="lede">Хто купує морський connectivity/cyber, який прогрес ці люди намагаються зробити, і що з цього має закривати сайт. Кожне твердження несе <b>видиму мітку доказовості</b>; де даних немає — стоїть <span class="hyp">[?]</span>, а не правдоподібна здогадка.</p>
+    <div class="meta">
+      <span><b>Складено</b> 2026-08-05</span>
+      <span><b>Статус</b> прото-персони · валідація не проводилась</span>
+      <span><b>Джерела</b> <a href="personas.md">personas.md</a> · <a href="jtbd.md">jtbd.md</a> · <a href="audit.md">audit.md</a> · <a href="research.md">research.md</a></span>
+    </div>
+    <p class="note warn"><b>Тип артефакту: прото-персони, не персони.</b> Зібрані з публічних документів (вакансії, регуляції, схема закупівлі, галузеві опитування) і конкурентного аудиту — <b>без жодного інтерв'ю</b>. Персона описує, що люди роблять; прото-персона — що ми <i>припускаємо</i>, що вони роблять. Усе нижче — друге.</p>
+    <div class="meta" style="margin-top:14px">
+      <span class="tag t-fact">ФАКТ</span><span style="font-size:12.5px">першоджерело прочитано</span>
+      <span class="tag t-sec">2-ГЕ ДЖЕРЕЛО</span><span style="font-size:12.5px">з переказу, першоджерело не відкрилося</span>
+      <span class="tag t-surv">ОПИТУВАННЯ</span><span style="font-size:12.5px">заявлена вибірка</span>
+      <span class="tag t-audit">АУДИТ</span><span style="font-size:12.5px">зафіксовано на сайті конкурента</span>
+      <span class="tag t-inf">ВИВЕДЕНО</span><span style="font-size:12.5px">наш висновок</span>
+      <span class="tag t-q">[?]</span><span style="font-size:12.5px">гіпотеза — даних немає</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#personas">01 · Персони</a>
+  <a href="#jobs">02 · Jobs</a>
+  <a href="#matrix">03 · Матриця</a>
+  <a href="#mvp">04 · Ядро MVP</a>
+  <a href="#hypotheses">05 · Гіпотези</a>
+</div></nav>
+
+<!-- ============ PERSONAS ============ -->
+<section id="personas"><div class="wrap">
+  <span class="kicker">Секція 01</span>
+  <h2>Персони</h2>
+  <p class="sec-sub">Три діючі + одна знята після перевірки. Ролі взяті з відкритих вакансій і схеми судноплавної закупівлі, болі — з аудиту 15 конкурентних сайтів. Жодна роль не вигадана; що НЕ підтверджено — позначено.</p>
+
+  <!-- P1 -->
+  <article class="persona primary">
+    <span class="p-badge">⭐ Primary</span>
+    <h3>P1 · Technical Superintendent</h3>
+    <p class="p-sub">Береговий технічний менеджер групи суден. Колишній судновий механік — Class II CoC, «sea-going Engineer», ISM. <span class="tag t-fact">ФАКТ</span> <a class="jmeta" href="https://www.seacareer.com/i31473/technical-superintendent/">вакансія</a></p>
+    <div class="p-grid">
+      <div class="p-block">
+        <h5>Контекст</h5>
+        <ul>
+          <li><b>Підписує рахунки за зв'язок</b> — «approve all… communication invoices» <span class="tag t-fact">ФАКТ</span></li>
+          <li>Готує бюджети докування; стежить за класом і сертифікатами <span class="tag t-fact">ФАКТ</span></li>
+          <li>Входи: вікно докування ~2,5 роки <span class="tag t-sec">2-ГЕ</span> · MLC 2006 + PSC <span class="tag t-fact">ФАКТ</span> · новобуд E26/E27 <span class="tag t-fact">ФАКТ</span></li>
+          <li>Мислить класом, ISM і бюджетом — <b>не IT</b> <span class="tag t-inf">ВИВЕДЕНО</span></li>
+        </ul>
+      </div>
+      <div class="p-block">
+        <h5>Jobs</h5>
+        <ul>
+          <li>Зрозуміти, який піллар стосується його судна, без вивчення каталогу <span class="tag t-audit">АУДИТ</span></li>
+          <li>Переконатися, що вибір витримає перевірку класу/аудитора <span class="tag t-fact">ФАКТ</span></li>
+          <li>Отримати цифру в бюджет докування — чи шукає на сайті: <span class="hyp">[?]</span></li>
+          <li>Узгодити з тим, хто тримає CAPEX (→ P4) <span class="tag t-fact">ФАКТ</span></li>
+        </ul>
+      </div>
+      <div class="p-block">
+        <h5>Болі <span style="color:var(--dim); text-transform:none; letter-spacing:0">(вади конкурентних сайтів; прив'язка до персони — ВИВЕДЕНО)</span></h5>
+        <ul>
+          <li>Жаргон чужої дисципліни: COTP/COTM, «OSI model» <span class="tag t-audit">АУДИТ</span></li>
+          <li>Нема специфікацій — «no datasheets on fetched pages» <span class="tag t-audit">АУДИТ</span></li>
+          <li>Складна навігація — <b>єдина біль із незалежним поведінковим доказом</b> (Contentsquare × Schneider; редизайн Navarino) <span class="tag t-fact">ФАКТ</span></li>
+          <li>Дрейф цифр: 99.9↔99.99, 50/55/56 років <span class="tag t-audit">АУДИТ</span></li>
+          <li>Контакт у нікуди: 2 з 5 конкурентів без форми <span class="tag t-audit">АУДИТ</span></li>
+        </ul>
+      </div>
+      <div class="p-block">
+        <h5>Тригери довіри <span style="color:var(--dim); text-transform:none; letter-spacing:0">(що конкуренти роблять; що це діє — [?])</span></h5>
+        <ul>
+          <li>Класифікаційне товариство поіменно: «UR E27 Type Approved» (Bureau Veritas), IEC 62443-3-3 (DNV) <span class="tag t-audit">АУДИТ</span></li>
+          <li>Сертифікації: ISO, IACS UR E26/E27, NIS2 <span class="tag t-audit">АУДИТ</span></li>
+          <li>Підтримка числом: «115 engineers», 24x7x365 — норма очікування й у галузевій пресі <span class="tag t-audit">АУДИТ</span></li>
+          <li>Відлякує: дрейф цифр, PDF 2020–21, «Lets talk», контакт без наступного кроку <span class="tag t-audit">АУДИТ</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote">
+      <span class="hyp">[?] Справжньої цитати superintendent-а немає в жодному джерелі.</span> Найближчий артефакт — текст вакансії (голос ролі, не людини):<br>
+      <em>«approve all maintenance, repair, dry-docking and <b>communication invoices</b>» · «Extensive experience as a <b>sea-going Engineer</b>»</em>
+      <span class="src">Technical Superintendent vacancy — seacareer.com</span>
+    </div>
+    <div class="falsify"><b>Що спростувало б:</b> якщо superintendent не заходить на сайти постачальників, а зв'язок веде корпоративний IT — primary хибний. <b>Накопичені сигнали:</b> клієнтські цитати у вендорів 5:0 на користь IT/COO; у брифі редизайну Navarino аудиторії — «ship owners, IT managers, or partners», superintendent відсутній. Пріоритет не змінено — рішення ухвалюється явно, не тихо.</div>
+  </article>
+
+  <!-- P2 -->
+  <article class="persona">
+    <span class="p-badge sec">Secondary · кандидат у primary</span>
+    <h3>P2 · Fleet IT / IT Manager</h3>
+    <p class="p-sub">Володіє мережею й кібером по флоту. Підтверджений у торговельному флоті та по всій морській Європі: Афіни, Пірей, Гамбург, Лімасол. <span class="tag t-fact">ФАКТ</span> <a class="jmeta" href="https://www.mazurecruitment.com/jobs/it-manager-915339">жива вакансія</a></p>
+    <div class="p-grid">
+      <div class="p-block">
+        <h5>Контекст</h5>
+        <ul>
+          <li>«Review and standardise <b>vessel IT systems, connectivity solutions</b>… across the fleet» <span class="tag t-fact">ФАКТ</span></li>
+          <li><b>«Manage relationships with technology vendors»</b> · «Evaluate existing systems… recommendations for future technology investments» <span class="tag t-fact">ФАКТ</span></li>
+          <li>«<b>Prepare business cases</b>… balancing operational needs with commercial considerations» <span class="tag t-fact">ФАКТ</span></li>
+          <li>Кіберкомплаєнс зверху (MSC.428(98), щорічний DOC-аудит) <span class="tag t-sec">2-ГЕ</span></li>
+          <li>Бюджетна рамка: половина власників &lt;$100k/рік на кібер <span class="tag t-surv">ОПИТУВАННЯ</span><span class="tag t-sec">2-ГЕ</span></li>
+        </ul>
+      </div>
+      <div class="p-block">
+        <h5>Jobs · Болі</h5>
+        <ul>
+          <li>Оцінити рішення до розмови з продажами — у HARD-групі перевірити нічого не можна (C8=2 у 2 оцінених з 5) <span class="tag t-audit">АУДИТ</span></li>
+          <li>Перевірити кіберпроцедури постачальника — але 45% покупців доказів не питають <span class="tag t-surv">ОПИТУВАННЯ</span></li>
+          <li>Біль: каталог замість пропозиції — 18 named offerings на одній сторінці Marlink <span class="tag t-audit">АУДИТ</span></li>
+          <li>Біль: єдиний технічний артефакт — гейтований PDF <span class="tag t-audit">АУДИТ</span></li>
+        </ul>
+        <h5>Хто ще цілить у цю роль</h5>
+        <ul>
+          <li>Бриф редизайну Navarino називає «IT managers» серед трьох аудиторій сайту <span class="tag t-fact">ФАКТ</span></li>
+          <li>Navarino Infinity сегментує бенефіти: Ship Owners / Captains / Crew / <b>IT Management</b> <span class="tag t-fact">ФАКТ</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote">
+      <span class="hyp">[?] Прямої цитати немає.</span> Найближче — знахідка галузевого звіту (150+ стейкхолдерів), <b>переказ, лапки зняті</b>:<br>
+      <em>Only 1 in 6 shipowners fully understand what a cyber-secure vessel should look like upon delivery</em>
+      <span class="src">Thetius / CyberOwl (DNV) / HFW, The Lifecycle Dilemma — <span class="tag t-sec">2-ГЕ ДЖЕРЕЛО</span></span>
+    </div>
+    <div class="falsify"><b>Що спростувало б:</b> якщо кібер у маритаймі купують через зовнішнього MSP/інтегратора — P2 стає впливачем без бюджету. <span class="hyp">[?]</span></div>
+  </article>
+
+  <!-- P4 -->
+  <article class="persona">
+    <span class="p-badge sec">Secondary</span>
+    <h3>P4 · Власник / затверджувач CAPEX <span style="font-weight:400; color:var(--muted)">(і шип-менеджер)</span></h3>
+    <p class="p-sub">Не обов'язково відвідувач сайту — але без нього угоди немає. Розподіл повноважень задокументовано. <span class="tag t-fact">ФАКТ</span></p>
+    <div class="p-grid">
+      <div class="p-block">
+        <h5>Контекст</h5>
+        <ul>
+          <li>Власник: «Major capital expenditure», фреймові угоди · Менеджер: OPEX у межах «approval matrix» <span class="tag t-fact">ФАКТ</span></li>
+          <li><b>Структурний блокер:</b> «Supplier change may require approval when a frame agreement already exists» <span class="tag t-fact">ФАКТ</span></li>
+          <li>~25% світового флоту під третіми менеджерами → одна угода з менеджером = десятки суден <span class="tag t-fact">ФАКТ</span></li>
+          <li>Контракти менеджменту «negotiated mainly on price» <span class="tag t-fact">ФАКТ</span></li>
+        </ul>
+      </div>
+      <div class="p-block">
+        <h5>Jobs</h5>
+        <ul>
+          <li>Зрозуміти, чи це взагалі можна купити при чинній фреймовій угоді <span class="tag t-inf">ВИВЕДЕНО</span></li>
+          <li>Отримати аргумент, який можна переслати — business case готує P2, P4 приймає; «Consensus creation» — universальний B2B job за Gartner <span class="tag t-fact">ФАКТ</span></li>
+          <li>Оцінити постачальника як довгостроковий ризик — <span class="hyp">[?]</span> з частковим підкріпленням: галузева колонка радить due diligence на фінансову стійкість (лізинг обладнання 3–5 років)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote">
+      <span class="pos">✅ Єдина справжня цитата особи, що ухвалює рішення, в усій базі:</span><br>
+      <em>«Our crew identified this as important, and we listened.»</em>
+      <span class="src">Patrick O'Halloran, COO, Overseas Shipholding Group — про встановлення супутникового інтернету на весь флот, BusinessWire 19.12.2023 · <span class="tag t-fact">ФАКТ</span></span>
+    </div>
+    <div class="falsify"><b>Що спростувало б:</b> якщо власник ніколи не дивиться сайт постачальника — P4 стає вимогою до контенту («сторінка, яку можна переслати нагору»), а не персоною. <span class="hyp">[?]</span></div>
+  </article>
+
+  <!-- P3 removed -->
+  <article class="persona removed">
+    <span class="p-badge rm">⛔ Знято з набору · 05.08.2026</span>
+    <h3>P3 · Відповідальний за SMS і комплаєнс</h3>
+    <p class="p-sub">Функція існує (її вимагають MSC.428(98) та ISM Code), але перевірка обов'язків DPA показала: нагляд за SMS, аудит суден, координація, звітність — <b>закупівлі й вибору вендорів серед них немає</b>. P3 — не покупець. <span class="tag t-fact">ФАКТ</span></p>
+    <p style="font-size:13.5px; color:var(--muted); margin:0">Її дедлайни (щорічний DOC-аудит, PSC-інспекція) перенесені в контекст P1 і P2 як тригери. Комплаєнс лишається <b>вимогою до контенту</b> — документ, який кладуть у теку до аудиту.</p>
+  </article>
+</div></section>
+
+<!-- ============ JOBS ============ -->
+<section id="jobs"><div class="wrap">
+  <span class="kicker">Секція 02</span>
+  <h2>Ієрархія jobs</h2>
+  <p class="sec-sub">Формат: «Коли [ситуація], я хочу [мотивація], щоб [результат]». У жодному «я хочу» немає назви функції — тільки прогрес людини. Jobs описують прогрес у роботі, задокументований обов'язками й нормами; що він відбувається <b>на сайті постачальника</b> — проєктна ставка <span class="hyp">[?]</span>.</p>
+
+  <div class="job-main">
+    <span class="kicker" style="color:var(--accent)">🎯 Main job</span>
+    <p class="jtxt">Коли мені треба закрити конкретну вимогу до флоту, <b>я хочу впевнено визначити, що саме нам потрібно і кому це можна доручити</b>, щоб зайти в розмову з постачальником із готовою позицією, а не з питанням «а що у вас є?»</p>
+    <p class="jmeta"><b>P1 + P2</b> (P2 обирає, P1 платить) · Докази: біль категорії «which solution fits them» <span class="tag t-audit">АУДИТ</span> · «Evaluate existing systems…» у вакансії P2 <span class="tag t-fact">ФАКТ</span> · Marlink закриває це людиною: «Not sure where to start? Talk to our team» <span class="tag t-fact">ФАКТ</span></p>
+  </div>
+
+  <h3>Related — по дорозі до main</h3>
+
+  <div class="job">
+    <span class="kicker">R1 · звужено після перевірки ClassNK</span>
+    <p class="jtxt">Коли з'являється вимога з датою, <b>я хочу зрозуміти, що вона означає для моїх суден</b>, щоб не дізнатися про невідповідність у момент перевірки.</p>
+    <p class="jmeta"><b>P1, P2</b> · MLC 2006 в силі 23.12.2024 + PSC <span class="tag t-fact">ФАКТ</span> · MSC.428(98) щорічний DOC-аудит <span class="tag t-sec">2-ГЕ</span> · E26/E27 новобуди від 01.07.2024 <span class="tag t-fact">ФАКТ</span> · ⚠️ «Пояснити норму» вже забрав клас (ClassNK: гайдлайни, 137 Q&A). Вільна лише зв'язка <b>«норма → рішення → папір»</b> · Чи веде дедлайн на сайт вендора — <span class="hyp">[?]</span></p>
+  </div>
+
+  <div class="job">
+    <span class="kicker">R2</span>
+    <p class="jtxt">Коли я розглядаю постачальника, <b>я хочу переконатися, що його рішення витримає перевірку класу, аудитора чи інспектора</b>, щоб не підставити компанію через власний вибір.</p>
+    <p class="jmeta"><b>P1</b> (первинно), P2 · Обов'язок «monitor vessels Class and trading certificates» <span class="tag t-fact">ФАКТ</span> · «Validation» — універсальний B2B job за Gartner <span class="tag t-fact">ФАКТ</span> · Але: 45% покупців доказів не питають <span class="tag t-surv">ОПИТУВАННЯ</span></p>
+  </div>
+
+  <div class="job">
+    <span class="kicker">R3 · найкраще підкріплений документально</span>
+    <p class="jtxt">Коли я вже знаю, що нам потрібно, <b>я хочу зібрати обґрунтування, яке переконає того, хто розпоряджається грошима</b>, щоб рішення не застрягло на погодженні.</p>
+    <p class="jmeta"><b>P2 готує → P4 приймає</b> · «Prepare business cases… balancing operational needs with commercial considerations» дослівно з вакансії <span class="tag t-fact">ФАКТ</span> · «Consensus creation» — Gartner <span class="tag t-fact">ФАКТ</span> · approval matrix + ціновий тиск <span class="tag t-fact">ФАКТ</span></p>
+  </div>
+
+  <div class="job">
+    <span class="kicker">R4</span>
+    <p class="jtxt">Коли я знаходжу відповідне рішення, <b>я хочу завчасно зрозуміти, чи можемо ми його купити при чинних домовленостях</b>, щоб не витратити місяці на варіант, який усе одно заблокують.</p>
+    <p class="jmeta"><b>P4</b>, P2 · «Supplier change may require approval when a frame agreement already exists» <span class="tag t-fact">ФАКТ</span> · Слід у категорії: типи запиту Reseller / Partnership у формі Marlink <span class="tag t-audit">АУДИТ</span></p>
+  </div>
+
+  <div class="job best">
+    <span class="kicker">R5 · найкраще підкріплений загалом — три незалежні шляхи</span>
+    <p class="jtxt">Коли екіпаж вимагає нормального інтернету, а я відповідаю за витрати й порядок на борту, <b>я хочу знайти баланс між доступом і контролем</b>, щоб утримувати людей і не втратити ні бюджет, ні керованість.</p>
+    <p class="jmeta"><b>P1, P4</b> · Цитата COO OSG <span class="tag t-fact">ФАКТ</span> · Inmarsat: власники просять «time-restricted access» <span class="tag t-fact">ФАКТ</span> · ~20 суден у треді r/maritime описують не канал, а політику: квоти, ранги, фільтри, гео-правила, резервний канал <span class="tag t-fact">ФАКТ</span> · Критерій вибору в пресі ще з 2017 <span class="tag t-fact">ФАКТ</span> · ⚠️ На рівні продукту вже продається (Navarino Infinity: «Crew Internet access control during shifts») — вільна <b>висота подачі</b>, не тема</p>
+  </div>
+
+  <div class="grid cols-2" style="margin-top:26px">
+    <div class="card">
+      <h4>Emotional <span class="tag t-inf" style="margin-left:6px">завжди інтерпретація</span></h4>
+      <p class="jtxt" style="font-size:14px">Коли тема виходить за межі моєї спеціальності, я хочу розібратися в ній сам, щоб говорити з експертом на рівних.</p>
+      <p class="jmeta">P1 · Розрив знання — факт; небажання його показати — <span class="tag t-inf">ВИВЕДЕНО</span></p>
+      <p class="jtxt" style="font-size:14px">Коли я несу рішення нагору, я хочу бути певним у своїх цифрах, щоб не виглядати несерйозно.</p>
+      <p class="jmeta">P2 → P4 · «justify investments» — факт; страх за репутацію — <span class="tag t-inf">ВИВЕДЕНО</span></p>
+    </div>
+    <div class="card">
+      <h4>Social</h4>
+      <p class="jtxt" style="font-size:14px">Коли ми конкуруємо за екіпаж, я хочу, щоб наші судна вважали хорошим місцем роботи, щоб люди приходили й залишалися.</p>
+      <p class="jmeta">P4, P1 · Цитата COO + «first question potential crew ask» <span class="tag t-fact">ФАКТ</span> · 92% (Futurenautics 2018, до Starlink) <span class="tag t-sec">2-ГЕ</span></p>
+      <p class="jtxt" style="font-size:14px">Коли я звітую керівництву, я хочу показати, що флот під контролем, щоб мене питали й наступного разу.</p>
+      <p class="jmeta">P1, P2 · Ієрархія — факт; бажання статусу — <span class="tag t-inf">ВИВЕДЕНО</span> · <span class="neg">найслабший job — перший кандидат на виріз</span></p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ MATRIX ============ -->
+<section id="matrix"><div class="wrap">
+  <span class="kicker">Секція 03</span>
+  <h2>JTBD-матриця</h2>
+  <p class="sec-sub"><b>Шкала міряє не «важливість»</b> — даних про переваги немає, і ставити їх означало б вигадати. Цифра показує, наскільки job належить до <b>задокументованих обов'язків</b> персони: <span class="sc m3">3</span> прямо записаний · <span class="sc m2">2</span> випливає з обов'язку · <span class="sc m1">1</span> дотична роль · <span class="sc mq">?</span> доказів немає — і це не «середнє».</p>
+
+  <div class="table-wrap"><table class="cmp">
+    <thead><tr>
+      <th>Job</th><th style="min-width:120px">P1 ⭐</th><th style="min-width:120px">P2</th><th style="min-width:120px">P4</th>
+      <th style="min-width:190px">Функція в продукті</th><th style="min-width:260px">Конкуренти</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <th>MAIN · що нам треба + кому доручити</th>
+        <td><span class="sc m3">3</span><small>бюджети, рахунки за зв'язок</small></td>
+        <td><span class="sc m3">3</span><small>«evaluate… recommendations»</small></td>
+        <td><span class="sc m1">1</span><small>стратегія, не добір</small></td>
+        <td>Solution Finder · сторінки рішень · крослінки</td>
+        <td><span class="neg">🔴 майже не закрито.</span> Фіндер був лише в IEC — і зник із меню (05.08). Marlink відповідає людиною</td>
+      </tr>
+      <tr>
+        <th>R1 · норма → вимога до суден</th>
+        <td><span class="sc m3">3</span><small>клас, сертифікати, ISM</small></td>
+        <td><span class="sc m3">3</span><small>newbuild ICT, policies</small></td>
+        <td><span class="sc mq">?</span></td>
+        <td><span class="neg">немає в скоупі</span> — регуляторний вхід не передбачений сітмапом</td>
+        <td><span class="hyp">🟠 вендорами — ні,</span> але «зрозуміти норму» вже закрив клас (ClassNK: 137 Q&A). Вільна зв'язка «норма → рішення → папір»</td>
+      </tr>
+      <tr>
+        <th>R2 · витримає зовнішню перевірку</th>
+        <td><span class="sc m3">3</span><small>прямий обов'язок</small></td>
+        <td><span class="sc m2">2</span><small>manage vendors</small></td>
+        <td><span class="sc m2">2</span><small>approved supplier lists</small></td>
+        <td>Proof-блок: норма + ім'я органу (DNV/BV) + сертифікації</td>
+        <td><span class="pos">🟢 закрито добре</span> (Navarino type approval, Marlink чипи). <b>Table stakes</b> — виграти цим не можна</td>
+      </tr>
+      <tr>
+        <th>R3 · обґрунтування для того, хто платить</th>
+        <td><span class="sc m2">2</span><small>бюджети</small></td>
+        <td><span class="sc m3">3</span><small>«prepare business cases»</small></td>
+        <td><span class="sc m3">3</span><small>CAPEX, approval matrix</small></td>
+        <td>«Пересилабельна» сторінка рішення · кейс-картка «твердження + число + джерело»</td>
+        <td><span class="hyp">🟠 у прямому ринку — ні;</span> формат є лише в aspirational (Palantir, Stripe)</td>
+      </tr>
+      <tr>
+        <th>R4 · чи це взагалі можна купити</th>
+        <td><span class="sc mq">?</span></td>
+        <td><span class="sc m2">2</span><small>веде вендорів</small></td>
+        <td><span class="sc m3">3</span><small>frame agreements</small></td>
+        <td>Поле «роль» у формі · партнерський трек</td>
+        <td><span class="neg">🔴 майже не закрито.</span> Дотично — Reseller/Partnership у формі Marlink</td>
+      </tr>
+      <tr>
+        <th>R5 · доступ vs контроль для екіпажу</th>
+        <td><span class="sc m3">3</span><small>рахунки; MLC + PSC</small></td>
+        <td><span class="sc m2">2</span><small>connectivity, policies</small></td>
+        <td><span class="sc m3">3</span><small>рішення рівня COO</small></td>
+        <td><span class="neg">немає в скоупі</span> — сітмап не говорить про політику доступу</td>
+        <td><span class="hyp">🟠 закрито на рівні продукту</span> (Navarino Infinity), вільно на рівні повідомлення — керованістю не веде ніхто</td>
+      </tr>
+      <tr>
+        <th>E1 · не виглядати некомпетентним</th>
+        <td><span class="sc m3">3</span><small>ex-механік, не мережевик</small></td>
+        <td><span class="sc m1">1</span><small>він і є фахівець</small></td>
+        <td><span class="sc mq">?</span></td>
+        <td>Мова: клас / сертифікат / ISM / док / бюджет — без жаргону</td>
+        <td><span class="hyp">🟠 частково:</span> Marlink C3=4; IEC C3=2 (COTP/COTM), NSSL — «OSI model»</td>
+      </tr>
+      <tr>
+        <th>E2 · обґрунтування не розсиплеться</th>
+        <td><span class="sc m2">2</span></td>
+        <td><span class="sc m3">3</span><small>«justify investments»</small></td>
+        <td><span class="sc mq">?</span></td>
+        <td>Єдине джерело правди для цифр — без дрейфу</td>
+        <td><span class="neg">🔴 ринок програє активно:</span> дрейф у Marlink, NSSL, Stripe</td>
+      </tr>
+      <tr>
+        <th>S1 · роботодавець, до якого йдуть</th>
+        <td><span class="sc m1">1</span></td>
+        <td><span class="sc mq">?</span></td>
+        <td><span class="sc m3">3</span><small>цитата COO</small></td>
+        <td>Maritime-сторінка в рамці утримання екіпажу, не «welfare»</td>
+        <td><span class="neg">🔴 не закрито ніким</span> — ніхто не подає зв'язок як аргумент найму</td>
+      </tr>
+      <tr>
+        <th>S2 · щоб мою думку враховували</th>
+        <td><span class="sc m2">2</span></td>
+        <td><span class="sc m2">2</span></td>
+        <td><span class="sc m1">1</span></td>
+        <td>— прямої функції немає</td>
+        <td>⚪ ніхто; попиту не зафіксовано. <span class="neg">Найслабший рядок</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <p style="color:var(--dim); font-size:12.5px">Повні клітинки з цитатами й посиланнями — у <a href="jtbd.md">jtbd.md</a> §8.1. Болі та тригери — це вади/патерни чужих сайтів; що вони діють саме на цих людей — <span class="hyp">[?]</span>.</p>
+</div></section>
+
+<!-- ============ MVP ============ -->
+<section id="mvp"><div class="wrap">
+  <span class="kicker">Секція 04</span>
+  <h2>Ядро MVP і кандидати на виліт</h2>
+  <p class="sec-sub">Критерій ядра: <b>важливо для primary (P1 = 3)</b> × <b>ринок не закриває</b>. Матриця відповідає на два питання: що робити спочатку і що не робити взагалі.</p>
+
+  <div class="grid cols-3">
+    <div class="card best">
+      <h4>1 · MAIN</h4>
+      <p style="font-size:13.5px; margin:0">«Що саме нам потрібно і кому доручити». Фіндер був лише в IEC — і зник; Marlink закриває це людиною. Без цього job сайт не має сенсу.</p>
+    </div>
+    <div class="card best">
+      <h4>2 · R1 <span class="tag t-inf" style="margin-left:4px">звужено</span></h4>
+      <p style="font-size:13.5px; margin:0">Не «пояснити норму» (це територія класу), а зв'язка <b>«норма → яке рішення закриває → який папір отримаєш»</b>. Єдиний вхід із датою і зовнішнім примусом; не потребує вигаданих цифр. Ризик: чи веде дедлайн на сайт — <span class="hyp">[?]</span></p>
+    </div>
+    <div class="card best">
+      <h4>3 · R5 <span class="tag t-fact" style="margin-left:4px">найміцніший</span></h4>
+      <p style="font-size:13.5px; margin:0">Доступ vs контроль. Три незалежні шляхи доказу: цитата COO, галузева преса з 2017, ~20 живих описів із борту. Продається в глибині (Navarino Infinity) — вільна <b>висота повідомлення</b>. Єдиний елемент ядра без жодної небезпечної гіпотези під собою.</p>
+    </div>
+  </div>
+
+  <h3>Свідомо не в ядрі</h3>
+  <div class="grid cols-2">
+    <div class="card second"><h4>R2 — table stakes</h4><p style="font-size:13.5px; margin:0">P1 = 3, але ринок закриває добре (Navarino type approval, Marlink чипи). Не зробити не можна, виграти цим не можна.</p></div>
+    <div class="card second"><h4>R3 — формат, не блок робіт</h4><p style="font-size:13.5px; margin:0">Сильний для P2/P4, для primary — 2. Лягає на ядро як спосіб подачі кожної сторінки рішення («пересилабельність»).</p></div>
+  </div>
+
+  <h3>✂️ Кандидати на виліт — не закривають жодного job</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Кандидат</th><th>Чому</th></tr></thead>
+    <tbody>
+      <tr><td><b>Порівняльна таблиця / side-by-side</b></td><td>Попиту не зафіксовано ніде; єдиний приклад — споживчий ринок (NerdWallet) з іншою моделлю рішення</td></tr>
+      <tr><td><b>Інтерактивні інструменти самоперевірки</b></td><td>⚠️ Суперечить research.md §10.4: C8 говорить, чого бракує <i>постачальникам</i>, а не чого хочуть <i>покупці</i>. Жодного job у матриці не закриває</td></tr>
+      <tr><td><b>Гейтований Resource Center</b></td><td>R3 обслуговує сторінка, яку можна переслати, а не гейт. Бриф уже каже «ungated by default» — матриця це підтверджує</td></tr>
+      <tr><td><b>Insights / News як пріоритет</b></td><td>Не мапиться на жоден job. Є в усіх конкурентів — це не аргумент</td></tr>
+      <tr><td><b>Фасетний каталог продуктів</b></td><td>~5 пілларів — фільтрувати нічого; жаргонні фасети відтворили б провал IEC (COTP/COTM)</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="note warn" style="margin-top:18px"><b>Якщо primary стане P2</b> (питання відкрите — сигнали 5:0 на користь IT): R3 підніметься в ядро, R5 опуститься до 2. <b>MAIN і R1 лишаються в ядрі за будь-якого варіанту</b> — на них ставку можна робити вже зараз.</p>
+</div></section>
+
+<!-- ============ HYPOTHESES ============ -->
+<section id="hypotheses"><div class="wrap">
+  <span class="kicker">Секція 05</span>
+  <h2>Гіпотези, що несуть дизайн-рішення</h2>
+  <p class="sec-sub">Найнебезпечніший список: твердження, які вже впливають на спроєктоване, але доказу не мають. Відсортовано за ціною помилки. Повний аудит 62 тверджень — в <a href="audit.md">audit.md</a>.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Гіпотеза</th><th>Що на ній стоїть</th><th>Стан доказів</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>D1 · P1 відвідує сайти постачальників</b> <span class="hyp">[?]</span></td>
+        <td>Вибір primary → наратив головної → мова всього сайту</td>
+        <td class="neg">Три сигнали проти: «manage vendors» у P2; клієнтські цитати 5:0 IT/COO; аудиторії Navarino без superintendent-а. Рішення по primary — відкрите</td>
+      </tr>
+      <tr>
+        <td><b>D2 · Дедлайн приводить на сайт</b> <span class="hyp">[?]</span></td>
+        <td>R1 — job №2 ядра; фіндер, що питає про тригер</td>
+        <td>Тригери купівлі задокументовані; зв'язок «дедлайн → пошук у вебі» — ні. «Пояснити норму» вже забрав клас</td>
+      </tr>
+      <tr>
+        <td><b>D3 · «Не спеціаліст у 5 пілларах»</b> <span class="hyp">[?]</span></td>
+        <td>Solution Finder як головний патерн — головна ставка роботи</td>
+        <td>Спроба підперти цифрою «1 із 6» виявилась екстраполяцією і знята. Перевіряється tree test-ом, n=5</td>
+      </tr>
+      <tr>
+        <td><b>D4 · Тригери довіри діють</b> <span class="hyp">[?]</span></td>
+        <td>Proof-блок, ставка на імена класифікаційних органів</td>
+        <td>Знаємо лише, що конкуренти їх застосовують</td>
+      </tr>
+      <tr>
+        <td><b>D5 · Вади конкурентів спричиняють зрив</b> <span class="hyp">[?]</span></td>
+        <td>Уся секція «болі» в персонах</td>
+        <td>Незалежно підтверджена лише навігація (Contentsquare, поведінкові дані). Жаргон, PDF, дрейф, «без форми» — тільки наш аудит</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="card" style="margin-top:18px">
+    <h4>Найбільша гіпотеза — під усім документом</h4>
+    <p style="font-size:14px; margin:0">Що ця робота взагалі виконується <b>на сайті постачальника</b>. Публічного шару відгуків покупців у категорії не існує (перевірено: Trustpilot/Reddit по 4 конкурентах — нуль) — <b>кінцевий користувач гучний онлайн, покупець мовчить</b>. Це властивість ринку, не провал пошуку. Знімається одним питанням до відділу продажів: хто фактично надсилає вхідні запити і після чого.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>Ланцюжок доказів:</b>
+    <span class="pill"><a href="research.md">research.md</a> — аудит 15 сайтів</span>
+    <span class="pill"><a href="people.md">people.md</a> — що аудит знає про людей</span>
+    <span class="pill"><a href="people-desk.md">people-desk.md</a> — desk research</span>
+    <span class="pill"><a href="personas.md">personas.md</a> — прото-персони + перевірки</span>
+    <span class="pill"><a href="jtbd.md">jtbd.md</a> — jobs + матриця</span>
+    <span class="pill"><a href="audit.md">audit.md</a> — аудит 62 тверджень</span>
+  </p>
+  <p>Asterra Networks — вигаданий бренд для навчального UX/UI-кейсу. Прото-персони складено 2026-08-05 без первинного дослідження; усі [?] — чесні дірки, не недбалість.</p>
+</div></footer>
+
+</body>
+</html>
