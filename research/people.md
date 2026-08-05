@@ -1,319 +1,324 @@
-# People — що research.md знає про людей (і чого не знає)
+# People — what research.md knows about people (and what it doesn't)
 
-**Джерело:** [`research.md`](./research.md) (аудит 16 сайтів, зібрано 2026-07-22) + [`../CLAUDE.md`](../CLAUDE.md) §4 (бриф).
-**Складено:** 2026-08-05.
+**Source:** [`research.md`](./research.md) (audit of 16 sites, collected 2026-07-22) + [`../CLAUDE.md`](../CLAUDE.md) §4 (brief).
+**Compiled:** 2026-08-05.
 
-> **Оновлення 2026-08-05:** частину `[?]` з §6 закрито в [`people-desk.md`](./people-desk.md)
-> (desk research: вакансії, структура судноплавного менеджменту, календар регуляцій,
-> галузеві опитування). Закрито: хто ухвалює і хто підписує (§6.2), тригери купівлі (§6.3),
-> бюджети на кібер, підтвердження припущення «не спеціаліст у всіх пілларах».
-> Лишається відкритим: **уся поведінка на сайті** (§6.5, §6.6) і лексика покупця.
-
----
-
-## 0. Статус доказів — прочитати першим
-
-`research.md` — це **конкурентний аудит сайтів**, не дослідження користувачів.
-Метод (§2): прямі фетчі живих сторінок + 61 скріншот (Playwright, 1440×900). Логін-зони
-(Portal360, COSMO, SiePortal, aip.palantir.com) **не відкривались**.
-
-Отже: **жодного інтерв'ю, опитування, аналітики, запису сесій, даних із CRM,
-тикетів саппорту чи логів пошуку.** Спостережуваної поведінки реальної людини у файлі
-немає — за одним винятком (§2.C, NerdWallet), і той з споживчих фінансів, не з B2B-маритайму.
-
-Кожне спостереження нижче промарковане рівнем доказу:
-
-| Мітка | Значення |
-|---|---|
-| **[ЗАЯВА]** | конкурент сам так каже на своєму сайті — верифіковано цитатою/скріном |
-| **[ВИВЕДЕНО]** | висновок про людину з того, що сайт вирішив показати; людину не питали |
-| **[БЕЗ ДЖЕРЕЛА]** | твердження в тексті research.md або брифі без жодного посилання на дані |
+> **Update 2026-08-05:** part of the `[?]` gaps in §6 are now closed in [`people-desk.md`](./people-desk.md)
+> (desk research: job vacancies, ship-management structure, regulation calendar,
+> industry surveys). Closed: who decides and who signs (§6.2), purchase triggers (§6.3),
+> cyber budgets, confirmation of the "not a specialist across all pillars" assumption.
+> Still open: **all on-site behaviour** (§6.5, §6.6) and the buyer's own vocabulary.
 
 ---
 
-## 1. ХТО ШУКАЄ
+## 0. Evidence status — read this first
 
-### 1.1 Прямий ринок сегментує аудиторію за галуззю, і маритайм скрізь перший **[ЗАЯВА]**
+`research.md` is a **competitor site audit**, not user research.
+Method (§2): direct fetches of live pages + 61 screenshots (Playwright, 1440×900). Login-gated
+areas (Portal360, COSMO, SiePortal, aip.palantir.com) were **not entered**.
 
-П'ять HARD-конкурентів, рядок «Primary audience» ([§3](./research.md#3-hard-group--comparative-table)):
+Therefore: **no interviews, no surveys, no analytics, no session recordings, no CRM data,
+no support tickets, no search logs.** There is no observed behaviour of a real person anywhere
+in the file — with one exception (§2.C, NerdWallet), and that one is consumer finance, not
+maritime B2B.
 
-| Компанія | Заявлена аудиторія |
+Every observation below is labelled with its evidence level:
+
+| Label | Meaning |
 |---|---|
-| Marlink | оператори віддалених/морських активів; підменю: Shipping, Cruise, Energy, Enterprise & Telco, Government & Defence, Humanitarian & Aid ([home](https://marlink.com/)) |
-| Navarino | **тільки маритайм** — торговельні флоти; «1 in 3 ocean-going merchant vessels globally use a Navarino service» ([скрін](./screens/hard/navarino-home-hero.png)) |
+| **[SITE CLAIM]** | the competitor says so on its own site — verified by quote/screenshot |
+| **[INFERRED]** | a conclusion about the person drawn from what the site chose to show; nobody asked the person |
+| **[UNSOURCED]** | a statement in research.md or the brief with no reference to any data |
+
+---
+
+## 1. WHO IS SEARCHING
+
+### 1.1 The direct market segments its audience by industry, and maritime is always first **[SITE CLAIM]**
+
+Five HARD competitors, "Primary audience" row ([§3](./research.md#3-hard-group--comparative-table)):
+
+| Company | Claimed audience |
+|---|---|
+| Marlink | operators of remote/maritime assets; submenu: Shipping, Cruise, Energy, Enterprise & Telco, Government & Defence, Humanitarian & Aid ([home](https://marlink.com/)) |
+| Navarino | **maritime only** — merchant fleets; "1 in 3 ocean-going merchant vessels globally use a Navarino service" ([screen](./screens/hard/navarino-home-hero.png)) |
 | NSSLGlobal | Maritime / Defence and Government / Enterprise / Critical Rescue and Infrastructure ([maritime](https://nsslglobal.com/markets/maritime/)) |
 | IEC Telecom | Land: Government, Humanitarian, Energy-Onshore, Enterprise, Media · Maritime: Fishing, Energy-Offshore, Shipping, **Superyachts** ([home](https://www.iec-telecom.com)) |
-| Speedcast | 12 галузей у навігації, Commercial Maritime → Government ([home](https://www.speedcast.com)) |
+| Speedcast | 12 industries in nav, Commercial Maritime → Government ([home](https://www.speedcast.com)) |
 
-Значуще для нас: **Fishing і Superyachts** (IEC) та **Cruise** (Marlink) — сегменти, яких немає
-в нашому списку галузей ([`../CLAUDE.md`](../CLAUDE.md) §5). **Humanitarian & Aid** є у двох із
-п'яти. Це не доказ, що такі покупці існують у нас — це доказ, що конкуренти вважають їх
-достатньо окремими, щоб дати їм власну сторінку.
+Relevant for us: **Fishing and Superyachts** (IEC) and **Cruise** (Marlink) are segments absent
+from our industries list ([`../CLAUDE.md`](../CLAUDE.md) §5). **Humanitarian & Aid** appears at
+two of the five. This does not prove such buyers exist for us — it proves competitors consider
+them distinct enough to deserve their own page.
 
-### 1.2 Провайдери самі розділяють «продажі» і «підтримку» як **різних людей** **[ВИВЕДЕНО]**
+### 1.2 Providers themselves split "sales" and "support" into **different people** **[INFERRED]**
 
-Найсильніший структурний сигнал у файлі про те, що на сайт приходить не одна людина
-([§6, патерн 3](./research.md#three-shared-market-patterns)):
+The strongest structural signal in the file that more than one kind of person arrives at these
+sites ([§6, pattern 3](./research.md#three-shared-market-patterns)):
 
-- **Speedcast** ділить контакти за сегментом: `maritimeinfo@` / `energy@` / `governmentinfo@` ([скрін](./screens/hard/speedcast-contact-directory.png))
-- **Navarino** — за функцією: `globalsales@` / `technical.support@`, форми немає взагалі ([скрін](./screens/hard/navarino-contact-directory.png))
-- **IBM** — явний sales-vs-support роздільник на сторінці контактів ([contact](https://www.ibm.com/contact))
-- **NVIDIA** — тристороннє: Support / Sales / Partners ([contact](https://www.nvidia.com/en-us/contact/))
-- **IEC** — форма для продажів vs зовнішній портал «Submit a Ticket»
-- **Honeywell** — на сторінці саппорту стоять **B2C-телефонні лінії**, тобто до них масово приходить не той, кого вони хочуть ([support](https://www.honeywell.com/us/en/support))
+- **Speedcast** splits contacts by segment: `maritimeinfo@` / `energy@` / `governmentinfo@` ([screen](./screens/hard/speedcast-contact-directory.png))
+- **Navarino** — by function: `globalsales@` / `technical.support@`, no form at all ([screen](./screens/hard/navarino-contact-directory.png))
+- **IBM** — an explicit sales-vs-support split on the contact page ([contact](https://www.ibm.com/contact))
+- **NVIDIA** — three-way: Support / Sales / Partners ([contact](https://www.nvidia.com/en-us/contact/))
+- **IEC** — a sales form vs an external "Submit a Ticket" portal
+- **Honeywell** — **B2C phone lines** sit on the support page, i.e. the wrong people arrive at scale ([support](https://www.honeywell.com/us/en/support))
 
-### 1.3 Форми конкурентів — це фактично їхній перелік того, хто до них пише **[ЗАЯВА]**
+### 1.3 Competitors' forms are effectively their own inventory of who writes to them **[SITE CLAIM]**
 
-Найконкретніший доказ у всьому файлі про склад вхідного потоку — поле «How can we help you?»
-у **Marlink** ([скрін](./screens/hard/marlink-contact-form.png)): *Request a quote / Talk to sales /
-Technical support / Billing / Reseller / Partnership / Other*. Сім типів запиту, з яких **чотири не
-про купівлю** (support, billing, reseller, partnership).
+The most concrete evidence in the whole file about the composition of inbound traffic — the
+"How can we help you?" field at **Marlink** ([screen](./screens/hard/marlink-contact-form.png)):
+*Request a quote / Talk to sales / Technical support / Billing / Reseller / Partnership /
+Other*. Seven request types, of which **four are not about buying** (support, billing,
+reseller, partnership).
 
-Що ще запитують у людини перед контактом:
-- **NVIDIA** — dropdown-и **Industry + Job Role** + бокс-відведення для саппорту ([sales form](https://www.nvidia.com/en-us/contact/sales/))
-- **Stripe** — квaліфікація за **річним доходом** компанії: email+country → annual revenue → details ([скрін](./screens/aspirational/stripe-contact-sales.png))
-- **IEC** — Interest (10 секторів) + **«How did you hear about us?»** ([скрін](./screens/hard/iec-telecom-contact-form.png))
-- **Cisco** — 14+ полів із Question Category routing, на чужому домені ([form](https://engage2demand.cisco.com/LP=5642))
+What else they ask a person before contact:
+- **NVIDIA** — **Industry + Job Role** dropdowns + a support-diversion box ([sales form](https://www.nvidia.com/en-us/contact/sales/))
+- **Stripe** — qualification by the company's **annual revenue**: email+country → annual revenue → details ([screen](./screens/aspirational/stripe-contact-sales.png))
+- **IEC** — Interest (10 sectors) + **"How did you hear about us?"** ([screen](./screens/hard/iec-telecom-contact-form.png))
+- **Cisco** — 14+ fields with Question Category routing, on an off-domain form ([form](https://engage2demand.cisco.com/LP=5642))
 
-### 1.4 Тільки один конкурент назвав розмір своєї аудиторії числом **[ЗАЯВА]**
+### 1.4 Only one competitor quantified its live audience **[SITE CLAIM]**
 
-**Siemens**: герой головної адресує «600,000 TIA Portal users» ([home](https://www.siemens.com/global/en.html)).
-Це єдина в усьому файлі кількісна оцінка живої аудиторії. Усі решта чисел — про **судна, супутники,
-міста, запити, гроші**, не про людей. Тобто ринок рахує активи, а не користувачів.
+**Siemens**: the homepage hero addresses "600,000 TIA Portal users" ([home](https://www.siemens.com/global/en.html)).
+This is the single quantitative estimate of a living audience in the entire file. Every other
+number is about **vessels, satellites, cities, requests, money** — not people. The market
+counts assets, not users.
 
-### 1.5 Персона Asterra — твердження брифу, не знахідка дослідження **[БЕЗ ДЖЕРЕЛА]**
+### 1.5 The Asterra persona is a brief statement, not a research finding **[UNSOURCED]**
 
-[`../CLAUDE.md`](../CLAUDE.md) §4: Персона #1 — **судновласники та флот-оператори / технічні
-менеджери**. Вторинні: IT/security, government/defence, енергетика, транспорт/логістика,
-дослідницькі організації, аварійне реагування. Спільні драйвери рішення: *reliability,
-global coverage, security, compliance, access to technical support*.
+[`../CLAUDE.md`](../CLAUDE.md) §4: Persona #1 — **shipowners & fleet operators / technical
+managers**. Secondary: IT/security, government/defence, energy, transport/logistics, research
+organisations, emergency response. Shared decision drivers: *reliability, global coverage,
+security, compliance, access to technical support*.
 
-**Під цим немає жодного посилання.** Це вхідна умова проєкту, а не результат дослідження.
+**There is not a single reference under this.** It is a project input, not a research result.
 
-Сам `research.md` додає до персони одну характеристику, теж **без джерела** ([§9.3](./research.md#93-mechanisms-to-port-into-asterra), [§10.6](./research.md#106-fit-for-asterra-networks)):
-> «a technical professional in their own domain, but rarely a specialist across all five pillars
-> (satellite RF, cyber, AI/IoT, safety, services)»
+`research.md` itself adds one more characteristic to the persona, also **unsourced**
+([§9.3](./research.md#93-mechanisms-to-port-into-asterra), [§10.6](./research.md#106-fit-for-asterra-networks)):
+> "a technical professional in their own domain, but rarely a specialist across all five pillars
+> (satellite RF, cyber, AI/IoT, safety, services)"
 
-Це припущення несе на собі **весь вибір Solution Finder** як головного патерну. Якщо воно
-хибне — рекомендація §10.6 розсипається. Воно ніде не перевірене.
+This assumption carries **the entire choice of the Solution Finder** as the leading pattern. If
+it is wrong, the §10.6 recommendation collapses. It is verified nowhere.
 
 ---
 
-## 2. ЩО НИМИ РУХАЄ
+## 2. WHAT DRIVES THEM
 
-Усе нижче — **[ВИВЕДЕНО]**: це те, що конкуренти вирішили поставити першим. Доказу, що це
-працює на когось, у файлі немає.
+Everything below is **[INFERRED]**: it is what competitors chose to put first. There is no
+evidence in the file that any of it works on anyone.
 
-### 2.A Аптайм і масштаб — те, що ставлять біля героя **[ВИВЕДЕНО]**
+### 2.A Uptime and scale — what gets placed next to the hero **[INFERRED]**
 
-Патерн «trust is quantified and placed early» ([§6, патерн 2](./research.md#three-shared-market-patterns)):
-- Navarino — стат просто в героєві: «13,000+ vessels», «650+ clients», «25+ years», «1 in 3» ([скрін](./screens/hard/navarino-home-hero.png))
-- Marlink — «1,700+ specialists», «15k+ Vessels connected», «99.9% Network uptime SLA», «24.7% global market share» ([скрін](./screens/hard/marlink-industry-shipping.png))
-- Cloudflare — покриття як доказ: «337 cities · 8 regions», «95% of the world's Internet-connected population is within 50 milliseconds» ([скрін](./screens/aspirational/cloudflare-network-coverage.png))
-- Speedcast — «95+ satellites», «35+ teleports», саппорт: «115 engineers», «24x7x365» ([скрін](./screens/hard/speedcast-support-center.png))
+The "trust is quantified and placed early" pattern ([§6, pattern 2](./research.md#three-shared-market-patterns)):
+- Navarino — stats right in the hero: "13,000+ vessels", "650+ clients", "25+ years", "1 in 3" ([screen](./screens/hard/navarino-home-hero.png))
+- Marlink — "1,700+ specialists", "15k+ Vessels connected", "99.9% Network uptime SLA", "24.7% global market share" ([screen](./screens/hard/marlink-industry-shipping.png))
+- Cloudflare — coverage as proof: "337 cities · 8 regions", "95% of the world's Internet-connected population is within 50 milliseconds" ([screen](./screens/aspirational/cloudflare-network-coverage.png))
+- Speedcast — "95+ satellites", "35+ teleports", support: "115 engineers", "24x7x365" ([screen](./screens/hard/speedcast-support-center.png))
 
-Тобто ринок одностайно ставить на **покриття + безперервність + масштаб мережі**.
+So the market unanimously bets on **coverage + continuity + network scale**.
 
-### 2.B Сертифікації як окрема валюта — і вона специфічно маритаймова **[ЗАЯВА]**
+### 2.B Certification as a currency of its own — and a specifically maritime one **[SITE CLAIM]**
 
 - **Marlink**: ISO 27001/9001/14001, **IACS UR E26/E27**, **NIS2**, **IEC 62443** ([cyber](https://marlink.com/solutions/possibility-portfolio/possibility-solutions/cyber-security/))
-- **Navarino**: «UR E27 Type Approved» (Bureau Veritas), «IEC 62443-3-3 Type Approved» (DNV), **IMO2021** ([скрін](./screens/hard/navarino-cybersecurity-angel.png))
-- **NSSLGlobal**: ISO 27001/9001/14001/45001; партнери **NATO, Bundeswehr, Royal Navy/RFA** ([about](https://nsslglobal.com/about/))
+- **Navarino**: "UR E27 Type Approved" (Bureau Veritas), "IEC 62443-3-3 Type Approved" (DNV), **IMO2021** ([screen](./screens/hard/navarino-cybersecurity-angel.png))
+- **NSSLGlobal**: ISO 27001/9001/14001/45001; partners **NATO, Bundeswehr, Royal Navy/RFA** ([about](https://nsslglobal.com/about/))
 
-Названий **класифікаційний орган** (DNV, Bureau Veritas) у ролі того, хто підтверджує — це
-специфічно морський механізм довіри, якого немає в жодного з aspirational-конкурентів.
-[ВИВЕДЕНО]: у покупця, ймовірно, є зовнішній аудит/інспекція, перед якою він відповідає.
+A named **classification society** (DNV, Bureau Veritas) in the role of the one who confirms —
+this is a specifically maritime trust mechanism absent from every aspirational competitor.
+[INFERRED]: the buyer probably answers to an external audit/inspection.
 
-### 2.C Єдиний прямий доказ людських мотивів у файлі — NerdWallet **[ЗАЯВА]**
+### 2.C The single piece of direct evidence about human motives in the file — NerdWallet **[SITE CLAIM]**
 
-[§9.4](./research.md#94-new-evidence--nerdwallet-gathered-2026-07-22), verbatim зі сторінки
-([скрін](./screens/dimension-fit-trust/nerdwallet-card-finder.png)):
-- «This service is FREE, will not affect your credit score, and **no contact information is required**.»
-- «**We only ask questions that are essential.** No contact info required.»
-- «Tap into objective ratings — See the **pros and cons** of each credit card we recommend.»
-- Дисклеймер незалежності: інформація «has not been reviewed or provided by the issuer of this card»
-- «FACT CHECKED / EDITORIAL INTEGRITY» + «Last updated on July 16, 2026» + прозора методика «rating of 1 to 5»
+[§9.4](./research.md#94-new-evidence--nerdwallet-gathered-2026-07-22), verbatim from the page
+([screen](./screens/dimension-fit-trust/nerdwallet-card-finder.png)):
+- "This service is FREE, will not affect your credit score, and **no contact information is required**."
+- "**We only ask questions that are essential.** No contact info required."
+- "Tap into objective ratings — See the **pros and cons** of each credit card we recommend."
+- Independence disclaimer: the information "has not been reviewed or provided by the issuer of this card"
+- "FACT CHECKED / EDITORIAL INTEGRITY" + "Last updated on July 16, 2026" + a transparent "rating of 1 to 5" methodology
 
-Це найближче, що є у файлі до прямого свідчення про людські страхи — але це **споживчі фінанси
-в США**. Що з цього переноситься на технічного менеджера флоту — **не перевірено**.
+This is the closest thing the file has to direct testimony about human fears — but it is
+**US consumer finance**. How much of it transfers to a fleet technical manager is **untested**.
 
-### 2.D Дослідження/звіт як вхід у воронку **[ВИВЕДЕНО]**
+### 2.D A research report as the funnel entrance **[INFERRED]**
 
-- Marlink гейтить «2026 Cyber Intelligence report», «PDF (3.2MB), 20 pages» ([cyber](https://marlink.com/...cyber-security/))
-- NVIDIA як доказ використовує власне дослідження: «Over 1,000 industry telecom professionals surveyed» ([скрін](./screens/aspirational/nvidia-industries.png))
-- IEC тримає Download Center: «installation manuals, user guides, software updates»
+- Marlink gates its "2026 Cyber Intelligence report", "PDF (3.2MB), 20 pages" ([cyber](https://marlink.com/...cyber-security/))
+- NVIDIA uses its own research as proof: "Over 1,000 industry telecom professionals surveyed" ([screen](./screens/aspirational/nvidia-industries.png))
+- IEC maintains a Download Center: "installation manuals, user guides, software updates"
 
-[ВИВЕДЕНО]: частина аудиторії читає довгі документи до контакту. Скільки саме — невідомо.
+[INFERRED]: part of the audience reads long documents before contact. How large a part — unknown.
 
 ---
 
-## 3. ЧОГО БОЯТЬСЯ
+## 3. WHAT THEY FEAR
 
-Тут доказова база **найслабша в усьому файлі**. Прямих свідчень страху немає — є формулювання,
-якими конкуренти намагаються страх зняти.
+The evidence base here is **the weakest in the entire file**. There is no direct testimony of
+fear — only the phrasings competitors use to defuse it.
 
-### 3.1 Прив'язка до вендора **[ВИВЕДЕНО з однієї фрази]**
-**NSSLGlobal**, дослівно: «We're brand agnostic and **not tied to a particular provider**»
-([about](https://nsslglobal.com/about/)) — незалежність винесена в позиціонування. Хтось таки
-про це питає. Але це один конкурент із п'яти.
+### 3.1 Vendor lock-in **[INFERRED from a single phrase]**
+**NSSLGlobal**, verbatim: "We're brand agnostic and **not tied to a particular provider**"
+([about](https://nsslglobal.com/about/)) — independence elevated to positioning. Someone must be
+asking about it. But this is one competitor out of five.
 
-### 3.2 Кібер-інцидент — єдиний випадок відкритого залякування **[ЗАЯВА]**
-**Speedcast** на морській сторінці подає стат «**68%**» про breaches
-([скрін](./screens/hard/speedcast-industry-maritime.png)). Це єдина знайдена в HARD-групі
-fear-based подача.
+### 3.2 A cyber incident — the only case of open fear-selling **[SITE CLAIM]**
+**Speedcast**'s maritime page carries a "**68%**" breaches stat
+([screen](./screens/hard/speedcast-industry-maritime.png)). This is the only fear-based framing
+found in the HARD group.
 
-### 3.3 «Загубитися і не отримати відповіді» **[ВИВЕДЕНО]**
-Marlink єдиний дає обіцянку маршрутизації: запит «routed to a regional specialist»
-([скрін](./screens/hard/marlink-contact-form.png)). §9.3 пропонує посилити це до «reply within
-one business day». Це заспокоєння **вигадане дослідженням**, не почуте від людей.
+### 3.3 "Getting lost and never hearing back" **[INFERRED]**
+Marlink is the only one making a routing promise: the enquiry is "routed to a regional
+specialist" ([screen](./screens/hard/marlink-contact-form.png)). §9.3 proposes strengthening it
+to "reply within one business day". That reassurance was **invented by the research**, not
+heard from people.
 
-### 3.4 Непослідовність цифр як сигнал ненадійності **[БЕЗ ДЖЕРЕЛА — теза автора]**
-§9.3: «inconsistency is itself a reliability signal». Дрейф зафіксовано реально —
+### 3.4 Inconsistent numbers as a signal of unreliability **[UNSOURCED — author's thesis]**
+§9.3: "inconsistency is itself a reliability signal". The drift itself is real —
 Marlink 99.9% vs 99.99% ([shipping](https://marlink.com/solutions/industry/shipping/)),
-NSSLGlobal «over 50» / «55+» / «over 56 years», Stripe 500M vs 250M API req/day.
-Але що **хтось із покупців це помітив і це вплинуло на рішення — доказу нема**.
+NSSLGlobal "over 50" / "55+" / "over 56 years", Stripe 500M vs 250M API req/day.
+But that **any buyer noticed it and it affected a decision — there is no evidence**.
 
 ---
 
-## 4. ЯК ОБИРАЮТЬ
+## 4. HOW THEY CHOOSE
 
-### 4.1 Ринок припускає два входи: «хто я» і «що мені треба» **[ВИВЕДЕНО]**
-Dual-axis IA (capability × industry) — дефолт категорії ([§6, патерн 1](./research.md#three-shared-market-patterns)):
-Marlink (Portfolio / Industry / Services), Speedcast, NSSLGlobal, IEC — усі парують дерево рішень
-із галузевими хабами; усі п'ять SOFT мають industries hub
+### 4.1 The market assumes two entrances: "who I am" and "what I need" **[INFERRED]**
+Dual-axis IA (capability × industry) is the category default ([§6, pattern 1](./research.md#three-shared-market-patterns)):
+Marlink (Portfolio / Industry / Services), Speedcast, NSSLGlobal, IEC — all pair a solutions
+tree with industry hubs; all five SOFT players run an industries hub
 ([ibm](./screens/soft/ibm-industries.png), [honeywell](./screens/soft/honeywell-solutions-3axis.png),
 [siemens](./screens/soft/siemens-industries.png), [schneider](./screens/soft/schneider-solutions-industries.png)).
-**Navarino — єдиний виняток**: галузевої осі немає взагалі ([скрін](./screens/hard/navarino-solutions-technology.png)).
+**Navarino is the lone exception**: no industry axis at all ([screen](./screens/hard/navarino-solutions-technology.png)).
 
-**Який із двох входів людина обирає першим — у файлі не встановлено.** §10.6 сам це визнає
-відкритим: пріоритет галузевого патерну треба переглянути, «if discovery research shows buyers
-self-identify by sector faster than by need». Такого дослідження не було.
+**Which of the two entrances a person picks first is not established in the file.** §10.6
+itself admits this is open: the industry pattern's priority should be revisited "if discovery
+research shows buyers self-identify by sector faster than by need". No such research happened.
 
-### 4.2 Ніхто на ринку не веде людину за руку **[ЗАЯВА]**
-З 15 сайтів справжній finder є **тільки в IEC** — і це 8 фасетів
+### 4.2 Nobody in the market takes the user by the hand **[SITE CLAIM]**
+Out of 15 sites, a real finder exists **only at IEC** — and it is 8 facets
 (Application / Set-up / Service / Type / Operator / Market / Speed / Coverage,
-[скрін](./screens/hard/iec-telecom-solution-finder.png)), тобто інструмент для того,
-хто вже знає термінологію. Navarino не має **ні пошуку, ні фільтрів** взагалі.
-Stripe «Guide me» і Cloudflare «Get a recommendation» у файлі позначені *(reported, not captured)* —
-тобто **не підтверджені скріном**.
+[screen](./screens/hard/iec-telecom-solution-finder.png)), i.e. a tool for someone who already
+speaks the vocabulary. Navarino has **neither search nor filters** at all.
+Stripe's "Guide me" and Cloudflare's "Get a recommendation" are marked *(reported, not
+captured)* in the file — i.e. **not confirmed by a screenshot**.
 
-### 4.3 Порівняння пліч-о-пліч — очікуваний крок, але тільки в споживчому прикладі **[ЗАЯВА]**
-«Add to compare» + pros/cons на картку є у NerdWallet
-([скрін](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)). У B2B-групі —
-ні в кого.
+### 4.3 Side-by-side comparison — an expected step, but only in the consumer example **[SITE CLAIM]**
+"Add to compare" + per-card pros/cons exist at NerdWallet
+([screen](./screens/dimension-fit-trust/nerdwallet-ratings-comparison.png)). In the B2B group —
+at no one.
 
-### 4.4 Самоперевірка до контакту — те, чого HARD-група не має зовсім **[ЗАЯВА]**
-C8 у [§9.2](./research.md#92-scores): Marlink **2**, IEC **2** — «one gated PDF», «brochure
-Download Center only». Проти Cloudflare **5** (живий «Test your latency»,
-[скрін](./screens/aspirational/cloudflare-network-coverage.png)), Stripe **5**, NerdWallet **5**.
-
----
-
-## 5. ДЕ ЗРИВАЮТЬСЯ
-
-⚠️ **Усе в цьому розділі — евристична оцінка автора дослідження [ВИВЕДЕНО].** У файлі немає
-жодної воронки, аналітики чи запису сесії по жодному конкуренту. Це «де на цьому сайті
-_мало би_ зривати», а не «де зриває».
-
-**На контакті — найгірша ланка ринку ([§6, патерн 3](./research.md#three-shared-market-patterns)):**
-- **Форми немає взагалі** — Navarino ([скрін](./screens/hard/navarino-contact-directory.png)) і Speedcast ([скрін](./screens/hard/speedcast-contact-directory.png)): тільки директорія офісів/телефонів. Двоє з п'яти прямих конкурентів.
-- **Форма на чужому домені** — Honeywell → C3 Salesforce, Cisco → engage2demand (14+ полів)
-- **Ярлик не відповідає адресі** — Speedcast «Get in Touch» веде на `/sign-up/`
-- **Одна й та сама форма скрізь** — IEC, generic «SEND» на майже кожній сторінці, контекст не переноситься; плюс друкарська помилка в CTA «Lets talk»
-- **Модалка поверх героя** — Stripe на момент зйомки повністю перекрив герой промо-вікном ([скрін](./screens/aspirational/stripe-home-hero.png))
-
-**На словах:**
-- Жаргон без пояснення — **COTP/COTM** у фасетах IEC (файл називає це «jargon wall»); «application layer of the OSI model» у NSSLGlobal
-- Ярлики з низьким information scent — NSSLGlobal: «Drop us a Line», «At the Helm»
-- Уніфіковані беззмістовні CTA — NSSLGlobal «Find out more» **11 разів на одній сторінці**
-
-**На структурі:**
-- Один і той самий продукт у трьох деревах — NSSLGlobal ([скрін](./screens/hard/nsslglobal-solutions-overview.png))
-- Плоский список із 30 галузей без групування — Siemens ([скрін](./screens/soft/siemens-industries.png))
-- Саппорту немає в навігації, обіцянка 24/7 закопана в About — NSSLGlobal
-- Передача на інший піддомен посеред шляху — Honeywell (buildings./automation./process./aerospace.), IEC (саппорт на 3+ піддоменах), Speedcast (вихід на speedcastsigma.com), NVIDIA
-- Галузевий хаб як порожня посадкова з формою — IEC maritime ([скрін](./screens/hard/iec-telecom-industry-maritime.png)); файл каже, такі сторінки «read as filler»
-- Актуальний CTA веде на PDF 2020–2021 років — Speedcast, 17+ брошур
+### 4.4 Self-validation before contact — what the HARD group lacks entirely **[SITE CLAIM]**
+C8 in [§9.2](./research.md#92-scores): Marlink **2**, IEC **2** — "one gated PDF", "brochure
+Download Center only". Versus Cloudflare **5** (live "Test your latency",
+[screen](./screens/aspirational/cloudflare-network-coverage.png)), Stripe **5**, NerdWallet **5**.
 
 ---
 
-## 6. ЧОГО ПРО ЛЮДЕЙ МИ НЕ ЗНАЄМО
+## 5. WHERE THEY DROP OFF
 
-Чесний перелік. Де даних нема — стоїть **[?]**.
+⚠️ **Everything in this section is the research author's heuristic judgement [INFERRED].** The
+file contains no funnel, analytics or session recording for any competitor. This is "where this
+site *should* lose people", not "where it does".
 
-### 6.1 Немає жодного первинного джерела
-- Інтерв'ю з покупцями — **[?]**, не проводились
-- Опитування — **[?]**
-- Аналітика/воронки (свої або конкурентів) — **[?]**
-- Записи сесій, теплокарти — **[?]**
-- Дані з продажів: реальні вхідні запити, причини відмов, довжина циклу — **[?]**
-- Тикети саппорту, найчастіші питання — **[?]**
-- Пошукові запити (site search, Google) — якими словами люди це шукають — **[?]**
-- Юзабіліті-тест будь-якого з цих 16 сайтів — **[?]**
+**At contact — the market's worst link ([§6, pattern 3](./research.md#three-shared-market-patterns)):**
+- **No form at all** — Navarino ([screen](./screens/hard/navarino-contact-directory.png)) and Speedcast ([screen](./screens/hard/speedcast-contact-directory.png)): office/phone directories only. Two of five direct competitors.
+- **Form on a foreign domain** — Honeywell → C3 Salesforce, Cisco → engage2demand (14+ fields)
+- **Label doesn't match the address** — Speedcast's "Get in Touch" leads to `/sign-up/`
+- **The same form everywhere** — IEC, a generic "SEND" form on nearly every page, no context carried; plus a typo in the CTA "Lets talk"
+- **A modal over the hero** — Stripe fully covered its hero with a promo overlay at capture time ([screen](./screens/aspirational/stripe-home-hero.png))
 
-### 6.2 Хто саме
-- Реальні посади осіб, що ухвалюють рішення — **[?]**. Бриф каже «shipowners & fleet operators / technical managers», джерела немає.
-- Склад закупівельного комітету: хто ініціює / хто оцінює технічно / хто підписує / хто платить — **[?]**
-- Чи є між нами і покупцем **посередник** (брокер, менеджмент-компанія, агент, системний інтегратор) — **[?]**. Для маритайму це критично, у файлі не згадано жодного разу, крім поля «Reseller» у формі Marlink.
-- Бюджетні повноваження, типовий розмір угоди — **[?]**
-- Тендерна/закупівельна процедура — **[?]**
-- Чи однакова людина для 5 різних пілларів (Connectivity / Cyber / Digital / Safety / Services) — **[?]**. Припущення §10.6, що це одна людина і вона не спеціаліст у всіх п'яти, **не перевірене**.
-- Скільки з наших 7 галузей узагалі мають окрему поведінку — **[?]**
+**In language:**
+- Unexplained jargon — **COTP/COTM** in IEC's facets (the file calls it a "jargon wall"); "application layer of the OSI model" at NSSLGlobal
+- Low-information-scent labels — NSSLGlobal: "Drop us a Line", "At the Helm"
+- Uniform meaningless CTAs — NSSLGlobal's "Find out more" **11 times on one page**
 
-### 6.3 Що рухає
-- Що з довгого списку (uptime / покриття / ціна / сертифікація / підтримка / незалежність від вендора / репутація) важить **найбільше** і в якому порядку — **[?]**
-- Тригер, що запускає пошук: закінчення контракту, новобудова, інцидент, дедлайн регуляції, зміна власника — **[?]**
-- Довжина циклу ухвалення — **[?]**
-- Чи люди взагалі читають whitepapers і datasheets (Resource Center у скоупі) — **[?]**
-- Чи спрацьовують стат-цифри на цьому покупцеві, чи він їх ігнорує як маркетинг — **[?]**
-- Чи сертифікати справді потрібні саме йому, чи це вимога його аудитора/страховика — **[?]**
-
-### 6.4 Чого бояться
-- Прямих свідчень страху — **[?]**, нуль. Все в §3 — реконструкція.
-- Ціна простою в грошах для конкретного покупця — **[?]**
-- Чи справді бояться lock-in (одна фраза NSSLGlobal — не доказ) — **[?]**
-- Чи форма з контактними даними лякає B2B-покупця так само, як NerdWallet-івського споживача — **[?]**
-- Що станеться з довірою при **хибній** рекомендації фіндера — §10.1 стверджує, що це «erodes the very trust you want», доказу — **[?]**
-- Чи помічає хтось дрейф статистики — **[?]**
-
-### 6.5 Як обирають
-- **Головне невідоме:** заходять «за галуззю» чи «за потребою» першим — **[?]**. Файл сам це визнає відкритим (§10.6).
-- Чи люди взагалі хочуть, щоб їх вели за руку, чи експерт дратується — **[?]** (§10.1 називає обидва сценарії, не розрізняючи)
-- Чи збігається наша розбивка на 5 пілларів із їхньою ментальною моделлю — **[?]**
-- Їхня власна лексика: як вони називають свою проблему — **[?]**. Що COTP/COTM — «стіна жаргону», вирішив автор дослідження, а не користувач.
-- Скільки провайдерів порівнюють паралельно, за якими критеріями — **[?]**
-- Чи заходять кілька разів протягом тижнів, чи один сеанс — **[?]**
-
-### 6.6 Де зриваються
-- **Жодної реальної точки зриву не спостережено** — **[?]**. Увесь §5 — гіпотези.
-- Чи «немає форми» справді шкодить Navarino і Speedcast — **[?]**. Можливо, їхні угоди йдуть через телефон і стосунки, і форма їм не потрібна. Не перевірено.
-- Чи вибиває людину піддоменний перехід — **[?]**
-- Чи спрацьовує сторінка-директорія краще за форму для когось із сегментів — **[?]**
-
-### 6.7 Контекст використання
-- Звідки заходять: офіс / порт / борт судна — **[?]**
-- Мобільний vs десктоп у цієї аудиторії — **[?]**. Бриф вибрав desktop-first (§9) **без даних**.
-- Обмеження каналу (супутниковий канал із судна — повільно й дорого) — **[?]**, при тому що бриф обіцяє «expressive motion» і важкий герой (§10)
-- Мова: аудиторія глобально морська (грецькі, японські, корейські власники), бриф — English only (§8). Чи це проблема — **[?]**
-- Потреби доступності саме цієї аудиторії — **[?]**
-
-### 6.8 Після контакту
-- Логін-зони конкурентів **не відкривались** (§2, §8) — про постпродажного користувача (Portal360, COSMO, SiePortal) не відомо **нічого**
-- Скільки в Asterra людей, щоб відповідати на запити, і чи реально виконати обіцянку «reply within one business day» із §9.3 — **[?]**
-- Куди йде сабміт (email vs CRM) — відкрите питання самого дослідження (§6, open question 1) — **[?]**
+**In structure:**
+- The same product in three different trees — NSSLGlobal ([screen](./screens/hard/nsslglobal-solutions-overview.png))
+- A flat list of 30 industries with no grouping — Siemens ([screen](./screens/soft/siemens-industries.png))
+- No support entry in the nav; the 24/7 promise buried in About — NSSLGlobal
+- Mid-journey subdomain handoffs — Honeywell (buildings./automation./process./aerospace.), IEC (support across 3+ subdomains), Speedcast (exits to speedcastsigma.com), NVIDIA
+- An industry hub that is a thin lead-form landing — IEC maritime ([screen](./screens/hard/iec-telecom-industry-maritime.png)); the file says such pages "read as filler"
+- A current CTA leading to 2020–2021 PDFs — Speedcast, 17+ brochures
 
 ---
 
-## 7. Що з цього робити далі (не дані — рекомендація)
+## 6. WHAT WE DO NOT KNOW ABOUT PEOPLE
 
-Мінімум, який закриває найдорожчі **[?]** перед тим, як фіксувати IA:
+The honest list. Where there is no data — **[?]**, not a plausible guess.
 
-1. **5–8 інтерв'ю** з технічними менеджерами флоту / судновласниками. Головне питання —
-   §6.5: галузь чи потреба першою, і чи збігаються 5 пілларів із їхньою моделлю.
-2. **Card sort / tree test** на нашій навігації — дешево, знімає §6.5 і §6.2 (чи одна це людина
-   для п'яти пілларів).
-3. **Розмова з продажами** (реальний вхідний потік, посади, посередники, тригери) — знімає
-   майже весь §6.2 і §6.3 без польового дослідження.
+### 6.1 Not a single primary source
+- Buyer interviews — **[?]**, none conducted
+- Surveys — **[?]**
+- Analytics / funnels (ours or competitors') — **[?]**
+- Session recordings, heatmaps — **[?]**
+- Sales data: real inbound enquiries, loss reasons, cycle length — **[?]**
+- Support tickets, most frequent questions — **[?]**
+- Search queries (site search, Google) — what words people use — **[?]**
+- A usability test of any of the 16 sites — **[?]**
 
-До того персона в [`../CLAUDE.md`](../CLAUDE.md) §4 має лишатися явно позначеною як **гіпотеза**,
-а не як факт.
+### 6.2 Who exactly
+- Real job titles of decision-makers — **[?]**. The brief says "shipowners & fleet operators / technical managers", no source.
+- Composition of the buying committee: who initiates / who evaluates technically / who signs / who pays — **[?]**
+- Whether there is an **intermediary** between us and the buyer (broker, management company, agent, systems integrator) — **[?]**. Critical for maritime; mentioned in the file exactly once, as the "Reseller" field in Marlink's form.
+- Budget authority, typical deal size — **[?]**
+- Tender/procurement procedure — **[?]**
+- Whether the same person covers all 5 pillars (Connectivity / Cyber / Digital / Safety / Services) — **[?]**. §10.6's assumption that it is one person who is not a specialist in all five is **untested**.
+- How many of our 7 industries even behave distinctly — **[?]**
+
+### 6.3 What drives them
+- Which item of the long list (uptime / coverage / price / certification / support / vendor independence / reputation) weighs **most**, and in what order — **[?]**
+- The trigger that starts the search: contract expiry, newbuild, incident, regulation deadline, ownership change — **[?]**
+- Decision cycle length — **[?]**
+- Whether people actually read whitepapers and datasheets (Resource Center is in scope) — **[?]**
+- Whether stat numbers work on this buyer, or get dismissed as marketing — **[?]**
+- Whether certificates are needed by the buyer personally, or demanded by their auditor/insurer — **[?]**
+
+### 6.4 What they fear
+- Direct testimony of fear — **[?]**, zero. All of §3 is reconstruction.
+- The cost of downtime in money for a specific buyer — **[?]**
+- Whether lock-in is genuinely feared (one NSSLGlobal phrase is not evidence) — **[?]**
+- Whether a contact form frightens a B2B buyer the way it frightens NerdWallet's consumer — **[?]**
+- What a **wrong** finder recommendation does to trust — §10.1 claims it "erodes the very trust you want"; evidence — **[?]**
+- Whether anyone notices the stat drift — **[?]**
+
+### 6.5 How they choose
+- **The main unknown:** do they enter "by industry" or "by need" first — **[?]**. The file itself leaves it open (§10.6).
+- Whether people want to be guided at all, or whether an expert resents it — **[?]** (§10.1 names both scenarios without distinguishing)
+- Whether our 5-pillar split matches their mental model — **[?]**
+- Their own vocabulary: what they call their problem — **[?]**. That COTP/COTM is a "jargon wall" was decided by the research author, not by a user.
+- How many providers they compare in parallel, on what criteria — **[?]**
+- Do they return over weeks, or is it a single session — **[?]**
+
+### 6.6 Where they drop off
+- **Not a single real drop-off point observed** — **[?]**. All of §5 is hypotheses.
+- Whether "no form" actually hurts Navarino and Speedcast — **[?]**. Their deals may run on phone and relationships, and a form may be unnecessary. Untested.
+- Whether a subdomain handoff throws the person off — **[?]**
+- Whether a directory page works better than a form for some segment — **[?]**
+
+### 6.7 Context of use
+- Where they browse from: office / port / on board — **[?]**
+- Mobile vs desktop for this audience — **[?]**. The brief chose desktop-first (§9) **without data**.
+- Channel constraints (a satellite link from a vessel is slow and expensive) — **[?]**, while the brief promises "expressive motion" and a heavy hero (§10)
+- Language: the audience is globally maritime (Greek, Japanese, Korean owners), the brief is English-only (§8). Whether this is a problem — **[?]**
+- Accessibility needs of this specific audience — **[?]**
+
+### 6.8 After contact
+- Competitors' login areas were **not entered** (§2, §8) — about the post-sale user (Portal360, COSMO, SiePortal) we know **nothing**
+- Whether Asterra has the staffing to honour the §9.3 "reply within one business day" promise — **[?]**
+- Where a submission goes (email vs CRM) — the research's own open question (§6, open question 1) — **[?]**
+
+---
+
+## 7. What to do next (a recommendation, not data)
+
+The minimum that closes the most expensive **[?]** before locking the IA:
+
+1. **5–8 interviews** with fleet technical managers / shipowners. The lead question is §6.5:
+   industry or need first, and whether the 5 pillars match their model.
+2. **Card sort / tree test** on our navigation — cheap; addresses §6.5 and §6.2 (whether one
+   person covers five pillars).
+3. **A conversation with sales** (real inbound flow, titles, intermediaries, triggers) —
+   removes most of §6.2 and §6.3 without field research.
+
+Until then, the persona in [`../CLAUDE.md`](../CLAUDE.md) §4 must stay explicitly labelled a
+**hypothesis**, not a fact.

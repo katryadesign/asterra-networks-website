@@ -1,279 +1,285 @@
-# Аудит доказової бази — усі файли сесії 05.08.2026
+# Evidence audit — all files from the 05.08.2026 session
 
-**Що перевірено:** [`people.md`](./people.md) · [`people-desk.md`](./people-desk.md) ·
+**Checked:** [`people.md`](./people.md) · [`people-desk.md`](./people-desk.md) ·
 [`personas.md`](./personas.md) · [`jtbd.md`](./jtbd.md).
-**Метод:** кожне змістовне твердження звірено з джерелом, на яке воно посилається.
-**Базовий документ:** [`research.md`](./research.md) (аудит 15 сайтів, 22.07.2026).
+**Method:** every substantive claim checked against the source it cites.
+**Base document:** [`research.md`](./research.md) (audit of 15 sites, 22.07.2026).
 
 ---
 
-## 0. Три категорії і чесне визначення кожної
+## 0. Three categories, each honestly defined
 
-| Категорія | Що означає | Скільки |
+| Category | Meaning | Count |
 |---|---|---|
-| 🟢 **ПІДТВЕРДЖЕНО** | першоджерело відкрито й прочитано; формулювання відповідає оригіналу | **34** |
-| 🟡 **2-ГЕ ДЖЕРЕЛО** | факт із переказу пошукової видачі; першоджерело не відкрилося (403 / нечитабельний PDF) | **9** |
-| 🔵 **ГІПОТЕЗА** | позначено **[?]** або **[ВИВЕДЕНО]**; доказу немає, сформульовано як припущення | **21** |
-| 🔴 **ВИГАДАНО** | твердження без джерела, подане як факт | **0 у поточній версії**, **4 було й виправлено** — див. §4 |
+| 🟢 **CONFIRMED** | primary source opened and read; wording matches the original | **34** |
+| 🟡 **2ND-HAND** | a fact from a search-result paraphrase; the primary source didn't open (403 / unreadable PDF) | **9** |
+| 🔵 **HYPOTHESIS** | labelled **[?]** or **[INFERRED]**; no evidence, framed as an assumption | **21** |
+| 🔴 **INVENTED** | a sourceless claim presented as fact | **0 in the current version**, **4 existed and were fixed** — see §4 |
 
-**Про «вигадано».** Станом на зараз вигаданих тверджень у файлах немає. Але **чотири були** —
-і всі чотири виявила самоперевірка, а не зовнішній контроль. Вони перелічені окремо в §4, бо
-для курсової роботи важливіше показати, що механізм ловить помилки, ніж що їх не було.
+**On "invented".** As of now there are no invented claims in the files. But **four existed** —
+and all four were caught by self-audit, not external review. They are listed separately in §4,
+because for a course project showing that the mechanism catches errors matters more than
+claiming there were none.
 
 ---
 
-## 1. Повна таблиця тверджень
+## 1. Full claims table
 
-### 1.1 Ролі й повноваження
+### 1.1 Roles and authority
 
-| # | Твердження | Джерело | Статус |
+| # | Claim | Source | Status |
 |---|---|---|---|
-| 1 | Technical Superintendent погоджує «communication invoices» | вакансія seacareer, прочитано | 🟢 |
-| 2 | Він же готує бюджети докування, стежить за Class і trading certificates | там само | 🟢 |
-| 3 | Він — колишній судновий механік (Class II CoC, «sea-going Engineer»), знає ISM | там само | 🟢 |
-| 4 | Він звітує до Fleet Group Manager | вакансія Maersk, сторінка не відкрилася (timeout) | 🟡 |
-| 5 | Посада IT Superintendent існує | вакансія allcruisejobs, поле «Reports To», прочитано | 🟢 |
-| 6 | …але вакансія втратила чинність 01.2022 і це круїзний сегмент | там само | 🟢 |
-| 7 | Роль Fleet IT існує в **торговельному** флоті | вакансія Mazu (Сінгапур), прочитано напряму | 🟢 |
-| 8 | Fleet IT обирає й оцінює постачальників | Mazu: «Manage relationships with technology vendors», «Evaluate existing systems and make recommendations» | 🟢 |
-| 9 | Fleet IT готує business case | Mazu: «Prepare business cases and recommendations…» | 🟢 |
-| 10 | Роль існує в Європі: Афіни, Пірей, Гамбург, Лімасол | пошукова видача; сторінки самих оголошень не відкривав | 🟡 |
-| 11 | В Anglo-Eastern роль сидить усередині третього шип-менеджера | видача LinkedIn/BeBee | 🟡 |
-| 12 | P1 і P2 в одній вертикалі під Technical Manager | сніпет «Appraises: Technical Superintendents…, IT Superintendent» | 🟡 |
-| 13 | Власник тримає CAPEX, менеджер — OPEX у межах approval matrix | AVS, прочитано | 🟢 |
-| 14 | Фреймова угода може заблокувати зміну постачальника | AVS: «Supplier change may require approval when a frame agreement already exists» | 🟢 |
-| 15 | ~25% світового торговельного флоту під третіми менеджерами | Valour, прочитано | 🟢 |
-| 16 | Контракти шип-менеджменту «negotiated mainly on price» | Valour, прочитано | 🟢 |
-| 17 | Функція DPA не включає закупівлю | QMII, перелік обов'язків, прочитано | 🟢 |
-| 18 | **P1 відвідує сайти постачальників** | — | 🔵 **[?]** |
-| 19 | **Хто з P1/P2 ініціює пошук постачальника** | — | 🔵 **[?]** |
-| 20 | **Чи є в ланцюгу закупівельник/брокер окремо** | — | 🔵 **[?]** |
+| 1 | The Technical Superintendent approves "communication invoices" | seacareer vacancy, read | 🟢 |
+| 2 | Same role prepares docking budgets, monitors Class and trading certificates | same | 🟢 |
+| 3 | He is a former marine engineer (Class II CoC, "sea-going Engineer"), knows ISM | same | 🟢 |
+| 4 | He reports to a Fleet Group Manager | Maersk vacancy; the page didn't open (timeout) | 🟡 |
+| 5 | The IT Superintendent title exists | allcruisejobs vacancy, "Reports To" field, read | 🟢 |
+| 6 | …but the vacancy expired 01.2022 and it's the cruise segment | same | 🟢 |
+| 7 | The Fleet IT role exists in **merchant** shipping | Mazu vacancy (Singapore), read directly | 🟢 |
+| 8 | Fleet IT selects and evaluates suppliers | Mazu: "Manage relationships with technology vendors", "Evaluate existing systems and make recommendations" | 🟢 |
+| 9 | Fleet IT prepares the business case | Mazu: "Prepare business cases and recommendations…" | 🟢 |
+| 10 | The role exists in Europe: Athens, Piraeus, Hamburg, Limassol | search results; the postings themselves not opened | 🟡 |
+| 11 | At Anglo-Eastern the role sits inside a top-3 ship manager | LinkedIn/BeBee results | 🟡 |
+| 12 | P1 and P2 sit in one vertical under a Technical Manager | snippet "Appraises: Technical Superintendents…, IT Superintendent" | 🟡 |
+| 13 | The owner holds CAPEX; the manager holds OPEX within an approval matrix | AVS, read | 🟢 |
+| 14 | A frame agreement can block a supplier change | AVS: "Supplier change may require approval when a frame agreement already exists" | 🟢 |
+| 15 | ~25% of the world's trading fleet is under third-party managers | Valour, read | 🟢 |
+| 16 | Ship-management contracts are "negotiated mainly on price" | Valour, read | 🟢 |
+| 17 | The DPA function does not include purchasing | QMII duty list, read | 🟢 |
+| 18 | **P1 visits supplier websites** | — | 🔵 **[?]** |
+| 19 | **Which of P1/P2 initiates the supplier search** | — | 🔵 **[?]** |
+| 20 | **Whether a separate procurement officer/broker sits in the chain** | — | 🔵 **[?]** |
 
-### 1.2 Регуляції й тригери
+### 1.2 Regulations and triggers
 
-| # | Твердження | Джерело | Статус |
+| # | Claim | Source | Status |
 |---|---|---|---|
-| 21 | MLC 2006: «internet access with charges, if any, being reasonable in amount», чинне з 23.12.2024 | ILO, прочитано | 🟢 |
-| 22 | Перевіряється Port State Control | Chambers, видача | 🟡 |
-| 23 | MSC.428(98): кібер у SMS до першої щорічної верифікації DOC після 01.01.2021 | PDF IMO не розпарсився | 🟡 |
-| 24 | Дедлайн **повторюється щороку** | висновок із «first annual verification» | 🔵 **[ВИВЕДЕНО]** |
-| 25 | Чи це вимога, чи рекомендація («encourages») | не перевірено | 🔵 **[?]** |
-| 26 | IACS UR E26/E27 — судна від 01.07.2024, ретроактивно не діють | ClassNK відкрито в браузері 05.08: «contracted for construction on or after 1 July 2024» | 🟢 (було 🟡) |
-| 27 | Хто відповідає за E26/E27 — верф, власник чи постачальник | не знайдено ніде | 🔵 **[?]** |
-| 28 | Цикл: два докування за 5 років, проміжне ≈2,5 роки | блог Marine Public, не класифікаційне товариство | 🟡 |
-| 29 | **Регуляторний дедлайн приводить людину на сайт постачальника** | — | 🔵 **[?]** ⚠️ див. §2 |
-| 30 | **Апаратне купують під вікно докування** | логіка з бюджетів докування | 🔵 **[ВИВЕДЕНО]** |
+| 21 | MLC 2006: "internet access with charges, if any, being reasonable in amount", in force 23.12.2024 | ILO, read | 🟢 |
+| 22 | Enforced by Port State Control | Chambers, search results | 🟡 |
+| 23 | MSC.428(98): cyber in the SMS by the first annual DOC verification after 01.01.2021 | the IMO PDF failed to parse | 🟡 |
+| 24 | The deadline **recurs annually** | inference from "first annual verification" | 🔵 **[INFERRED]** |
+| 25 | Whether it is a requirement or a recommendation ("encourages") | unchecked | 🔵 **[?]** |
+| 26 | IACS UR E26/E27 — ships from 01.07.2024, not retroactive | ClassNK opened in the browser 05.08: "contracted for construction on or after 1 July 2024" | 🟢 (was 🟡) |
+| 27 | Who is responsible for E26/E27 — the yard, the owner or the supplier | found nowhere | 🔵 **[?]** |
+| 28 | Cycle: two dockings per 5 years, intermediate ≈2.5 years | the Marine Public blog, not a classification society | 🟡 |
+| 29 | **A regulatory deadline brings the person to a supplier's site** | — | 🔵 **[?]** ⚠️ see §2 |
+| 30 | **Hardware is bought against the docking window** | logic from docking budgets | 🔵 **[INFERRED]** |
 
-### 1.3 Опитування й цифри
+### 1.3 Surveys and figures
 
-| # | Твердження | Джерело | Статус |
+| # | Claim | Source | Status |
 |---|---|---|---|
-| 31 | 93% власників вважають always-on зв'язок критичним | Digital Ship, прочитано; **вибірка не розкрита**, джерело — вендор | 🟢 з застереженням |
-| 32 | 92% моряків: інтернет впливає на вибір роботодавця, n=6000 | Futurenautics 2018, видача; **2018 рік, спонсори KVH/Intelsat** | 🟡 |
-| 33 | 13% суден без інтернету для екіпажу | Riviera, прочитано | 🟢 |
-| 34 | «First question potential crew ask is whether there's internet on board» | Riviera, прочитано | 🟢 |
-| 35 | Власники просять «time-restricted access… to help manage fatigue» | Riviera, прочитано | 🟢 |
-| 36 | 1 із 6 власників розуміє, який має бути кіберзахищений флот | HFW, видача; лапки знято | 🟡 |
-| 37 | Половина власників витрачає <$100k/рік на кібер | CyberOwl, видача | 🟡 |
-| 38 | 55% постачальників просять довести кіберпроцедури | CyberOwl, видача | 🟡 |
-| 39 | Викуп: $3,2m (2023) → ~$100k (2025); 14% → 7% | HFW, видача | 🟡 |
-| 40 | **Чи ці цифри впливають на рішення покупця** | — | 🔵 **[?]** |
+| 31 | 93% of owners see always-on connectivity as critical | Digital Ship, read; **sample undisclosed**, vendor source | 🟢 with a caveat |
+| 32 | 92% of seafarers: internet shapes employer choice, n=6,000 | Futurenautics 2018, search results; **2018, sponsors KVH/Intelsat** | 🟡 |
+| 33 | 13% of vessels have no crew internet | Riviera, read | 🟢 |
+| 34 | "First question potential crew ask is whether there's internet on board" | Riviera, read | 🟢 |
+| 35 | Owners request "time-restricted access… to help manage fatigue" | Riviera, read | 🟢 |
+| 36 | 1 in 6 owners understands what a cyber-secure vessel looks like | HFW, search results; quotation marks removed | 🟡 |
+| 37 | Half of owners spend <$100k/yr on cyber | CyberOwl, search results | 🟡 |
+| 38 | 55% of suppliers are asked to prove cyber procedures | CyberOwl, search results | 🟡 |
+| 39 | Ransoms: $3.2m (2023) → ~$100k (2025); 14% → 7% | HFW, search results | 🟡 |
+| 40 | **Whether these figures influence a buyer's decision** | — | 🔵 **[?]** |
 
-### 1.4 Конкуренти (перевірено вручну 05.08.2026)
+### 1.4 Competitors (verified by hand 05.08.2026)
 
-| # | Твердження | Джерело | Статус |
+| # | Claim | Source | Status |
 |---|---|---|---|
-| 41 | Комплаєнс-осі в навігації немає в жодного з 5 | меню всіх п'яти пройдено вручну | 🟢 |
-| 42 | Marlink виніс норми чипами на головну (ISO/IACS/NIS2/**DORA**) | скріншот, прочитано | 🟢 |
-| 43 | Marlink: осі Portfolio / Industry / Services & Support | меню відкрито | 🟢 |
-| 44 | Marlink пропонує «Talk to our team» замість фіндера | меню, прочитано | 🟢 |
-| 45 | Цифри Marlink змінилися: тепер «75yrs», «23.5k Operations» | скріншот проти `research.md` | 🟢 |
-| 46 | **Фіндер IEC зник** — URL редіректить, у меню немає | перевірено | 🟡 сторінка могла переїхати |
-| 47 | Speedcast: «Get in Touch» → `/sign-up/` — досі живе | код сторінки | 🟢 |
-| 48 | Speedcast додав «Shop Now» | хедер | 🟢 |
-| 49 | NSSLGlobal: «At the Helm», «Drop us a Line» — досі живі | меню | 🟢 |
-| 50 | Navarino: галузевої осі немає, Solutions — плоский список | меню | 🟢 |
-| 51 | Публічних клієнтських відгуків по конкурентах немає | Trustpilot/Reddit — нуль релевантних | 🟢 |
-| 52 | Референсна компанія: 8 відгуків Glassdoor, усі від співробітників | видача Glassdoor | 🟡 |
-| 53 | Уся HARD-група має C8 ≤ 2 | ⚠️ `research.md` оцінив **2 з 5** | 🔵 **екстраполяція** |
+| 41 | No compliance axis in any of the 5 navigations | all five menus walked by hand | 🟢 |
+| 42 | Marlink put the norms as chips on its homepage (ISO/IACS/NIS2/**DORA**) | screenshot, read | 🟢 |
+| 43 | Marlink: axes Portfolio / Industry / Services & Support | menu opened | 🟢 |
+| 44 | Marlink offers "Talk to our team" instead of a finder | menu, read | 🟢 |
+| 45 | Marlink's numbers changed: now "75yrs", "23.5k Operations" | screenshot vs `research.md` | 🟢 |
+| 46 | **IEC's finder is gone** — the URL redirects, absent from the menu | checked | 🟡 the page may have moved |
+| 47 | Speedcast: "Get in Touch" → `/sign-up/` — still live | page code | 🟢 |
+| 48 | Speedcast added "Shop Now" | header | 🟢 |
+| 49 | NSSLGlobal: "At the Helm", "Drop us a Line" — still live | menu | 🟢 |
+| 50 | Navarino: no industry axis, Solutions is a flat list | menu | 🟢 |
+| 51 | No public customer reviews of the competitors exist | Trustpilot/Reddit — zero relevant | 🟢 |
+| 52 | The reference company: 8 Glassdoor reviews, all from employees | Glassdoor results | 🟡 |
+| 53 | The whole HARD group has C8 ≤ 2 | ⚠️ `research.md` scored **2 of 5** | 🔵 **extrapolation** |
 
-### 1.5 Болі й тригери довіри (усе з `research.md`)
+### 1.5 Pains and trust triggers (all from `research.md`)
 
-| # | Твердження | Статус |
+| # | Claim | Status |
 |---|---|---|
-| 54 | Жаргон COTP/COTM, «OSI model»; відсутність datasheet'ів; застарілі PDF; дрейф цифр; форм немає у 2 з 5; ярлик ≠ адреса | 🟢 зафіксовано в аудиті зі скрінами |
-| 55 | **Ці вади спричиняють зрив саме в наших персон** | 🔵 **[?]** — воронок і аналітики немає ⚠️ див. §2 |
-| 56 | **Названі тригери довіри діють на цю аудиторію** | 🔵 **[?]** — ми знаємо лише, що конкуренти їх застосовують ⚠️ див. §2 |
-| 57 | Заходять «за галуззю» чи «за потребою» першими | 🔵 **[?]** — відкрито в `research.md` §10.6 |
+| 54 | COTP/COTM jargon, "OSI model"; missing datasheets; stale PDFs; number drift; no forms at 2 of 5; label ≠ URL | 🟢 recorded in the audit with screenshots |
+| 55 | **These flaws cause drop-off for our personas specifically** | 🔵 **[?]** — no funnels or analytics ⚠️ see §2 |
+| 56 | **The named trust triggers work on this audience** | 🔵 **[?]** — we only know competitors apply them ⚠️ see §2 |
+| 57 | Industry-first or need-first entry | 🔵 **[?]** — open in `research.md` §10.6 |
 
-### 1.6 Форуми (05.08.2026)
+### 1.6 Forums (05.08.2026)
 
-| # | Твердження | Джерело | Статус |
+| # | Claim | Source | Status |
 |---|---|---|---|
-| 58 | ≈20 суден описують не канал, а **політику**: квоти, ранги, фільтри, географія | тред r/maritime, прочитано | 🟢 |
-| 59 | Тарифікація за рангом (екіпаж проти старших офіцерів) | там само | 🟢 |
-| 60 | Судна тримають резервний канал (Starlink + Inmarsat/Viasat/OneWeb) | там само | 🟢 |
-| 61 | **Це голос екіпажу, не покупця** | — | 🟢 обмеження назване |
-| 62 | **Чому покупці обрали саме такі політики** | — | 🔵 **[?]** |
+| 58 | ≈20 vessels describe not the link but **the policy**: quotas, ranks, filters, geography | r/maritime thread, read | 🟢 |
+| 59 | Rank-based tariffs (crew vs senior officers) | same | 🟢 |
+| 60 | Vessels keep a backup channel (Starlink + Inmarsat/Viasat/OneWeb) | same | 🟢 |
+| 61 | **This is the crew's voice, not the buyer's** | — | 🟢 limitation named |
+| 62 | **Why buyers chose exactly these policies** | — | 🔵 **[?]** |
 
 ---
 
-## 2. 🔴 Найнебезпечніший список — гіпотези, що несуть дизайн-рішення
+## 2. 🔴 The most dangerous list — hypotheses carrying design decisions
 
-Твердження, які **вже впливають** на те, що спроєктовано, але доказу не мають.
-Відсортовано за ціною помилки.
+Claims that **already influence** what has been designed but hold no evidence.
+Sorted by the cost of being wrong.
 
-| # | Гіпотеза | Що на ній стоїть | Ціна, якщо хибна |
+| # | Hypothesis | What rests on it | Cost if wrong |
 |---|---|---|---|
-| **D1** | **P1 відвідує сайти постачальників** (§1.1 №18) | Вибір primary-персони → наратив головної сторінки → тон і мова всього сайту | **Найвища.** Хибний primary = хибна вся верхівка. Європейська перевірка вже показала, що P2 має документоване «manage vendors», а P1 — лише «approve invoices». Тобто **обирає, ймовірно, P2** |
-| **D2** | **Регуляторний дедлайн приводить на сайт** (§1.2 №29) | **R1 — job №2 в ядрі MVP.** На ньому побудована пропозиція робити комплаєнс навігаційною віссю і питати про тригер у фіндері | **Дуже висока.** Тригери купівлі задокументовані нормами; зв'язок «дедлайн → пошук у вебі» — ні. Якщо люди йдуть із цим до класу, P&I чи прапора, а не до постачальника — вісь порожня |
-| **D3** | **«Не спеціаліст у всіх п'яти пілларах»** (`research.md` §10.6) | **Solution Finder як головний патерн** — головна ставка всієї роботи | **Дуже висока.** Спроба підперти цифрою «1 із 6» виявилася завеликою екстраполяцією (§4). Теза лишається неперевіреною |
-| **D4** | **Названі тригери довіри діють** (§1.5 №56) | Proof-блок, ставка на імена класифікаційних органів, уся аргументація R2 | **Середня.** Ризик не в тому, що зашкодить, а в тому, що ми копіюємо конкурентів і називаємо це рішенням |
-| **D5** | **Вади конкурентів спричиняють зрив** (§1.5 №55) | Уся секція «болі» в персонах → перелік того, чого уникати | **Середня.** Можливо, «немає форми» не шкодить Navarino, бо їхні угоди йдуть телефоном |
-| **D6** | **Комплаєнс-вісь вільна = вона потрібна** | Пропозиція будувати вхід за нормою | **Середня.** Порожньо ≠ цінно. Може бути, що ніхто не робить, бо це не працює |
-| **D7** | **Дедлайн щорічний, а не разовий** (§1.2 №24) | Позиціонування комплаєнсу як повторюваного тригера | Низька — легко перевіряється |
-| **D8** | **Апаратне купують під док** (§1.2 №30) | Ідея, що частина відвідувачів не готова купувати зараз | Низька — впливає на тон, не на структуру |
+| **D1** | **P1 visits supplier websites** (§1.1 #18) | The primary-persona choice → the homepage narrative → the tone and language of the whole site | **Highest.** A wrong primary = a wrong top of everything. The European check already showed P2 holds documented "manage vendors" while P1 holds only "approve invoices". I.e. **the chooser is probably P2** |
+| **D2** | **A regulatory deadline leads to the site** (§1.2 #29) | **R1 — job #2 of the MVP core.** The proposal to make compliance a navigation axis and to ask about the trigger in the finder | **Very high.** Purchase triggers are documented by norms; the "deadline → web search" link is not. If people take this to class, P&I or the flag rather than a supplier — the axis is empty |
+| **D3** | **"No specialist across all five pillars"** (`research.md` §10.6) | **The Solution Finder as the leading pattern** — the work's main bet | **Very high.** The attempt to back it with "1 in 6" proved an over-extrapolation (§4). The thesis remains untested |
+| **D4** | **The named trust triggers work** (§1.5 #56) | The proof block, the bet on classification-society names, all of R2's argumentation | **Medium.** The risk isn't harm — it's copying competitors and calling it a decision |
+| **D5** | **Competitors' flaws cause drop-off** (§1.5 #55) | The whole "pains" section in the personas → the list of what to avoid | **Medium.** "No form" may not hurt Navarino at all if their deals run on the phone |
+| **D6** | **The compliance axis being free = it being wanted** | The proposal to build a norm-based entry | **Medium.** Empty ≠ valuable. Maybe nobody does it because it doesn't work |
+| **D7** | **The deadline is annual, not one-off** (§1.2 #24) | Positioning compliance as a recurring trigger | Low — easily checked |
+| **D8** | **Hardware is bought against the dock** (§1.2 #30) | The idea that some visitors aren't ready to buy now | Low — affects tone, not structure |
 
-### Чого в цьому списку немає — і це важливо
+### What is absent from this list — and why that matters
 
-**R5** (доступ vs контроль) — єдиний job ядра MVP, який **не спирається на жодну гіпотезу з
-цієї таблиці**. Під ним: норма (MLC + PSC), пряма цитата COO, заява Inmarsat і ≈20 живих
-описів із борту. **Якщо різати роботу до одного аргументу — це він.**
-
----
-
-## 3. Три питання, які закрили б найбільші дірки
-
-### ❓ Питання 1 — хто саме ініціює пошук: superintendent чи fleet IT?
-*Закриває D1 (і частково D5). Найдорожча дірка.*
-
-**Де шукати без доступу до продажів:**
-- **LinkedIn** — люди з посадами Fleet IT Manager / IT Superintendent у європейських операторів (Anglo-Eastern Афіни, Newport Пірей, Hapag-Lloyd Гамбург уже знайдені). Дивитися їхні пости й коментарі під публікаціями Marlink / Navarino / Starlink Maritime: **хто саме коментує вендорський контент** — це і є відповідь.
-- **Вебінари та виставки** — Digital Ship, Nor-Shipping, Posidonia. Списки спікерів і панелей публічні: **чиї посади ставлять у панель про зв'язок** — superintendent чи IT?
-- **Кейси на сайтах конкурентів** — кого цитують у клієнтських історіях Marlink і Navarino. Посада в підписі під цитатою і є той, кого вони вважають покупцем.
+**R5** (access vs control) is the only MVP-core job **that rests on none of the hypotheses in
+this table**. Beneath it: a norm (MLC + PSC), a direct COO quote, the Inmarsat statement and
+≈20 live accounts from the deck. **If the work had to be cut to one argument — this is it.**
 
 ---
 
-### ❓ Питання 2 — куди людина йде, коли з'явилася нова норма?
-*Закриває D2 і D6 — тобто долю R1 як job №2 ядра MVP.*
+## 3. Three questions that would close the biggest gaps
 
-**Де шукати:**
-- **Циркуляри класифікаційних товариств** (DNV, Bureau Veritas, Lloyd's Register, ABS) і **бюлетені прапорових реєстрів** (Ліберія, Маршаллові Острови, Мальта, Кіпр). Якщо норму пояснює клас — постачальник у цьому ланцюгу зайвий, і вісь порожня.
-- **P&I клуби** — Gard, Skuld, North Standard публікують детальні розбори норм для членів. Це прямий конкурент за увагу в момент «мені треба зрозуміти норму».
-- **Форуми:** r/maritime і gCaptain — шукати треди про PSC-інспекції та DOC-аудит. Питання: **чи хтось згадує там постачальника взагалі**.
-- **Контроль-тест:** у Marlink уже є чипи `IACS UR E26/E27`, `NIS 2`, `DORA` на головній. Подивитися, **чи є під ними сторінки** — якщо є й вони живі, вони перевіряли цю саму гіпотезу.
+### ❓ Question 1 — who initiates the search: the superintendent or fleet IT?
+*Closes D1 (and partly D5). The most expensive gap.*
 
----
-
-### ❓ Питання 3 — чи політика доступу продається як цінність, чи лише як налаштування?
-*Закриває найбільший ризик R5 — job із ядра MVP, у якого сильні докази потреби, але жодного доказу, що це продають.*
-
-**Де шукати — тут потрібні конкретні продукти, а не думки:**
-- **Сторінки продуктів керування трафіком** у конкурентів: **Navarino Infinity** і **Spectrum**, **IEC OptiView** і **OptiSim**, **Marlink Network / Cloud & IT**. Питання одне: **чи винесені квоти, ранги і фільтри в маркетинг — чи це закопано в описі як технічна дрібниця.**
-- **Starlink Maritime** — сторінка тарифів: чи є там пріоритезація, ліміти, керування користувачами.
-- **Портали, у які ми не заходили:** Navarino COSMO, Marlink Portal360. Публічні скріншоти й демо-відео на YouTube покажуть, **як виглядає панель керування політикою** — а це і є той продукт, який реально купують.
-- **Форуми як контроль:** у тому ж треді r/maritime згадані captive portal і firewall — пошукати за назвами конкретних систем, щоб зрозуміти, **чиї це продукти**.
-
-**Чому саме це питання третє, а не перше:** потреба в R5 доведена найкраще з усіх. Невідоме
-тут не «чи треба», а «чи це вже роблять і просто не називають». Якщо роблять і мовчать — наша
-можливість у **називанні**, а не у винаході.
+**Where to look without access to a sales team:**
+- **LinkedIn** — people titled Fleet IT Manager / IT Superintendent at European operators (Anglo-Eastern Athens, Newport Piraeus, Hapag-Lloyd Hamburg already found). Watch their posts and comments under Marlink / Navarino / Starlink Maritime publications: **who comments on vendor content** is the answer.
+- **Webinars and expos** — Digital Ship, Nor-Shipping, Posidonia. Speaker and panel lists are public: **whose titles get put on a connectivity panel** — superintendents or IT?
+- **Case studies on competitor sites** — who is quoted in Marlink's and Navarino's customer stories. The title under the quote is whom they consider the buyer.
 
 ---
 
-## 4. Чотири твердження, які були вигадані — і як їх спіймали
+### ❓ Question 2 — where does the person go when a new norm appears?
+*Closes D2 and D6 — i.e. the fate of R1 as MVP-core job #2.*
 
-Для чесності роботи це важливіший розділ, ніж перелік того, що підтвердилось.
+**Where to look:**
+- **Classification-society circulars** (DNV, Bureau Veritas, Lloyd's Register, ABS) and **flag-registry bulletins** (Liberia, Marshall Islands, Malta, Cyprus). If class explains the norm — the supplier is redundant in that loop, and the axis is empty.
+- **P&I clubs** — Gard, Skuld, North Standard publish detailed norm breakdowns for members. A direct competitor for attention at the "I need to understand the norm" moment.
+- **Forums:** r/maritime and gCaptain — search threads on PSC inspections and the DOC audit. The question: **does anyone even mention a supplier there**.
+- **A control test:** Marlink already shows `IACS UR E26/E27`, `NIS 2`, `DORA` chips on its homepage. Check **whether pages exist beneath them** — if they do and they're alive, Marlink has tested this very hypothesis.
 
-| Було | У чому вигадка | Як спіймали | Де тепер |
+---
+
+### ❓ Question 3 — is access policy sold as value, or buried in settings?
+*Closes R5's biggest risk — the MVP-core job with strong need evidence but no proof anyone sells it.*
+
+**Where to look — specific products, not opinions:**
+- **The traffic-management product pages** at competitors: **Navarino Infinity** and **Spectrum**, **IEC OptiView** and **OptiSim**, **Marlink Network / Cloud & IT**. One question: **are quotas, ranks and filters surfaced in the marketing — or buried in the description as a technicality.**
+- **Starlink Maritime** — the pricing page: does it carry prioritisation, caps, user management.
+- **The portals we never entered:** Navarino COSMO, Marlink Portal360. Public screenshots and YouTube demos show **what the policy-management panel looks like** — which is the product actually being bought.
+- **Forums as a control:** the same r/maritime thread mentions captive portals and firewalls — search those system names to learn **whose products they are**.
+
+**Why this question is third rather than first:** the need behind R5 is the best-proven of all.
+The unknown is not "is it needed" but "is it already being done and simply not named". If they
+do it and stay silent — our opportunity is in **naming**, not inventing.
+
+---
+
+## 4. Four claims that were invented — and how they were caught
+
+For the work's honesty this section matters more than the list of what was confirmed.
+
+| Was | The invention | How caught | Where now |
 |---|---|---|---|
-| «1 із 6» доводить, що P1 не спеціаліст у п'яти пілларах | Стат — про **судновласників** і **кібербезпеку новобудов**. Розтягнуто під потрібний висновок | Самоперевірка `personas.md` §8 | Знижено до **[?]**, теза знову відкрита |
-| «Уся HARD-група має C8 ≤2» | `research.md` оцінив **2 з 5**. Я повторив його екстраполяцію як факт | Звірка з §9.2 | Виправлено, межа названа |
-| «Фіндер IEC не вимагає реєстрації» | `research.md` цього не фіксує. Я додав деталь, якої в джерелі немає | Звірка §0 `personas.md` | Знято |
-| «Жоден із 16 сайтів не має входу за регуляцією» **[ВИВЕДЕНО]** | Аргумент від мовчання: `research.md` не шукав комплаєнс-осі. Плюс збитий лік (16 замість 15) | Самоперевірка | Знижено до **[?]**, потім **перевірено вручну** й підтверджено вже як 🟢 |
+| "1 in 6" proves P1 is no specialist across five pillars | The stat concerns **shipowners** and **newbuild cyber**. Stretched to fit the desired conclusion | `personas.md` §8 self-audit | Downgraded to **[?]**, the thesis reopened |
+| "The whole HARD group has C8 ≤2" | `research.md` scored **2 of 5**. I repeated its extrapolation as fact | Cross-check with §9.2 | Fixed, the boundary named |
+| "IEC's finder requires no registration" | `research.md` doesn't record it. I added a detail absent from the source | `personas.md` §0 cross-check | Removed |
+| "None of the 16 sites has a regulation entry" **[INFERRED]** | An argument from silence: `research.md` wasn't looking for a compliance axis. Plus a miscount (16 vs 15) | Self-audit | Downgraded to **[?]**, then **verified by hand** and confirmed as 🟢 |
 
-**Спільний патерн усіх чотирьох:** це не помилки в посиланнях. Це випадки, де **висновок був
-сформульований раніше за доказ**, а доказ підбирався під нього. Саме тому в §2 стоїть окремий
-список «гіпотези, що несуть дизайн-рішення» — це те місце, де така помилка коштує найдорожче.
+**The common pattern in all four:** these are not citation errors. They are cases where **the
+conclusion was formulated before the evidence**, and the evidence was fitted to it. That is why
+§2 keeps a separate "hypotheses carrying design decisions" list — the place where this kind of
+error costs the most.
 
 ---
 
-## 5. Відповіді на три питання — перевірено 05.08.2026
+## 5. Answers to the three questions — verified 05.08.2026
 
-### ❓1 Хто ініціює пошук: superintendent чи fleet IT? → **Голос покупця у вендорських матеріалах — IT і COO. Superintendent-ів немає.**
+### ❓1 Who initiates the search: superintendent or fleet IT? → **The buyer's voice in vendor materials is IT and COO. No superintendents.**
 
-Перевірено, чиї посади стоять під клієнтськими цитатами у пресрелізах і кейсах вендорів:
+Checked whose titles sit under customer quotes in vendor press releases and case studies:
 
-| Вендор × клієнт | Хто цитований |
+| Vendor × customer | Person quoted |
 |---|---|
 | Marlink × Gedenlines (hybrid network deal) | **Baris Kopdag, IT Manager** ([marlink.com](https://marlink.com/)) |
 | Starlink × Carnival | **John Harshaw, VP of IT Connectivity** ([starlink.com/business/maritime](https://www.starlink.com/business/maritime)) |
-| Starlink × Seaspan | **Torsten Pedersen, COO** (там само) |
-| OSG (флітвайд-інсталяція) | **Patrick O'Halloran, COO** (BusinessWire) |
-| Beluga Shipping (софт-угода, 2011) | **Peter Wramling, Head of ICT** |
+| Starlink × Seaspan | **Torsten Pedersen, COO** (same page) |
+| OSG (fleet-wide install) | **Patrick O'Halloran, COO** (BusinessWire) |
+| Beluga Shipping (software deal, 2011) | **Peter Wramling, Head of ICT** |
 
-**Рахунок 5:0 на користь IT-вертикалі й C-level. Жодного Technical Superintendent.** **[ФАКТ]**
+**The score is 5:0 for the IT vertical and C-level. Not a single Technical Superintendent.** **[FACT]**
 
-⚠️ Межа доказу: пресцитати добирають за старшинством, це не факт про те, хто **шукав**. Але як
-непрямий доказ D1 це найкраще, що є без доступу до продажів: вендори самі вважають обличчям
-угоди IT-керівника або COO.
+⚠️ Evidence limit: press quotes are picked for seniority; this is not a fact about who
+**searched**. But as indirect evidence for D1 it is the best available without sales access:
+vendors themselves treat the IT leader or the COO as the face of the deal.
 
-**Наслідок для D1:** ризик підтверджується третім незалежним сигналом (після «manage vendors»
-у вакансії P2 і європейської перевірки). **Рекомендація підвищилася до дії: або перевести
-primary на P2, або явно записати, що P1-primary — це ставка проти наявних сигналів.**
-
----
-
-### ❓2 Куди йдуть, коли з'явилася норма? → **До класу. І клас цю роботу вже виконав повністю.**
-
-Відкрито сторінку ClassNK по UR E26/E27 ([прочитано напряму](https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html)) — це **ціла інфраструктура комплаєнсу**:
-гайдлайни (Edition 1.1, оновлено 29.08.2025), **137 Q&A з пошуком і фільтром «за
-стейкхолдером»** (оновлено 14.07.2026), зразки документів для подання (vessel asset inventory,
-risk assessment), пояснювальні відео, форми type approval, списки виданих exemption-SOF.
-Адресат названий прямо: «an aid to the stakeholders… **in particular compliance managers or
-persons in charge**». **[ФАКТ]**
-
-Попутно **верифіковано першоджерелом** (було [2-ГЕ ДЖЕРЕЛО], тепер **[ФАКТ]**): «apply to
-ships **contracted for construction on or after 1 July 2024**»; URs видані у квітні 2022,
-Rev.1 — вересень/листопад 2023. І підтверджено в DOM: **чипи Marlink на головній — статичний
-текст, не посилання**.
-
-**Наслідок для D2 і R1:** гіпотеза «зробимо вхід за нормою» у формі «пояснити норму» —
-**програшна**: цю роботу вже виконує клас, авторитетніше, ніж зможе вендор. Але ClassNK
-**не продає рішень** — зв'язка «норма → яке рішення закриває → який папір отримаєш» не
-належить нікому. R1 звужено саме до неї (правки внесені в [`jtbd.md`](./jtbd.md) §8.2).
-Бонус-патерн: навіть клас організовує комплаєнс-контент **за стейкхолдером** — підтвердження
-нашої персонної логіки з несподіваного боку.
+**Consequence for D1:** the risk is corroborated by a third independent signal (after "manage
+vendors" in P2's vacancy and the European check). **The recommendation hardened into an action
+item: either move the primary to P2, or record explicitly that P1-primary is a bet against the
+available signals.**
 
 ---
 
-### ❓3 Політику доступу продають чи ховають? → **Продають — але в глибині. Рівень повідомлення вільний.**
+### ❓2 Where do they go when a norm appears? → **To class. And class has already done this job completely.**
 
-Відкрито [Navarino Infinity](https://navarino.co.uk/solutions/infinity/) — **[ФАКТ]**:
+The ClassNK UR E26/E27 page opened ([read directly](https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html)) — it is **an entire compliance infrastructure**:
+guidelines (Edition 1.1, updated 29.08.2025), **137 Q&As searchable and filterable "by
+stakeholder"** (updated 14.07.2026), submission document samples (vessel asset inventory, risk
+assessment), explainer videos, type-approval forms, lists of issued exemption SOFs. The
+audience is named outright: "an aid to the stakeholders… **in particular compliance managers or
+persons in charge**". **[FACT]**
 
-- Продукт і є шаром політики: «bandwidth network management and optimization», QoS, firewall, multiple hotspots, SDWAN.
-- Контроль винесено в **бенефіти**: «**Control use & security of communications**» (Ship Owners), «**Crew Internet access control during shifts**» (Captains), «**Controlled costs with full usage visibility**» (Crew).
-- Масштаб і довіра: «**+10,000 vessels worldwide use Infinity**», бейдж «**UR E27 Type Approved**».
-- ⭐ Бенефіти сегментовані **за роллю: Ship Owners / Captains / Crew / IT Management** — конкурент уже говорить із чотирма аудиторіями окремо, і «IT Management» серед них (ще одне підтвердження P2).
+Along the way, **verified at the primary source** (was [2ND-HAND], now **[FACT]**): "apply to
+ships **contracted for construction on or after 1 July 2024**"; the URs issued April 2022,
+Rev.1 — September/November 2023. And DOM-confirmed: **Marlink's homepage chips are static text,
+not links**.
 
-Для контрасту — [Starlink Maritime](https://www.starlink.com/business/maritime): продає
-**відра даних** ($250–$2,150/міс за 50 ГБ–2 ТБ), залізо і покриття; з керування — лише «Remote
-fleet management… from a single portal». Мовою політики не говорить.
-
-**Наслідок для R5:** моє твердження «ніхто з 15 не подає контроль як цінність» **виправлено**
-(правки в [`jtbd.md`](./jtbd.md)): продається, але як фіча IT-платформи на глибокій
-продуктовій сторінці. Вільна не тема, а **висота подачі** — ніхто не веде керованістю на рівні
-позиціонування. Можливість Asterra — саме в називанні, як і передбачав §3.
+**Consequence for D2 and R1:** the "make a norm-based entry" hypothesis in its "explain the
+norm" form is **a losing one**: class already performs that job with more authority than a
+vendor ever could. But ClassNK **does not sell solutions** — the link "norm → which solution
+closes it → what paper you get" belongs to no one. R1 has been narrowed to exactly that
+(edits applied in [`jtbd.md`](./jtbd.md) §8.2). A bonus pattern: even class organises
+compliance content **by stakeholder** — our persona logic confirmed from an unexpected side.
 
 ---
 
-## 6. Підсумок одним абзацом
+### ❓3 Do they sell access policy or bury it? → **They sell it — but in the depths. The message level is free.**
 
-З 62 перевірених тверджень **34 підтверджені першоджерелом**, **9 стоять на переказі**,
-**21 — явні гіпотези**. Вигаданих у поточній версії немає; чотири були й виправлені (§4),
-плюс одне — «ніхто не продає контроль» — спіймане перевіркою питання 3 і виправлене (§5).
+[Navarino Infinity](https://navarino.co.uk/solutions/infinity/) opened — **[FACT]**:
 
-**Після перевірки трьох питань (§5):** D1 фактично дозріла до рішення — три незалежні сигнали
-вказують, що обличчя угоди — IT-вертикаль, і primary варто або міняти на P2, або лишати P1
-як явно задекларовану ставку. D2 звужена: «пояснити норму» забирає клас, вендорові лишається
-зв'язка «норма → рішення → папір». R5 підтверджений як найміцніший елемент ядра, з уточненням:
-конкуренція вже продає контроль у глибині — вільною є висота повідомлення.
+- The product *is* the policy layer: "bandwidth network management and optimization", QoS, firewall, multiple hotspots, SDWAN.
+- Control is surfaced in the **benefits**: "**Control use & security of communications**" (Ship Owners), "**Crew Internet access control during shifts**" (Captains), "**Controlled costs with full usage visibility**" (Crew).
+- Scale and trust: "**+10,000 vessels worldwide use Infinity**", a "**UR E27 Type Approved**" badge.
+- ⭐ The benefits are segmented **by role: Ship Owners / Captains / Crew / IT Management** — a competitor already addresses four audiences separately, with "IT Management" among them (one more confirmation of P2).
+
+For contrast — [Starlink Maritime](https://www.starlink.com/business/maritime): sells **data
+buckets** ($250–$2,150/mo for 50 GB–2 TB), hardware and coverage; of management, only "Remote
+fleet management… from a single portal". It does not speak the language of policy.
+
+**Consequence for R5:** my claim that "none of the 15 presents control as value" is
+**corrected** (edits in [`jtbd.md`](./jtbd.md)): it is sold, but as an IT-platform feature on a
+deep product page. What is free is not the theme but **the altitude** — nobody leads with
+manageability at positioning level. Asterra's opportunity is precisely in naming, as §3
+predicted.
+
+---
+
+## 6. Summary in one paragraph
+
+Of 62 claims checked, **34 are confirmed by primary sources**, **9 rest on paraphrase**,
+**21 are explicit hypotheses**. No invented claims remain in the current version; four existed
+and were fixed (§4), plus one more — "nobody sells control" — caught by the question-3 check
+and corrected (§5).
+
+**After verifying the three questions (§5):** D1 has effectively matured into a decision —
+three independent signals point to the IT vertical as the face of the deal, so the primary
+should either move to P2 or stay P1 as an explicitly declared bet. D2 narrowed: "explain the
+norm" belongs to class; what remains for a vendor is the "norm → solution → paper" link. R5 is
+confirmed as the core's strongest element, with the refinement that competitors already sell
+control in the depths — what is free is the altitude of the message.

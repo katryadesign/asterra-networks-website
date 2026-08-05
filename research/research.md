@@ -431,45 +431,45 @@ nature, so it should be scoped to one or two credible tools rather than promised
 
 ---
 
-## 11. Доресерч після персон (зібрано 2026-08-05)
+## 11. Post-persona targeted research (collected 2026-08-05)
 
-Точкова перевірка восьми припущень про болі з [`personas.md`](./personas.md) по **незалежних**
-джерелах — UX-розбори, поведінкова аналітика, галузеві публікації, дослідження B2B-покупки.
-Мета: відділити «наш аудит це побачив» від «хтось, крім нас, це підтверджує». Зафіксовано і
-те, що спростовує або виходить за межі початкових гіпотез.
+A targeted check of eight pain assumptions from [`personas.md`](./personas.md) against
+**independent** sources — UX write-ups, behavioural analytics, industry publications, B2B
+buying research. Goal: separate "our audit saw this" from "someone besides us confirms it".
+Findings that refute the assumptions or fall outside them are recorded too.
 
-**Типи джерел:** `[UX-КЕЙС]` розбір агенції/аналітичної платформи (зацікавлена сторона,
-названі особи) · `[ГАЛУЗЕВЕ]` стаття у профільній пресі (тут — авторська колонка вендора) ·
-`[ДОСЛІДЖЕННЯ]` незалежна дослідницька організація · `[АУДИТ]` наш власний огляд §3–§5.
+**Source types:** `[UX-CASE]` an agency/analytics-platform write-up (interested party, named
+people) · `[TRADE]` an article in the trade press (here — a vendor-authored column) ·
+`[RESEARCH]` an independent research organisation · `[AUDIT]` our own review, §3–§5.
 
-### 11.1 Перевірка восьми припущень
+### 11.1 The eight assumptions checked
 
-| # | Припущення | Спостереження | Кого стосується | Джерело (тип) | Вердикт | Упевненість |
+| # | Assumption | Observation | Who it concerns | Source (type) | Verdict | Confidence |
 |---|---|---|---|---|---|---|
-| 1 | **Складна навігація / каталог** | Schneider: користувачі «struggled to find product information»; зриви простежені до **header, footer, mega menu**; наслідок — «rising support tickets… clogging up support channels»; редизайн мега-меню знизив звернення в підтримку | відвідувачі каталогу B2B-виробника (SOFT-група) | [Contentsquare × Schneider](https://contentsquare.com/customers/schneider-electric/) — `[UX-КЕЙС]`, названі співробітники, поведінкові дані (session replay, journey analysis) | ✅ **підтверджено** — єдині справжні поведінкові дані в усій базі | **Висока** для факту про Schneider; середня для перенесення на наш ринок |
-| 1б | те саме, прямий ринок | Старий сайт Navarino (до редизайну): «weighed down by **too much information, an overwhelming navigation system**» — діагноз агенції, що робила редизайн | відвідувачі сайту прямого конкурента | [KOTA × Navarino](https://kota.co.uk/work/navarino) — `[UX-КЕЙС]`, самоопис агенції | ✅ підтверджено, що проблема була визнана й **оплачена** (замовили редизайн) | Середня — зацікавлене джерело |
-| 2 | **Жаргон без пояснення** | Незалежних скарг не знайдено. Є лише наш аудит (COTP/COTM, «OSI model») | — | тільки `[АУДИТ]` §3, §9 | ⚠️ **без незалежного підтвердження** | Низька поза аудитом |
-| 3 | **Маркетингові заяви без доказів** | Прямих скарг нема. Дотично: галузева колонка радить покупцям недовіру до занадто дешевих пакетів — «if packages… sound too good to be true, then apply common sense» | покупці satcom | [Splash247, 2017](https://splash247.com/five-questions-maritime-connectivity-provider/) — `[ГАЛУЗЕВЕ]`, автор — президент вендора Globecomm | 🟠 **часткове** — недовіра до заяв артикульована, але вендором | Низька-середня |
-| 4 | **Суперечливі / застарілі дані** | Незалежних скарг не знайдено. Дрейф цифр зафіксований лише нашим аудитом (§6) | — | тільки `[АУДИТ]` | ⚠️ **без незалежного підтвердження**; теза «drift = сигнал ненадійності» лишається нашою | Низька поза аудитом |
-| 5 | **Відсутність сертифікацій / кейсів / показників** | Обернене свідчення: колонка радить вимагати від провайдера доведеної кіберстратегії («They must also convince you that they have a cyber strategy and have put it into practice»); водночас опитування каже, що **лише 55%** постачальників взагалі просять довести кіберпроцедури | покупці satcom | Splash247 `[ГАЛУЗЕВЕ]` + CyberOwl/HFW `[ДОСЛІДЖЕННЯ]` (2-ге джерело) | 🟠 **часткове й двозначне**: вимагати радять, але половина не вимагає | Середня |
-| 6 | **Складний перехід до контакту** | Прямих даних нема. Незалежне дотичне: B2B-покупка — не воронка, а **«looping»** по шести jobs; гібрид «цифрові інструменти + продавець» дає **1,8×** імовірність якісної угоди проти самообслуговування | B2B-покупці загалом | [Gartner](https://www.gartner.com/en/sales/insights/b2b-buying-journey) — `[ДОСЛІДЖЕННЯ]` | 🟠 **переформульовано**: проблема не «важко знайти контакт», а «цифра і продавець мають працювати разом» — підтримує контекстну CTA замість чистого self-serve | Середня-висока для Gartner; перенесення — середня |
-| 7 | **Контакт без форми / маршрутизації** | Незалежних скарг не знайдено. Факт відсутності форм (Navarino, Speedcast) — наш аудит | — | тільки `[АУДИТ]` §3 | ⚠️ факт є, **шкода не доведена** — можливо, їхні угоди йдуть телефоном | Факт: висока. Наслідок: невідомо |
-| 8 | **Застарілі PDF** | Незалежних скарг не знайдено (Speedcast 2020–21 — наш аудит) | — | тільки `[АУДИТ]` §3 | ⚠️ **без незалежного підтвердження** | Низька поза аудитом |
+| 1 | **Complex navigation / catalog** | Schneider: users "struggled to find product information"; drop-offs traced to the **header, footer, mega menu**; consequence — "rising support tickets… clogging up support channels"; the mega-menu redesign reduced product-info support calls | visitors of a B2B manufacturer's catalog (SOFT group) | [Contentsquare × Schneider](https://contentsquare.com/customers/schneider-electric/) — `[UX-CASE]`, named employees, behavioural data (session replay, journey analysis) | ✅ **confirmed** — the only genuine behavioural data in the whole base | **High** for the Schneider fact; medium for transfer to our market |
+| 1b | same, direct market | Navarino's old site (pre-redesign): "weighed down by **too much information, an overwhelming navigation system**" — the diagnosis of the agency that did the redesign | visitors of a direct competitor's site | [KOTA × Navarino](https://kota.co.uk/work/navarino) — `[UX-CASE]`, the agency's self-description | ✅ confirmed the problem was acknowledged and **paid for** (a redesign was commissioned) | Medium — an interested source |
+| 2 | **Unexplained jargon** | No independent complaints found. Only our audit (COTP/COTM, "OSI model") | — | `[AUDIT]` only, §3, §9 | ⚠️ **no independent confirmation** | Low outside the audit |
+| 3 | **Marketing claims without proof** | No direct complaints. Tangential: a trade column advises buyers to distrust too-cheap packages — "if packages… sound too good to be true, then apply common sense" | satcom buyers | [Splash247, 2017](https://splash247.com/five-questions-maritime-connectivity-provider/) — `[TRADE]`, authored by the president of vendor Globecomm | 🟠 **partial** — distrust of claims is articulated, but by a vendor | Low-medium |
+| 4 | **Contradictory / stale data** | No independent complaints found. The number drift is recorded only by our audit (§6) | — | `[AUDIT]` only | ⚠️ **no independent confirmation**; the "drift = unreliability signal" thesis remains ours | Low outside the audit |
+| 5 | **Missing certifications / cases / reliability proof** | Inverse evidence: the column urges demanding a proven cyber strategy from the provider ("They must also convince you that they have a cyber strategy and have put it into practice"); meanwhile a survey says only **55%** of suppliers are ever asked to prove cyber procedures | satcom buyers | Splash247 `[TRADE]` + CyberOwl/HFW `[RESEARCH]` (2nd-hand) | 🟠 **partial and ambiguous**: demanding is advised, yet half don't demand | Medium |
+| 6 | **A hard path to expert contact** | No direct data. Independent adjacent: B2B buying is not a funnel but **"looping"** across six jobs; the hybrid of "digital tools + a sales rep" gives a **1.8×** likelihood of a high-quality deal vs self-service | B2B buyers in general | [Gartner](https://www.gartner.com/en/sales/insights/b2b-buying-journey) — `[RESEARCH]` | 🟠 **reframed**: the problem isn't "contact is hard to find" but "digital and the rep must work together" — supports a contextual CTA over pure self-serve | Medium-high for Gartner; transfer — medium |
+| 7 | **Contact pages without a form / routing** | No independent complaints found. The absence of forms (Navarino, Speedcast) is our audit's fact | — | `[AUDIT]` only, §3 | ⚠️ the fact stands, **the harm is unproven** — their deals may run on the phone | Fact: high. Consequence: unknown |
+| 8 | **Stale PDFs** | No independent complaints found (Speedcast 2020–21 — our audit) | — | `[AUDIT]` only, §3 | ⚠️ **no independent confirmation** | Low outside the audit |
 
-### 11.2 Знахідки поза початковими гіпотезами
+### 11.2 Findings beyond the initial hypotheses
 
-| Спостереження | Кого стосується | Джерело (тип) | Що підтверджує/спростовує | Упевненість |
+| Observation | Who it concerns | Source (type) | What it confirms/refutes | Confidence |
 |---|---|---|---|---|
-| **Новий режим зриву: витік до дистриб'ютора.** Session replay показав: користувачі **копіюють артикули, йдуть і завершують купівлю на сайтах дистриб'юторів** | B2B-покупці з каталогом | Contentsquare × Schneider `[UX-КЕЙС]` | Розширює «де зриваються»: погана навігація не втрачає лід, а **віддає його каналу**. Для Asterra: релевантно через reseller-канал (P4) | Висока для Schneider |
-| **Фінансова стійкість постачальника — критерій вибору.** «It makes no sense to risk upfront investment in **three to five years of equipment leasing** if you have any doubts about their sustainability» | покупець satcom (P4/P2) | Splash247 `[ГАЛУЗЕВЕ]` | ✅ Підтверджує job P4 «оцінити постачальника як довгостроковий ризик», що стояв **[?]**. Плюс датум: горизонт лізингу обладнання 3–5 років | Середня (вендорська колонка) |
-| **«Consensus creation» і «Validation» — універсальні jobs B2B-покупки**; «99% of B2B purchases are driven by organizational changes» | B2B-покупці загалом | Gartner `[ДОСЛІДЖЕННЯ]` | ✅ Незалежно підтверджує R3 (зібрати обґрунтування) і R2 (перевірити вибір) з [`jtbd.md`](./jtbd.md) — раніше вони стояли лише на вакансії | Висока |
-| **Керування crew-доступом — артикульований критерій вибору ще з 2017**: «Can your provider **segment, prioritise and manage crew access** without intervention from ship or shore?»; серед ролей, яким це болить, названо **superintendent** | покупці satcom (P1/P4) | Splash247 `[ГАЛУЗЕВЕ]` | ✅ Підтверджує R5 третім незалежним шляхом (після цитати COO і треду r/maritime). І єдина знайдена згадка superintendent-а в контексті зв'язку | Середня |
-| **Аудиторії Navarino за брифом редизайну: «ship owners, IT managers, or partners»** | прямий конкурент | KOTA `[UX-КЕЙС]` | ✅ Підтверджує P2 (IT manager) і P4/канал (owners, partners). ⚠️ Superintendent у переліку **відсутній** — ще один сигнал проти P1-primary | Середня |
-| Підтримка «**24x7x365 and multi-lingual**» — норма очікування; «as communications become more mission-critical, the importance of support increases» | покупці satcom | Splash247 `[ГАЛУЗЕВЕ]` | Підтверджує support-блок у тригерах довіри (Speedcast «115 engineers / 24x7x365» відповідає очікуванню). Додає вимір: **багатомовність** | Середня |
+| **A new failure mode: leaking to the distributor.** Session replay showed users **copying part numbers, leaving, and completing the purchase on distributor websites** | B2B buyers with a catalog | Contentsquare × Schneider `[UX-CASE]` | Extends "where they drop off": bad navigation doesn't lose the lead — it **hands it to the channel**. For Asterra: relevant via the reseller channel (P4) | High for Schneider |
+| **Supplier financial viability is a selection criterion.** "It makes no sense to risk upfront investment in **three to five years of equipment leasing** if you have any doubts about their sustainability" | the satcom buyer (P4/P2) | Splash247 `[TRADE]` | ✅ Confirms P4's "assess the supplier as a long-term risk" job that stood at **[?]**. Plus a datum: the equipment-leasing horizon is 3–5 years | Medium (a vendor column) |
+| **"Consensus creation" and "Validation" are universal B2B buying jobs**; "99% of B2B purchases are driven by organizational changes" | B2B buyers in general | Gartner `[RESEARCH]` | ✅ Independently confirms R3 (assemble the rationale) and R2 (validate the choice) in [`jtbd.md`](./jtbd.md) — previously resting on a single vacancy | High |
+| **Crew-access management has been an articulated selection criterion since 2017**: "Can your provider **segment, prioritise and manage crew access** without intervention from ship or shore?"; the roles named as pained include the **superintendent** | satcom buyers (P1/P4) | Splash247 `[TRADE]` | ✅ Confirms R5 by a third independent path (after the COO quote and the r/maritime thread). Also the only found mention of a superintendent in a connectivity context | Medium |
+| **Navarino's audiences per the redesign brief: "ship owners, IT managers, or partners"** | a direct competitor | KOTA `[UX-CASE]` | ✅ Confirms P2 (IT manager) and P4/the channel (owners, partners). ⚠️ The superintendent is **absent** from the list — one more signal against P1-primary | Medium |
+| Support "**24x7x365 and multi-lingual**" is the norm of expectation; "as communications become more mission-critical, the importance of support increases" | satcom buyers | Splash247 `[TRADE]` | Confirms the support block among the trust triggers (Speedcast's "115 engineers / 24x7x365" matches the expectation). Adds a dimension: **multilingual** | Medium |
 
-### 11.3 Чесний підсумок перевірки
+### 11.3 An honest verdict on the check
 
-- **Незалежно підтверджені лише 2 з 8** припущень: складна навігація (№1 — найсильніше, поведінковими даними) і частково №5/№6 у переформульованому вигляді.
-- **П'ять припущень (№2, 3, 4, 7, 8) тримаються тільки на нашому аудиті.** Це не робить їх хибними — сайти справді такі, скріни є. Але **шкода від цих вад для покупця ніким не виміряна**, і в персонах вони мають лишатися як [ВИВЕДЕНО]/[?].
-- Найцінніше знайшлося **поза списком**: витік до дистриб'ютора, фінансова стійкість постачальника як критерій, незалежне підтвердження consensus/validation jobs і третій доказ R5.
-- Двічі повторився сигнал проти P1-primary: у брифі редизайну Navarino і в колонці Splash247 superintendent або відсутній серед аудиторій, або названий лише як той, кому болить crew-доступ.
+- **Only 2 of the 8** assumptions are independently confirmed: complex navigation (#1 — strongest, with behavioural data) and partially #5/#6 in reframed form.
+- **Five assumptions (#2, 3, 4, 7, 8) rest on our audit alone.** That doesn't make them false — the sites really are like this, the screenshots exist. But **the harm these flaws cause the buyer has been measured by no one**, and in the personas they must remain [INFERRED]/[?].
+- The most valuable findings came **outside the list**: the distributor leak, supplier financial viability as a criterion, independent confirmation of the consensus/validation jobs, and a third proof of R5.
+- The signal against P1-primary repeated twice: in Navarino's redesign brief and in the Splash247 column the superintendent is either absent from the audiences or named only as the one pained by crew access.
