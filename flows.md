@@ -23,6 +23,12 @@ modals are steps *inside* screens, never nodes of their own.
 Persona shorthand as in `personas.md`: **P1** Technical Superintendent (⭐ primary) ·
 **P2** Fleet IT / IT Manager · **P4** Owner / CAPEX approver.
 
+**Color legend (identical in all diagrams):** 🟢 **green, thick** — the happy path;
+🔵 **blue** — legitimate alternative paths and detours (recognition entry, paper
+verification, the approval branch); 🟠 **amber** — recovery branches (retry, fallback,
+ask-the-expert) and empty/error states; 🔴 **red** — dead ends and the edges into
+them. Loading states are dashed grey; success states are green-filled.
+
 **Dead-end policy (set at the critique pass):** dead ends fall into two classes.
 *Recoverable* situations (data errors, empty results, unanswered questions) must offer
 a forward branch before terminating — a person with an open question is a qualified
@@ -109,6 +115,25 @@ flowchart TD
     sErr --> retry{"Retry?"}
     retry -->|yes| inquiry
     retry -->|no| deadForm(("Dead end: qualified lead lost<br/>to a form failure"))
+
+    classDef hp fill:#132619,stroke:#69db7c,stroke-width:2px,color:#e8ebf2
+    classDef alt fill:#151d2e,stroke:#7aa2ff,stroke-width:1.5px,color:#e8ebf2
+    classDef okState fill:#123420,stroke:#69db7c,color:#a8e6b3
+    classDef loadState fill:#1a1f2b,stroke:#6f7c92,stroke-dasharray:4 3,color:#9aa5b8
+    classDef warnState fill:#33240f,stroke:#ffb15e,color:#ffd9a8
+    classDef dead fill:#2b1214,stroke:#ff8b8b,color:#ffb3b3
+    classDef trig fill:#1a1f2b,stroke:#9aa5b8,color:#c6cede
+    class trigger trig
+    class entry,matching,solution,inquiry hp
+    class industry,norm,approval alt
+    class success okState
+    class mLoading,iLoading,sLoading,aLoading,sending loadState
+    class mError,mEmpty,iError,sError,aError,aEmpty,sErr warnState
+    class deadHuman,deadFiller,deadTech,deadNoFit,deadTrust,deadStall,deadForm dead
+    linkStyle 2,5,6,8,9,24,25,30,34,35,42,53,54,55 stroke:#69db7c,stroke-width:2.5px
+    linkStyle 3,4,15,16,19,20,37,38,39,41,43,44,46,50 stroke:#7aa2ff,stroke-width:1.5px
+    linkStyle 7,10,11,12,13,17,18,21,22,26,27,28,31,32,45,47,48,49,51,56,57,58 stroke:#ffb15e
+    linkStyle 14,23,29,33,36,40,52,59 stroke:#ff8b8b
 ```
 
 **Decisions**
@@ -219,6 +244,25 @@ flowchart TD
     sErr --> rRetry{"Retry?"}
     rRetry -->|yes| inquiry
     rRetry -->|no| deadFormR1(("Dead end: qualified lead lost<br/>to a form failure"))
+
+    classDef hp fill:#132619,stroke:#69db7c,stroke-width:2px,color:#e8ebf2
+    classDef alt fill:#151d2e,stroke:#7aa2ff,stroke-width:1.5px,color:#e8ebf2
+    classDef okState fill:#123420,stroke:#69db7c,color:#a8e6b3
+    classDef loadState fill:#1a1f2b,stroke:#6f7c92,stroke-dasharray:4 3,color:#9aa5b8
+    classDef warnState fill:#33240f,stroke:#ffb15e,color:#ffd9a8
+    classDef dead fill:#2b1214,stroke:#ff8b8b,color:#ffb3b3
+    classDef trig fill:#1a1f2b,stroke:#9aa5b8,color:#c6cede
+    class trigger trig
+    class norm,solution,inquiry hp
+    class entry alt
+    class doneOk,success okState
+    class nLoading,nSending loadState
+    class nError,nEmpty,sErr warnState
+    class deadClass1,deadClass2,deadGap,deadPaper,deadFormR1 dead
+    linkStyle 1,4,5,10,15,20,21,25,26,27,28 stroke:#69db7c,stroke-width:2.5px
+    linkStyle 2,3,11 stroke:#7aa2ff,stroke-width:1.5px
+    linkStyle 6,7,8,12,13,16,17,18,22,23,29,30,31 stroke:#ffb15e
+    linkStyle 9,14,19,24,32 stroke:#ff8b8b
 ```
 
 **Decisions**
@@ -313,6 +357,25 @@ flowchart TD
     r2Retry -->|yes| inquiry
     r2Retry -->|no| deadFormR2(("Dead end: qualified lead lost<br/>to a form failure"))
     next -->|"later — takes the validated choice away"| exitLater(("Exit: returns with a validated<br/>choice — a pause, not a loss"))
+
+    classDef hp fill:#132619,stroke:#69db7c,stroke-width:2px,color:#e8ebf2
+    classDef alt fill:#151d2e,stroke:#7aa2ff,stroke-width:1.5px,color:#e8ebf2
+    classDef okState fill:#123420,stroke:#69db7c,color:#a8e6b3
+    classDef loadState fill:#1a1f2b,stroke:#6f7c92,stroke-dasharray:4 3,color:#9aa5b8
+    classDef warnState fill:#33240f,stroke:#ffb15e,color:#ffd9a8
+    classDef dead fill:#2b1214,stroke:#ff8b8b,color:#ffb3b3
+    classDef trig fill:#1a1f2b,stroke:#9aa5b8,color:#c6cede
+    class trigger,exitLater trig
+    class solution,inquiry hp
+    class norm,rematch alt
+    class validated,done okState
+    class pLoading,r2Sending loadState
+    class pError,pEmpty,sErr warnState
+    class deadNoVerify,deadGeneric,deadBadge,deadDrift,deadMismatch,deadFormR2 dead
+    linkStyle 0,1,2,7,10,12,14,21,22,23,24,25,26 stroke:#69db7c,stroke-width:2.5px
+    linkStyle 15,16,20,31 stroke:#7aa2ff,stroke-width:1.5px
+    linkStyle 3,4,5,8,17,18,27,28,29 stroke:#ffb15e
+    linkStyle 6,9,11,13,19,30 stroke:#ff8b8b
 ```
 
 **Decisions**
@@ -409,6 +472,25 @@ flowchart TD
     sErr --> r5Retry{"Retry?"}
     r5Retry -->|yes| inquiry
     r5Retry -->|no| deadFormR5(("Dead end: qualified lead lost<br/>to a form failure"))
+
+    classDef hp fill:#132619,stroke:#69db7c,stroke-width:2px,color:#e8ebf2
+    classDef alt fill:#151d2e,stroke:#7aa2ff,stroke-width:1.5px,color:#e8ebf2
+    classDef okState fill:#123420,stroke:#69db7c,color:#a8e6b3
+    classDef loadState fill:#1a1f2b,stroke:#6f7c92,stroke-dasharray:4 3,color:#9aa5b8
+    classDef warnState fill:#33240f,stroke:#ffb15e,color:#ffd9a8
+    classDef dead fill:#2b1214,stroke:#ff8b8b,color:#ffb3b3
+    classDef trig fill:#1a1f2b,stroke:#9aa5b8,color:#c6cede
+    class trigger trig
+    class crew,inquiry hp
+    class industry,solution alt
+    class success okState
+    class cLoading,r5Sending loadState
+    class cError,cEmpty,sErr warnState
+    class deadPostponed,deadPitch,deadUnmatched,deadFormR5 dead
+    linkStyle 1,4,5,10,12,17,20,21,22,23 stroke:#69db7c,stroke-width:2.5px
+    linkStyle 2,3,18,19 stroke:#7aa2ff,stroke-width:1.5px
+    linkStyle 6,7,8,13,14,15,24,25,26 stroke:#ffb15e
+    linkStyle 9,11,16,27 stroke:#ff8b8b
 ```
 
 **Decisions**
