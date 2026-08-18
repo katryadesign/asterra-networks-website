@@ -21,7 +21,7 @@ components → the assembled system → developer handoff.
 | # | Folder | What lives here | Status |
 |---|---|---|---|
 | 1 | [`research/`](./research/) | Discovery: [`research.md`](./research/research.md) (competitor audit) + [`screens/`](./research/screens/) captures · evidence about people: [`people.md`](./research/people.md), [`people-desk.md`](./research/people-desk.md), [`personas.md`](./research/personas.md) (proto-personas — validation pending), [`jtbd.md`](./research/jtbd.md), [`audit.md`](./research/audit.md) (evidence audit) | 🟡 In progress |
-| 2 | [`wireframes/`](./wireframes/) | Low-fi layout & flow explorations | ⚪ Planned |
+| 2 | [`wireframes/`](./wireframes/) | Low-fi wireframes: 12 screens · 28 pages (every confirmed state), clickable end-to-end | 🟢 Done |
 | 3 | [`concept/`](./concept/) | Visual concept / art direction (editorial tech, dark-first) | ⚪ Planned |
 | 4 | [`tokens/`](./tokens/) | Design tokens — color, type, spacing, motion (source of truth) | ⚪ Planned |
 | 5 | [`components/`](./components/) | Component inventory & specs (variants, states, a11y) | ⚪ Planned |
@@ -91,6 +91,23 @@ jobs, screens from entities, navigation from screens, flows on top. One-page vie
   success and dead ends. Includes the adversarial-critique pass: 11 dead-end traps
   fixed (recoverable failures now offer a forward branch; trust collapses stay
   terminal), 6 state gaps closed.
+
+---
+
+## Wireframes
+
+All 12 screens of the designed IA, low-fi and grayscale, with every state the flow diagrams
+confirm (28 pages). Start at [`wireframes/entry.html`](./wireframes/entry.html) — a service
+tree panel on every page lists all screens and states, and the main flow is walkable by click:
+entry → guided matching → solution detail → inquiry → success, plus the norm-verification
+detour, recovery branches and the R5 / approval-branch screens.
+
+- Contract and rules: [`wireframes/_conventions.md`](./wireframes/_conventions.md)
+- Screen and state registry: [`wireframes/_screens.md`](./wireframes/_screens.md)
+- Review journal (defect table + fixes): [`wireframes/_critique.md`](./wireframes/_critique.md)
+
+No brand colour, fonts, imagery or motion — those are later stages; grey stands in for the
+dark-first treatment of the brief.
 
 ---
 

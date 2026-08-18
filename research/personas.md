@@ -104,9 +104,15 @@ stands **[?] — a hypothesis without in-market confirmation**.
 
 ---
 
-# ⭐ PRIMARY — P1. Technical Superintendent
+# SECONDARY — P1. Technical Superintendent · **the payer and the veto**
 
 > Shore-based technical manager of a vessel group. A former marine engineer.
+
+> ⚠️ **Was ⭐ PRIMARY until 2026-08-18.** Demoted to secondary — see
+> [§5](#5-why-p2-is-primary) for the decision record. Nothing below changed: the role, duties
+> and evidence are unaffected. What changed is **whose task the site is optimised for**.
+> P1 remains the one who **signs the connectivity invoice**, so their enquiry is still the
+> qualified one — they are the gate the decision passes through, not the one who starts it.
 
 **Role status:** **[FACT]** — role and responsibilities taken verbatim from an open vacancy
 ([seacareer](https://www.seacareer.com/i31473/technical-superintendent/)); the reporting line
@@ -217,7 +223,12 @@ team: who actually sends the inbound enquiries.
 
 ---
 
-# SECONDARY — P2. Fleet IT / IT Superintendent
+# ⭐ PRIMARY — P2. Fleet IT / IT Superintendent
+
+> Owns the fleet's network and cyber. **Chooses the supplier; P1 pays.**
+
+> ✅ **Promoted to primary 2026-08-18** on a third independent signal — see
+> [§5](#5-why-p2-is-primary).
 
 **Role status:** **[FACT with two caveats]** — the title is confirmed by the reporting line in
 an IT Officer vacancy: "Reports To: **Senior VP of Fleet IT, IT Superintendent, Corporate
@@ -468,7 +479,58 @@ persona and becomes a **content requirement** ("make a page that can be forwarde
 
 ---
 
-## 5. Why P1 is primary
+## 5. Why P2 is primary
+
+**Decision taken 2026-08-18.** `../CLAUDE.md` §4.1 required this call **before build**; it was
+overdue. The original reasoning for P1 is preserved verbatim below the decision, because it was
+sound on what it knew — it was outvoted by evidence collected afterwards.
+
+### 5.0 The decision record
+
+**Primary: P2 · Fleet IT / IT Superintendent.** P1 becomes secondary — the payer and the veto.
+
+**Three independent signals, none of them ours:**
+
+1. **A direct competitor's redesign brief** names its audiences as "ship owners, **IT
+   managers**, or partners" — the superintendent is **absent** from the list
+   ([`research.md`](./research.md) §11.2). **[UX-CASE]**
+2. **The trade column** naming a pained role names the superintendent **only** in connection
+   with crew access — not with choosing a supplier (`research.md` §11.2). **[TRADE]**
+3. **The reference site's own language** (audit 2026-08-18,
+   [`scope-check.md`](./scope-check.md)): the homepage sells by **orbit type** (GEO / LEO /
+   terrestrial), **"Secure Network Management"**, a **"SaaS platform that integrates data,
+   systems, and processes"**, IoT and AI, and cyber as a top-level pillar. None of that is
+   class / ISM / dock / budget vocabulary. It is written for the person who owns the network.
+   **[AUDIT]**
+
+**The decisive frame, already in this file:** [§10.1](#101--p2-confirmed-in-merchant-shipping--and-stronger-than-described)
+established **"P2 chooses, while P1 pays"**. We had made primary the one who *pays*, not the
+one who *chooses* — while the site's whole job is to help someone **choose**.
+
+**What P1's case rested on, and why it lost:** authority over connectivity spend (documented)
+plus the brief's audience line. But §5.2 below already conceded the weak point: *"That P1
+personally visits supplier websites is confirmed by no source"* — the choice stood on
+**authority and brief fit, not observed behaviour**. Signal 3 is the first piece of evidence
+about who is actually being *addressed*.
+
+**⚠️ What this signal is not.** The reference site shows who **the vendor thinks** it is talking
+to, not who buys. Our own research documents that vendors in this category routinely speak the
+wrong language (E1: COTP/COTM, "OSI model"). Taken alone it would prove nothing — it counts as
+the **third** signal in a set, not as proof on its own.
+
+**What would falsify this and switch back:** one question to a sales team — *who writes the
+inbound enquiries, and after what*. If the answer is technical superintendents, primary returns
+to P1. This is the same question that closes the site-visit bet ([`jtbd.md`](./jtbd.md) §6).
+
+**Cascade applied the same day:** [`jtbd.md`](./jtbd.md) §8 (matrix marker, MVP core: **R3 in,
+R5 out**) · [`../sitemap.md`](../sitemap.md) §3, §5, §6.3 (Approval materials rises, Crew access
+drops) · [`../flows.md`](../flows.md) persona shorthand · [`../wireframes/_screens.md`](../wireframes/_screens.md) ·
+[`../wireframes/_conventions.md`](../wireframes/_conventions.md) (E1 re-reading) ·
+[`../wireframes/entry.html`](../wireframes/entry.html).
+
+---
+
+### 5.1 The original case for P1 — kept for the record
 
 **1. It matches the declared primary audience.** The brief ([`../CLAUDE.md`](../CLAUDE.md) §4)
 puts "Maritime — shipowners & fleet operators / **technical managers**" first, with the

@@ -219,7 +219,25 @@ level**. What is free is not the theme but **the altitude at which it is spoken*
 > **When I dig into a topic outside my engineering specialty, I want to figure it out on my
 > own, so that I enter the expert conversation as an equal — not as someone being sold to.**
 
-**Persona:** P1 above all.
+**Persona:** P1 above all — **now a secondary persona** (switch of 2026-08-18,
+[`personas.md`](./personas.md) §5.0). P2 scores **1** here: they *are* the specialist
+("Strong understanding of vessel communications, satellite connectivity").
+
+> ⚠️ **What the switch does to the language rule this job generated.** E1 produced the rule
+> *"speak class / certificate / ISM / dock / budget — not IT vocabulary"*. That rule was built
+> for P1. With P2 primary it must be **re-read, not deleted**:
+>
+> - **Do not** strip technical precision — for P2 that reads as evasion, not kindness. The
+>   reference-site vocabulary (orbit tiers, network management, integration) is *their* language.
+> - **Do** keep the anti-jargon guard where the jargon is **undefined or proprietary**: IEC's
+>   COTP/COTM failed not because it was technical but because it was **unexplained**.
+> - **The primary language rule now comes from P2's own documented pain**, not from E1:
+>   *"a catalog instead of an offer"* — 18 named offerings with no hierarchy against a
+>   sub-$100k budget ([`personas.md`](./personas.md) P2 Pains) **[AUDIT + SURVEY]**. So the rule
+>   is **hierarchy and specificity, not simplification**.
+> - E1 still applies wherever P1 reads the page — most of all on Safety & Compliance,
+>   Equipment and the Norm screens, which are their territory.
+
 **Anchor [FACT] + [INFERRED]:**
 - P1 — "Extensive experience as a **sea-going Engineer**", "Class II Certificate of Competency" ([seacareer](https://www.seacareer.com/i31473/technical-superintendent/)). An engineer, not a network specialist. **[FACT]**
 - The knowledge gap is documented: 1 in 6 owners understands what a cyber-secure vessel looks like **[SURVEY + 2ND-HAND]**
@@ -339,12 +357,12 @@ documented duties**.
 | **1** | the persona is **adjacent**; the job belongs to another | context from the procurement scheme |
 | **[?]** | **no evidence** — and I do not put an average here | — |
 
-**Personas:** **P1** Technical Superintendent (⭐ primary) · **P2** Fleet IT / IT Manager ·
+**Personas:** **P2** Fleet IT / IT Manager (⭐ primary — switched 2026-08-18) · **P1** Technical Superintendent (secondary, the payer) ·
 **P4** owner / CAPEX approver.
 
 ### 8.1 The matrix
 
-| Job | P1 ⭐ | P2 | P4 | FUNCTION in the product | COMPETITORS (research.md) |
+| Job | P1 | P2 ⭐ | P4 | FUNCTION in the product | COMPETITORS (research.md) |
 |---|:--:|:--:|:--:|---|---|
 | **MAIN** what we need + who to entrust | **3**<br><sub>prepares budgets, signs connectivity invoices</sub> | **3**<br><sub>"Evaluate existing systems and make **recommendations for future technology investments**"</sub> | **1**<br><sub>holds "Long-term asset strategy" but doesn't pick</sub> | Solution Finder · solution pages · Solutions ↔ Industries cross-links | 🔴 **barely served.** The only finder was IEC's — and per the 05.08 check it is **gone from the menu**. Marlink answers with a human: "Talk to our team" |
 | **R1** norm → requirement for my vessels | **3**<br><sub>"monitor vessels **Class and trading certificates**", ISM</sub> | **3**<br><sub>"**newbuild ICT solutions**" (Anglo-Eastern); "cybersecurity framework, **policies**"</sub> | **[?]**<br><sub>owner involvement in norm detail unrecorded</sub> | ❌ **not in scope** — the sitemap in [`../CLAUDE.md`](../CLAUDE.md) §5 has no regulatory entry | 🟠 **not by vendors — but the job is already served by class.** Checked by hand across 5 navs: no norm axis; Marlink's chips are static text, not links (DOM-verified). But "understand the norm" is fully covered by class: ClassNK keeps guidelines, **137 Q&As filterable by stakeholder**, document samples, videos ([ur-e26e27](https://www.classnk.or.jp/hp/en/activities/cybersecurity/ur-e26e27.html)). Free for a vendor: only the link **"norm → what to buy → what paper you get"** |
@@ -359,7 +377,12 @@ documented duties**.
 
 ### 8.2 🎯 The MVP core — three jobs
 
-Criterion: **matters to the primary (P1 = 3)** × **the market doesn't serve it**.
+> ⚠️ **REVISED 2026-08-18 — primary switched to P2** ([`personas.md`](./personas.md) §5.0).
+> The switch was executed exactly as the note at the end of this section predicted:
+> **R3 enters the core, R5 leaves it. MAIN and R1 are unaffected** — both score 3 for P2 as
+> well, which is why §8.2 always said "those bets can be placed now".
+
+Criterion: **matters to the primary (P2 = 3)** × **the market doesn't serve it**.
 
 Three qualify:
 
@@ -377,21 +400,33 @@ closes it → what paper you get."** Nobody owns that link — class doesn't sel
 vendors don't lead from the norm. The entry has a date and external enforcement, and needs no
 invented numbers — critical for a fictional brand.
 
-**3. R5 — "give the crew access without losing control"** *(refined 05.08)*
-P1 = 3, P4 = 3. At product level this is already sold (Navarino Infinity: "Crew Internet access
-control during shifts"); **at message level nobody leads with it**. The only job backed by a
-direct buyer quote, a legal norm, and — after the Reddit check (§9) — **twenty live accounts
-from the deck**. Our opportunity is **the altitude of the message**, not inventing the feature.
+**3. R3 — "assemble a rationale that survives the person with the budget"** *(entered the core
+2026-08-18 on the P2 switch)*
+P2 = 3, P4 = 3. It is P2's **directly written duty**: "**Prepare business cases** and
+recommendations… balancing operational needs with commercial considerations"; and "ability to
+**justify investments**". Independently confirmed as a universal B2B buying job — Gartner names
+"Consensus creation" and "Validation" (`research.md` §11.2) **[RESEARCH]**.
+Market: **not served in the direct market** — the "claim + number + source" format exists only
+in the aspirational tier. Note P4 = 3 as well, so R3 is the one core job that reaches the
+budget holder directly.
 
 **Deliberately not in the core:**
-**R2** — P1 = 3, but the market serves it well (Navarino, Marlink). **Table stakes**: can't
-skip it, can't win with it. **R3** — strong for P2/P4, but only 2 for the primary; it settles
-naturally onto the core as the presentation format, not a separate workstream.
 
-⚠️ **What changes if the primary becomes P2** (an open question —
-[`personas.md`](./personas.md) §10.1): **R3 rises into the core** ("Prepare business cases" is
-its direct duty) and **R5 drops** to 2. MAIN and R1 stay in the core under either option — those
-bets can be placed now.
+**R5 — "give the crew access without losing control"** *(left the core 2026-08-18)*
+P2 = 2, so it fails the primary criterion. **The job itself is not weakened** — it remains the
+best-evidenced job in the base (a direct COO quote, MLC + PSC, ~20 live accounts from the deck,
+plus the 2017 trade criterion). It keeps its screen and its own global nav slot; it is simply
+no longer one of the three the MVP is built around. ⚠️ If primary ever returns to P1, R5
+returns to the core with it.
+
+**R2** — the market serves it well (Navarino, Marlink). **Table stakes**: can't skip it, can't
+win with it. Served as distributed proof attributes, not a workstream.
+
+> 📌 **Record of how this section changed.** Before 2026-08-18 the core was MAIN · R1 · **R5**,
+> and this section carried the note: *"What changes if the primary becomes P2: R3 rises into the
+> core and R5 drops to 2. MAIN and R1 stay in the core under either option."* The switch
+> happened; the note was applied literally rather than reasoned afresh, so the change is
+> traceable to a prediction made **before** the decision — not fitted to it after.
 
 ### 8.3 ✂️ Cut candidates — serve no job
 

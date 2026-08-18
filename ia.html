@@ -171,7 +171,7 @@
         </div>
         <div class="screen">
           <b class="sname">Industry screen <span style="color:var(--dim)">· one per industry, Maritime leads</span></b>
-          <div class="srow"><span class="tag t-jobmain">MAIN — self-id</span> <span class="tag t-job">E1 language</span> <span class="tag t-job">S1 (Maritime)</span> <span class="tag t-pers">P1 ⭐ / P4</span> <span class="tag t-lvl">GLOBAL · item 2</span> <span class="tag t-ent">O3</span></div>
+          <div class="srow"><span class="tag t-jobmain">MAIN — self-id</span> <span class="tag t-job">E1 language</span> <span class="tag t-job">S1 (Maritime)</span> <span class="tag t-pers">P1 / P4</span> <span class="tag t-lvl">GLOBAL · item 2</span> <span class="tag t-ent">O3</span></div>
           <p class="swhy">Discovery by recognition; Maritime carries the crew-retention argument natively.
           <span class="tag t-q">[?]</span> industry-vs-situation lead is open (research.md §10.6).</p>
         </div>
@@ -188,7 +188,7 @@
         </div>
         <div class="screen">
           <b class="sname">Crew access &amp; control screen</b>
-          <div class="srow"><span class="tag t-jobmain">R5</span> <span class="tag t-job">S1 hiring</span> <span class="tag t-job">R1 MLC</span> <span class="tag t-pers">P1 ⭐ + P4</span> <span class="tag t-lvl">GLOBAL · item 4</span> <span class="tag t-ent">O8</span></div>
+          <div class="srow"><span class="tag t-jobmain">R5</span> <span class="tag t-job">S1 hiring</span> <span class="tag t-job">R1 MLC</span> <span class="tag t-pers">P1 + P4</span> <span class="tag t-lvl">GLOBAL · item 4</span> <span class="tag t-ent">O8</span></div>
           <p class="swhy">The rule set sold at message level: quotas, ranks, filters, geo, backup channel, cost
           visibility. The altitude bet — nobody in the market leads with this (jtbd.md §8.2.3).</p>
         </div>
@@ -225,7 +225,7 @@
         <p class="gjob">Job cluster: MAIN · R4</p>
         <div class="screen">
           <b class="sname">Inquiry screen</b>
-          <div class="srow"><span class="tag t-jobmain">MAIN — end state</span> <span class="tag t-job">R4 role field</span> <span class="tag t-job">E1 routing</span> <span class="tag t-pers">P1 ⭐ + P2/P4</span> <span class="tag t-lvl">GLOBAL · item 5</span> <span class="tag t-ent">O7</span></div>
+          <div class="srow"><span class="tag t-jobmain">MAIN — end state</span> <span class="tag t-job">R4 role field</span> <span class="tag t-job">E1 routing</span> <span class="tag t-pers">P1 + P2/P4</span> <span class="tag t-lvl">GLOBAL · item 5</span> <span class="tag t-ent">O7</span></div>
           <p class="swhy">Single-step request carrying solution + industry context, the role field (catches frame
           agreements early) and the routing promise. Every flow terminates here — its error/retry loop is the
           single highest-leverage state in the model.</p>
@@ -255,11 +255,11 @@
     <div class="table-wrap"><table>
       <thead><tr><th>#</th><th>Working label</th><th>Job behind it</th><th>Persona first</th><th>Why global</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td><b>“Find what fits”</b> → Guided matching</td><td><span class="tag t-jobmain">MAIN</span></td><td>P1 ⭐ + P2</td><td>The core job must be reachable from anywhere. <span class="tag t-q">[?]</span> lead position vs item 2</td></tr>
-        <tr><td>2</td><td><b>“Your industry”</b> → Industry screens</td><td><span class="tag t-jobmain">MAIN</span> <span class="tag t-job">E1 · S1</span></td><td>P1 ⭐ (Maritime)</td><td>The second confirmed MAIN mechanism — kept because our jobs need the sector frame, not because competitors have it</td></tr>
+        <tr><td>1</td><td><b>“Find what fits”</b> → Guided matching</td><td><span class="tag t-jobmain">MAIN</span></td><td>P1 + P2</td><td>The core job must be reachable from anywhere. <span class="tag t-q">[?]</span> lead position vs item 2</td></tr>
+        <tr><td>2</td><td><b>“Your industry”</b> → Industry screens</td><td><span class="tag t-jobmain">MAIN</span> <span class="tag t-job">E1 · S1</span></td><td>P1 (Maritime)</td><td>The second confirmed MAIN mechanism — kept because our jobs need the sector frame, not because competitors have it</td></tr>
         <tr><td>3</td><td><b>“Regulations &amp; deadlines”</b> → Norm screens</td><td><span class="tag t-job">R1</span></td><td>P1 + P2</td><td>The niche’s whole value <em>is</em> entry: “certificate as a badge vs norm as navigation” <span class="tag t-q">[?]</span></td></tr>
-        <tr><td>4</td><td><b>“Crew connectivity”</b> → Crew screen</td><td><span class="tag t-job">R5</span></td><td>P1 ⭐ + P4</td><td>Global placement <em>is</em> the altitude bet — burying it repeats the market’s failure</td></tr>
-        <tr><td>5</td><td><b>“Talk to an expert”</b> → Inquiry</td><td><span class="tag t-jobmain">MAIN end</span> <span class="tag t-job">R4</span></td><td>P1 ⭐</td><td>Brief-mandated header slot; the finish line is never more than one transition away</td></tr>
+        <tr><td>4</td><td><b>“Crew connectivity”</b> → Crew screen</td><td><span class="tag t-job">R5</span></td><td>P1 + P4</td><td>Global placement <em>is</em> the altitude bet — burying it repeats the market’s failure</td></tr>
+        <tr><td>5</td><td><b>“Talk to an expert”</b> → Inquiry</td><td><span class="tag t-jobmain">MAIN end</span> <span class="tag t-job">R4</span></td><td>P1</td><td>Brief-mandated header slot; the finish line is never more than one transition away</td></tr>
       </tbody>
     </table></div>
 

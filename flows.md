@@ -20,8 +20,15 @@ modals are steps *inside* screens, never nodes of their own.
 | `(["…"])` stadium | a **state** of the preceding screen (loading / empty / error / success) — not a screen |
 | `(("…"))` circle | a dead end — the user stops, loses trust, or leaves |
 
-Persona shorthand as in `personas.md`: **P1** Technical Superintendent (⭐ primary) ·
-**P2** Fleet IT / IT Manager · **P4** Owner / CAPEX approver.
+Persona shorthand as in `personas.md`: **P2** Fleet IT / IT Manager (⭐ primary — switched
+2026-08-18) · **P1** Technical Superintendent (secondary — the payer and the veto) ·
+**P4** Owner / CAPEX approver.
+
+> ⚠️ **The flows themselves did not change on the switch.** MAIN and R1 score 3 for both
+> personas, so every node, branch and state below stands as drawn. What changed is emphasis:
+> in MAIN the **approval branch** (`ready → Approval materials → Inquiry`) now serves an
+> MVP-core job rather than a deferred one, and the R5 flow is no longer core — but neither
+> gained or lost a node.
 
 **Color legend (identical in all diagrams):** 🟢 **green, thick** — the happy path;
 🔵 **blue** — legitimate alternative paths and detours (recognition entry, paper
@@ -94,7 +101,7 @@ flowchart TD
     paperOk -->|yes| ready
     paperOk -->|no| deadTrust
 
-    ready -->|"needs internal approval first"| approval["Approval materials screen [?]"]
+    ready -->|"needs internal approval first"| approval["Approval materials screen"]
     ready -->|yes| inquiry["Inquiry screen"]
 
     approval --> aLoading(["State: loading — materials list"])
@@ -174,6 +181,37 @@ flowchart TD
 - **success** — Inquiry: context passed, the verbatim end state of the job — "a ready
   position rather than 'so what do you offer?'".
 
+> 🔧 **Proposed edge, added at wireframe build 2026-08-18 — `mEmpty → inquiry`.**
+> The Guided matching wireframe gives the empty and error states two exits: `Browse by sector`
+> (the existing `fallback → industry` branch) and **`Ask an expert` → Inquiry screen**. The second
+> is **not yet in the diagram above**; it is recorded here rather than drawn, because editing the
+> diagram would renumber every `linkStyle` index.
+>
+> **Basis, not invention.** The dead-end policy in this file's header already states it: *"a person
+> with an open question is a qualified lead, not a loss."* The R1 flow applies exactly this three
+> times — critique fixes **Т4** (cannot tell), **Т5** (empty norm link) and **Т6** (missing paper)
+> each gained an "ask the expert" branch to Inquiry. MAIN's `mEmpty` never got the same treatment,
+> which now reads as an oversight rather than a decision.
+>
+> **Not the same as `deadHuman`.** That dead end is *leaving the site* to ask a human elsewhere,
+> the market's default (Marlink's "Talk to our team"). Routing an unmatched buyer into **our own**
+> Inquiry with the situation carried as context is capture, not loss. The finder still failed at
+> its differentiating moment, and that stays worth measuring.
+>
+> **To confirm:** add `mEmpty --> inquiry` and `mError --> inquiry` at the next diagram edit, and
+> one matrix cell if it survives review.
+
+> 🔧 **Clarification recorded at wireframe build 2026-08-18 — `iError → fallback` reads as a
+> loop.** The shared `fallback{"Try another entry?"}` node is entered from `mEmpty` / `mError`
+> (matching) and from `iError` (industry), but its single drawn resolution — "yes — by
+> industry" — is self-referential for the industry entrant: a sector page that failed to load
+> would route back to itself. The decision's intended meaning is "try the **other** entry".
+> From the industry side the other entry is guided matching — the same resolution the diagram
+> already draws for recognition failure (`tryMatch → matching`). `_conventions.md` §5.2 resolves
+> `industry-error → guided-matching.html`, and the wireframes follow that reading. To confirm at
+> the next diagram edit: give the industry entrant its own labelled edge
+> (`fallback -->|"yes — try matching"| matching`) or split the node per direction.
+
 **Dead ends**
 
 - *Leaves to ask a human* — the fallback the market already institutionalized (Marlink:
@@ -195,7 +233,7 @@ flowchart TD
 
 - **Job:** MAIN (`jtbd.md` §2) — primary; R2 embedded at the proof/paper decisions, R3
   at the approval branch, R4 inside the Inquiry screen (role field).
-- **Persona:** P1 ⭐ (P1 = 3); the same flow serves P2 (P2 = 3) via the direct-access
+- **Persona:** P1 (P1 = 3); the same flow serves P2 (P2 = 3) via the direct-access
   branch.
 - **Screens used (all from `sitemap.md` §5):** Entry screen · Guided matching screen ·
   Industry screen · Solution detail screen · Norm screen · Approval materials screen
@@ -310,7 +348,7 @@ flowchart TD
 
 - **Job:** R1 (`jtbd.md` §3) — primary; R2 at the paper decision; feeds MAIN (the norm
   is one of MAIN's entry situations).
-- **Persona:** P1 ⭐ (monitors Class and trading certificates, ISM — P1 = 3) · P2
+- **Persona:** P1 (monitors Class and trading certificates, ISM — P1 = 3) · P2
   (newbuild ICT, policies — P2 = 3).
 - **Screens used:** Entry screen · Norm screen · Solution detail screen · Inquiry
   screen.
@@ -428,7 +466,7 @@ flowchart TD
 - **Job:** R2 (`jtbd.md` §3) — primary; E2 as the integrity constraint at the
   consistency decision. Note: R2 is table stakes (`jtbd.md` §8.2) — this flow exists to
   *not lose* the buyer, not to differentiate.
-- **Persona:** P1 ⭐ (a direct duty — P1 = 3) · P2 (vendor management — 2) · P4
+- **Persona:** P1 (a direct duty — P1 = 3) · P2 (vendor management — 2) · P4
   (approved supplier lists — 2).
 - **Screens used:** Solution detail screen · Norm screen · Inquiry screen · Guided
   matching screen (as a MAIN re-entry on mismatch only). No separate trust screen
@@ -539,7 +577,7 @@ flowchart TD
 - **Job:** R5 (`jtbd.md` §3) — primary; S1 (the crew-retention argument reaches this
   flow via the Maritime industry screen); R1's MLC half (the compliance floor under the
   whole topic).
-- **Persona:** P1 ⭐ (signs the connectivity invoices; MLC + PSC — P1 = 3) · P4 (the
+- **Persona:** P1 (signs the connectivity invoices; MLC + PSC — P1 = 3) · P4 (the
   fleet-wide, COO-level decision — P4 = 3) · P2 (policies — 2).
 - **Screens used:** Industry screen · Crew access & control screen · Solution detail
   screen · Inquiry screen.

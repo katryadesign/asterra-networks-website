@@ -14,8 +14,19 @@
 ## 1. Project overview
 
 Asterra Networks is positioned as a **global technology provider** that unifies
-**satellite + terrestrial connectivity, cybersecurity, digital solutions, and
-specialized safety/mission systems** for maritime and land infrastructure.
+**satellite + terrestrial connectivity, cybersecurity, digital solutions, onboard
+equipment, and specialized safety/mission systems** for maritime and land
+infrastructure. The company grew **from a maritime-focused business into a global
+connectivity provider** — maritime is the heritage and the deepest competence, not
+the boundary.
+
+**Operating model — accredited integrator, not network owner.** Asterra does not own
+the satellite constellations or manufacture the hardware it installs. It is an
+**accredited partner and integrator** of named satellite operators, navigation and
+bridge OEMs, and safety-equipment manufacturers. This is not a footnote about
+procurement — it is the company's central trust mechanism: the buyer trusts the
+integrator because of *whose* equipment and capacity it is accredited to carry.
+See §6.1 for what that means for the site.
 
 The site's job: turn a complex catalog of technologies and services into a clear
 digital experience that lets a professional buyer **quickly find the solution for
@@ -53,6 +64,8 @@ specific, never hypey.
 - Cybersecurity: **Asterra Shield**
 - Digital Solutions: **Asterra Intelligence** (AI / IoT / monitoring / cloud)
 - Safety & Compliance: **Asterra Assure**
+- **Equipment: Asterra Equip** (navigation and bridge systems, safety equipment,
+  onboard hardware — supply, integration, survey)
 - Technical Services: **Asterra Care** (global support network)
 
 ---
@@ -60,8 +73,14 @@ specific, never hypey.
 ## 4. Audiences & personas (priority)
 
 **Persona #1 (leads the narrative — homepage optimized for them):**
-**Maritime — shipowners & fleet operators / technical managers.** Value global
-coverage, reliability/uptime, maritime safety, standards compliance, support.
+**Maritime — fleet operators and ship managers.** Value global coverage,
+reliability/uptime, maritime safety, standards compliance, support.
+
+> ⚠️ **Imprecision recorded 2026-08-05, resolved 2026-08-18.** This line originally merged
+> "shipowners & fleet operators" and "technical managers" into one persona. The sources show
+> these are **three people with different authority**: P2 evaluates and recommends, P1 signs
+> the connectivity invoice, P4 holds CAPEX and frame agreements. The homepage is optimised for
+> **P2** — see §4.1.
 
 **Secondary personas (fully served, do not lead):**
 - IT & security specialists (enterprise).
@@ -78,12 +97,15 @@ compliance, access to technical support.**
 
 Full evidence chain: [`research/personas.md`](./research/personas.md) · [`research/jtbd.md`](./research/jtbd.md) · [`research/audit.md`](./research/audit.md). Proto-personas — no primary research; every claim carries an evidence label.
 
-- **Primary — P1 · Technical Superintendent.** Shore-based technical manager of a vessel group; an ex-seagoing engineer (Class II CoC, ISM) who **approves communication invoices** and prepares dry-docking budgets. Thinks in class / certificates / ISM / budget language — **not IT**. ⚠️ Open question: accumulated signals (vendor case quotes 5:0 IT/COO) suggest **P2 · Fleet IT Manager** may be the real initiator — decide explicitly before build.
+- **⭐ Primary — P2 · Fleet IT / IT Superintendent** *(decided 2026-08-18; was P1)*. Owns the fleet's network and cyber. Duties verbatim: "**Evaluate existing systems and make recommendations** for future technology investments", "**Manage relationships with technology vendors**", "**Prepare business cases**". **P2 chooses; P1 pays.** Full decision record and falsification test: [`research/personas.md`](./research/personas.md) §5.0.
+- **Secondary — P1 · Technical Superintendent** *(was primary)*. Shore-based technical manager of a vessel group; an ex-seagoing engineer (Class II CoC, ISM) who **approves communication invoices** and prepares dry-docking budgets. Thinks in class / certificates / ISM / budget language — **not IT**. Remains the **gate and the qualified signature**, and the lead reader of the Safety & Compliance, Equipment and Norm pages.
+- **Secondary — P4 · Owner / CAPEX approver.** Holds CAPEX and frame agreements; the approval matrix runs through them.
 - **Main job:** *When I need to close a specific fleet requirement, I want to confidently determine what we need and who to entrust it to — so I enter the supplier conversation with a position, not with "so what do you offer?"*
-- **Top-3 jobs for MVP** (important to primary × not served by the market):
-  1. **MAIN** — figure out what fits without studying the whole catalog (only real market finder disappeared; Marlink answers with a human).
-  2. **R1** — regulation with a date → *which solution closes it and what paper you get* (norm-explaining is owned by class societies; the vendor-side link is unclaimed).
-  3. **R5** — give crew internet without losing cost/control (best-evidenced job: COO quote + MLC/PSC + ~20 live vessel accounts; sold deep in product pages, unclaimed at positioning level).
+- **Top-3 jobs for MVP** (important to primary × not served by the market) — *revised 2026-08-18 with the P2 switch; the swap was predicted in [`research/jtbd.md`](./research/jtbd.md) §8.2 before the decision was taken*:
+  1. **MAIN** — figure out what fits without studying the whole catalog (only real market finder disappeared; Marlink answers with a human). *Unchanged — scores 3 for both personas.*
+  2. **R1** — regulation with a date → *which solution closes it and what paper you get* (norm-explaining is owned by class societies; the vendor-side link is unclaimed). *Unchanged, and strengthened: P2's own arrival situation #1 is MSC.428(98) cyber-in-SMS checked at the annual DOC verification.*
+  3. **R3** — *assemble a rationale that survives the person with the budget.* **Entered the core on the switch.** P2's directly written duty ("Prepare business cases", "ability to justify investments"); P4 = 3 as well, so it is the one core job reaching the budget holder. Not served in the direct market.
+- **Left the core:** **R5** (crew access vs control) — P2 = 2. The job is not weakened (best-evidenced in the base) and keeps its screen and nav slot; it is simply no longer one of the three the MVP is built around. Returns to the core if primary ever returns to P1.
 
 ---
 
@@ -94,11 +116,13 @@ Full evidence chain: [`research/personas.md`](./research/personas.md) · [`resea
 
 ```
 Home
-Solutions (overview + Solution Finder)
+Solutions & Services (overview + Solution Finder)
   ├─ Connectivity            (satellite, mobile, terrestrial)
   ├─ Cybersecurity           (network, device, data, ops protection)
   ├─ Digital Solutions       (AI, IoT, monitoring, data transfer, cloud)
-  ├─ Safety & Compliance     (equipment, maritime safety, certification)
+  ├─ Safety & Compliance     (maritime safety, certification, survey)
+  ├─ Equipment               (navigation & bridge systems, safety equipment,
+  │                           onboard hardware — supply, integration, survey)
   └─ Technical Services      (installation, maintenance, global support)
 Industries (overview)
   ├─ Maritime (lead)         ├─ Energy            ├─ Emergency Response
@@ -125,6 +149,31 @@ There is **no "Request a Quote" CTA on the homepage.** CTA hierarchy:
 | Header (nav) | **Contact Us** | Contact page / form |
 | Homepage | **Explore / Discover Our Solutions**, "Learn more", links into Solutions / Industries / News | exploration |
 | Solution & Service pages (e.g. Digital Solutions, Government Solutions, Technical Services) | **Send an Inquiry** / **Talk to an Expert** | **Submit your Request** — simple contact form |
+
+### 6.1 Partner accreditation as the primary proof type
+
+Added 2026-08-18 from the reference-site audit ([`research/scope-check.md`](./research/scope-check.md) §2.2).
+
+The strongest trust block on the reference site is a **named partner strip** — satellite
+operators, navigation and bridge OEMs, safety-equipment manufacturers — reinforced by news
+items that are, in substance, **partnership announcements**. For an integrator this is the
+proof that works: a partner's name is a third party's name, and cannot be self-asserted.
+
+**What this fixes.** Our proof model previously offered only *stats · certifications ·
+outcome cases*. For a fictional brand the first and third cannot be filled without inventing
+facts, which the evidence rules forbid — so the entry screen carried two empty proof slots.
+Partner accreditation is **structural**: it can be shown honestly without inventing a figure.
+
+**Rules that come with it:**
+- Partner accreditation is a **proof type**, ranked alongside certifications — see
+  [`sitemap.md`](./sitemap.md) O5.
+- **Never name a real company as Asterra's partner.** Asterra is fictional; claiming a real
+  operator or OEM partners with it is a false statement about a real party. Use the *category*
+  ("satellite capacity partners", "navigation & bridge OEMs", "safety equipment manufacturers")
+  and, at design stage, invented partner brands. This is the §3 no-real-brand rule applied to
+  the partner strip.
+- Partner freshness is carried by news — see the reopened Insights decision in
+  [`sitemap.md`](./sitemap.md) §2.
 
 - **Primary conversion:** qualified inquiry submitted from a Solution/Service page.
 - **Form:** a simple contact form (name, company, industry, message, contact) —
@@ -235,7 +284,7 @@ a quality-check block) · [`flows.md`](./flows.md) (user flows) · one-page view
 ORIENT (MAIN)            Entry screen · Guided matching · Industry screens (Maritime leads)
 UNDERSTAND FIT           Solution detail (forwardable core; proof as attributes — R2 is
 (MAIN·R1·R2·R5)          screen-less by design) · Crew access & control (R5) · Norm screens (R1)
-PREPARE APPROVAL (R3)    Approval materials [?] — the only hypothesis screen
+PREPARE APPROVAL (R3)    Approval materials — [?] lifted 2026-08-18; R3 is now an MVP-core job
 REACH THE EXPERT         Inquiry (single-step, context-carrying, role field for R4)
 HYGIENE [ORPHAN]         Company · Careers · Legal (backlog) · Insights (cut from MVP)
 ```
@@ -253,3 +302,30 @@ detail). Alternative paths: via Industry — 3 · via Norm — 3 · crew trigger
 **Coverage:** 90% of jobs (9/10; S2 backlogged per `jtbd.md`'s own verdict), 100% of
 job-backed screens. Open hypotheses that gate the next iteration: the site-visit bet,
 P1-vs-P2 primary, matching-vs-recognition lead, the norm→supplier visit trigger.
+
+
+---
+
+## 16. Wireframes (stage complete, 2026-08-18)
+
+Low-fi wireframes for **all 12 screens of the designed IA** live in
+[`wireframes/`](./wireframes/) — 28 pages: every screen plus every state confirmed in
+[`wireframes/_screens.md`](./wireframes/_screens.md) (16 states total; states exist only where
+a flow diagram draws them — none were generated by default).
+
+- **Contract:** [`wireframes/_conventions.md`](./wireframes/_conventions.md) — grayscale only,
+  semantic HTML, no invented facts ([TBD] slots where a figure would be an invented fact for a
+  fictional brand), claims-not-labels heading register, per-screen state pages derived from the
+  base file by script.
+- **Entry point:** [`wireframes/entry.html`](./wireframes/entry.html). Every page carries a
+  service tree panel (all screens and states) and a states bar; the main flow and both detours
+  are walkable end-to-end by click. Edge audit: 32/32 diagram edges carried by real links; the
+  two deliberate exceptions (trust-collapse dead ends get no recovery button; inquiry-success is
+  terminal) are intact.
+- **Review journal:** [`wireframes/_critique.md`](./wireframes/_critique.md).
+- Screens outside the main flow (Crew access & control per flow R5, Approval materials per the
+  MAIN approval branch, four hygiene pages kept deliberately minimal) were added 2026-08-18;
+  the hygiene four stay «declared, not designed» by rule (jtbd.md §8.3).
+
+Next stages (concept → tokens → components) start from these pages; visual direction stays
+brief §9 (dark-first, editorial tech) and is deliberately absent here.
