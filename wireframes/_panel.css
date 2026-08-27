@@ -566,9 +566,49 @@ body > footer a, .foot-bar a { display: inline-block; padding-block: 3px; }
 .cap .duo h2 { font-size: 2.441rem; letter-spacing: -0.03em; }
 @media (max-width: 1080px) { .cap .duo { grid-template-columns: 1fr; } }
 
-/* Секційні заголовки внутрішніх сторінок отримують лінію-масттгед:
-   структура читається до читання тексту. */
-.stack-s > section > h2 { border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 22px; }
+/* ── РЕЙКОВА РЕДАКЦІЙНА СІТКА внутрішніх сторінок ────────────────────────
+   «Heading-left / content-right — the reference's repeating shape» — форма
+   лежала в _wireframe.css (.duo) невикористаною, а .stack-s лишався стіною
+   тексту. Тепер кожна секція: липкий заголовок у лівій рейці, контент
+   праворуч. Ієрархію заголовок тримає позицією, не кеглем. */
+.stack-s > section { border-bottom: 0; padding: 0; }
+@media (min-width: 980px) {
+  .stack-s > section {
+    display: grid;
+    grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+    column-gap: clamp(32px, 4.5vw, 72px);
+  }
+  .stack-s > section > h2 {
+    grid-column: 1; grid-row: 1;
+    position: sticky; top: 20px; align-self: start;
+    font-size: 1.5625rem; line-height: 1.2;
+    border-top: 1px solid var(--line-strong); padding-top: 14px; margin: 0;
+  }
+  .stack-s > section > *:not(h2) { grid-column: 2; }
+}
+@media (max-width: 979px) {
+  .stack-s > section > h2 { border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 22px; }
+}
+/* Lede: перший абзац секції більший — маса тексту отримує вхід. */
+.stack-s > section > .body:first-of-type { font-size: 1.25rem; line-height: 1.55; }
+
+/* Широкі смуги-підкладки під доказовими секціями: ритм Andercore
+   «смуга з домінантою», без вкладених карток — смуга без рамки,
+   картки з рамками всередині. */
+.stack-s > section:has(table.spec),
+.stack-s > section:has(.trio-l),
+.stack-s > section:has(.rows) {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 36px);
+}
+.stack-s > section:has(.trio-l) .trio-l > div { background: var(--surface-2); }
+@media (min-width: 760px) {
+  .stack-s > section:has(.rows) .rows li { background: var(--surface-2); }
+  .stack-s > section:has(.rows) .rows li:first-child {
+    background: var(--surface-2); border-color: var(--line-strong);
+  }
+}
 .band { padding: 72px 0; }
 
 /* ── Форма Inquiry · ті самі контроли, що в інтерв'ю ────────────────── */
