@@ -618,3 +618,129 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
 /* Дата новини — величина: моно, підлога шкали. */
 .date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .norm .date, .news-item .date { font-size: 0.8rem; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ДИНАМІКА КОМПОЗИЦІЇ — 2026-08-27, фідбек користувача «сторінки нудні».
+   Виконує те, що scope-check §2.4 і бриф §9–§10 вимагали від початку:
+   oversized display, широкі повноекранні смуги, фото-домінанти, бенто-ритм,
+   світлий інсет (§9 «lighter inset sections», Apollo-прийом із references.md
+   §2.3), стриманий scroll-motion. CSS-only, розмітка й текст не чіпані.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── МАСШТАБ. A5: домінанта розривом, вага лишається 500 (К3) ────────── */
+.hero h1 {
+  font-size: clamp(2.8rem, 6.2vw, 5.5rem);   /* до 88px, стеля 96 не пробита */
+  letter-spacing: -0.035em; line-height: 1.02; max-width: 16ch;
+}
+.gm-head { padding: 88px 0 72px; }
+.gm-head h1 { font-size: clamp(2.6rem, 5vw, 4.3rem); letter-spacing: -0.033em; }
+
+/* ── ENTRY · герой: текст + фото-об'єкт як у стрічки ─────────────────── */
+.hero .wrap { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  .hero .wrap > * { grid-column: 1; }
+  .hero .wrap::after {
+    content: ""; display: block; grid-column: 2; grid-row: 1 / -1;
+    align-self: stretch; min-height: 280px;
+    border: 1px solid var(--line); border-radius: var(--r);
+    background: url("https://images.unsplash.com/photo-1526666923127-b2970f64b422?auto=format&fit=crop&w=1000&q=80")
+                center/cover no-repeat, var(--surface);
+    filter: grayscale(0.35) contrast(1.03) brightness(0.82);
+  }
+}
+
+/* ── ENTRY · позиційна заява як повноекранна фото-смуга ──────────────────
+   Текст сидить на суцільній панелі поверх знімка: контраст чесний, фото
+   працює по краях — класична editorial-смуга з плаваючою панеллю. */
+.statement {
+  padding: 96px 0;
+  background:
+    linear-gradient(oklch(0.12 0 0 / 0.82), oklch(0.12 0 0 / 0.88)),
+    url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1600&q=80")
+    center/cover no-repeat, var(--bg);
+}
+.statement .wrap {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 44px clamp(20px, 4vw, 52px);
+}
+
+/* ── ENTRY · індекс напрямів: широка тональна смуга ──────────────────────
+   Рішення користувача 2026-08-27: світлих блоків у темній темі НЕ робимо.
+   «Bold color blocks» §9 читається як широкі смуги ТОНАЛЬНОГО зсуву в межах
+   темної схеми (Linear/Oxide: depth by tonal shift) — каталог-центр сторінки
+   сидить на піднятій поверхні, не на інверсії. */
+#areas.band { background: var(--surface); padding: 88px 0; }
+#areas .index { border-top-color: var(--line-strong); }
+
+/* major-ряд: фото-об'єкт над карткою, та сама ідентичність, що всюди —
+   Connect = антена, Shield = шафа обладнання. A1: ранг видно здалеку. */
+.index-major > article::before {
+  content: ""; display: block; height: 150px; margin: 0 0 18px;
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface-2) center/cover no-repeat;
+  filter: grayscale(0.3) contrast(1.03) brightness(0.9);
+}
+.index-major > article:first-child::before {
+  background-image: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80");
+}
+.index-major > article:nth-child(2)::before {
+  background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=900&q=80");
+}
+.index-major h3 { font-size: 2.441rem; letter-spacing: -0.03em; }
+
+/* ── БЕНТО-РИТМ на спільних сітках ───────────────────────────────────── */
+/* Тріо доказу: перша клітина ширша — перелік ранжований (A1), панелі
+   замість невидимих колонок. */
+.trio-l { gap: 12px; }
+.trio-l > div {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 22px;
+}
+@media (min-width: 900px) { .trio-l { grid-template-columns: 1.35fr 1fr 1fr; } }
+@media (max-width: 899px) { .trio-l { grid-template-columns: 1fr; } }
+
+/* Ситуації на сторінці рішення: бенто 2×, перший тригер — головний ряд. */
+@media (min-width: 760px) {
+  .rows { display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+          background: transparent; border: 0; }
+  .rows li { border: 1px solid var(--line); border-radius: var(--r);
+             background: var(--surface-2); border-top: 1px solid var(--line); }
+  .rows li:first-child { grid-column: 1 / -1; background: var(--surface);
+                         padding-top: 16px; padding-bottom: 16px; }
+}
+
+/* Новини: панелі з датою праворуч, ховер піднімає межу. */
+.news-item { border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface); padding: 16px 18px; margin: 0 0 8px; }
+.news-item:last-child { border-bottom: 1px solid var(--line); }
+.news-item h3 { font-size: 1.25rem; }
+
+/* ── HOVER-ЖИТТЯ. Межа світлішає, фото ледь наїжджає ─────────────────── */
+.match, .reg-row, .news-item, .trio-l > div, .logo-slot, .orbit {
+  transition: border-color 0.25s var(--ease);
+}
+.match:hover, .reg-row:hover, .news-item:hover, .trio-l > div:hover,
+.logo-slot:hover { border-color: var(--line-strong); }
+.match::before { transition: transform 0.8s var(--ease); }
+.match:hover::before { transform: scale(1.03); }
+
+/* ── SCROLL-MOTION. Прогресивно: тільки там, де підтримується view(),
+   і тільки без prefers-reduced-motion. Без підтримки все просто видиме. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .stack-s > section, .match, .reg-row, .trio-l > div,
+    .index-minor > article, .news-item, .held > div {
+      animation: panel-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+    @keyframes panel-rise {
+      from { opacity: 0.15; transform: translateY(22px); }
+      to   { opacity: 1;    transform: none; }
+    }
+    /* Дрейфу фото в героєві немає свідомо: пседоелемент і є панеллю,
+       його transform зсунув би межі, а background-анімація — суцільний
+       repaint. Рух сторінки несуть reveal і ховери. */
+  }
+}
