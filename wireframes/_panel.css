@@ -160,7 +160,7 @@ body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
     align-self: stretch; min-height: 210px;
     border: 1px solid var(--line); border-radius: var(--r);
     background: var(--surface) center/cover no-repeat;
-    filter: grayscale(0.35) contrast(1.03) brightness(0.82);
+    filter: grayscale(0.2) contrast(1.05) brightness(0.94);
   }
   /* Стрічка — антена як об'єкт; Shield — той самий знімок, що на його
      картці в стрічці; Maritime — щогла з радаром (= картка Equip);
@@ -227,7 +227,7 @@ body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
   margin: 0 calc(-1 * var(--pad)) 0;
   border-bottom: 1px solid var(--line);
   background: var(--surface-2) center/cover no-repeat;
-  filter: grayscale(0.3) contrast(1.03) brightness(0.84);
+  filter: grayscale(0.2) contrast(1.05) brightness(0.92);
 }
 .match:not(.match-secondary)::before {   /* Shield · Cybersecurity */
   background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1000&q=80");
@@ -522,10 +522,14 @@ body > footer a, .foot-bar a { display: inline-block; padding-block: 3px; }
 
 /* Схема орбіт — «engineered, not decorative». Ярус як величина: моно. */
 .orbit { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
-.orbit-row { border-bottom: 1px solid var(--line); }
-.orbit-row .tier { font-family: var(--font-mono); font-weight: 500; font-size: 0.94rem; color: var(--ink); }
-.orbit-row .bar { background: var(--line-strong); }
-.orbit-row .desc { font-size: 0.94rem; color: var(--ink-2); }
+.orbit-row { border-bottom: 1px solid var(--line); align-items: center; padding: 20px 24px;
+  transition: background 0.2s var(--ease); }
+.orbit-row:hover { background: var(--surface-2); }
+.orbit-row .tier { font-family: var(--font-mono); font-weight: 500; font-size: 1.05rem;
+  color: var(--ink); flex: 0 0 140px; }
+.orbit-row .bar { background: var(--line-strong); height: 1px; }
+.orbit-row .desc { font-size: 0.94rem; color: var(--ink-2); flex: 0 1 min(360px, 48%);
+  text-align: left; }
 
 /* Індекс напрямів: major-ряд тримає ранг розміром (A1), не кольором. */
 .index-major h3 { font-size: 1.953rem; letter-spacing: -0.025em; }
@@ -556,6 +560,16 @@ body > footer a, .foot-bar a { display: inline-block; padding-block: 3px; }
 .sector-list, .sector-list li { border-color: var(--line); }
 .sector-list .dt { color: var(--ink-3); }
 .sector-list a:hover .nm { color: var(--ink); }
+
+/* Дуо орбітальної секції: колонки збалансовані, ліва не тоне в порожнечі */
+.cap .duo { grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); gap: 48px; align-items: center; }
+.cap .duo h2 { font-size: 2.441rem; letter-spacing: -0.03em; }
+@media (max-width: 1080px) { .cap .duo { grid-template-columns: 1fr; } }
+
+/* Секційні заголовки внутрішніх сторінок отримують лінію-масттгед:
+   структура читається до читання тексту. */
+.stack-s > section > h2 { border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 22px; }
+.band { padding: 72px 0; }
 
 /* ── Форма Inquiry · ті самі контроли, що в інтерв'ю ────────────────── */
 .request {
@@ -646,7 +660,7 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
     border: 1px solid var(--line); border-radius: var(--r);
     background: url("https://images.unsplash.com/photo-1526666923127-b2970f64b422?auto=format&fit=crop&w=1000&q=80")
                 center/cover no-repeat, var(--surface);
-    filter: grayscale(0.35) contrast(1.03) brightness(0.82);
+    filter: grayscale(0.2) contrast(1.05) brightness(0.94);
   }
 }
 
@@ -654,16 +668,29 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
    Текст сидить на суцільній панелі поверх знімка: контраст чесний, фото
    працює по краях — класична editorial-смуга з плаваючою панеллю. */
 .statement {
-  padding: 96px 0;
+  padding: 72px 0;
   background:
-    linear-gradient(oklch(0.12 0 0 / 0.82), oklch(0.12 0 0 / 0.88)),
+    linear-gradient(105deg, oklch(0.12 0 0 / 0.88) 0%, oklch(0.12 0 0 / 0.55) 55%, oklch(0.12 0 0 / 0.72) 100%),
     url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1600&q=80")
     center/cover no-repeat, var(--bg);
 }
+/* Панель — структурний грід: службовий підпис зліва як рейка, заява великим
+   праворуч, пояснення під нею. Порожнечі немає — панель стискається до змісту. */
 .statement .wrap {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
-  padding: 44px clamp(20px, 4vw, 52px);
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 4vw, 48px);
+  display: grid; gap: 12px 48px;
 }
+@media (min-width: 860px) {
+  .statement .wrap { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); }
+  .statement .wrap > .pos-label { grid-column: 1; border-right: 1px solid var(--line); padding-right: 24px; }
+  .statement .wrap > p { grid-column: 2; }
+}
+.statement p {
+  font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.14;
+  letter-spacing: -0.025em; max-width: none; margin: 0 0 8px;
+}
+.statement .after { font-size: 1rem; line-height: 1.6; max-width: 58ch; }
 
 /* ── ENTRY · індекс напрямів: широка тональна смуга ──────────────────────
    Рішення користувача 2026-08-27: світлих блоків у темній темі НЕ робимо.
@@ -679,7 +706,7 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
   content: ""; display: block; height: 150px; margin: 0 0 18px;
   border: 1px solid var(--line); border-radius: var(--r);
   background: var(--surface-2) center/cover no-repeat;
-  filter: grayscale(0.3) contrast(1.03) brightness(0.9);
+  filter: grayscale(0.2) contrast(1.05) brightness(0.94);
 }
 .index-major > article:first-child::before {
   background-image: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80");
