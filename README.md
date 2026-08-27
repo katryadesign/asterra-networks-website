@@ -144,6 +144,16 @@ other layer: each decision anchored to a research line, hypotheses labelled, not
   only on the four screens where the theme names one, identical across a screen's states;
   the Entry hero is carried by the orbit schematic, not a photo. Post-rollout verification:
   28/28 pages, zero contrast failures, type floor 12.8px, no overflow at 375/1280.
+- **Geometry pass over the rendered pages:** [`wireframes/_parts/_GEOMETRY.md`](./wireframes/_parts/_GEOMETRY.md) —
+  after a user screenshot showed layouts healthy in code but raw in render, seven agents
+  measured every page in a hidden iframe at 1440/1024/375 against seven rawness classes
+  (dead zones, under-filled tracks, phantom grids, ragged rows, border collisions, chrome
+  weight, floors), each fixing only its own fragment with before/after numbers. The
+  cross-cutting root — hero photos overhanging their track by 8px (a clamp ceiling of
+  32px against the wrap's 40px gutter), found by three agents independently — was fixed
+  once in `_panel.css`. Final consolidated sweep: 28 wireframes + the case-study homepage
+  at 1440/375 — zero failures. Journal: [`concept/_audit.md`](./concept/_audit.md)
+  Appendix 5.
 
 Deliberately open at this stage: brief §9 “bold color blocks” vs the one-accent discipline
 of the entire reference set (taste sides 4/4 with discipline); error live-region and the
