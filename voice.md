@@ -120,7 +120,7 @@ what research.md scored highly… That it **works on this audience** is proven n
 
 **Приклад — уже в продукті:**
 
-> «**Connectivity and cybersecurity carry the dated requirements.**» — Entry, заголовок секції
+> «**Connectivity and cybersecurity carry the deadlines.**» — Entry, заголовок секції
 > напрямів *(редакція 2026-08-27: попередню «Six areas. Two of them carry a deadline.» знято за
 > «Заборонене» §8 — лічильний шаблон)*
 
@@ -773,10 +773,16 @@ copy-прохід не завіз їх назад.
 
 | Як було — **наше**, до правки 2026-08-27 | Як треба — вже в продукті |
 |---|---|
-| «Six areas. Two of them carry a deadline.» — Entry | «Connectivity and cybersecurity carry the dated requirements.» — ранг заявлено іменами |
-| «Five situations bring fleets here. Two of them carry a date.» — Solution detail (прямий клон рядка вище) | «A fleet lands on this page because something landed on the fleet.» |
+| «Six areas. Two of them carry a deadline.» — Entry | «Connectivity and cybersecurity carry the deadlines.» — ранг заявлено іменами |
+| «Five situations bring fleets here. Two of them carry a date.» — Solution detail (прямий клон рядка вище) | «A situation brings a fleet here.» |
 | «Three tiers, one service.» — Entry | «GEO, LEO and terrestrial, run as one service.» |
-| «Three kinds of work keep the systems answerable.» — Careers | «Field engineering, support and network operations keep the systems answerable.» |
+| «Three kinds of work keep the systems answerable.» — Careers | «This work keeps the systems answerable.» |
+
+**Довжина.** Заміна лічби іменами не має роздувати рядок: перша редакція careers-заголовка
+перелічила всі три напрями і виросла до 78 знаків — перелік уже несли H3 під ним. Якщо імена
+вже стоять поруч, заголовку досить вказівного «This work…» / «These roles…». Орієнтир для
+display-заголовка — до ~55 знаків; довші лишаються тільки там, де довжину диктує правило
+(перша згадка розкритої абревіатури, канонічний перелік категорій у назві айтема).
 
 **Чому.** Це один із найупізнаваніших машинних патернів — і найдоказовіше: щойно перший такий
 заголовок став зразком, перепис відтворив каркас на п'яти екранах, поки правило не було

@@ -1056,12 +1056,12 @@ _screens.md).
 | Екран | Було | Стало |
 |---|---|---|
 | entry | Three tiers, one service. | GEO, LEO and terrestrial, run as one service. |
-| entry | Six areas. Two of them carry a deadline. | Connectivity and cybersecurity carry the dated requirements. |
+| entry | Six areas. Two of them carry a deadline. | Connectivity and cybersecurity carry the deadlines. |
 | entry | Eight industries read eight different pages. | Your industry reads its own page. |
-| solution-detail | Five situations bring fleets here. Two of them carry a date. | A fleet lands on this page because something landed on the fleet. |
+| solution-detail | Five situations bring fleets here. Two of them carry a date. | A situation brings a fleet here. |
 | industry | Six areas, each written in fleet terms. | The six areas, written in fleet terms. |
 | company | Four roles answer for the operating model. | These roles answer for the operating model. |
-| careers | Three kinds of work keep the systems answerable. | Field engineering, support and network operations keep the systems answerable. |
+| careers | Three kinds of work keep the systems answerable. | This work keeps the systems answerable. |
 | approval-materials | Two rules hold across the library. One canonical value per figure, … | One canonical value per figure, … (лічильний зачин знято) |
 
 **Лишено — число і є твердженням:** «One decision closes it.» · «A match is still three
@@ -1093,3 +1093,10 @@ jtbd.md **свідомо не чищено**: датовані артефакт�
 
 **Після проходу:** лічильних заголовків у продукті 0 · «of them» 0 · «rather than» у продукті
 8 (з них 4 — канонічний рядок Н1-10).
+
+> ✂️ **Уточнення довжини (2026-08-27, той самий день).** Три «стало» з таблиці Tier 1 вкорочено
+> другим заходом: entry → «Connectivity and cybersecurity carry the deadlines.» (60→51) ·
+> solution-detail → «A situation brings a fleet here.» (65→32; знято й дзеркальну гру
+> «lands…landed») · careers → «This work keeps the systems answerable.» (78→39 — перелік
+> напрямів уже несуть H3 під заголовком). Таблиця вище оновлена на фінальні значення; правило
+> довжини дописане у voice.md «Заборонене» §8.
