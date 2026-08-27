@@ -145,3 +145,143 @@ body:has(.wf-states a[href^="guided-matching"]) .sk-block:not(.last)::before {
 body:has(.wf-states a[href^="guided-matching"]) .sk-block.last {
   background: transparent;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ГЕОМЕТРИЧНИЙ ПРОХІД 2026-08-27 (_parts/_GEOMETRY.md) — виміряно
+   прихованим iframe на 1440/1024/375, усі чотири стани. Числа «було»
+   стоять у коментарі кожного блока. Правки нижче append-only: вони
+   уточнюють блоки вище пізнішим каскадом, не переписуючи їх.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── (клас 5 · вимір: bleedR = 8px на 1440, усі 4 стани) Фото-панель
+   героя стоїть абсолютом на правому треку, але формула _panel.css бере
+   поле clamp(...32px), тоді як .wrap цих сторінок тримає clamp(...40px):
+   від 1067px фото вилазило за контентний край на 8px — єдиний елемент
+   поза правою рейкою (wPct 101.5% свого треку). Формула з полем 40px
+   повертає панель рівно в трек: bleedR 8 → 0, wPct 101.5 → 100.
+   Висоту і зазор до тексту НЕ чіпаємо — виміряні здоровими на всіх
+   чотирьох станах: 99.5–99.9% висоти треку, 32–33px до тексту на 1024. */
+@media (min-width: 900px) {
+  body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap::after {
+    right: clamp(16px, 3vw, 40px);
+    width: calc((100% - clamp(16px, 3vw, 40px) * 2 - 32px) / 2.35);
+  }
+}
+
+/* ── (клас «стрибок резолву» · вимір: скелет 551px проти 762px первинної
+   картки на 1440 — 72%; 512/744 = 69% на 1024; поля кісток 24px проти
+   16px картки на 375) Контракт стану заявлений блоком (б) вище: скелет
+   обіцяє форму, в яку розв'яжеться результат. Але кістки лишалися
+   дефолтами _wireframe і обіцяли панель на чверть нижчу за фактичну —
+   в момент резолву права колонка стрибала. Калібр за проміром реальної
+   картки base (кожне число — вимір відповідного елемента, не нова
+   прикраса):
+   · бейдж рангу 30.8px з відступом 12;
+   · ім'я = кегль первинного заголовка × успадкований line-height 1.68
+     (65.6 / 62.2 / 52.5px на трьох ширинах — та сама clamp-формула,
+     що в блоці (б)); у вторинному блоці — кегль вторинного (42px);
+   · area-рядок і dt-мітки = моно-рядок 0.8rem × 1.68 = 21.5px;
+   · рядок тексту: крок 27px (16px кістка + 11 інтервал);
+   · панель величин dl — та сама коробка surface-2 з падінгом 14/16,
+     колонкою міток і рядами ~42px (171.6px виміряного dl → 172);
+     кістки всередині піднімаються на тон вище, інакше зливаються
+     з коробкою (та сама пара, що sk-title у _panel);
+   · кнопка 48.6 → 49px з полями 16px, як у реального p:has(.btn);
+   · бічні поля блока = clamp(16px, 4vw, 24px) — формула --pad картки.
+   Після калібру: 741/762 = 97% (1440), ~94% (1024). Залишок на 375 —
+   кількість кісток-рядків (розмітка, не CSS) — зміст-рівень.          */
+body:has(.wf-states a[href^="guided-matching"]) .sk-block {
+  padding: 24px clamp(16px, 4vw, 24px);
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-block:not(.last) {
+  padding-top: 0;
+  padding-bottom: 24px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-block:not(.last)::before {
+  margin: 0 calc(-1 * clamp(16px, 4vw, 24px)) 20px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-rank {
+  width: 146px; height: 31px; margin: 0 0 12px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-title {
+  margin: 0 0 4px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-block:not(.last) .sk-title {
+  height: calc(clamp(1.953rem, 1.1rem + 1.9vw, 2.441rem) * 1.68);
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-block.last .sk-title {
+  height: calc(1.5625rem * 1.68);
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-area {
+  height: calc(0.8rem * 1.68); margin: 0 0 14px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-line {
+  height: 16px; margin: 0 0 11px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-line.short {
+  margin-bottom: 18px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-dl {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  grid-template-columns: minmax(0, 64px) minmax(0, 1fr);
+  gap: 8px 18px;
+  margin: 0 0 18px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-dl .sk {
+  background: oklch(0.26 0 0);
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-dt {
+  height: calc(0.8rem * 1.68);
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-dd {
+  height: 42px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-btn {
+  height: 49px; margin: 16px 0;
+}
+
+/* ── (клас 4 · вимір: на 375 стос дороговказів розвилки рваний — кнопки
+   219 і 171px, порожнеча ряду 50.2%) Нижче 900px смуга-розвилка
+   складається у стос, але дороговкази лишалися шириною за текстом і
+   читалися розсипом, а не колонкою напрямків. Розтяг на всю ширину
+   повертає мобільній розвилці десктопну форму дорожнього знаку:
+   текст притиснутий ліворуч, стрілка праворуч (space-between уже
+   заданий у блоці (г)), обидва дороговкази однакової ширини.
+   Порожнеча 50.2% → 0.                                                 */
+@media (max-width: 899px) {
+  body:has(.wf-states a[href^="guided-matching"]) .fallback > p:last-child {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ── (клас 4 + консистентність станів · вимір: на 375 чіп запису
+   загортався під H2 лише на error і loading — їхні написи довші й
+   несуть іконку; шапка 123.8px проти 71.1 на base/empty, тобто той
+   самий слот стояв у різних місцях залежно від стану) Механізм (в)
+   вище тримає «Answered ↔ matched» як дві половини одного запису —
+   отже і форма слота мусить бути одна в усіх чотирьох станах. До
+   639px чіп стає повнорядковим, як його друга половина в рейці
+   інтерв'ю, що повнорядкова від народження. Один запис — одна форма. */
+@media (max-width: 639px) {
+  body:has(.wf-states a[href^="guided-matching"]) .result-head {
+    row-gap: 10px;
+  }
+  body:has(.wf-states a[href^="guided-matching"]) .result-head .count {
+    flex: 1 1 100%;
+  }
+}
+
+/* ── (суміжне з класом 3 · вимір: шапка результату 71.1px, з них 25.6 —
+   дефолтні поля абзаца-чіпа) Чіп «2 areas matched» — це <p>, і його
+   успадковані поля 12.8px згори/знизу роздували шапку мертвим повітрям
+   між H2 і межею — той самий рід сирості, що фантомні row-gap у героях:
+   обгортку тягне не зміст, а неврахований дефолт. Ритм коробки задають
+   її падінг і падінг шапки (12px до межі), поля абзаца тут не працюють.
+   Шапка 71.1 → 45.8px, зазор чіп→межа лишається 12px ≥ 6.             */
+body:has(.wf-states a[href^="guided-matching"]) .result-head .count {
+  margin-block: 0;
+}

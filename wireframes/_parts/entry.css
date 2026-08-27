@@ -98,3 +98,172 @@ section[aria-labelledby="close-h"] { border-top: 1px solid var(--line); }
 section[aria-labelledby="close-h"] p:has(> .btn) {
   display: flex; flex-wrap: wrap; gap: 12px;
 }
+
+
+/* ═══ Дошліфовка за скріном користувача (2026-08-27, вечір) ═══ */
+
+/* Нотатка design-етапу в героєві: службова примітка, не коробка, що
+   кричить «недороблено» посеред першого екрана. Пунктир — конвенція
+   [TBD]-слота для ЗМІСТОВНИХ резервів; ця нотатка — про бекдроп-обробку,
+   їй досить голосу виноски. */
+body:has(#areas) .hero .backdrop {
+  border: 0; padding: 0; margin-top: 28px;
+  font-size: 0.8rem; color: var(--ink-3);
+}
+
+/* Вісім галузей: рівна сітка з волосяними лінійками замість флекс-розсипу.
+   «Your industry reads its own page» — реєстр упізнавання, він мусить
+   читатись рівними рядками; Maritime тримає ранг кеглем (перша, більша). */
+body:has(#areas) .sector-list { display: grid; gap: 0 32px;
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); }
+body:has(#areas) .sector-list li { flex: none; border-top: 1px solid var(--line);
+  border-bottom: 0; padding: 16px 0 18px; }
+body:has(#areas) .sector-list a { display: block; }
+body:has(#areas) .sector-list .nm { display: block; font-size: 1.5625rem;
+  font-weight: 500; letter-spacing: -0.02em; }
+body:has(#areas) .sector-list .first .nm { font-size: 1.953rem; }
+body:has(#areas) .sector-list .dt { display: block; margin-top: 4px;
+  font-size: 0.8rem; color: var(--ink-3); }
+body:has(#areas) .sector-list a:hover .nm { color: var(--ink); }
+body:has(#areas) .sector-list a:hover { text-decoration: none; }
+
+/* Дедлайни — найсильніший аргумент entry (R1): секція отримує ту саму
+   доказову смугу, що spec/виміри деінде; рядки на крок глибини вище.
+   Той самий прийом, яким industry-агент виправив інверсію ваги. */
+body:has(#areas) section:has(.reg-row) {
+  background: var(--surface); border-block: 1px solid var(--line);
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 36px);
+}
+body:has(#areas) section:has(.reg-row) .reg-row { background: var(--surface-2); }
+
+
+/* ═══ Геометричний прохід за протоколом (2026-08-27, ніч): виміряно
+   1440 / 1150 / 1024 / 375 через прихований iframe. Нижче — тільки
+   лагодження виміряної сирості; кожен блок цитує число, що його виявило. ═══ */
+
+/* Рейка регуляцій вирівнюється в колонну сітку сторінки.
+   Виміряно: лівий край контенту reg-смуги 36px проти 16px у всіх сусідів
+   (375) і 327 проти 293 (1150) — подвійний ґаттер: clamp-падінг секції
+   плюс власний падінг .wrap. Смузі досить вертикального падінгу й тону;
+   бічний знімаємо, і колонки знову стоять на спільній рейці. */
+body:has(#areas) section:has(.reg-row) { padding-inline: 0; }
+
+/* Offset-сітка регуляцій: гнучка права колонка замість фіксованих 660px.
+   Виміряно на 1150 (дерево-сайдбар 258px, сторінці лишається 877):
+   grid-template-columns резолвиться в 128px / 555px — заголовок
+   «Deadlines land on your fleet» ламається на 5 рядків по слову,
+   колонка-стовпчик 755px (клас 4: сітка зі стовпцем-щілиною).
+   Частки замість фіксації: на 1440 треки 433/671 ≈ колишні 428/660,
+   на 1150 — 295/458, рядки норм переносять кнопку flex-wrap-ом. */
+@media (min-width: 1081px) {
+  body:has(#areas) .offset {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+  }
+}
+
+/* Дуо «GEO, LEO and terrestrial»: колонка заяви на всю висоту схеми,
+   дія — на її базовій лінії. Виміряно: ліва колонка 211px у треку 343px
+   (дисбаланс 38% > порогу 35%, клас 1) — align-items:center лишав по
+   ~66px мертвих смуг згори й знизу від заяви. Розтяжка + CTA притиснуто
+   до низу: заголовок відкриває колонку, «Read Asterra Connect» стає на
+   базову лінію останнього ярусу схеми (Hybrid) — зміст, не порожнеча.
+   Ярусам схеми — щільність величин (A5): padding-block 14px замість 20,
+   права колонка 343→~292, розтяжці менше що компенсувати. */
+.orbit-row { padding-block: 14px; }
+@media (min-width: 1081px) {
+  body:has(#areas) .cap .duo { align-items: stretch; }
+  body:has(#areas) .cap .duo > div:first-child {
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  body:has(#areas) .cap .duo > div:first-child p:has(> .btn) {
+    margin-top: auto; margin-bottom: 0;
+  }
+}
+
+/* Рейка «Latest news»: вихідна дія вирівнюється з кінцем стрічки.
+   Виміряно: ліва колонка 109px проти 366px правої на 1440 (дисбаланс 70%,
+   на 1150 — 76%) — під заголовком 257px порожнечі. Той самий прийом, що
+   в дуо вище: рейка розтягується, «All news» стає на нижню лінію
+   останньої новини — рейка тримає список з обох кінців. */
+@media (min-width: 1081px) {
+  body:has(#areas) section[aria-labelledby="news-h"] .duo { align-items: stretch; }
+  body:has(#areas) section[aria-labelledby="news-h"] .duo > div:first-child {
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  body:has(#areas) section[aria-labelledby="news-h"] .duo > div:first-child p:has(> .btn) {
+    margin-top: auto; margin-bottom: 0;
+  }
+}
+
+/* Фото-смуга заяви: рама лишається рамою на всіх ширинах.
+   Виміряно: панель .wrap (max-width 1020) стає впритул до обох країв
+   колонки сторінки всюди, де колонці ≤1020 (на 1150 відступи 258/0, на
+   375 — 0/0, межа панелі лежить на краю екрана): знімок вироджувався у
+   дві відірвані смужки по 72px. Бічний падінг секції повертає знімку
+   боковини (фон секції вкриває власний падінг), вертикаль стискається
+   до 40px на вузьких — панель тримає ≥70% висоти смуги на всіх зрізах. */
+body:has(#areas) .statement {
+  padding: clamp(40px, 6vw, 72px) clamp(16px, 3vw, 40px);
+}
+
+/* Вісім галузей у смузі трьох колонок: Maritime веде і шириною.
+   Виміряно: auto-fit дає 3 колонки при контенті 754–1015px (в'юпорти
+   802–1080 без сайдбара і 1081–1353 з ним) — 8 позицій лягають 3+3+2,
+   остання лінія порожня на 33% (> порогу 30%, клас 4). Перша позиція
+   (Maritime, вже більша кеглем — «goes deepest there») займає два треки:
+   9 комірок = рівні 3×3, ранг лідера стає структурним, не лише кеглем.
+   Поза смугою auto-fit сам дає рівні 4×2 / 2×4 / 1×8 — там не втручаємось. */
+@media (min-width: 802px) and (max-width: 1353px) {
+  body:has(#areas) .sector-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body:has(#areas) .sector-list .first { grid-column: span 2; }
+}
+
+/* Партнерська пара росте за текстом, а не ріже його.
+   Виміряно: у смузі одного ряду (≥860) половинки пари звужуються до
+   125px (1150) — категорія лягає в 3 рядки = 57.6px тексту в коробці,
+   замкненій на 52px (height у _wireframe) + min-height 56: текст
+   виливається за межу (клас 5/7, переповнення). height:auto — комірка
+   росте разом із трьома рядками, ряд лишається рівним; на 1440 і 375
+   двохрядкові підписи вкладаються в ті самі 56px, вигляд не змінюється. */
+.logo-row.spaced .logo-slot { height: auto; }
+
+/* Схема орбіт на вузьких: ярус і опис перескладаються, не тиснуться.
+   Виміряно на 375: фіксований ярус 140px з'їдає ряд — лінійка-bar 0px,
+   опису лишається 99px, «Wide-beam geostationary capacity…» ламається
+   на 4 рядки, ряд 142px (клас 2: носій опису < 70% свого трека).
+   Ґрід: ярус + лінійка в першому рядку, опис на всю ширину другим —
+   опис 296px, 2 рядки, ряд ~100px, лінійка знову малює тракт. */
+@media (max-width: 720px) {
+  body:has(#areas) .orbit-row {
+    display: grid; grid-template-columns: max-content 1fr;
+    gap: 6px 16px; align-items: center;
+  }
+  body:has(#areas) .orbit-row .tier { flex: none; }
+  body:has(#areas) .orbit-row .desc { grid-column: 1 / -1; }
+}
+
+/* Картка новини на вузьких: заголовок над дією, не поруч із нею.
+   Виміряно на 375: сітка 1fr auto лишає заголовку 90px — 8 рядків по
+   слову поруч із кнопкою на півкартки, картка 276px (проти 87 на 1024).
+   Одна колонка: заголовок 2–3 рядки, дія під ним від лівого краю. */
+@media (max-width: 720px) {
+  body:has(#areas) .news-item { grid-template-columns: 1fr; gap: 12px; }
+  body:has(#areas) .news-item .btn-ghost { justify-self: start; }
+}
+
+/* Рейка регуляцій — та сама мова, що дуо схеми і новин.
+   Переміряно після гнучких треків: колонки 295/457 (1150), але рядки
+   норм виросли переносом кнопки до 186px — ліва колонка 328 проти 582
+   (дисбаланс 44% > порогу 35%). CTA «See the regulations we close» —
+   вихід у реєстр норм: стає на базову лінію останнього рядка реєстру,
+   рейка тримає реєстр з обох кінців. Три рейки сторінки тепер
+   поводяться однаково. */
+@media (min-width: 1081px) {
+  body:has(#areas) .offset { align-items: stretch; }
+  body:has(#areas) .offset > div:first-child {
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  body:has(#areas) .offset > div:first-child p:has(> .btn) {
+    margin-top: auto; margin-bottom: 0;
+  }
+}

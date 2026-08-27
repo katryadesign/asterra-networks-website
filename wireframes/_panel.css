@@ -155,15 +155,26 @@ body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
   body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap > *,
   body:has(.wf-states a[href^="industry"]) .gm-head .wrap > *,
   body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap > * { grid-column: 1; }
+  body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap,
+  body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap,
+  body:has(.wf-states a[href^="industry"]) .gm-head .wrap,
+  body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap { position: relative; }
+  /* Фото — АБСОЛЮТОМ на правий трек, поза потоком сітки: grid-row 1/-1
+     в імпліцитній сітці не тягнеться, а span N роздуває обгортку
+     фантомними row-gap (виміряно: +224px пустки). Ширина = формула треку 1fr із шаблону 1.35fr/1fr при gap 32.
+     Ґаттер = clamp(16px,3vw,40px) — той самий, що .wrap нижче: виміряний
+     8px-виступ фото за контентний край на 1440 (gm/sd/industry/crew,
+     три агенти незалежно) походив зі стелі 32px проти поля 40px. */
   body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap::after,
   body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap::after,
   body:has(.wf-states a[href^="industry"]) .gm-head .wrap::after,
   body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap::after {
-    content: ""; display: block; grid-column: 2; grid-row: 1 / -1;
-    align-self: stretch; min-height: 210px;
+    content: ""; position: absolute; top: 0; bottom: 0; right: clamp(16px, 3vw, 40px);
+    width: calc((100% - clamp(16px, 3vw, 40px) * 2 - 32px) / 2.35);
+    min-height: 210px;
     border: 1px solid var(--line); border-radius: var(--r);
     background: var(--surface) center/cover no-repeat;
-    filter: grayscale(0.2) contrast(1.05) brightness(0.94);
+    filter: grayscale(0.55) contrast(1.06) brightness(0.9);
   }
   /* Стрічка — антена як об'єкт; Shield — той самий знімок, що на його
      картці в стрічці; Maritime — щогла з радаром (= картка Equip);
@@ -230,7 +241,7 @@ body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
   margin: 0 calc(-1 * var(--pad)) 0;
   border-bottom: 1px solid var(--line);
   background: var(--surface-2) center/cover no-repeat;
-  filter: grayscale(0.2) contrast(1.05) brightness(0.92);
+  filter: grayscale(0.55) contrast(1.06) brightness(0.88);
 }
 .match:not(.match-secondary)::before {   /* Shield · Cybersecurity */
   background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1000&q=80");
@@ -380,7 +391,9 @@ body > footer a:hover { color: var(--ink); }
 .wf-tree a, .wf-states a, .wf-doc a { color: var(--svc-ink); }
 .wf-tree a:hover, .wf-states a:hover, .wf-doc a:hover { color: var(--ink); }
 .wf-tree b, .wf-states b, .wf-doc h2, .wf-doc h3, .wf-doc strong { color: var(--ink); }
-.wf-doc h2 { font-family: ui-monospace, "Consolas", monospace; font-size: 1rem; font-weight: 600; letter-spacing: 0; }
+.wf-doc { font-size: 11px; line-height: 1.55; }
+.wf-doc .wrap { max-width: 980px; }
+.wf-doc h2 { font-family: ui-monospace, "Consolas", monospace; font-size: 0.86rem; font-weight: 600; letter-spacing: 0; }
 .wf-doc h3 { font-family: ui-monospace, "Consolas", monospace; font-size: 0.86rem; font-weight: 600; letter-spacing: 0; }
 .wf-doc p, .wf-doc code { color: var(--svc-ink); }
 .wf-states .cur { color: var(--ink); }
@@ -482,9 +495,15 @@ table.spec td { color: var(--ink); font-size: 0.94rem; }
 @media (max-width: 1080px) {
   body { display: block; }
   .wf-tree {
-    flex: none; position: static; width: auto; max-height: 42vh;
-    border-right: 0; border-bottom: 2px solid var(--svc-line);
+    flex: none; position: static; width: auto;
+    max-height: 190px; overflow-y: auto;
+    border-right: 0; border-bottom: 1px solid var(--svc-line);
+    padding-top: 8px; padding-bottom: 8px;
+    font-size: 10.5px; line-height: 1.45;
+    columns: 3 220px; column-gap: 24px;
   }
+  .wf-tree .tree-head { column-span: all; padding-bottom: 6px; margin-bottom: 6px; }
+  .wf-tree .grp { break-inside: avoid; margin: 0 0 8px; }
 }
 .foot-cols ul { padding-left: 0; list-style: none; }
 .navs { min-width: 0; }
@@ -700,15 +719,18 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
 /* ── ENTRY · герой: текст + фото-об'єкт як у стрічки ─────────────────── */
 .hero .wrap { display: grid; gap: 40px; align-items: center; }
 @media (min-width: 900px) {
-  .hero .wrap { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  .hero .wrap { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); position: relative; }
   .hero .wrap > * { grid-column: 1; }
+  /* Абсолют на правий трек (1.4fr/1fr, gap 40) — та сама механіка,
+     що в .gm-head: сітковий span тут роздуває обгортку. */
   .hero .wrap::after {
-    content: ""; display: block; grid-column: 2; grid-row: 1 / -1;
-    align-self: stretch; min-height: 280px;
+    content: ""; position: absolute; top: 0; bottom: 0; right: clamp(16px, 3vw, 40px);
+    width: calc((100% - clamp(16px, 3vw, 40px) * 2 - 40px) / 2.4);
+    min-height: 280px;
     border: 1px solid var(--line); border-radius: var(--r);
     background: url("https://images.unsplash.com/photo-1526666923127-b2970f64b422?auto=format&fit=crop&w=1000&q=80")
                 center/cover no-repeat, var(--surface);
-    filter: grayscale(0.2) contrast(1.05) brightness(0.94);
+    filter: grayscale(0.55) contrast(1.06) brightness(0.9);
   }
 }
 
@@ -718,7 +740,7 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
 .statement {
   padding: 72px 0;
   background:
-    linear-gradient(105deg, oklch(0.12 0 0 / 0.88) 0%, oklch(0.12 0 0 / 0.55) 55%, oklch(0.12 0 0 / 0.72) 100%),
+    linear-gradient(105deg, oklch(0.12 0 0 / 0.78) 0%, oklch(0.12 0 0 / 0.42) 55%, oklch(0.12 0 0 / 0.62) 100%),
     url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1600&q=80")
     center/cover no-repeat, var(--bg);
 }
@@ -728,6 +750,7 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
   padding: clamp(28px, 4vw, 44px) clamp(20px, 4vw, 48px);
   display: grid; gap: 12px 48px;
+  max-width: 1020px;
 }
 @media (min-width: 860px) {
   .statement .wrap { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); }
@@ -754,7 +777,7 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
   content: ""; display: block; height: 150px; margin: 0 0 18px;
   border: 1px solid var(--line); border-radius: var(--r);
   background: var(--surface-2) center/cover no-repeat;
-  filter: grayscale(0.2) contrast(1.05) brightness(0.94);
+  filter: grayscale(0.55) contrast(1.06) brightness(0.9);
 }
 .index-major > article:first-child::before {
   background-image: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80");
@@ -798,3 +821,49 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
 /* Анімацій немає — вето користувача 2026-08-27 («поки ніяких анімацій»).
    Scroll-reveal знято; динаміку тримає лейаут: зиґзаґ, смуги, масштаб. */
 
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ГЕОМЕТРИЧНИЙ ПРОХІД 2026-08-27 · гігієнічна четвірка (рішення оркестратора)
+   Агент четвірки за протоколом _GEOMETRY.md лише міряв — власних файлів у
+   _parts/ четвірка не має за правилом jtbd.md §8.3 («declared, not designed»),
+   тому виміряні дефекти лагодяться тут. Хук — маркер поточної сторінки в
+   службовому дереві: a[aria-current] існує рівно один на сторінку і лише в
+   дереві (grep-перевірено по всіх 28), тож кожен селектор матчить одну
+   сторінку. Це лагодження дефектів, не дизайн-внесок: мінімалізм четвірки
+   недоторканий. */
+
+/* 1 · Стик героя і першої секції. Виміряно: 0px — межа першої секції лежить
+     на border-bottom героя (company/legal/insights ≥980, careers на всіх
+     ширинах). Корінь: .wrap.pad-b без верхнього відступу. 48px — крок між
+     ритмом секцій 56 і компактністю четвірки; лінія героя стає окремою
+     лінією ритму, як на решті екранів. */
+body:has(a[aria-current][href^="company"]) .wrap.pad-b,
+body:has(a[aria-current][href^="careers"]) .wrap.pad-b,
+body:has(a[aria-current][href^="legal"]) .wrap.pad-b,
+body:has(a[aria-current][href^="insights"]) .wrap.pad-b { padding-top: 48px; }
+
+/* 2 · company @375: dt «Head of Partner Accreditation» бере 242px і лишає
+     dd 35px — чипи .tbd виходять за панель .kv на 19.7px, сторінка
+     переповнюється на +4px. У стосі dt читається над dd, панель тримає
+     межу. Скоуп лише company: у inquiry двоколонковий kv квитанції —
+     свідоме рішення його агента, не чіпається. */
+@media (max-width: 560px) {
+  body:has(a[aria-current][href^="company"]) .kv { grid-template-columns: 1fr; gap: 2px 0; }
+  body:has(a[aria-current][href^="company"]) .kv dd { margin-bottom: 10px; }
+  body:has(a[aria-current][href^="company"]) .kv dd:last-child { margin-bottom: 0; }
+}
+
+/* 3 · insights @375: сітка 1fr auto тисне заголовок новини до 90–112px
+     проти кнопки 157–178px. Той самий фікс і поріг, що entry.css дав
+     стрічці Entry: одна колонка, дія під текстом від лівого краю. */
+@media (max-width: 720px) {
+  body:has(a[aria-current][href^="insights"]) .news-item { grid-template-columns: 1fr; gap: 12px; }
+  body:has(a[aria-current][href^="insights"]) .news-item .btn-ghost { justify-self: start; }
+}
+
+/* 4 · Службове дерево ≤560: одна колонка. Колонкова розкладка (columns:
+     3 220px) на 375 переливає зайві колонки в горизонтальний скрол
+     усередині контейнера (вимір агента четвірки); одна колонка віддає
+     переповнення наявному overflow-y:auto — вертикальний скрол у тих
+     самих 190px. Хром, не продукт: бюджет ≤200px незмінний. */
+@media (max-width: 560px) { .wf-tree { columns: auto; } }
