@@ -1,0 +1,483 @@
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* ═══════════════════════════════════════════════════════════════════════
+   _panel.css — мова напряму B «Панель», застосована поверх _wireframe.css.
+
+   Підключається до guided-matching.html (+ empty · error · loading) і
+   solution-detail.html (+ error · loading) — двох кінців головного стрибка
+   стрічка → сторінка рішення. _wireframe.css лишається сірою мовою решти
+   21 сторінки і не чіпається.
+
+   Джерело кожного значення: concept/concept.html.
+   Атрибути: A1 ранжовано · A2 чуже ім'я · A3 одна поверхня · A4 схема ·
+             A5 щільність.
+
+   Текст і структура розмітки не змінені жодного разу. Стан визначається
+   тим, на що смуга станів НЕ посилається (вона лінкує всі стани, крім
+   поточного), а не позицією .cur: у guided-matching станів чотири, у
+   solution-detail три, і той самий індекс означав би різні речі.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* нейтраль · chroma рівно 0 */
+  --bg:          oklch(0.12 0 0);
+  --surface:     oklch(0.17 0 0);
+  --surface-2:   oklch(0.21 0 0);
+  --line:        oklch(0.30 0 0);
+  --line-strong: oklch(0.42 0 0);
+  --ink:         oklch(0.97 0 0);
+  --ink-2:       oklch(0.78 0 0);
+  --ink-3:       oklch(0.64 0 0);
+
+  /* єдина хроматика: подія, не тип */
+  --signal:      oklch(0.68 0.19 25);
+  --signal-dim:  oklch(0.34 0.09 25);
+
+  /* службовий хром — навмисно поза мовою продукту */
+  --svc-bg:      oklch(0.16 0 0);
+  --svc-ink:     oklch(0.72 0 0);
+  --svc-line:    oklch(0.28 0 0);
+
+  /* сумісність зі змінними _wireframe.css, які лишились у вжитку */
+  --mid: var(--ink-2);
+  --soft: var(--ink-3);
+  --rule: var(--line);
+  --panel: var(--surface);
+  --dark: var(--surface);
+  --dark-2: var(--surface-2);
+  --dark-line: var(--line);
+  --on-dark: var(--ink);
+  --on-dark-2: var(--ink-2);
+
+  --r: 2px;
+  --font-sans: "Familjen Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── база ───────────────────────────────────────────────────────────── */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.68;              /* світле на темному потребує повітря */
+}
+::selection { background: var(--ink); color: var(--bg); }
+
+/* ── типографіка · крок 1,25× ───────────────────────────────────────── */
+h1 {                              /* A5 — домінанта розривом масштабу */
+  font-size: clamp(2.441rem, 4.2vw, 3.052rem);
+  font-weight: 500;               /* не 700: розрив без ваги */
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  margin: 0 0 var(--s4, 16px);
+}
+h2 { font-size: 1.953rem; font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; margin: 0 0 14px; }
+h3 { font-size: 1.5625rem; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 8px; }
+h4 { font-size: 1rem; font-weight: 500; letter-spacing: 0; margin: 0 0 8px; color: var(--ink); }
+
+.body     { font-size: 1rem; color: var(--ink-2); max-width: 68ch; }
+.tagline  { font-size: 1.25rem; color: var(--ink-2); }
+.dim      { color: var(--ink-2); font-weight: 500; }
+.kicker   { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em;
+            text-transform: none; color: var(--ink-3); }
+
+/* ── кнопки · ВСІ входження на всіх чотирьох сторінках ──────────────────
+   base:    Match my situation · Read Asterra Shield · Read Asterra Equip ·
+            Read the Maritime page · Talk to an expert            (5)
+   empty:   Change your answer · + два ghost                      (3)
+   error:   Match my situation again · + два ghost                (3)
+   loading: два ghost                                             (2)
+   A1 — ранг читається контрастом, не кольором.                        */
+.btn, .on-dark .btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-sans); font-size: 0.94rem; font-weight: 600;
+  padding: 11px 18px; border-radius: var(--r);
+  background: var(--ink); color: var(--bg); border: 1px solid var(--ink);
+  text-decoration: none; cursor: pointer;
+  transition: background .22s var(--ease), border-color .22s var(--ease), color .22s var(--ease);
+}
+.btn:hover, .on-dark .btn:hover { background: oklch(0.85 0 0); border-color: oklch(0.85 0 0); }
+.btn-ghost, .on-dark .btn-ghost {
+  background: transparent; color: var(--ink); border-color: var(--line-strong);
+}
+.btn-ghost:hover, .on-dark .btn-ghost:hover { background: transparent; border-color: var(--ink); }
+.btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+a:focus-visible, button:focus-visible, select:focus-visible {
+  outline: 2px solid var(--ink); outline-offset: 2px;
+}
+
+/* стрілка на первинній дії, що веде далі — A1: напрям переходу видно */
+.match > p > .btn::after,
+.fallback .btn-ghost::after {
+  content: ""; width: 16px; height: 16px; flex: none;
+  background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+}
+
+/* ── шапка ──────────────────────────────────────────────────────────── */
+body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
+.brand { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; text-transform: none; }
+.nav-top { font-size: 0.8rem; color: var(--ink-2); }
+.nav-main { font-size: 0.94rem; font-weight: 400; }
+.nav-top a, .nav-main a { text-decoration: none; color: var(--ink-2);
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+  transition: color .2s var(--ease), border-color .2s var(--ease); }
+.nav-main a { color: var(--ink); }
+.nav-top a:hover, .nav-main a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* ── шапка екрана · A4: обладнання як задокументований об'єкт ──────────
+   Фото стоїть окремою смугою праворуч і НЕ під текстом, тому пари
+   «текст на фото» не виникає взагалі. Присутнє в усіх чотирьох станах. */
+.gm-head { border-bottom: 1px solid var(--line); padding: 64px 0 56px; }
+.gm-head .wrap { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+.gm-head h1 { max-width: 18ch; }
+.gm-head .body { margin: 0; }
+@media (min-width: 900px) {
+  .gm-head .wrap { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+  /* Явне розміщення: увесь текст у першу колонку, фото у другу на всю висоту.
+     Без цього діти розкладаються по клітинках автоматично і абзац
+     від'їжджає праворуч, а фото падає у другий ряд. Так само правильно
+     працює на solution-detail, де дітей чотири, а не два. */
+  .gm-head .wrap > * { grid-column: 1; }
+  .gm-head .wrap::after {
+    content: ""; display: block; grid-column: 2; grid-row: 1 / -1;
+    align-self: stretch; min-height: 210px;
+    border: 1px solid var(--line); border-radius: var(--r);
+    background: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80")
+                center/cover no-repeat, var(--surface);
+    filter: grayscale(0.35) contrast(1.03) brightness(0.82);
+  }
+  /* Solution detail несе той самий знімок, що й картка Shield у стрічці:
+     одна річ на двох поверхнях має виглядати як одна річ.
+     Гачок — таблиця .spec, якої немає на guided-matching. Розмітка не чіпана. */
+  body:has(.spec) .gm-head .wrap::after {
+    background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=900&q=80");
+  }
+}
+
+/* ── інтерв'ю · A5 щільність у робочій зоні ─────────────────────────── */
+.interview {
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface); padding: 24px;
+}
+.interview h2 { font-size: 1.25rem; color: var(--ink); margin: 0 0 4px; }
+.interview .note { font-size: 0.8rem; color: var(--ink-2); margin: 0 0 20px; }
+.interview label { font-size: 0.86rem; font-weight: 500; color: var(--ink); }
+.interview select, .interview input {
+  background: var(--surface-2); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: var(--r);
+  padding: 9px 11px; font: 400 0.9rem var(--font-sans);
+}
+.interview select { appearance: none; }
+.interview option, .interview optgroup { background: var(--surface-2); color: var(--ink); }
+.interview .hint-sm { font-size: 0.8rem; color: var(--ink-2); margin-top: 6px; }
+.interview .answered {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-3);
+  border-top: 1px solid var(--line); padding-top: 12px; margin-top: 16px;
+}
+.interview .btn { width: 100%; justify-content: center; }
+
+/* ── заголовок результату ───────────────────────────────────────────── */
+.result-head { border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 28px; }
+.result-head h2 { font-size: 1.5625rem; color: var(--ink); }
+.result-head { flex-wrap: wrap; }
+.result-head .count {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-3);
+  display: inline-flex; align-items: center; gap: 7px;
+}
+
+/* ── картка результату · обидві, не лише перша ──────────────────────── */
+/* Поля картки задаються падінгом самої картки, а не полями дітей:
+   правила на кшталт `.match h3` специфічніші за `.match > *` і збивали б їх.
+   Фото виноситься за падінг від'ємним полем, лишаючись у край.          */
+.match {
+  --pad: clamp(16px, 4vw, 24px);
+  border: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  border-radius: var(--r); background: var(--surface);
+  padding: 0 var(--pad) 24px; margin: 0 0 20px; overflow: hidden;
+}
+/* A4 — фото за темою картки, окремою смугою над текстом.
+   Текст ніколи не лягає на знімок, тому нової пари контрасту немає. */
+.match::before {
+  content: ""; display: block; height: 148px;
+  margin: 0 calc(-1 * var(--pad)) 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2) center/cover no-repeat;
+  filter: grayscale(0.3) contrast(1.03) brightness(0.84);
+}
+.match:not(.match-secondary)::before {   /* Shield · Cybersecurity */
+  background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1000&q=80");
+}
+.match-secondary::before {               /* Equip · bridge and navigation */
+  background-image: url("https://images.unsplash.com/photo-1781449511066-01f1181ac87c?auto=format&fit=crop&w=1000&q=80");
+  height: 116px;                          /* A1 — вторинна картка нижча */
+}
+.match > .rank { margin-top: 20px; }
+.match p:has(> .btn) { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* бейдж рангу · A1 + A2 — стоїть НАД заголовком, не під ним */
+.match .rank {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-2);
+  border: 1px solid var(--line); border-radius: var(--r);
+  padding: 4px 9px; margin-bottom: 12px;
+}
+.match .rank::before {
+  content: ""; width: 13px; height: 13px; background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/shield-check-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/shield-check-linear.svg") center/contain no-repeat;
+}
+.match-secondary .rank::before {
+  -webkit-mask-image: url("https://api.iconify.design/solar/routing-2-linear.svg");
+          mask-image: url("https://api.iconify.design/solar/routing-2-linear.svg");
+}
+
+.match h3 { font-size: 1.953rem; color: var(--ink); margin: 0 0 2px; }
+.match-secondary h3 { font-size: 1.5625rem; }
+.match .area {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-3);
+  display: inline-flex; align-items: center; gap: 7px; margin: 0 0 14px;
+}
+.match .area::before {
+  content: ""; width: 13px; height: 13px; background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/widget-4-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/widget-4-linear.svg") center/contain no-repeat;
+}
+.match .why { margin: 0 0 18px; }
+
+/* A3 — одна поверхня під усі величини картки. Жодних тіней і острівців. */
+.match dl {
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 14px 16px; gap: 8px 18px; margin: 0 0 18px;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+}
+.match dt, .match dd { min-width: 0; overflow-wrap: anywhere; }
+.match dt {
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.03em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.match dd { color: var(--ink-2); font-size: 0.94rem; }
+
+/* ── відкат · присутній у всіх чотирьох станах ──────────────────────── */
+.fallback { border-top: 1px solid var(--line-strong); padding-top: 24px; margin-top: 32px; }
+.fallback h3 { font-size: 1.25rem; color: var(--ink); }
+.fallback p:last-child { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ── повідомлення станів empty і error ──────────────────────────────── */
+.notice {
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface); padding: 24px; margin: 0 0 28px;
+}
+.notice :is(h2,h3) { display: flex; align-items: flex-start; gap: 10px; font-size: 1.5625rem; color: var(--ink); }
+.notice :is(h2,h3)::before {
+  content: ""; width: 22px; height: 22px; flex: none; margin-top: 4px;
+  background: currentColor;
+  -webkit-mask: center/contain no-repeat; mask: center/contain no-repeat;
+}
+.notice .body { margin: 0 0 18px; }
+.notice ul { color: var(--ink-2); }
+
+/* ── розпізнавання стану без жодної правки розмітки ───────────────────
+   Позиція .cur не годиться: у guided-matching чотири стани, у
+   solution-detail три, і той самий індекс означав би різні речі.
+   Надійний інваріант: смуга станів посилається на ВСІ стани, крім
+   поточного. Отже «сторінка error» = та, де посилання на -error немає.
+   Працює на будь-якому екрані з будь-якою кількістю станів. */
+
+/* ERROR — подія. Єдина хроматика на сторінці. */
+body:has(.notice):not(:has(.wf-states a[href$="-error.html"])) .notice { border-color: var(--signal-dim); }
+body:has(.notice):not(:has(.wf-states a[href$="-error.html"])) .notice :is(h2,h3) { color: var(--signal); }
+body:has(.notice):not(:has(.wf-states a[href$="-error.html"])) .notice :is(h2,h3)::before {
+  -webkit-mask-image: url("https://api.iconify.design/solar/danger-triangle-linear.svg");
+          mask-image: url("https://api.iconify.design/solar/danger-triangle-linear.svg");
+}
+body:has(.notice):not(:has(.wf-states a[href$="-error.html"])) .result-head .count { color: var(--signal); }
+body:has(.notice):not(:has(.wf-states a[href$="-error.html"])) .result-head .count::before {
+  content: ""; width: 14px; height: 14px; background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/danger-triangle-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/danger-triangle-linear.svg") center/contain no-repeat;
+}
+
+/* EMPTY — чесна відповідь, а не збій. Кольору не отримує: подією не є.
+   Розрізняють форма іконки і слово. */
+body:has(.notice):has(.wf-states a[href$="-error.html"]):not(:has(.wf-states a[href$="-empty.html"])) .notice :is(h2,h3)::before {
+  -webkit-mask-image: url("https://api.iconify.design/solar/info-circle-linear.svg");
+          mask-image: url("https://api.iconify.design/solar/info-circle-linear.svg");
+}
+
+/* LOADING — теж не подія. Гачок універсальний: скелет є лише тут. */
+body:has(.sk) .result-head .count::before,
+body:has(.sk) .status-line::before {
+  content: ""; width: 14px; height: 14px; background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/clock-circle-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/clock-circle-linear.svg") center/contain no-repeat;
+}
+.status-line {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-3);
+}
+
+/* ── скелет · та сама форма, що й картка, яку він заміщає ───────────── */
+.sk-block {
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface); padding: 24px; margin: 0 0 20px;
+}
+.sk { background: var(--surface-2); border-radius: var(--r); animation: sk-pulse 1.6s var(--ease) infinite; }
+.sk-title, .sk-btn { background: oklch(0.26 0 0); }
+@keyframes sk-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.62; } }
+
+/* ── підвал ─────────────────────────────────────────────────────────── */
+body > footer { border-top: 1px solid var(--line); background: var(--bg); margin-top: 64px; }
+/* `.foot-cols h4` у _wireframe.css стоїть на 11px і перебиває `footer h4`
+   за специфічністю. Мінімальний кегль мови B — 12.8px (0.8rem):
+   нижче 12px технічний читач втрачає рядок специфікації. */
+body > footer h4, .foot-cols h4 {
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+body > footer a { color: var(--ink-2); text-decoration: none; }
+body > footer a:hover { color: var(--ink); }
+.foot-bar { border-top: 1px solid var(--line); }
+.foot-legal { color: var(--ink-3); font-size: 0.8rem; max-width: 92ch; }
+
+/* ── СЛУЖБОВИЙ ХРОМ ────────────────────────────────────────────────────
+   Дерево, смуга станів і документація — не продукт (_conventions.md §8).
+   Навмисно поза мовою B: без брендових шрифтів і без сигнального кольору,
+   щоб службове не читалось як частина екрана.                          */
+.wf-tree, .wf-states, .wf-doc {
+  font-family: ui-monospace, "Consolas", monospace;
+  background: var(--svc-bg); color: var(--svc-ink);
+  border-color: var(--svc-line);
+}
+.wf-tree a, .wf-states a, .wf-doc a { color: var(--svc-ink); }
+.wf-tree a:hover, .wf-states a:hover, .wf-doc a:hover { color: var(--ink); }
+.wf-tree b, .wf-states b, .wf-doc h2, .wf-doc h3, .wf-doc strong { color: var(--ink); }
+.wf-doc h2 { font-family: ui-monospace, "Consolas", monospace; font-size: 1rem; font-weight: 600; letter-spacing: 0; }
+.wf-doc h3 { font-family: ui-monospace, "Consolas", monospace; font-size: 0.86rem; font-weight: 600; letter-spacing: 0; }
+.wf-doc p, .wf-doc code { color: var(--svc-ink); }
+.wf-states .cur { color: var(--ink); }
+.wf-tree [aria-current="page"] { color: var(--ink); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SOLUTION DETAIL — друга поверхня тієї самої речі.
+   Жодного нового рішення: усі значення перенесені з блоків вище.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Той самий бейдж, що й .rank у стрічці: мono, межа, радіус 2px,
+   і стоїть НАД заголовком. A2 — категорія раніше за наше ім'я. */
+.obj-line {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-2);
+  border: 1px solid var(--line); border-radius: var(--r);
+  padding: 4px 9px; margin: 0 0 16px;
+}
+.obj-line::before {
+  content: ""; width: 13px; height: 13px; background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/shield-check-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/shield-check-linear.svg") center/contain no-repeat;
+}
+.gm-head p:has(> .btn) { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+.stack-s > section + section { margin-top: 56px; }   /* A5 — просторо на переходах */
+.wrap.pad-b { padding-bottom: 64px; }
+
+/* Перелік ситуацій. Та сама поверхня, що й dl у картці стрічки. */
+.rows { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface-2); }
+.rows li { display: grid; gap: 2px 20px; padding: 12px 16px; border-top: 1px solid var(--line); }
+.rows li:first-child { border-top: 0; }
+@media (min-width: 720px) { .rows li { grid-template-columns: minmax(0, 22ch) minmax(0, 1fr); align-items: baseline; } }
+.name { color: var(--ink); font-weight: 500; }
+.meta { color: var(--ink-2); font-size: 0.94rem; }
+
+/* Рядок норми. Три входження тут, п'ять на industry — усі однакові. */
+.reg-row {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 16px; margin: 0 0 8px;
+  border: 1px solid var(--line); border-radius: var(--r); background: var(--surface);
+}
+.reg-row > div { min-width: 0; flex: 1 1 320px; }
+.reg-row h3 { font-size: 1.25rem; margin: 0 0 4px; color: var(--ink); }
+/* `.reg-row .meta` у _wireframe.css стоїть на 11px моно і перебиває `.meta`
+   за специфічністю. Підлога мови B — 0.8rem (12.8px), крок шкали, як і всюди. */
+.reg-row .meta { margin: 0; font-family: var(--font-sans); font-size: 0.94rem; color: var(--ink-2); }
+
+/* A3 — одна поверхня під усі величини. Це та сама роль, що dl у картці. */
+table.spec {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface-2); overflow: hidden;
+}
+table.spec th, table.spec td { text-align: left; padding: 11px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+table.spec tr:first-child th, table.spec tr:first-child td { border-top: 0; }
+table.spec th {
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-3);
+  width: 34%; min-width: 0;
+}
+table.spec td { color: var(--ink); font-size: 0.94rem; }
+
+/* [TBD] — свідома конвенція, а не поламане місце. Той самий пунктир,
+   що й слот у concept.html. */
+.tbd {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-2);
+  border: 1px dashed var(--line-strong); border-radius: var(--r);
+  padding: 2px 8px; display: inline-block;
+}
+
+.trio-l { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+.trio-l h3 { font-size: 1.25rem; color: var(--ink); }
+.hint-sm { font-size: 0.8rem; color: var(--ink-2); }
+
+/* ── адаптив · скоупом на ці чотири сторінки ──────────────────────────
+   Виміряно: при в'юпорті 817px сторінка розсувається до 869px ще ДО
+   цієї таблиці — п'ять фіксованих колонок підвалу плюс сітка 340px у
+   _wireframe.css. Правимо тут, а не у спільній таблиці, щоб решта
+   24 сірих сторінок лишились недоторканими.                            */
+.wrap { padding-left: clamp(16px, 3vw, 40px); padding-right: clamp(16px, 3vw, 40px); }
+.gm-grid { grid-template-columns: minmax(0, 1fr); }
+.interview { position: static; }
+@media (min-width: 980px) {
+  .gm-grid { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); }
+  .interview { position: sticky; top: 16px; }
+}
+.foot-cols { grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); }
+.foot-bar { display: flex; flex-wrap: wrap; gap: 16px; }
+.match, .notice, .sk-block, .interview { max-width: 100%; }
+.sk-btn { width: min(200px, 100%); }
+.sk-dl { grid-template-columns: minmax(0, 96px) minmax(0, 1fr); }
+
+/* Службове дерево — `flex: 0 0 258px` у _wireframe.css. При в'юпорті 375px
+   воно лишає сторінці 117px, і вона розсувається. Це поведінка харнеса,
+   а не продукту, і вона однакова на всіх 28 сторінках. Тут складаємо його
+   у смугу зверху; решта 24 сторінок лишаються як були. */
+@media (max-width: 1080px) {
+  body { display: block; }
+  .wf-tree {
+    flex: none; position: static; width: auto; max-height: 42vh;
+    border-right: 0; border-bottom: 2px solid var(--svc-line);
+  }
+}
+.foot-cols ul { padding-left: 0; list-style: none; }
+.navs { min-width: 0; }
+.navs ul { flex-wrap: wrap; }
+
+/* ── рух ────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .sk { opacity: 1; }
+}
+
+/* ── розмір цілі вводу · WCAG 2.2 SC 2.5.8 (мінімум 24px) ─────────────
+   Виміряно: посилання utility-нав 19px, головної нав 21px, футера ~21px.
+   Падінг доводить ціль до ≥24px, не змінюючи кегля.                    */
+.nav-top a, .nav-main a { display: inline-block; padding-top: 4px; padding-bottom: 4px; }
+body > footer a, .foot-bar a { display: inline-block; padding-block: 3px; }

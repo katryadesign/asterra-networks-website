@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asterra · напрям B «Панель» — пробний стенд мови</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   НАПРЯМ B · «ПАНЕЛЬ»
+   Несуча ідея: chroma рівно 0 на підкладці. Хроматика — подія, не оздоба.
+   Атрибути: A1 ранжовано · A2 чуже ім'я · A3 одна поверхня · A4 схема ·
+   A5 щільність. Кожен токен нижче підписаний тим, чому він служить.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── НЕЙТРАЛЬ · chroma рівно 0. Жодного підтону, ні теплого, ні холодного ── */
+  --bg:          oklch(0.12 0 0);   /* A3 — одна поверхня під усі цифри      */
+  --surface:     oklch(0.17 0 0);   /* A3 — панель, не картка-острівець      */
+  --surface-2:   oklch(0.21 0 0);   /* A5 — щільна зона (таблиця, поле)      */
+  --line:        oklch(0.30 0 0);   /* A3 — глибина межею, не тінню          */
+  --line-strong: oklch(0.42 0 0);   /* A1 — межа рангу, не декор             */
+  --ink:         oklch(0.97 0 0);   /* показ: заголовок і головна дія        */
+  --ink-2:       oklch(0.78 0 0);   /* другорядний текст                     */
+  --ink-3:       oklch(0.64 0 0);   /* плейсхолдер · теж мусить брати 4.5:1  */
+
+  /* ── PRIMARY. У «Панелі» первинна дія не має власного кольору: вона
+        найсвітліша річ на екрані. Це і є primary. A1: ранг — контрастом.  */
+  --primary:     oklch(0.97 0 0);
+  --primary-ink: oklch(0.12 0 0);
+
+  /* ── ACCENT = SIGNAL. Єдиний хроматичний токен на всій сторінці.
+        Позначає ПОДІЮ, а не тип. Що саме за подія — каже іконка й слово,
+        ніколи не відтінок (правило дальтонізму, PRODUCT.md).            */
+  --signal:      oklch(0.68 0.19 25);
+  --signal-dim:  oklch(0.34 0.09 25);   /* межа блока події               */
+
+  /* ── ТИПОГРАФІКА. Крок рівно 1,25× ── */
+  --t-micro: 0.8rem;      /* 12.8px */
+  --t-body:  1rem;        /* 16px   */
+  --t-lead:  1.25rem;     /* 20px   */
+  --t-h3:    1.5625rem;   /* 25px   */
+  --t-h2:    1.953rem;    /* 31.25px*/
+  --t-h1:    2.441rem;    /* 39px   */
+  --t-display: clamp(2.441rem, 4.2vw, 3.052rem); /* 39 → 48.8px, стеля 96px не близько */
+
+  --font-sans: "Familjen Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* ── ФОРМА ── */
+  --r: 2px;               /* єдиний радіус. Другого немає                  */
+  --r-round: 999px;       /* тільки кругла іконка-крапка, не кнопки        */
+  /* тіней немає жодної: A3 — глибина тональним зсувом і межею 1px         */
+
+  /* ── ВІДСТУПИ. База 4px ── */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --z-sticky: 100;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 var(--t-body)/1.68 var(--font-sans);  /* світле на темному: +повітря */
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+h1,h2,h3,h4 { margin: 0; text-wrap: balance; font-weight: 500; }
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+button { font: inherit; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 32px); }
+.section { padding: var(--s8) 0; border-top: 1px solid var(--line); }
+.section:first-of-type { border-top: 0; }
+
+/* Службові підписи стенда — навмисно не частина мови B.
+   Це голос документа, а не голос продукту.                */
+.note {
+  font-size: var(--t-micro); color: var(--ink-2); line-height: 1.6;
+  max-width: 74ch;
+}
+.attr {
+  display: inline-block; font-family: var(--font-mono); font-size: var(--t-micro);
+  color: var(--ink-2); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 1px 6px; white-space: nowrap;
+}
+.attr--none { color: var(--signal); border-color: var(--signal-dim); }
+.kicker {
+  font-size: var(--t-micro); color: var(--ink-3);
+  margin-bottom: var(--s2);
+}
+.h-sec { font-size: var(--t-h2); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: var(--s3); }
+.lead { font-size: var(--t-lead); color: var(--ink-2); max-width: 62ch; line-height: 1.5; }
+
+/* ═══════════ ЖИВЦЕМ ═══════════ */
+
+/* Шапка. Текст без іконок: у десктопній шапці іконка не служить
+   жодному атрибуту — вона лише повторює слово. Прибрано свідомо.  */
+.chrome { border-bottom: 1px solid var(--line); background: var(--bg); }
+.chrome__utility {
+  display: flex; justify-content: flex-end; gap: var(--s5);
+  font-size: var(--t-micro); color: var(--ink-2);
+  padding: var(--s2) 0; border-bottom: 1px solid var(--line);
+}
+.chrome__utility a { text-decoration: none; display: inline-block; padding-top: 4px; padding-bottom: 4px; }
+/* padding доводить ціль вводу до >=24px — WCAG 2.2 SC 2.5.8 */
+.chrome__utility a:hover { color: var(--ink); }
+.chrome__main {
+  display: flex; align-items: center; gap: var(--s5);
+  flex-wrap: wrap; padding: var(--s4) 0;
+}
+.brand { font-size: var(--t-lead); font-weight: 600; letter-spacing: -0.02em; margin-right: auto; }
+.nav { display: flex; flex-wrap: wrap; gap: var(--s5); font-size: 0.94rem; }
+.nav a { text-decoration: none; color: var(--ink-2); display: inline-block; padding-top: 4px; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
+.nav a:hover, .nav a[aria-current] { color: var(--ink); border-color: var(--ink); }
+
+/* Позиційний блок */
+.stage { padding: var(--s8) 0 var(--s7); }
+.stage h1 { font-size: var(--t-display); letter-spacing: -0.03em; line-height: 1.06; max-width: 18ch; }
+.stage p { margin-top: var(--s4); }
+
+/* Кнопки */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  border: 1px solid transparent; border-radius: var(--r);
+  padding: 11px 18px; font-size: 0.94rem; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+  transition: background .22s var(--ease), color .22s var(--ease), border-color .22s var(--ease);
+}
+.btn--primary { background: var(--primary); color: var(--primary-ink); }
+.btn--primary:hover { background: oklch(0.85 0 0); }
+.btn--secondary { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn--secondary:hover { border-color: var(--ink); }
+.btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+.btn img { width: 18px; height: 18px; }
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s5); }
+
+/* Картка оголошення */
+.card {
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface); overflow: hidden;
+  max-width: 560px;
+}
+.card__photo { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.card__body { padding: var(--s4) var(--s4) var(--s5); }
+.badge {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  border: 1px solid var(--line); border-radius: var(--r);
+  padding: 4px 9px; margin-bottom: var(--s3);
+  font-family: var(--font-mono); font-size: var(--t-micro);
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2);
+}
+.badge img { width: 14px; height: 14px; }
+.card h3 { font-size: var(--t-h3); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: var(--s3); }
+.card p { color: var(--ink-2); font-size: 0.94rem; }
+.meta {
+  display: flex; flex-wrap: wrap; gap: var(--s4);
+  margin-top: var(--s4); padding-top: var(--s3); border-top: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: var(--t-micro); color: var(--ink-3);
+}
+.meta span { display: inline-flex; align-items: center; gap: 6px; }
+.meta img { width: 14px; height: 14px; }
+
+/* Єдина хроматична подія */
+.event {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  margin-top: var(--s4); padding: 7px 11px;
+  border: 1px solid var(--signal-dim); border-radius: var(--r);
+  color: var(--signal); font-family: var(--font-mono); font-size: var(--t-micro);
+  font-variant-numeric: tabular-nums;
+}
+.event img { width: 15px; height: 15px; }
+
+/* ═══════════ СПЕЦИФІКАЦІЯ ═══════════ */
+.tbl-scroll { overflow-x: auto; margin-top: var(--s4); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.9rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: var(--t-micro); font-weight: 500; color: var(--ink-3); }
+td.mono, .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.chip { display: inline-block; width: 30px; height: 20px; border: 1px solid var(--line); border-radius: var(--r); vertical-align: middle; }
+
+.grid2 { display: grid; gap: var(--s5); grid-template-columns: repeat(auto-fit, minmax(min(300px,100%), 1fr)); margin-top: var(--s5); }
+.panel { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); padding: var(--s5); }
+
+.scale-row { display: flex; align-items: baseline; gap: var(--s4); padding: var(--s3) 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.scale-row .mono { font-size: var(--t-micro); color: var(--ink-3); white-space: nowrap; }
+
+.icon-grid { display: grid; gap: var(--s3); grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); margin-top: var(--s4); }
+.icon-cell { display: flex; align-items: center; gap: var(--s3); border: 1px solid var(--line); border-radius: var(--r); padding: var(--s3); }
+.icon-cell img { width: 22px; height: 22px; flex: none; }
+.icon-cell b { font-weight: 500; font-size: 0.86rem; display: block; }
+.icon-cell small { font-family: var(--font-mono); font-size: var(--t-micro); color: var(--ink-3); }
+
+/* Поле форми */
+.field { max-width: 460px; }
+.field + .field { margin-top: var(--s5); }
+.field label { display: block; font-size: 0.9rem; margin-bottom: 6px; }
+.field input, .field select, .field textarea {
+  width: 100%; background: var(--surface-2); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: var(--r);
+  padding: 10px 12px; font: 400 0.94rem var(--font-sans);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-3); }
+.field select { appearance: none; background-image: none; }
+.field :is(input,select,textarea):focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
+.hint { font-size: var(--t-micro); color: var(--ink-2); margin-top: 6px; }
+.slot {
+  border: 1px dashed var(--line-strong); border-radius: var(--r);
+  padding: var(--s3); margin-top: var(--s3);
+  font-family: var(--font-mono); font-size: var(--t-micro); color: var(--ink-2);
+}
+
+/* стани */
+.state { display: flex; align-items: flex-start; gap: var(--s3); border: 1px solid var(--line); border-radius: var(--r); padding: var(--s3) var(--s4); }
+.state img { width: 20px; height: 20px; flex: none; margin-top: 2px; }
+.state b { display: block; font-weight: 500; }
+.state small { color: var(--ink-2); font-size: 0.86rem; }
+.state--event { border-color: var(--signal-dim); }
+.state--event b { color: var(--signal); }
+
+/* партнерські слоти */
+.slots { display: grid; gap: var(--s2); grid-template-columns: repeat(auto-fit, minmax(min(210px,100%), 1fr)); margin-top: var(--s4); }
+.slot-cell {
+  border: 1px solid var(--line); border-radius: var(--r);
+  padding: var(--s4) var(--s3); text-align: center;
+  font-family: var(--font-mono); font-size: var(--t-micro); color: var(--ink-2);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+.pass { color: var(--ink); }
+.fail { color: var(--signal); font-weight: 600; }
+
+footer.doc { border-top: 1px solid var(--line); padding: var(--s7) 0 var(--s9); }
+footer.doc ul { padding-left: 1.1em; margin: var(--s3) 0 0; }
+footer.doc li { margin-bottom: var(--s2); }
+code { font-family: var(--font-mono); font-size: max(var(--t-micro), 0.86em); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ ЖИВЦЕМ ══════════════════════ -->
+<header class="chrome">
+  <div class="wrap">
+    <nav class="chrome__utility" aria-label="Utility">
+      <a href="#">Events</a><a href="#">Careers</a><a href="#">Contact Us</a>
+    </nav>
+    <div class="chrome__main">
+      <span class="brand">Asterra Networks</span>
+      <nav class="nav" aria-label="Main">
+        <a href="#">About</a>
+        <a href="#">Solutions &amp; Services</a>
+        <a href="#">Industries</a>
+        <a href="#">Regulations</a>
+        <a href="#" aria-current="page">Crew connectivity</a>
+        <a href="#">Latest news</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <section class="stage">
+    <h1>The proof is never our own name.</h1>
+    <p class="lead">We do not launch the satellites or build the bridge hardware. We are the party accredited to carry them, and the party you call when they stop.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="#components">Find what fits your fleet
+        <img src="https://api.iconify.design/solar/alt-arrow-right-linear.svg?color=%23060606" alt="" width="18" height="18"></a>
+      <a class="btn btn--secondary" href="#components">Talk to an expert</a>
+    </div>
+    <p class="note" style="margin-top:var(--s5)">
+      <span class="attr">A2</span> Заголовок ставить чуже ім'я вище за наше твердження ще до будь-якого доказу.
+      <span class="attr">A1</span> Дві дії, не рівні: первинна найсвітліша, вторинна тримається межею.
+      Обидва написи канонічні, <code>microcopy.md</code> Н2-4 і Н2-1.
+    </p>
+  </section>
+
+  <section class="section">
+    <p class="kicker">Мова живцем</p>
+    <h2 class="h-sec">Картка оголошення</h2>
+    <p class="lead">Бейдж називає чуже ім'я і стоїть над заголовком. Дата, що зобов'язує, це єдине кольорове на екрані.</p>
+
+    <div class="grid2" style="align-items:start">
+      <article class="card">
+        <img class="card__photo" src="https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=900&q=80"
+             alt="Equipment cabinet photographed head-on in a dark machinery space. No crew in frame.">
+        <div class="card__body">
+          <span class="badge">
+            <img src="https://api.iconify.design/solar/shield-check-linear.svg?color=%23B7B7B7" alt="" width="14" height="14">
+            Satellite capacity partner · Meridian Skyway
+          </span>
+          <h3>Meridian Skyway capacity is now contracted for our Ku and Ka services in the North Atlantic.</h3>
+          <p>Coverage and committed information rate are the operator's own published figures. Ours is the installation, the failover to terrestrial, and support in your working language, carried as a commitment rather than a claim of scale.</p>
+          <p class="event">
+            <img src="https://api.iconify.design/solar/calendar-mark-linear.svg?color=%23F75D59" alt="" width="15" height="15">
+            Service description dated 12 August 2026
+          </p>
+          <div class="meta">
+            <span><img src="https://api.iconify.design/solar/map-point-linear.svg?color=%238C8C8C" alt="" width="14" height="14">Maritime</span>
+            <span><img src="https://api.iconify.design/solar/document-text-linear.svg?color=%238C8C8C" alt="" width="14" height="14">Partnership</span>
+          </div>
+        </div>
+      </article>
+
+      <div>
+        <h3 style="font-size:var(--t-h3);letter-spacing:-.02em">Accredited, not self-declared</h3>
+        <p class="lead" style="font-size:var(--t-body);margin-top:var(--s3)">Satellite capacity partners, navigation and bridge OEMs, safety equipment manufacturers. A partner name belongs to a third party and cannot be asserted by us.</p>
+        <div class="slots">
+          <span class="slot-cell">Satellite capacity partner</span>
+          <span class="slot-cell">Satellite capacity partner</span>
+          <span class="slot-cell">Navigation and bridge OEM</span>
+          <span class="slot-cell">Navigation and bridge OEM</span>
+          <span class="slot-cell">Safety equipment manufacturer</span>
+          <span class="slot-cell">Safety equipment manufacturer</span>
+        </div>
+        <p class="note" style="margin-top:var(--s4)">
+          <span class="attr">A2</span> Шість позицій, три підписані категорії, комірка з межею. Це специфікація тракту, а не стіна клієнтів.
+          <span class="attr">A1</span> Категорія стоїть перед іменем: спершу вісь, потім імена.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- ══════════════════════ СПЕЦИФІКАЦІЯ ══════════════════════ -->
+
+  <section class="section" id="palette">
+    <p class="kicker">Специфікація</p>
+    <h2 class="h-sec">Палітра</h2>
+    <p class="lead">Chroma рівно 0 на всій нейтралі. Хроматичний токен один, і він позначає подію, а не тип події: що саме сталося, каже іконка й слово.</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Зразок</th><th>Токен</th><th>Роль</th><th>Атрибут</th><th>Hex</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.12 0 0)"></span></td><td class="mono">--bg</td><td>Підкладка. Chroma рівно 0, без підтону</td><td><span class="attr">A3</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.17 0 0)"></span></td><td class="mono">--surface</td><td>Панель. Не картка-острівець</td><td><span class="attr">A3</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.21 0 0)"></span></td><td class="mono">--surface-2</td><td>Щільна зона: таблиця, поле вводу</td><td><span class="attr">A5</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.30 0 0)"></span></td><td class="mono">--line</td><td>Межа. Замінює тінь повністю</td><td><span class="attr">A3</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.42 0 0)"></span></td><td class="mono">--line-strong</td><td>Межа рангу: вторинна дія, поле вводу</td><td><span class="attr">A1</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.97 0 0)"></span></td><td class="mono">--ink · --primary</td><td>Показ і первинна дія. Ранг тримається контрастом, не кольором</td><td><span class="attr">A1</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.78 0 0)"></span></td><td class="mono">--ink-2</td><td>Другорядний текст</td><td><span class="attr">A1</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.64 0 0)"></span></td><td class="mono">--ink-3</td><td>Плейсхолдер і метадані. Теж бере 4.5:1</td><td><span class="attr">A1</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.68 0.19 25)"></span></td><td class="mono">--signal</td><td>Єдина хроматика. Подія: строк або збій</td><td><span class="attr">A3</span></td><td class="mono" data-hex></td></tr>
+          <tr><td><span class="chip" data-sw style="background:oklch(0.34 0.09 25)"></span></td><td class="mono">--signal-dim</td><td>Межа блока події</td><td><span class="attr">A3</span></td><td class="mono" data-hex></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:var(--t-h3);margin-top:var(--s7);letter-spacing:-.02em">Семантика без веселки</h3>
+    <p class="lead" style="font-size:var(--t-body);margin-top:var(--s3)">Чотири семантичні стани і один хроматичний токен на всі. Розрізняє їх форма іконки й слово. Прибравши колір, читач не втрачає нічого.</p>
+    <div class="grid2">
+      <div class="state state--event">
+        <img src="https://api.iconify.design/solar/danger-triangle-linear.svg?color=%23F75D59" alt="" width="20" height="20">
+        <div><b>The request did not send.</b><small>Everything you typed is still here. Sending again submits the same request once.</small></div>
+      </div>
+      <div class="state state--event">
+        <img src="https://api.iconify.design/solar/calendar-mark-linear.svg?color=%23F75D59" alt="" width="20" height="20">
+        <div><b>Read at every annual Document of Compliance verification</b><small>Строк. Той самий колір, що й у збою: різниця в іконці й слові, не у відтінку.</small></div>
+      </div>
+      <div class="state">
+        <img src="https://api.iconify.design/solar/check-circle-linear.svg?color=%23F5F5F5" alt="" width="20" height="20">
+        <div><b>Request sent. You arrive with a position.</b><small>Успіх кольору не отримує: він не подія, що вимагає дії.</small></div>
+      </div>
+      <div class="state">
+        <img src="https://api.iconify.design/solar/clock-circle-linear.svg?color=%23B7B7B7" alt="" width="20" height="20">
+        <div><b>Sending your request</b><small>This takes a moment; do not resend. Everything below travels with it.</small></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:var(--s4)"><span class="attr">A3</span> Один токен на всі події тримає «одну поверхню для всіх цифр» і на рівні кольору: другого червоного, який хтось прийме за інший клас, не існує. Правило дальтонізму PRODUCT.md виконано за побудовою.</p>
+  </section>
+
+  <section class="section" id="type">
+    <h2 class="h-sec">Типографіка</h2>
+    <p class="lead">Familjen Grotesk несе все, JetBrains Mono тільки величини. Крок шкали рівно 1,25×. Дисплей у вазі 500: розрив масштабу без ваги.</p>
+
+    <div style="margin-top:var(--s5)">
+      <div class="scale-row"><span style="font-size:var(--t-display);font-weight:500;letter-spacing:-.03em;line-height:1.06">Panel</span><span class="mono">display · clamp(39→48.8px) · 500 · ls −0.03em · lh 1.06</span></div>
+      <div class="scale-row"><span style="font-size:var(--t-h1);letter-spacing:-.028em">Accredited, not self-declared</span><span class="mono">h1 · 39px · 500</span></div>
+      <div class="scale-row"><span style="font-size:var(--t-h2);letter-spacing:-.025em">One canonical value per figure</span><span class="mono">h2 · 31.25px · 500</span></div>
+      <div class="scale-row"><span style="font-size:var(--t-h3);letter-spacing:-.02em">Support commitment</span><span class="mono">h3 · 25px · 500</span></div>
+      <div class="scale-row"><span style="font-size:var(--t-lead);color:var(--ink-2)">One step. No wizard, no gate.</span><span class="mono">lead · 20px · 400</span></div>
+      <div class="scale-row"><span>24x7x365 and multilingual, carried as a commitment rather than a claim of scale.</span><span class="mono">body · 16px · 400 · lh 1.68</span></div>
+      <div class="scale-row"><span class="mono" style="font-size:var(--t-body)">1 445 · 99.9% · 24x7x365</span><span class="mono">figures · mono 500 · tabular-nums</span></div>
+      <div class="scale-row"><span style="font-size:var(--t-micro);color:var(--ink-3)">Filled in from the page you came from</span><span class="mono">micro · 12.8px · 400</span></div>
+    </div>
+    <p class="note" style="margin-top:var(--s4)">
+      <span class="attr">A5</span> Домінанта створюється розривом масштабу 3,05× між дисплеєм і текстом, не заповненням площі.
+      <span class="attr">A3</span> Табличні цифри моно: розбіжність у колонці видно оком.
+      Моно ніде не стоїть у підписі поля чи надзаголовку. Рядок «lh 1.68» не косметика: світлий текст на темному читається легшим і потребує більше повітря.
+    </p>
+  </section>
+
+  <section class="section" id="form">
+    <h2 class="h-sec">Форма</h2>
+    <div class="grid2">
+      <div class="panel">
+        <h3 style="font-size:var(--t-h3);letter-spacing:-.02em">Радіус</h3>
+        <p class="note" style="margin-top:var(--s3)">Один на всю мову: <code>2px</code>. Другого немає. Кругла форма існує тільки як 6-піксельна крапка події, і ніколи як кнопка чи картка.</p>
+        <div style="display:flex;gap:var(--s3);margin-top:var(--s4);align-items:center">
+          <span style="width:56px;height:34px;border:1px solid var(--line-strong);border-radius:2px"></span>
+          <span class="mono" style="font-size:var(--t-micro);color:var(--ink-3)">--r: 2px</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 style="font-size:var(--t-h3);letter-spacing:-.02em">Тіні</h3>
+        <p class="note" style="margin-top:var(--s3)">Жодної. <span class="attr">A3</span> Глибина створюється тональним зсувом поверхні (0.12 → 0.17 → 0.21) і межею в 1px. На темному полотні тінь не читається, а імітація елевації дозволяє цифрам жити на окремих острівцях і розійтися.</p>
+        <div style="display:flex;gap:var(--s2);margin-top:var(--s4)">
+          <span style="flex:1;height:34px;background:var(--bg);border:1px solid var(--line);border-radius:2px"></span>
+          <span style="flex:1;height:34px;background:var(--surface);border:1px solid var(--line);border-radius:2px"></span>
+          <span style="flex:1;height:34px;background:var(--surface-2);border:1px solid var(--line);border-radius:2px"></span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 style="font-size:var(--t-h3);letter-spacing:-.02em">Відступи</h3>
+        <p class="note" style="margin-top:var(--s3)">База 4px: <span class="mono">4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96</span>. <span class="attr">A5</span> Щільно в доказових зонах (таблиця, бейджі, партнерська сітка — крок 8–16), просторо на переходах між секціями (крок 64).</p>
+      </div>
+      <div class="panel">
+        <h3 style="font-size:var(--t-h3);letter-spacing:-.02em">Фото</h3>
+        <p class="note" style="margin-top:var(--s3)"><span class="attr">A4</span> Обладнання як задокументований об'єкт. Людей у кадрі немає, атмосферного краєвиду немає (рішення К1, <code>concept.md §2</code>). Схема лишається основним носієм, фото другим.</p>
+        <div style="display:flex;gap:var(--s2);margin-top:var(--s4)">
+          <img style="flex:1;min-width:0;height:76px;object-fit:cover;border-radius:2px" src="https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=400&q=80" alt="Antenna assembly against open sky, photographed as an object.">
+          <img style="flex:1;min-width:0;height:76px;object-fit:cover;border-radius:2px" src="https://images.unsplash.com/photo-1781449511066-01f1181ac87c?auto=format&fit=crop&w=400&q=80" alt="Mast head carrying radar and communication antennas.">
+          <img style="flex:1;min-width:0;height:76px;object-fit:cover;border-radius:2px" src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?auto=format&fit=crop&w=400&q=80" alt="Parabolic antenna installation seen from below.">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="icons">
+    <h2 class="h-sec">Іконки · Solar linear</h2>
+    <p class="lead">План покриття: п'ять зон, п'ятнадцять слотів. Тонкий контур — та сама логіка, що й межа замість тіні.</p>
+
+    <p class="note" style="margin-top:var(--s4)">
+      <span class="attr attr--none">без атрибута</span>
+      У десктопній шапці іконок немає навмисно: там іконка лише повторює слово і не служить жодному атрибуту. Нижче вони показані як слоти для компактної навігації, де вони працюють на впізнавання при згорнутому тексті.
+    </p>
+
+    <div class="icon-grid">
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/info-circle-linear.svg?color=%23F5F5F5" alt=""><span><b>About</b><small>info-circle · нав</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/widget-4-linear.svg?color=%23F5F5F5" alt=""><span><b>Solutions &amp; Services</b><small>widget-4 · нав</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/buildings-3-linear.svg?color=%23F5F5F5" alt=""><span><b>Industries</b><small>buildings-3 · нав</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/document-text-linear.svg?color=%23F5F5F5" alt=""><span><b>Regulations</b><small>document-text · нав</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/users-group-rounded-linear.svg?color=%23F5F5F5" alt=""><span><b>Crew connectivity</b><small>users-group-rounded · нав</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/letter-linear.svg?color=%23F5F5F5" alt=""><span><b>Latest news</b><small>letter · нав</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/calendar-mark-linear.svg?color=%238C8C8C" alt=""><span><b>Дата</b><small>calendar-mark · метадані</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/map-point-linear.svg?color=%238C8C8C" alt=""><span><b>Галузь</b><small>map-point · метадані</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/case-minimalistic-linear.svg?color=%238C8C8C" alt=""><span><b>Роль</b><small>case-minimalistic · метадані</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/shield-check-linear.svg?color=%23B7B7B7" alt=""><span><b>Акредитація</b><small>shield-check · бейдж</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/alt-arrow-right-linear.svg?color=%23F5F5F5" alt=""><span><b>Перехід далі</b><small>alt-arrow-right · кнопка</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/refresh-linear.svg?color=%23F5F5F5" alt=""><span><b>Надіслати ще раз</b><small>refresh · кнопка</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/danger-triangle-linear.svg?color=%23F75D59" alt=""><span><b>Збій</b><small>danger-triangle · стан</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/clock-circle-linear.svg?color=%23B7B7B7" alt=""><span><b>Надсилання</b><small>clock-circle · стан</small></span></div>
+      <div class="icon-cell"><img src="https://api.iconify.design/solar/check-circle-linear.svg?color=%23F5F5F5" alt=""><span><b>Надіслано</b><small>check-circle · стан</small></span></div>
+    </div>
+  </section>
+
+  <section class="section" id="components">
+    <h2 class="h-sec">Три живі компоненти</h2>
+
+    <div class="grid2" style="align-items:start">
+
+      <div class="panel">
+        <p class="kicker">1 · Кнопка дії</p>
+        <div class="btn-row" style="margin-top:0">
+          <a class="btn btn--primary" href="#components">Talk to an expert</a>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--secondary" href="#components">Find what fits your fleet
+            <img src="https://api.iconify.design/solar/alt-arrow-right-linear.svg?color=%23F5F5F5" alt="" width="18" height="18"></a>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn--secondary" type="button">
+            <img src="https://api.iconify.design/solar/refresh-linear.svg?color=%23F5F5F5" alt="" width="18" height="18">Send the request again</button>
+        </div>
+        <p class="note" style="margin-top:var(--s4)">
+          <span class="attr">A1</span> Первинна дія найсвітліша, вторинна тримається межею: ранг читається без кольору.
+          Написи канонічні: <code>Talk to an expert</code> (Н2-1), <code>Find what fits your fleet</code> (Н2-4), <code>Send the request again</code> (стан error).
+        </p>
+      </div>
+
+      <div class="panel">
+        <p class="kicker">2 · Картка оголошення</p>
+        <article class="card" style="max-width:none">
+          <img class="card__photo" src="https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=800&q=80"
+               alt="Antenna assembly photographed against open sky as an object. No crew in frame.">
+          <div class="card__body">
+            <span class="badge">
+              <img src="https://api.iconify.design/solar/shield-check-linear.svg?color=%23B7B7B7" alt="" width="14" height="14">
+              Navigation and bridge OEM · Kessler Marine
+            </span>
+            <h3 style="font-size:var(--t-lead)">The bridge stack we install now holds type approval against IACS UR E26 and UR E27.</h3>
+            <p>Approval is held by the manufacturer and travels with the unit. What you keep after installation: the type approval certificate and the survey record.</p>
+            <div class="meta">
+              <span><img src="https://api.iconify.design/solar/calendar-mark-linear.svg?color=%238C8C8C" alt="" width="14" height="14">18 August 2026</span>
+              <span><img src="https://api.iconify.design/solar/map-point-linear.svg?color=%238C8C8C" alt="" width="14" height="14">Maritime</span>
+            </div>
+          </div>
+        </article>
+        <div class="slot">The certifying body is named beside each approval. A specific approval for a fictional product is not claimed: [TBD — no source]</div>
+        <p class="note" style="margin-top:var(--s4)">
+          <span class="attr">A2</span> Бейдж стоїть НАД заголовком: чуже ім'я раніше за наше твердження.
+          <span class="attr">A4</span> Фото — обладнання як об'єкт.
+          Пунктирний слот — канон <code>microcopy.md</code> §1.4: партнерське ім'я вигадати на етапі дизайну можна (§6.1), а конкретне схвалення вигаданого продукту органом — ні.
+        </p>
+      </div>
+
+      <div class="panel">
+        <p class="kicker">3 · Поле форми Inquiry</p>
+        <div class="field">
+          <label for="f-role">Your role or request type</label>
+          <select id="f-role">
+            <option value="" selected>Select a role</option>
+            <option>Fleet IT / IT manager</option>
+            <option>Technical superintendent</option>
+            <option>Owner or operator</option>
+            <option>Procurement</option>
+            <option>Reseller or partnership</option>
+            <option>Other</option>
+          </select>
+          <p class="hint">Frame agreements and reseller requests route differently; saying so here saves the third meeting.</p>
+        </div>
+        <div class="field">
+          <label for="f-sol">Solution of interest</label>
+          <input id="f-sol" type="text" value="Asterra Shield (Cybersecurity)">
+          <p class="hint">Filled in from the page you came from; edit it if you mean a different solution.</p>
+        </div>
+        <div class="slot">Стан помилки поля: [TBD] — правило валідації свідомо відкрите, <code>voice.md §17</code>. Стану немає в <code>_screens.md</code>, тому він тут не вигадується.</div>
+        <p class="hint" style="margin-top:var(--s4)">The request goes to a specialist for your industry. The reply comes from that specialist.</p>
+        <p class="note" style="margin-top:var(--s3)">
+          <span class="attr">A1</span> Поле ролі під R4 стоїть у формі, а не в листуванні: «can you even buy this?» краще спитати рано.
+          <span class="attr">A5</span> Поле на щільній поверхні <code>--surface-2</code>, підказка на кроці 6px.
+          Плейсхолдер <code>--ink-3</code>, не сірий за замовчуванням: він теж бере 4.5:1.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="contrast">
+    <h2 class="h-sec">Контраст</h2>
+    <p class="lead">Порахований браузером із фактичних токенів у момент відкриття сторінки, а не переписаний із наміру. Поріг WCAG 2.2 AA.</p>
+    <div class="tbl-scroll">
+      <table id="ct">
+        <thead><tr><th>Пара</th><th>Поріг</th><th>Ratio</th><th>Присуд</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="doc">
+  <div class="wrap">
+    <h2 class="h-sec" style="font-size:var(--t-h3)">Дрібним, але важливим</h2>
+    <div class="note">
+      <ul>
+        <li><strong>Розбіжність, знайдена принагідно.</strong> <code>sitemap.md §15</code> описує глобальну навігацію як <strong>5 пунктів робочою мовою</strong> («Find what fits», «Your industry», «Regulations &amp; deadlines», «Crew connectivity», «Talk to an expert»), а <code>microcopy.md §1.0</code> фіксує реально зверстану шапку з <strong>6 пунктів розділовою мовою</strong> (About · Solutions &amp; Services · Industries · Regulations · Crew connectivity · Latest news). Тут узято реєстр <code>microcopy.md</code> — він джерело правди для написів. Розбіжність уже позначена мітками <code>Н1</code>/<code>Н3</code> і не закривається мимохідь.</li>
+        <li><strong>Копірайт.</strong> Кожен англійський рядок узято з <code>microcopy.md</code> у канонічній редакції після перепису 2026-08-27. Виняток один: текст картки оголошення — Insights лишається «declared, not designed», написів у реєстрі немає, тому їх написано за <code>voice.md</code> заново і це помічено тут.</li>
+        <li><strong>Партнери вигадані</strong> (Meridian Skyway, Kessler Marine). Реальну компанію партнером Asterra не називають ніколи. Конкретне схвалення вигаданого продукту органом не заявляється взагалі: замість нього стоїть <code>[TBD — no source]</code>.</li>
+        <li><strong>Жодної вигаданої цифри про Asterra.</strong> Величини в блоці типографіки — зразок табличних цифр, не твердження.</li>
+        <li><strong>Hex у палітрі обчислює браузер</strong> із того самого токена, яким пофарбовано зразок. Підпис не може розійтися з кольором.</li>
+        <li>Asterra Networks is a fictional brand created for an independent UX/UI case study. Regulatory references (MLC 2006, IMO MSC.428(98), IACS UR E26/E27, ISO 27001, IEC 62443) are real and dated. All product names, partner marks, news items and commitments are invented for the study.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function toRGB(color) {
+    var cv = document.createElement('canvas'); cv.width = cv.height = 1;
+    var ctx = cv.getContext('2d', { willReadFrequently: true });
+    ctx.fillStyle = '#ff00ff'; ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    var d = ctx.getImageData(0, 0, 1, 1).data;
+    return [d[0], d[1], d[2]];
+  }
+  function hex(rgb) {
+    return '#' + rgb.map(function (x) { return ('0' + x.toString(16)).slice(-2); }).join('').toUpperCase();
+  }
+  function lum(rgb) {
+    var a = rgb.map(function (v) {
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+  }
+  function ratio(a, b) {
+    var l1 = lum(toRGB(a)), l2 = lum(toRGB(b));
+    return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+  }
+
+  // hex у таблиці палітри
+  document.querySelectorAll('tr').forEach(function (tr) {
+    var chip = tr.querySelector('[data-sw]'), out = tr.querySelector('[data-hex]');
+    if (!chip || !out) return;
+    out.textContent = hex(toRGB(getComputedStyle(chip).backgroundColor));
+  });
+
+  // контрастний аудит
+  var cs = getComputedStyle(document.documentElement);
+  var v = function (n) { return cs.getPropertyValue(n).trim(); };
+  var pairs = [
+    ['Основний текст на підкладці', '--ink', '--bg', 4.5],
+    ['Другорядний текст на підкладці', '--ink-2', '--bg', 4.5],
+    ['Плейсхолдер і метадані на підкладці', '--ink-3', '--bg', 4.5],
+    ['Плейсхолдер на поверхні поля', '--ink-3', '--surface-2', 4.5],
+    ['Основний текст на панелі', '--ink', '--surface', 4.5],
+    ['Другорядний текст на панелі', '--ink-2', '--surface', 4.5],
+    ['Сигнал на підкладці', '--signal', '--bg', 4.5],
+    ['Сигнал на панелі', '--signal', '--surface', 4.5],
+    ['Текст первинної кнопки', '--primary-ink', '--primary', 4.5],
+    ['Заголовок display на підкладці', '--ink', '--bg', 3.0]
+  ];
+  var tb = document.querySelector('#ct tbody');
+  pairs.forEach(function (p) {
+    var r = ratio(v(p[1]), v(p[2]));
+    var ok = r >= p[3];
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + p[0] + '<br><span class="mono" style="font-size:var(--t-micro);color:var(--ink-3)">' + p[1] + ' / ' + p[2] + '</span></td>' +
+      '<td class="mono">' + p[3].toFixed(1) + ':1</td>' +
+      '<td class="mono">' + r.toFixed(2) + ':1</td>' +
+      '<td class="' + (ok ? 'pass' : 'fail') + '">' + (ok ? 'AA' : 'ПРОВАЛ') + '</td>';
+    tb.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>
