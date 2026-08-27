@@ -499,3 +499,131 @@ submit an empty finder query (IEC), a failing form (Marlink, NSSLGlobal), a
 non-existent URL per site (their 404s). One session, screenshots into
 [`screens/`](./screens/); would upgrade the `flows.md` state designs from
 practice-based to evidence-based.
+
+---
+
+## 13. Мова конкурентів (consolidated 2026-08-27)
+
+**What this section is.** A re-reading of evidence **already collected** in this file,
+[`personas.md`](./personas.md), [`audit.md`](./audit.md) and [`scope-check.md`](./scope-check.md),
+regrouped by a criterion none of those passes used: **the register competitors write in** —
+their button labels, proof lines, headings and gate phrases, as strings rather than as
+mechanisms.
+
+**No new data was collected.** The trigger for a fresh capture ("competitor wording is absent
+from the research") **is not met**: 25+ verbatim fragments were already recorded, each with a
+source and a §2 evidence label. Re-fetching them would restate what is here and risk drifting
+the wording. Every line below is carried over **unchanged**, with its original label; the only
+new thing is the grouping and the register reading.
+
+> ⚠️ **Cited for register analysis only.** These are other companies' words. They are quoted
+> short and attributed, to describe *how the category writes*; none of them is a model to copy
+> or to paraphrase into Asterra's copy. Per [`../CLAUDE.md`](../CLAUDE.md) §3 the brand, product
+> names and copy are original — and per §6.1 no real company is ever named as Asterra's partner.
+
+### 13.1 The fragments, as strings
+
+| # | Verbatim fragment | Who | Recorded in | Label |
+|---|---|---|---|---|
+| 1 | "Not sure where to start? **Talk to our team** and we'll point you in the right direction" | Marlink | `personas.md` §10.5, `jtbd.md` §2 | 🟢 [FACT] |
+| 2 | "Talk to our team" (in place of a finder) | Marlink | `audit.md` §1.4 #44 | 🟢 |
+| 3 | "**enquiry routed to a regional specialist**" | Marlink | `personas.md` P1 trust triggers | 🟢 [AUDIT] |
+| 4 | "Get in Touch" → resolves to `/sign-up/` | Speedcast | `audit.md` §1.4 #47, `personas.md` P4 repels | 🟢 |
+| 5 | "Shop Now" (added to the header) | Speedcast | `audit.md` §1.4 #48 | 🟢 |
+| 6 | "**Drop us a Line**", "**At the Helm**", "Find out more" ×11 on one page | NSSLGlobal | `personas.md` P1 repels, `audit.md` §1.4 #49 | 🟢 [AUDIT] |
+| 7 | "13,000+ vessels" (on the hero) | Navarino | §6, pattern 2 | 🟢 [AUDIT] |
+| 8 | "**+10,000 vessels worldwide use Infinity**" | Navarino Infinity | `audit.md` §5 ❓3 | 🟢 [FACT] |
+| 9 | "15k+ Vessels connected", "24.7% global market share" | Marlink | `personas.md` P4 trust triggers | 🟢 [AUDIT] |
+| 10 | "75yrs", "23.5k Operations" — **changed since the 22.07 capture** | Marlink | `audit.md` §1.4 #45 | 🟢 |
+| 11 | "115 engineers", "24x7x365" | Speedcast | `personas.md` P1 trust triggers | 🟢 [AUDIT] |
+| 12 | a lone "25+ years"; partners shown **as categories without names** | IEC Telecom | `personas.md` P1 repels (C4 = 2) | 🟢 [AUDIT] |
+| 13 | "over 50" / "55+" / "over 56 years" — three values, one fact | NSSLGlobal | §6 pattern 2, `personas.md` P1 repels | 🟢 [AUDIT] |
+| 14 | "99.99% this month" vs "99.9% SLA" — same page | Marlink | §6 pattern 2 | 🟢 [AUDIT] |
+| 15 | "**UR E27 Type Approved**" (Bureau Veritas); "IEC 62443-3-3 Type Approved (**DNV**)" | Navarino | `personas.md` P1/P2 trust triggers | 🟢 [AUDIT] |
+| 16 | ISO/IACS/**NIS2**/**DORA** chips on the homepage — **static text, not links** (DOM-confirmed) | Marlink | `audit.md` §1.4 #42, §5 ❓2 | 🟢 [FACT] |
+| 17 | "IMO Compliance (Cybersecurity)" as a standalone label (C5 = 3) | IEC Telecom | `personas.md` P2 repels | 🟢 [AUDIT] |
+| 18 | **COTP / COTM** as unexplained finder facets | IEC Telecom | §6 opp. 1, `jtbd.md` E1 | 🟢 [AUDIT] |
+| 19 | "application layer of the OSI model" | NSSLGlobal | `personas.md` P1 pains | 🟢 [AUDIT] |
+| 20 | **18 named offerings** on one cybersecurity page, no hierarchy | Marlink | `personas.md` P2 pains | 🟢 [AUDIT] |
+| 21 | "**Control use & security of communications**" (Ship Owners); "**Crew Internet access control during shifts**" (Captains); "**Controlled costs with full usage visibility**" (Crew) — benefits split by role, on a deep product page | Navarino Infinity | `audit.md` §5 ❓3 | 🟢 [FACT] |
+| 22 | "Remote fleet management… from a single portal" — the only management line; the rest is data buckets ($250–$2,150/mo) | Starlink Maritime | `audit.md` §5 ❓3 | 🟢 [FACT] |
+| 23 | "an aid to the stakeholders… **in particular compliance managers or persons in charge**"; 137 Q&As **filterable by stakeholder** | ClassNK (class society) | `audit.md` §5 ❓2 | 🟢 [FACT] |
+| 24 | "apply to ships **contracted for construction on or after 1 July 2024**" | ClassNK | `audit.md` §5 ❓2 | 🟢 [FACT] |
+| 25 | "Our journey from a maritime-focused enterprise to a **global connectivity leader**" | reference site | `scope-check.md` §1 | 🟢 [AUDIT] |
+| 26 | "**Secure Network Management**"; "**SaaS platform that integrates data, systems, and processes**"; sells by orbit tier (GEO / LEO / terrestrial) | reference site | `scope-check.md`, `personas.md` §5.0 signal 3 | 🟢 [AUDIT] |
+| 27 | "ship owners, **IT managers**, or partners" — the audience named in a redesign brief | Navarino (via KOTA) | §11.2, `personas.md` §5.0 signal 1 | 🟢 [UX-CASE] |
+| 28 | "68%" breaches stat used as an argument | Speedcast | `personas.md` P2 trust triggers | 🟢 [AUDIT] ⚠️ what it measures is not recorded |
+
+### 13.2 Where everyone writes alike — six register patterns
+
+**A. The CTA is an invitation, not a destination.** "Talk to our team" · "Get in Touch" ·
+"Drop us a Line" · "At the Helm" · "Find out more" ×11 (#1, #4, #6). The label names a *social
+gesture*, never the thing on the other side. At Speedcast the label actively lies: "Get in
+Touch" lands on `/sign-up/` (#4). **Nobody in the HARD group writes a label that says what the
+next page contains.**
+
+**B. Proof is a number the company says about itself.** "13,000+ vessels" · "15k+ Vessels
+connected" · "24.7% global market share" · "115 engineers" · "25+ years" · "+10,000 vessels"
+(#7–#12). All of them are self-assertions: the reader cannot check any of them, and two of the
+sources contradict themselves — NSSLGlobal states its own age three ways (#13) and Marlink
+gives two uptime values on one page (#14). Marlink's headline numbers had also **changed**
+between our two captures (#10).
+
+**C. The minority pattern: proof that is somebody else's name.** Only Navarino writes it —
+"UR E27 Type Approved" with **Bureau Veritas**, "IEC 62443-3-3 Type Approved (**DNV**)" (#15).
+A certifying body's name cannot be self-asserted, which is why it behaves differently from
+every line in pattern B. Note that the reference site's own strongest block is the same species
+— a named-partner strip ([`scope-check.md`](./scope-check.md) §2.2).
+
+**D. The norm appears as decoration.** Marlink puts ISO / IACS / NIS2 / DORA on the homepage —
+and they are **static text, no pages beneath them** (#16). IEC writes "IMO Compliance
+(Cybersecurity)" as a label with nothing attached (#17). The regulation is used as a badge that
+signals seriousness; **nobody uses it as a door**, and nobody says what paper the buyer ends up
+holding.
+
+**E. Unexplained jargon is used as a gate.** COTP/COTM as finder facets (#18), "application
+layer of the OSI model" as an explanation of value (#19). The failure is **not technicality** —
+it is that the term is proprietary or undefined and still load-bearing.
+
+**F. The catalogue stands in for an offer.** 18 named offerings on one page with no ranking
+(#20); NSSLGlobal duplicates the same offering across three trees. Against the documented
+budget reality (over half of owners under $100k/yr on cyber, [SURVEY + 2ND-HAND]) an
+unranked list of 18 does not read as a choice.
+
+### 13.3 Two registers that are *not* the category default
+
+**G. Control sold at feature altitude.** Navarino does speak policy — "Control use & security
+of communications", "Crew Internet access control during shifts", "Controlled costs with full
+usage visibility" — and even splits its benefits by role, IT Management among them (#21). But
+this lives on a deep product page. Starlink, by contrast, sells buckets and coverage; its only
+management sentence is "Remote fleet management… from a single portal" (#22). **What is free is
+not the theme but the altitude:** nobody leads with manageability at positioning level
+([`audit.md`](./audit.md) §5 ❓3).
+
+**H. The class-society voice — our real competitor for the norm moment.** ClassNK's compliance
+pages address the reader **by role** — "in particular compliance managers or persons in charge"
+— carry 137 Q&As filterable by stakeholder, dated guideline editions, submission document
+samples, and state applicability as a dated clause: "contracted for construction on or after
+1 July 2024" (#23, #24). The register is **procedural, dated, addressed, and sells nothing**.
+
+This is the register a norm page is measured against. It also marks the boundary: class
+**explains** the norm with more authority than any vendor can, and **does not sell the thing
+that closes it**. That gap is the only part of the norm conversation that is unclaimed
+([`jtbd.md`](./jtbd.md) §8.2 R1).
+
+### 13.4 What this corpus cannot answer
+
+- **Body copy is under-sampled.** What was captured across 15 sites is mostly **labels, stat
+  lines, headings and gate phrases** — the units the §9.1 criteria needed. Full paragraphs of
+  competitor body copy were not collected systematically, so claims about **sentence rhythm,
+  paragraph length or how they open a section** are not supported here.
+- **Failure-state copy is absent entirely.** Consistent with §12: no error, empty or loading
+  message from any competitor was ever recorded. Every state message in our wireframes rests
+  on general practice, **including its wording**.
+- **That any of this repels the buyer stays [?].** `personas.md` states it plainly: the repels
+  lists are what competitors **do** and what this audit **scored**, not observed buyer
+  behaviour. Voice principles built on them must carry that limit with them.
+
+**Cheap to close:** on the next capture pass, save 3–5 **full section bodies** per HARD site
+(not just labels) plus every failure state reachable without an account — one session, into
+[`screens/`](./screens/).

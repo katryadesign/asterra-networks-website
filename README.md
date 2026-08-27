@@ -15,8 +15,8 @@ the Next.js build will be (re)introduced at the build stage.
 
 ## Repo index
 
-The design flows top-to-bottom: research feeds wireframes → concept → tokens →
-components → the assembled system → developer handoff.
+The design flows top-to-bottom: research feeds wireframes → voice & microcopy →
+concept → tokens → components → the assembled system → developer handoff.
 
 | # | Folder | What lives here | Status |
 |---|---|---|---|
@@ -108,6 +108,31 @@ detour, recovery branches and the R5 / approval-branch screens.
 
 No brand colour, fonts, imagery or motion — those are later stages; grey stands in for the
 dark-first treatment of the brief.
+
+---
+
+## Voice (language layer)
+
+The product's language, designed and then applied. Source of truth — [`voice.md`](./voice.md),
+four sections that resolve in order (principle → dictionary → microcopy, leftmost wins):
+
+- **Principles** — five, each argued from the research layer with its evidence limit stated:
+  proof is a third party's name (our own claims are commitments and say so) · hierarchy and
+  specificity, not simplification · class explains the regulation, we name what closes it and
+  the paper you keep · one canonical value per figure, an empty slot over an invented fact ·
+  a label names what is on the other side.
+- **Dictionary** — settles every naming split the inventory found (regulation/requirement,
+  request, industry, fleet/vessels, "the paper you keep"…), sets the button canon per
+  destination, register, code and date formats.
+- **Banned list** — written forward from competitor language
+  ([`research/research.md`](./research/research.md) §13), with was/instead pairs.
+- **Microcopy rules** — 16 element types including states; two deliberately left empty
+  (field validation has no modelled state; no destructive action exists in the IA).
+
+Applied across all 28 wireframe pages; the line-by-line was/became record and the
+cross-screen label registry live in [`microcopy.md`](./microcopy.md). Deliberately open:
+the proof-block heading canon (Н1-9), breadcrumbs on two screens, the success-page H1 —
+decisions on record, not debts.
 
 ---
 
