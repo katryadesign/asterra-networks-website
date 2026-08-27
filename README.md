@@ -50,16 +50,16 @@ See [`CLAUDE.md`](./CLAUDE.md) for the complete design brief.
 
 ## People (research layer)
 
-Who buys, what progress they seek, and how well the market serves it — built without primary
-research, every claim carries a visible evidence label (`[FACT]` / `[2ND-HAND]` / `[SURVEY]` /
-`[AUDIT]` / `[INFERRED]` / `[?]`). One-page view: [`research/personas.html`](./research/personas.html)
-— every figure there links to its source, or says "not confirmed" in words.
+Who buys, what progress they seek, and how well the market serves it, built without primary
+research; every claim carries a visible evidence label (`[FACT]` / `[2ND-HAND]` / `[SURVEY]` /
+`[AUDIT]` / `[INFERRED]` / `[?]`). One-page view: [`research/personas.html`](./research/personas.html);
+every figure there links to its source, or says "not confirmed" in words.
 
 - [`research/personas.md`](./research/personas.md) — **proto-personas**: ⭐ P1 Technical
   Superintendent (primary; approves communication invoices, thinks class/ISM/budget),
   P2 Fleet IT Manager (vendor selection & business cases; candidate for primary), P4 Owner /
   CAPEX approver (frame agreements gate the deal). P3 (compliance) was removed after
-  verification — not a buyer. Includes self-audit log, manual verification results (EU job
+  verification: not a buyer. Includes self-audit log, manual verification results (EU job
   boards, competitor navs) and per-persona falsification criteria.
 - [`research/jtbd.md`](./research/jtbd.md) — **jobs to be done**: main job + 5 related +
   emotional/social (long and card formats), the JTBD matrix (job × persona × product function
@@ -74,20 +74,20 @@ research, every claim carries a visible evidence label (`[FACT]` / `[2ND-HAND]` 
 
 ## Structure (IA layer)
 
-The information architecture, derived from the research layer above — entities from
+The information architecture, derived from the research layer above: entities from
 jobs, screens from entities, navigation from screens, flows on top. One-page view:
 [`ia.html`](./ia.html) (sitemap tree, Mermaid flows, traceability matrix).
 
 - [`sitemap.md`](./sitemap.md) — four sections, each closed by its own quality-check
   block: **§1 Entities** (8 objects O1–O8 with fields, evidence labels, generating
-  jobs and relations; borderline calls documented — e.g. proof as one typed entity,
+  jobs and relations; borderline calls documented, e.g. proof as one typed entity,
   homepage as a screen, not an object) · **§5 Screens** (8 job-backed + 4 declared
   [ORPHAN] hygiene; states and components explicitly not screens) · **§6 Navigation**
   (5 global items = job clusters; 3 transitions to the main job; level ≠ importance) ·
   **§7 Traceability** (10 jobs × 12 screens, 28 ✓ with E/P/C roles; orphans kept
   visible: S2 and the hygiene columns).
 - [`flows.md`](./flows.md) — Mermaid `flowchart TD` per job (MAIN verbatim + R1, R2,
-  R5), each with decisions, loading/empty/error/success states, and both endings —
+  R5), each with decisions, loading/empty/error/success states, and both endings:
   success and dead ends. Includes the adversarial-critique pass: 11 dead-end traps
   fixed (recoverable failures now offer a forward branch; trust collapses stay
   terminal), 6 state gaps closed.
@@ -97,7 +97,7 @@ jobs, screens from entities, navigation from screens, flows on top. One-page vie
 ## Wireframes
 
 All 12 screens of the designed IA, low-fi and grayscale, with every state the flow diagrams
-confirm (28 pages). Start at [`wireframes/entry.html`](./wireframes/entry.html) — a service
+confirm (28 pages). Start at [`wireframes/entry.html`](./wireframes/entry.html): a service
 tree panel on every page lists all screens and states, and the main flow is walkable by click:
 entry → guided matching → solution detail → inquiry → success, plus the norm-verification
 detour, recovery branches and the R5 / approval-branch screens.
@@ -106,14 +106,14 @@ detour, recovery branches and the R5 / approval-branch screens.
 - Screen and state registry: [`wireframes/_screens.md`](./wireframes/_screens.md)
 - Review journal (defect table + fixes): [`wireframes/_critique.md`](./wireframes/_critique.md)
 
-No brand colour, fonts, imagery or motion — those are later stages; grey stands in for the
+No brand colour, fonts, imagery or motion; those are later stages; grey stands in for the
 dark-first treatment of the brief.
 
 ---
 
 ## Voice (language layer)
 
-The product's language, designed and then applied. Source of truth — [`voice.md`](./voice.md),
+The product's language, designed and then applied. Source of truth is [`voice.md`](./voice.md):
 four sections that resolve in order (principle → dictionary → microcopy, leftmost wins):
 
 - **Principles** — five, each argued from the research layer with its evidence limit stated:
@@ -131,8 +131,7 @@ four sections that resolve in order (principle → dictionary → microcopy, lef
 
 Applied across all 28 wireframe pages; the line-by-line was/became record and the
 cross-screen label registry live in [`microcopy.md`](./microcopy.md). Deliberately open:
-the proof-block heading canon (Н1-9), breadcrumbs on two screens, the success-page H1 —
-decisions on record, not debts.
+the proof-block heading canon (Н1-9), breadcrumbs on two screens, the success-page H1. Decisions on record, not debts.
 
 ---
 
@@ -140,5 +139,5 @@ decisions on record, not debts.
 
 1. Read the brief → [`CLAUDE.md`](./CLAUDE.md).
 2. Read discovery findings → [`research/research.md`](./research/research.md).
-3. Follow the pipeline folders in order — each is a stage to fill as the work
+3. Follow the pipeline folders in order; each is a stage to fill as the work
    progresses.

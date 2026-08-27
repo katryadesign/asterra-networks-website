@@ -506,7 +506,7 @@ practice-based to evidence-based.
 
 **What this section is.** A re-reading of evidence **already collected** in this file,
 [`personas.md`](./personas.md), [`audit.md`](./audit.md) and [`scope-check.md`](./scope-check.md),
-regrouped by a criterion none of those passes used: **the register competitors write in** —
+regrouped by a criterion none of those passes used: **the register competitors write in**:
 their button labels, proof lines, headings and gate phrases, as strings rather than as
 mechanisms.
 
@@ -519,7 +519,7 @@ new thing is the grouping and the register reading.
 > ⚠️ **Cited for register analysis only.** These are other companies' words. They are quoted
 > short and attributed, to describe *how the category writes*; none of them is a model to copy
 > or to paraphrase into Asterra's copy. Per [`../CLAUDE.md`](../CLAUDE.md) §3 the brand, product
-> names and copy are original — and per §6.1 no real company is ever named as Asterra's partner.
+> names and copy are original, and per §6.1 no real company is ever named as Asterra's partner.
 
 ### 13.1 The fragments, as strings
 
@@ -565,24 +565,23 @@ next page contains.**
 **B. Proof is a number the company says about itself.** "13,000+ vessels" · "15k+ Vessels
 connected" · "24.7% global market share" · "115 engineers" · "25+ years" · "+10,000 vessels"
 (#7–#12). All of them are self-assertions: the reader cannot check any of them, and two of the
-sources contradict themselves — NSSLGlobal states its own age three ways (#13) and Marlink
+sources contradict themselves: NSSLGlobal states its own age three ways (#13) and Marlink
 gives two uptime values on one page (#14). Marlink's headline numbers had also **changed**
 between our two captures (#10).
 
-**C. The minority pattern: proof that is somebody else's name.** Only Navarino writes it —
+**C. The minority pattern: proof that is somebody else's name.** Only Navarino writes it:
 "UR E27 Type Approved" with **Bureau Veritas**, "IEC 62443-3-3 Type Approved (**DNV**)" (#15).
 A certifying body's name cannot be self-asserted, which is why it behaves differently from
-every line in pattern B. Note that the reference site's own strongest block is the same species
-— a named-partner strip ([`scope-check.md`](./scope-check.md) §2.2).
+every line in pattern B. Note that the reference site's own strongest block is the same species: a named-partner strip ([`scope-check.md`](./scope-check.md) §2.2).
 
-**D. The norm appears as decoration.** Marlink puts ISO / IACS / NIS2 / DORA on the homepage —
+**D. The norm appears as decoration.** Marlink puts ISO / IACS / NIS2 / DORA on the homepage,
 and they are **static text, no pages beneath them** (#16). IEC writes "IMO Compliance
 (Cybersecurity)" as a label with nothing attached (#17). The regulation is used as a badge that
 signals seriousness; **nobody uses it as a door**, and nobody says what paper the buyer ends up
 holding.
 
 **E. Unexplained jargon is used as a gate.** COTP/COTM as finder facets (#18), "application
-layer of the OSI model" as an explanation of value (#19). The failure is **not technicality** —
+layer of the OSI model" as an explanation of value (#19). The failure is **not technicality**:
 it is that the term is proprietary or undefined and still load-bearing.
 
 **F. The catalogue stands in for an offer.** 18 named offerings on one page with no ranking
@@ -592,17 +591,16 @@ unranked list of 18 does not read as a choice.
 
 ### 13.3 Two registers that are *not* the category default
 
-**G. Control sold at feature altitude.** Navarino does speak policy — "Control use & security
+**G. Control sold at feature altitude.** Navarino does speak policy: "Control use & security
 of communications", "Crew Internet access control during shifts", "Controlled costs with full
-usage visibility" — and even splits its benefits by role, IT Management among them (#21). But
+usage visibility", and even splits its benefits by role, IT Management among them (#21). But
 this lives on a deep product page. Starlink, by contrast, sells buckets and coverage; its only
 management sentence is "Remote fleet management… from a single portal" (#22). **What is free is
 not the theme but the altitude:** nobody leads with manageability at positioning level
 ([`audit.md`](./audit.md) §5 ❓3).
 
-**H. The class-society voice — our real competitor for the norm moment.** ClassNK's compliance
-pages address the reader **by role** — "in particular compliance managers or persons in charge"
-— carry 137 Q&As filterable by stakeholder, dated guideline editions, submission document
+**H. The class-society voice: our real competitor for the norm moment.** ClassNK's compliance
+pages address the reader **by role**, "in particular compliance managers or persons in charge", carry 137 Q&As filterable by stakeholder, dated guideline editions, submission document
 samples, and state applicability as a dated clause: "contracted for construction on or after
 1 July 2024" (#23, #24). The register is **procedural, dated, addressed, and sells nothing**.
 
@@ -614,7 +612,7 @@ that closes it**. That gap is the only part of the norm conversation that is unc
 ### 13.4 What this corpus cannot answer
 
 - **Body copy is under-sampled.** What was captured across 15 sites is mostly **labels, stat
-  lines, headings and gate phrases** — the units the §9.1 criteria needed. Full paragraphs of
+  lines, headings and gate phrases**, the units the §9.1 criteria needed. Full paragraphs of
   competitor body copy were not collected systematically, so claims about **sentence rhythm,
   paragraph length or how they open a section** are not supported here.
 - **Failure-state copy is absent entirely.** Consistent with §12: no error, empty or loading
@@ -625,5 +623,5 @@ that closes it**. That gap is the only part of the norm conversation that is unc
   behaviour. Voice principles built on them must carry that limit with them.
 
 **Cheap to close:** on the next capture pass, save 3–5 **full section bodies** per HARD site
-(not just labels) plus every failure state reachable without an account — one session, into
+(not just labels) plus every failure state reachable without an account; one session, into
 [`screens/`](./screens/).

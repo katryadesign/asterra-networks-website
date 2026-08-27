@@ -1043,3 +1043,53 @@ _screens.md).
 Прийняті винятки (без змін): «Ships contracted from 1 July 2024» (формула IACS, ЗОВН) ·
 «ship managers» (роль із брифу §4) · короткий UR у заголовку новини (лок Н6-3) · «uncovered»
 у прозі empty-стану.
+
+### 5.6 Четвертий прохід — анти-AI-патерни (2026-08-27)
+
+Аудит на машинні патерни письма: лічильний заголовок-шаблон («N X. M of them Y.»), щільність
+контрастних пар, «No X, no Y», cleft «is where», em dash в англомовній прозі документів.
+За результатом у voice.md додано «Заборонене» §8 (лічильний заголовок) і §9 (контраст — не
+дефолт); нижче — всі правки рядків.
+
+**Tier 1 — лічильні заголовки (числа → імена):**
+
+| Екран | Було | Стало |
+|---|---|---|
+| entry | Three tiers, one service. | GEO, LEO and terrestrial, run as one service. |
+| entry | Six areas. Two of them carry a deadline. | Connectivity and cybersecurity carry the dated requirements. |
+| entry | Eight industries read eight different pages. | Your industry reads its own page. |
+| solution-detail | Five situations bring fleets here. Two of them carry a date. | A fleet lands on this page because something landed on the fleet. |
+| industry | Six areas, each written in fleet terms. | The six areas, written in fleet terms. |
+| company | Four roles answer for the operating model. | These roles answer for the operating model. |
+| careers | Three kinds of work keep the systems answerable. | Field engineering, support and network operations keep the systems answerable. |
+| approval-materials | Two rules hold across the library. One canonical value per figure, … | One canonical value per figure, … (лічильний зачин знято) |
+
+**Лишено — число і є твердженням:** «One decision closes it.» · «A match is still three
+questions away.» · «Three questions about the situation, not about the technology.» ·
+«One step. No wizard, no gate.» · «So do we.»
+
+**Tier 2 — проріджування контрасту й cleft:**
+
+| Екран | Було | Стало |
+|---|---|---|
+| entry | …and carries that as a commitment rather than a claim. | …and is held to it. |
+| entry | Failover between them is part of the design rather than an upgrade path. | Failover between them is built into the design. |
+| entry | Each area is one decision rather than a shelf of products. Where an area closes… | An area is one decision, and where it closes… |
+| entry | …the usage rules stay with you rather than with us. | …the usage rules stay with you. |
+| entry | No gate, no request-the-datasheet. | Nothing needs to be requested first. |
+| entry | Maritime is where the company started and where it goes deepest. | The company started in Maritime and goes deepest there. |
+| careers | …and this is where those people work. | …and those people work here. |
+
+Канонічні контрасти недоторкані: «Accredited, not self-declared» · «carried as a commitment
+rather than a claim of scale» (Н1-10) · «You are buying rules, not bandwidth» · «derived, not
+drawn» (лендинг).
+
+**Документи:** index.html — 24 прозові em dash переструктуровано (лишилися розділювачі
+title/pills/фактів-чипів у форматі «двокрапка»), «rather than» 7→2, стале P1-фреймування
+картки 02 не чіпано (датований запис уроку); README.md — 12 прозових тире; research.md §13 —
+14 (лишилися українська рамка й розділювач заголовка). sitemap.md · flows.md · personas.md ·
+jtbd.md **свідомо не чищено**: датовані артефакти процесу, ретро-полірування = «тихе
+переписування», проти етосу курсу.
+
+**Після проходу:** лічильних заголовків у продукті 0 · «of them» 0 · «rather than» у продукті
+8 (з них 4 — канонічний рядок Н1-10).

@@ -120,10 +120,12 @@ what research.md scored highly… That it **works on this audience** is proven n
 
 **Приклад — уже в продукті:**
 
-> «**Six areas. Two of them carry a deadline.**» — Entry, заголовок секції напрямів
+> «**Connectivity and cybersecurity carry the dated requirements.**» — Entry, заголовок секції
+> напрямів *(редакція 2026-08-27: попередню «Six areas. Two of them carry a deadline.» знято за
+> «Заборонене» §8 — лічильний шаблон)*
 
-Ранг заявлено в заголовку, ще до самого переліку; композиція його підтримує — два напрями в
-major-ряду, чотири в minor.
+Ранг заявлено в заголовку іменами, ще до самого переліку; композиція його підтримує — два
+напрями в major-ряду, чотири в minor.
 
 > «Primary match» / «Also relevant» — Guided matching, результат підбору
 
@@ -561,8 +563,8 @@ behind it» · «What stands behind the policy».
 Зміна, що з цього випливає: пункт навігації **Latest News** → **Latest news** (це не
 визначена брифом назва розділу — бриф §5 називає його «Insights / News»).
 
-**Крапка в кінці:** заголовок-речення її має («Talk to an expert.», «Six areas. Two of them
-carry a deadline.»); заголовок-назва — ні («Asterra Shield», «IMO MSC.428(98)», «Privacy
+**Крапка в кінці:** заголовок-речення її має («Talk to an expert.», «The audit is where cyber
+fails first.»); заголовок-назва — ні («Asterra Shield», «IMO MSC.428(98)», «Privacy
 Policy»). Кнопки й підписи полів — ніколи.
 
 **Уточнення (Р1, 2026-08-27):** заголовками-назвами, без крапки, лишаються також назви
@@ -761,6 +763,46 @@ Entry — три коди, жодного паперу, жодної дати, �
 **Чому.** Тире дозволяє не вирішувати, як речення влаштоване. Прибрані тире змусили кожне
 речення назвати щось конкретне — і це вже видно в тексті. Правило тут для того, щоб наступний
 copy-прохід не завіз їх назад.
+
+---
+
+### 8. Лічильний заголовок як шаблон *(додано 2026-08-27)*
+
+⛔ Каркас «N X. M of them Y.» і його родичі («N X, one Y», «N X, each Y», число-луна
+«Eight X read eight Y») — як спосіб зробити заголовок ритмічним.
+
+| Як було — **наше**, до правки 2026-08-27 | Як треба — вже в продукті |
+|---|---|
+| «Six areas. Two of them carry a deadline.» — Entry | «Connectivity and cybersecurity carry the dated requirements.» — ранг заявлено іменами |
+| «Five situations bring fleets here. Two of them carry a date.» — Solution detail (прямий клон рядка вище) | «A fleet lands on this page because something landed on the fleet.» |
+| «Three tiers, one service.» — Entry | «GEO, LEO and terrestrial, run as one service.» |
+| «Three kinds of work keep the systems answerable.» — Careers | «Field engineering, support and network operations keep the systems answerable.» |
+
+**Чому.** Це один із найупізнаваніших машинних патернів — і найдоказовіше: щойно перший такий
+заголовок став зразком, перепис відтворив каркас на п'яти екранах, поки правило не було
+написане. Лічба читається як маркетинговий ритм; імена несуть той самий ранг і лишаються
+перевірюваними. **Загальний фікс: числа → імена.**
+
+**Виняток.** Число дозволене, коли число і є твердженням, а не ритмом: «One decision closes
+it.» (одиничність = теза) · «A match is still three questions away.» (буквальні три поля) ·
+«One step. No wizard, no gate.» (антитеза ринковим візардам).
+
+### 9. Контрастна пара — інструмент, не дефолт *(додано 2026-08-27)*
+
+⛔ «X, not Y» і «rather than» як універсальний спосіб перетворити будь-яке речення на
+«твердження». До правки продукт ніс ~37 таких зворотів на 12 екранів.
+
+| Як було — наше | Як треба — вже в продукті |
+|---|---|
+| «…and carries that as a commitment rather than a claim» (Entry hero — поруч із канонічним рядком тієї ж форми в блоці доказу) | «…and is held to it.» — луна заголовка блока доказу |
+| «Each area is one decision rather than a shelf of products.» | «An area is one decision, and where it closes a requirement with a date attached, it says which one.» |
+| «…the usage rules stay with you rather than with us.» | «…the usage rules stay with you.» — друга половина контрасту нічого не додавала |
+
+**Правило.** Контраст дозволений там, де він **несе рішення** — канонічні рядки лишаються
+недоторканими: «Accredited, not self-declared» · «carried as a commitment rather than a claim
+of scale» (Н1-10) · «You are buying rules, not bandwidth» · «claims, not labels» (конвенція).
+Поза ними — не більше **одного** контрастного звороту на екран; якщо речення тримається без
+другої половини, друга половина зайва.
 
 ---
 
