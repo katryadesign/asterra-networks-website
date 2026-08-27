@@ -1,0 +1,209 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   crew-access.css — Crew access & control · робота R5 (jtbd.md §3):
+   «дати екіпажу те, що він вимагає, не втративши ані бюджету, ані
+   керованості». Зміст екрана — баланс двох сторін: доступ для екіпажу ↔
+   контроль для оператора. Читачі — P1 і P4: бюджет і керованість мовою
+   кошторису, цифри й межі — величини (моно).
+
+   Скоуп кожного правила: body:has(.wf-states a[href^="crew-access"]) —
+   перевірено: цей селектор збирає рівно 4 сторінки (base/empty/error/
+   loading); лінк «Crew connectivity» у шапці інших сторінок живе в
+   .nav-main, не в .wf-states, і скоуп не протікає.
+
+   Свідомо НЕ додано: перекос тріо доказу (ранг 1.35fr спільного шару не
+   чіпаємо — свій порядок доказів екран не встановлює), нових іконок нема
+   (набір сторінки їх для «сторін» не має), станові сторінки несуть лише
+   спільну мову станів — стан не є стороною балансу.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · H1: дві рівні сторони угоди ──────────────────────────────────────
+   Розмітка H1 — буквально пара «доступ/контроль»: «Give the crew what it
+   asks for.» + <span class="dim">«Keep the rules yours.»</span>. Спільний
+   двотон гасить другу половину до 0.55 — тобто ранжує контроль нижче за
+   доступ. Для R5 це рівно та помилка, якої екран існує щоб уникнути
+   (flows.md: deadPitch — сторінка, що веде не контролем): обидві сторони
+   мусять важити однаково. Тому: той самий колір, та сама вага, а межу між
+   сторонами замість тону тримає рядок — друга половина стає власним
+   рядком. text-wrap: balance спільного шару вирівнює обидва блоки. */
+body:has(.wf-states a[href^="crew-access"]) .gm-head h1 .dim {
+  display: block;
+  color: var(--ink);
+}
+
+/* ── 2 · Секція правил (pol) — смуга-підкладка центрального об'єкта ──────
+   Дев'ять вимірів O8 — це і є «товар» екрана («You are buying rules, not
+   bandwidth»). Спільний шар дає смугу var(--surface) доказовим секціям
+   (table.spec / .trio-l / .rows); реєстр той самий — набір величин на
+   одній поверхні (A3), тому rule set отримує ту саму смугу, тими самими
+   значеннями. margin-top — щоб border-top смуги не зварювався у подвійну
+   лінію з border-bottom героя (стик зараз нульовий). */
+body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="pol-h"] {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 36px);
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+/* ── 3 · Обидва .kv — рядки-пункти, а не хмара пар ───────────────────────
+   Політика — документ із пунктів, ринкові цифри — табличка величин: обом
+   спискам потрібен рядковий розділювач (реєстр table.spec / .rows), інакше
+   дев'ять пар зливаються у стіну. Волосяна лінія має бути суцільною через
+   обидві клітинки ряду, тому колонковий проміжок нуль, повітря — падінгом
+   dt (18px справа). dt отримує +3px зверху проти dd — оптичне вирівнювання
+   моно 0.8rem/1.5 із текстом 1rem/1.68. */
+body:has(.wf-states a[href^="crew-access"]) .kv {
+  gap: 0;
+  padding: 6px 16px 8px;
+}
+body:has(.wf-states a[href^="crew-access"]) .kv dt {
+  border-top: 1px solid var(--line);
+  padding: 15px 18px 10px 0;
+}
+body:has(.wf-states a[href^="crew-access"]) .kv dd {
+  border-top: 1px solid var(--line);
+  padding: 12px 0 10px;
+}
+body:has(.wf-states a[href^="crew-access"]) .kv dt:first-of-type {
+  border-top: 0;
+  padding-top: 5px;
+}
+body:has(.wf-states a[href^="crew-access"]) .kv dd:first-of-type {
+  border-top: 0;
+  padding-top: 2px;
+}
+/* Вузько (375): дві колонки лишали б dd ~130px — по слову в рядку.
+   Пункт складається у стос «назва над описом», лінія лишається на dt. */
+@media (max-width: 719px) {
+  body:has(.wf-states a[href^="crew-access"]) .kv {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body:has(.wf-states a[href^="crew-access"]) .kv dt {
+    padding: 12px 0 2px;
+  }
+  body:has(.wf-states a[href^="crew-access"]) .kv dd {
+    border-top: 0;
+    padding: 0 0 12px;
+  }
+  body:has(.wf-states a[href^="crew-access"]) .kv dt:first-of-type {
+    padding-top: 2px;
+  }
+  /* базове dd:first-of-type { padding-top: 2px } специфічніше за медіа-
+     правило dd — вирівнюємо перший пункт із рештою явно */
+  body:has(.wf-states a[href^="crew-access"]) .kv dd:first-of-type {
+    padding-top: 0;
+  }
+}
+
+/* ── 4 · Нумерація пунктів rule set — 01…09, моно ────────────────────────
+   «Every dimension of that rule set is a decision your office already
+   owns» — дев'ять рішень мають бути зліченними, як позиції кошторису:
+   P1/P4 читають номерні відомості, а не фіче-списки. Номер — величина,
+   тому моно (він і успадковує моно від dt) і --ink-3; сама назва пункту
+   піднімається до --ink-2 — ім'я рішення важить більше за його номер (A1).
+   Ринковий .kv нумерації НЕ отримує: то не пункти нашої політики, а чужі
+   заявлені цифри під атрибуцією — різниця реєстрів мусить лишатись
+   видимою. Подвійний content — фолбек: старі браузери беруть перший
+   рядок, нові — версію з порожнім alt (номер не читається вголос). */
+body:has(.wf-states a[href^="crew-access"]) section[aria-labelledby="pol-h"] .kv {
+  counter-reset: ca-clause;
+}
+body:has(.wf-states a[href^="crew-access"]) section[aria-labelledby="pol-h"] .kv dt {
+  color: var(--ink-2);
+}
+body:has(.wf-states a[href^="crew-access"]) section[aria-labelledby="pol-h"] .kv dt::before {
+  counter-increment: ca-clause;
+  content: counter(ca-clause, decimal-leading-zero);
+  content: counter(ca-clause, decimal-leading-zero) / "";
+  color: var(--ink-3);
+  margin-right: 12px;
+}
+
+/* ── 5 · Ринкові цифри ↔ наш порожній слот ───────────────────────────────
+   Друга чесна пара сторінки: ліворуч — чотири заповнені величини ринку
+   (під атрибуцією), поруч — «Our parameters: [TBD]», який за правилом O5
+   не вигадується. Абзац стає слотом: пунктирний контур без заливки — мова
+   [TBD] спільного шару, розтягнута з чипа на весь резерв. Внутрішній чип
+   .tbd віддає рамку контейнеру — одна конвенція, одна рамка. 0.94rem —
+   реєстр анотації (.meta/dd), не основного тексту. */
+body:has(.wf-states a[href^="crew-access"]) section[aria-labelledby="num-h"] > .body:last-child {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  font-size: 0.94rem;
+  margin: 12px 0 0;
+}
+body:has(.wf-states a[href^="crew-access"]) section[aria-labelledby="num-h"] > .body:last-child .tbd {
+  border: 0;
+  padding: 0;
+}
+/* На рейковій сітці слот стає у праву рейку (250px) поряд із заповненою
+   колонкою ринку і розтягується на її висоту: резерв під ваші значення
+   видно як площу — порожній слот чесніший за вигадану цифру, і ця
+   чесність тут показана, а не лише сказана. Відлік рядів: інтро — ряд 1
+   (спільне правило), kv і слот — ряд 2, верхи вирівняні. */
+@media (min-width: 980px) {
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="num-h"] > h2 {
+    margin-bottom: 12px;
+  }
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="num-h"] > .kv {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="num-h"] > .body:last-child {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: stretch;
+    margin: 0;
+  }
+}
+
+/* ── 6 · Диптих: інспектор ↔ екіпаж, дві рівні колони при одній осі ──────
+   Дві сусідні секції — це і є дві сторони тиску, що сходяться в політиці:
+   mlc — обов'язок офіса з інспектором за спиною (контроль), s1 — вимога
+   екіпажу до підписання контракту (доступ). Текст mlc сам це називає:
+   «the request and the office's obligation now point the same way».
+   Це той випадок, де симетрія — зміст: дві РІВНІ колони (1fr/1fr, однакові
+   верхні лінійки заголовків спільного шару) обабіч однієї осі
+   --line-strong — сторони важать однаково і зустрічаються на межі.
+   Механіка: .stack-s стає сіткою 2×1fr, усе інше розгортається на повну
+   ширину (на станових сторінках так само — там просто немає чого ставити
+   в колони). Внутрішня рейка цих двох секцій знята (display: block):
+   пів-ширини на рейку 250px + контент не стає. */
+@media (min-width: 980px) {
+  body:has(.wf-states a[href^="crew-access"]) .stack-s {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 0;
+  }
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > * {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="mlc-h"] {
+    grid-column: 1;
+    display: block;
+    padding-right: clamp(32px, 4vw, 56px);
+  }
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="s1-h"] {
+    grid-column: 2;
+    display: block;
+    border-left: 1px solid var(--line-strong);
+    padding-left: clamp(32px, 4vw, 56px);
+  }
+  /* У блочному потоці рейкове h2 { margin: 0 } склеїло б заголовок із
+     текстом — повертаємо той відступ, що h2 має поза рейкою. */
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="mlc-h"] > h2,
+  body:has(.wf-states a[href^="crew-access"]) .stack-s > section[aria-labelledby="s1-h"] > h2 {
+    margin-bottom: 14px;
+  }
+}
+
+/* ── 7 · Відкат: h2 станів = h3 бази ─────────────────────────────────────
+   Той самий блок «Policy needs differ by fleet» на станових сторінках
+   розмічений h2 (гігієна рівнів заголовків) і падає на 17px _wireframe —
+   менше, ніж 1.25rem h3 бази. Некритий запит — найякісніший лід R5
+   (критика Т11): стан не має права знижувати саме цей блок. */
+body:has(.wf-states a[href^="crew-access"]) .fallback h2 {
+  font-size: 1.25rem;
+  color: var(--ink);
+}

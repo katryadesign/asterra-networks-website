@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   _parts/entry.css — Entry screen (MAIN · P2) · поверх _wireframe.css + _panel.css
+
+   Скоуп. Entry — свідомо безстановий екран: його смуга станів не містить
+   жодного <a>, тож гачка body:has(.wf-states a[href^="entry"]) не існує.
+   Замість нього — власні класи/id розмітки entry, перевірені grep-ом по
+   всіх 28 wireframes/*.html: .hero · .statement · #areas · .index-major ·
+   .index-minor · .sector-list · .logo-row/.logo-slot та aria-labelledby
+   cap-h / sec-h / reg-h / held-h / news-h / close-h зустрічаються ТІЛЬКИ
+   в entry.html. Жодних анімацій, sticky, світлих блоків; розмітка не чіпана.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Тональний ритм сторінки: дві підняті смуги, не суцільна плита ──────
+   Робота екрана — орієнтація (MAIN): два розділи, що несуть заяви, мають
+   читатися піднятими. Зараз cap (.on-dark→surface), #areas (surface),
+   сектори (.on-panel→surface) зливаються в одну поверхню на три екрани,
+   і «тональна смуга #areas» не має краю; те саме held(surface)+news(surface).
+   Сусідів #areas і held опускаємо на базовий тон — підняті лишаються рівно
+   каталог (O1) і доказ (O5). Побічно: панель .orbit (surface) і картки
+   .news-item (surface) знову стоять на крок вище свого ґрунту, а не тонуть
+   у ньому. Кольори тексту .on-dark/.on-panel мапляться на ink/ink-2 і на
+   --bg контраст лише зростає. */
+section[aria-labelledby="cap-h"],
+section[aria-labelledby="sec-h"],
+section[aria-labelledby="news-h"] { background: var(--bg); }
+
+/* ── Межі розділів в одно-тонових стиках ────────────────────────────────
+   Після вирівнювання тону стики сектори(bg)→регуляції(bg) і news(bg)→
+   фінал(bg) втратили тональну межу, а це переходи між главами: галузі →
+   ставка R1 → (…) → термінальний CTA. Лінійка 1px — та сама мова, якою
+   герой закриває себе border-bottom. Фінал дзеркалить героя: сторінка
+   відкривається і закривається лінійкою. */
+section[aria-labelledby="reg-h"],
+section[aria-labelledby="close-h"] { border-top: 1px solid var(--line); }
+
+/* ── Заголовок каталогу не нижчий за тизер над ним ──────────────────────
+   «Connectivity and cybersecurity carry the deadlines» — заголовок, що
+   ЗАЯВЛЯЄ ранг шістки; зараз він 1.953rem і його переважує 2.441rem тизера
+   однієї області (cap) поверхом вище. Якір MAIN-роботи не може бути
+   дрібнішим за анонс однієї з її позицій. */
+#areas > .wrap > h2 { font-size: 2.441rem; letter-spacing: -0.03em; }
+
+/* ── Ранг 2/4: minor-ряд — індекс, не чотири менші оферти ───────────────
+   Заявлену композицію «2 major + 4 minor» зараз розмиває сам minor-ряд:
+   імена по 1.5625rem ламаються на два рядки, корпус 1rem і кнопка повного
+   розміру дають чотири високі колонки з вагою майже major. Ім'я — в один
+   рядок (1.25rem: розрив до major 2.441 стає ~2:1, регістр списковий, як
+   у .reg-row h3 і .news-item h3), корпус — глоса 0.94rem (регістр .meta/
+   .desc), дія — компактна і тихіша (:where тримає специфічність нижче
+   :hover спільної мови, ховер не гаситься). */
+.index-minor h3 { font-size: 1.25rem; }
+.index-minor .body { font-size: 0.94rem; }
+.index-minor :where(.btn-ghost) { padding: 7px 14px; font-size: 0.86rem;
+  border-color: var(--line); }
+
+/* ── Minor-ряд на середніх в'юпортах: 2×2 замість зламаних 4 колонок ────
+   Виміряно: при 1081–1240px контенту лишається ~760–920px, чотири колонки
+   дають комірки 165–206px — ім'я впритул, кнопка ламається на два рядки.
+   У смузі 721–1240 ряд складається у щільний 2×2; над ним major-ряд і далі
+   ширший (двоколонковий до 1080, стосом нижче), ранг «широкі зверху,
+   щільні знизу» зберігається. Внутрішню вертикальну межу пари задаємо
+   явно з обох боків: _wireframe на ≤1080 знімає border-left узагалі, і без
+   цього 2×2 у 721–1080 лишався б без розділювача. */
+@media (min-width: 721px) and (max-width: 1240px) {
+  .index-minor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .index-minor > article:nth-child(odd)  { border-left: 0; padding-left: 0; }
+  .index-minor > article:nth-child(even) { border-left: 1px solid var(--line);
+    padding-left: 24px; }
+}
+
+/* ── Партнерська стрічка: три категорії по дві позиції, не шість комірок ─
+   §6.1: 6 слотів / 3 категорії — специфікація тракту, не стіна клієнтів.
+   Категорії вже стоять текстом слотів попарно; композиція досі рівна
+   шістка. Пара зшивається в одну обведену комірку: колонковий зазор
+   усередині пари 0, зовнішня рамка суцільна, внутрішній розділювач —
+   пунктир (конвенція слота [TBD]: позиція чекає на реальне ім'я, а не
+   вигадане). Між парами — реальний проміжок (28px-треки на широкому,
+   рядок = категорія на вузькому). Підкладка surface-2: панель на крок
+   вище ґрунту held-смуги (surface), як усі величини мови A3. */
+.logo-row.spaced { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 0; }
+.logo-row.spaced .logo-slot { background: var(--surface-2); padding: 8px 12px; }
+.logo-row.spaced .logo-slot:nth-child(odd)  { border-right: 0;
+  border-radius: var(--r) 0 0 var(--r); }
+.logo-row.spaced .logo-slot:nth-child(even) { border-left: 1px dashed var(--line-strong);
+  border-radius: 0 var(--r) var(--r) 0; }
+@media (min-width: 860px) {
+  .logo-row.spaced { gap: 0; grid-template-columns:
+    minmax(0,1fr) minmax(0,1fr) 28px minmax(0,1fr) minmax(0,1fr) 28px minmax(0,1fr) minmax(0,1fr); }
+  .logo-row.spaced .logo-slot:nth-child(3) { grid-column: 4; }
+  .logo-row.spaced .logo-slot:nth-child(5) { grid-column: 7; }
+}
+
+/* ── Пари дій героя і фіналу — той самий крок 12px, що всюди ────────────
+   «Find what fits your fleet» + друга дія стоять упритул (~4px пробілу
+   розмітки): у спільній мові кожна пара дій має flex-зазор 12px
+   (.gm-head, .match, .fallback). Ті самі два місця entry, де дій дві. */
+.hero p:has(> .btn),
+section[aria-labelledby="close-h"] p:has(> .btn) {
+  display: flex; flex-wrap: wrap; gap: 12px;
+}

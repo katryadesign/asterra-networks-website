@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   _parts/inquiry.css — Inquiry: кінцевий стан головної роботи.
+   Людина приходить З ПОЗИЦІЄЮ; обіцянка мікрокопі — «One step. No wizard,
+   no gate». Лейаут мусить цю обіцянку показати, не лише сказати.
+
+   Скоуп: body:has(.wf-states a[href^="inquiry"]) — рівно чотири сторінки
+   (base · success · error · loading); смуги станів решти 24 сторінок
+   посилань inquiry* не містять (перевірено по всіх 28). Стани всередині
+   скоупу розрізняє зміст регіону, тією самою логікою, що в _panel.css:
+   base = form без .notice · error = .notice + form · success = .notice
+   з .kv без .sk · loading = .sk. Розмітка й текст не чіпані.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── «One step» має бути видно як один крок: шапка екрана віддає частину
+   системних 88/72px, щоб форма ЦІЛКОМ — до кнопки з routing-рядком —
+   вміщалась у перший фолд. Рядок-претензія «One step. No wizard, no gate»
+   піднімається до реєстру tagline (1.25rem): це твердження, яке форма
+   нижче мусить довести, а не супровідна примітка. ─────────────────────── */
+body:has(.wf-states a[href^="inquiry"]) .gm-head { padding: 64px 0 44px; }
+body:has(.wf-states a[href^="inquiry"]) .gm-head .body { font-size: 1.25rem; }
+
+/* ── Контекст супроводжує форму, а не передує їй стіною. ≥980px:
+   .wrap.pad-b стає ґрідом — форма (робота) в головній лівій колонці,
+   «Your context travels with the request» — вузькою рейкою поруч, на
+   рівні першого поля: доказ стоїть ПРИ заявці. DOM-порядок не змінено:
+   рейка в розмітці перша й не містить фокусованих елементів, тож порядок
+   табуляції і читання з екрана цілі. На error .notice авторозкладкою
+   лягає в колонку форми, безпосередньо над формою, якої стосується.
+   Геометрія однакова в усіх чотирьох станах: рамка екрана стала,
+   змінюється тільки вміст робочої колонки. ──────────────────────────── */
+body:has(.wf-states a[href^="inquiry"]) .wrap.pad-b { padding-top: 40px; }
+@media (min-width: 980px) {
+  body:has(.wf-states a[href^="inquiry"]) .wrap.pad-b {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+    gap: 24px clamp(40px, 4.5vw, 64px);
+    align-items: start;
+  }
+  body:has(.wf-states a[href^="inquiry"]) .wrap.pad-b > .band-tight {
+    grid-column: 2; grid-row: 1 / span 2; margin: 0;
+  }
+  body:has(.wf-states a[href^="inquiry"]) .wrap.pad-b > .notice,
+  body:has(.wf-states a[href^="inquiry"]) .wrap.pad-b > .request {
+    grid-column: 1; margin-bottom: 0;
+  }
+}
+
+/* ── Блок контексту — компактна супровідна панель, не секція-стіна:
+   band-tight ніс 52px повітря згори й знизу і ставав бар'єром перед
+   формою. Мова та сама, що в супровідної зони guided-matching
+   (.interview): межа, --surface, --r. Носій змісту — самі перенесені
+   значення «Asterra Shield, Cybersecurity · Maritime»: strong дістає
+   --ink і вагу 600 (600 є в завантаженій гарнітурі — синтетичної
+   жирності не виникає). <980px панель тримає слід форми (680px),
+   щоб колонка читалась одним стосом. ──────────────────────────────── */
+body:has(.wf-states a[href^="inquiry"]) .band-tight {
+  padding: 20px;
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface);
+  max-width: 680px;
+  margin: 0 0 24px;
+}
+body:has(.wf-states a[href^="inquiry"]) .band-tight .h-small {
+  font-size: 1.25rem; margin: 0 0 8px;
+}
+body:has(.wf-states a[href^="inquiry"]) .band-tight .body {
+  font-size: 0.94rem; margin: 0;
+}
+body:has(.wf-states a[href^="inquiry"]) .band-tight strong {
+  color: var(--ink); font-weight: 600;
+}
+
+/* ── Форма як один короткий крок. Сім полів у стосі читались анкетою на
+   два екрани — проти обіцянки. Парні короткі поля (name+company,
+   email+industry, solution+role) складаються у два стовпчики; message —
+   на всю ширину. Сім видимих рядів стають чотирма: крок охоплюється
+   одним поглядом. Авторозкладка ґріда йде за DOM, тож порядок табуляції
+   збігається з порядком читання. Поле ролі (R4) ніяк не виділяється —
+   звичайна клітина сітки. <700px — одна колонка, як було. ──────────── */
+body:has(.wf-states a[href^="inquiry"]) .request { display: grid; gap: 16px; }
+body:has(.wf-states a[href^="inquiry"]) .request .field { margin: 0; }
+/* ґрід блокує inline-flex кнопки і розтягнув би її на всю клітину —
+   повертаємо власну ширину дії */
+body:has(.wf-states a[href^="inquiry"]) .request .btn {
+  justify-self: start; align-self: center;
+}
+@media (min-width: 700px) {
+  body:has(.wf-states a[href^="inquiry"]) .request {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 18px;
+  }
+  body:has(.wf-states a[href^="inquiry"]) .request .field:has(textarea) {
+    grid-column: 1 / -1;
+  }
+  /* ряд дії: кнопка і routing-мікротекст в одному ряду — зобов'язання
+     «goes to a specialist… reply comes from that specialist» стоїть
+     фізично при кнопці, а не відпливає окремим абзацом під форму */
+  body:has(.wf-states a[href^="inquiry"]) .request .btn { grid-column: 1; }
+  body:has(.wf-states a[href^="inquiry"]) .request .routing {
+    grid-column: 2; align-self: center;
+  }
+}
+body:has(.wf-states a[href^="inquiry"]) .request .routing { margin: 0; }
+
+/* ── Success — «квитанція позиції»: kv-підсумок мусить читатись як
+   документ, що підтверджує позицію, а не як список. Рядки розлініяні
+   наскрізь: column-gap 0, лінію несуть dt і dd разом (обидва тягнуться
+   на висоту ряду — лінія суцільна). Той самий прийом дістає loading:
+   це той самий вантаж у дорозі. Слід форми: .notice тримає ті самі
+   680px, що й форма, — стан міняє вміст, не місце. ─────────────────── */
+body:has(.wf-states a[href^="inquiry"]) .notice { max-width: 680px; }
+body:has(.wf-states a[href^="inquiry"]) .notice .kv { column-gap: 0; row-gap: 0; }
+body:has(.wf-states a[href^="inquiry"]) .notice .kv dt {
+  border-top: 1px solid var(--line);
+  padding: 13px 18px 0 0;          /* +3px оптики dt проти dd — як у базі */
+}
+body:has(.wf-states a[href^="inquiry"]) .notice .kv dd {
+  border-top: 1px solid var(--line);
+  padding: 10px 0;
+}
+body:has(.wf-states a[href^="inquiry"]) .notice .kv dt:first-of-type {
+  border-top: 0; padding-top: 3px;
+}
+body:has(.wf-states a[href^="inquiry"]) .notice .kv dd:first-of-type {
+  border-top: 0; padding-top: 0;
+}
+body:has(.wf-states a[href^="inquiry"]) .notice .kv dd:last-of-type {
+  padding-bottom: 0;
+}
+
+/* Лише success (є .kv, немає .sk): значення піднімаються до --ink —
+   підтверджений факт, не супровідна примітка (на loading ті самі
+   значення лишаються ink-2: ще в дорозі); рамка квитанції — line-strong:
+   «папір, який лишається на руках», найтвердіший контур сторінки. ──── */
+body:has(.wf-states a[href^="inquiry"]):has(.notice .kv):not(:has(.sk)) .notice {
+  border-color: var(--line-strong);
+}
+body:has(.wf-states a[href^="inquiry"]):has(.notice .kv):not(:has(.sk)) .notice .kv dd {
+  color: var(--ink);
+}

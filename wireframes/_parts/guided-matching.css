@@ -1,0 +1,147 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   _parts/guided-matching.css — лейаут зі змістом · Guided matching (MAIN,
+   jtbd.md §2: «упевнено визначити, що нам потрібно»).
+   Скоуп: body:has(.wf-states a[href^="guided-matching"]) — рівно чотири
+   сторінки base/empty/error/loading (перевірено по смугах станів усіх 28
+   сторінок: дерево лінкує guided-matching звідусіль, але скоуп читає
+   ЛИШЕ .wf-states — той самий інваріант, що вже тримає фото-герой у
+   _panel.css). Поверх _wireframe.css + _panel.css; розмітка й текст
+   не чіпані.
+
+   Колонки 340/1fr свідомо ЛИШЕНО як є: рейка інтерв'ю тримає селекти з
+   довгими формулюваннями тригерів (це робочий інструмент перезапуску —
+   вужча колонка зробила б його тіснішим), а права колонка і так бере
+   ~2.2× ширини. Домінанту результату робить не арифметика колонок, а
+   ранг УСЕРЕДИНІ правої колонки — блоки нижче.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── (б) Результат — домінанта екрана; «Primary match» мусить читатись
+   РІШЕННЯМ, а не першим рядком переліку. Ранг досі тримали лише кегль і
+   висота фото. Тут три кроки тією ж мовою контрасту (A1, не колір):
+   1) ім'я відповіді — другий за масштабом текст сторінки після H1
+      (крок шкали 2.441; воно свідомо БІЛЬШЕ за зонний ярлик «What
+      closes it» — відповідь важить більше за свій підпис, як
+      index-major на entry);
+   2) рамка первинної картки — line-strong, найсильніша межа колонки;
+   3) бейдж рангу — інверсія ink/bg, наявна мова «обраного» (.btn,
+      .wf-states .cur): обраний системою напрям позначено так само,
+      як обрану дію і обраний стан. Пара bg-на-ink уже канонічна.     */
+body:has(.wf-states a[href^="guided-matching"]) .match:not(.match-secondary) {
+  border-color: var(--line-strong);
+}
+body:has(.wf-states a[href^="guided-matching"]) .match:not(.match-secondary) h3 {
+  font-size: clamp(1.953rem, 1.1rem + 1.9vw, 2.441rem);
+  letter-spacing: -0.03em;
+}
+body:has(.wf-states a[href^="guided-matching"]) .match:not(.match-secondary) .rank {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* ── (б) «Also relevant» — підпорядкований КОМПОЗИЦІЙНО, не лише кеглем.
+   Фотосмуга — привілей рішення (A4: об'єкт документується там, де
+   названо відповідь): вторинна картка її втрачає, а вивільнена маса
+   переходить первинній (було 148+116 px фото на колонку, стало ~188 —
+   перерозподіл рангу, не нова прикраса). Тон: вторинна сідає на ґрунт
+   (--bg), первинна лишається піднятою поверхнею — ранг тональним
+   зсувом, як і належить темній темі. Ідентичність Equip не зникає:
+   її тримають ім'я, area-рядок з іконкою і власна сторінка рішення.
+   padding-top 4px компенсує верхній відступ, який задавало фото
+   (rank margin-top 20 + 4 = 24 = бічне поле картки).                  */
+body:has(.wf-states a[href^="guided-matching"]) .match:not(.match-secondary)::before {
+  height: clamp(148px, 13vw, 188px);
+}
+body:has(.wf-states a[href^="guided-matching"]) .match-secondary::before {
+  content: none;
+}
+body:has(.wf-states a[href^="guided-matching"]) .match-secondary {
+  background: transparent;
+  padding-top: 4px;
+}
+
+/* ── (в)+(а) «Answered: Maritime · cyber risk…» і «2 areas matched» —
+   дві половини одного запису: «що ви сказали → що з цього вийшло».
+   Саме цей зв'язок тримає довіру до результату, і саме цей запис
+   перезаписується перезапуском підбору (механізм (а): інтерв'ю
+   постійне, слот показує його зафіксований стан). Обидві половини
+   отримують один голос — слот запису на --surface-2 (пара
+   ink-3/surface-2 вже канонічна: dt у dl картки). Правила задають
+   тільки коробку, НЕ колір: сигнальний текст помилки та годинник
+   loading проходять крізь слот незмінними — стани не переозначуються.
+   align-items: center — бо коробка лічильника ламає baseline-рядок.  */
+body:has(.wf-states a[href^="guided-matching"]) .interview .answered {
+  display: block;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 9px 12px;
+}
+body:has(.wf-states a[href^="guided-matching"]) .result-head {
+  align-items: center;
+}
+body:has(.wf-states a[href^="guided-matching"]) .result-head .count {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 5px 10px;
+}
+
+/* ── (г) Fallback — рівноправна розвилка, не втішний приз і не третій
+   конкурент у стосі карток. Іншість РОЛІ виражена іншістю ФОРМИ:
+   не ще одна картка, а смуга-розвилка над сильною межею (line-strong
+   уже в спільному шарі) — текст ліворуч, праворуч колонка з двох
+   дороговказів однакової ширини (stretch), у кожному текст притиснутий
+   до лівого краю, стрілка — до правого (space-between): напрям
+   переходу видно, як на дорожньому знаку. Форма працює однаково в
+   усіх чотирьох станах — шлях лишається рівноправним і при збої.
+   Нижче 900px смуга складається у звичайний стос — мобільний не
+   ламається.                                                          */
+@media (min-width: 900px) {
+  body:has(.wf-states a[href^="guided-matching"]) .fallback {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 clamp(32px, 4vw, 56px);
+    align-items: center;
+  }
+  body:has(.wf-states a[href^="guided-matching"]) .fallback > :is(h2, h3),
+  body:has(.wf-states a[href^="guided-matching"]) .fallback > .body {
+    grid-column: 1;
+  }
+  body:has(.wf-states a[href^="guided-matching"]) .fallback > .body {
+    margin: 0;
+  }
+  body:has(.wf-states a[href^="guided-matching"]) .fallback > p:last-child {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+    justify-self: end;
+  }
+}
+body:has(.wf-states a[href^="guided-matching"]) .fallback .btn-ghost {
+  justify-content: space-between;
+}
+
+/* ── (б) у стані loading: скелет обіцяє ту форму, в яку розв'яжеться
+   результат — контракт стану («placeholders mirror the shape of the
+   match they replace», wf-doc сторінки loading). Тому перший блок несе
+   плейсхолдер фотосмуги і line-strong-рамку первинної картки, другий
+   (.last) — ґрунтовий тон вторинної. Інакше ранг стрибав би в момент
+   резолву. Плейсхолдер статичний (без пульсу): анімацій не додаємо.  */
+body:has(.wf-states a[href^="guided-matching"]) .sk-block:not(.last) {
+  border-color: var(--line-strong);
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-block:not(.last)::before {
+  content: "";
+  display: block;
+  height: clamp(148px, 13vw, 188px);
+  margin: -24px -24px 20px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--r) var(--r) 0 0;
+}
+body:has(.wf-states a[href^="guided-matching"]) .sk-block.last {
+  background: transparent;
+}

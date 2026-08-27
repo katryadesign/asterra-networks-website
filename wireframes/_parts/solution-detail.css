@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   _parts/solution-detail.css — змістова добудова Solution detail
+   (інстанс Asterra Shield; base / error / loading).
+
+   Скоуп кожного правила: body:has(.wf-states a[href^="solution-detail"]) —
+   перевірено grep-ом: смуга станів містить такі посилання рівно на трьох
+   сторінках цього екрана і ніде більше (дерево і футер лінкують
+   solution-detail поза .wf-states, тому не спрацьовують).
+
+   Робота екрана: forwardable core (sitemap.md) — сторінка, побудована для
+   пересилання нагору: R2 «вибір переживе зовнішню перевірку», R3
+   «обґрунтування переживе людину з бюджетом», маршрут R1 «закриває → папір»
+   усередині сторінки. Кожен блок нижче називає елемент змісту, який його
+   вимагає; спільні шари (_wireframe.css, _panel.css) не чіпані, специфічність
+   скоупа перекриває їх незалежно від порядку підключення.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── (а) Spec-таблиця читається як цитований документ · R2/R3 ────────────
+   «These figures do not change when you retell them» + «one canonical value
+   per figure»: те, що цитуватимуть, — значення, тому клітинка значення
+   ширшає, а жолоб міток перестає дихати з в'юпортом. 34% зі спільного шару
+   дає від 218 до 306px залежно від ширини; документ, який цитюють, тримає
+   сталий жолоб. 220px — рівно стільки, щоб найдовша мітка MONITORING AND
+   RESPONSE (23 зн. моно 0.8rem + падінги 32px ≈ 217px) стояла одним рядком.
+   Прозові клітинки значень лишаються санс свідомо: моно зарезервовано під
+   величини й коди, а «Network, device, data and operational systems» —
+   перелічення, не величина. */
+@media (min-width: 720px) {
+  body:has(.wf-states a[href^="solution-detail"]) table.spec th { width: 220px; }
+
+  /* Скелет loading заміщає саме цю таблицю (пари sk-dt/sk-dd) — принцип
+     спільного шару «та сама форма, що й картка, яку він заміщає» вимагає
+     того самого жолоба міток, а не generic 96px. */
+  body:has(.wf-states a[href^="solution-detail"]) .sk-dl {
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  }
+}
+
+/* Нижче 720 двоколонкова таблиця тисне мітку в ~70px і мono-мітка ламається
+   посеред слова — цитованість зникає першою. Пара «мітка над значенням»
+   робить кожен рядок самостійним записом (та сама поведінка, що в .rows
+   нижче 720). Межа рядка лишається на th; td втрачає свою, щоб пара
+   мітка+значення трималась укупі. */
+@media (max-width: 719px) {
+  body:has(.wf-states a[href^="solution-detail"]) table.spec,
+  body:has(.wf-states a[href^="solution-detail"]) table.spec tbody,
+  body:has(.wf-states a[href^="solution-detail"]) table.spec tr { display: block; }
+  body:has(.wf-states a[href^="solution-detail"]) table.spec th,
+  body:has(.wf-states a[href^="solution-detail"]) table.spec td { display: block; width: auto; }
+  body:has(.wf-states a[href^="solution-detail"]) table.spec th { padding: 10px 16px 0; }
+  body:has(.wf-states a[href^="solution-detail"]) table.spec td { border-top: 0; padding: 3px 16px 12px; }
+}
+
+/* «Одна цифра — одне значення»: 24x7x365 і дати з днем стоять табличними
+   цифрами — канон величини, що не зміниться при переказі (концепт:
+   «табличні цифри моно: розбіжність у колонці видно оком»). */
+body:has(.wf-states a[href^="solution-detail"]) table.spec td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* [TBD] у клітинці значення — зарезервоване поле документа на всю міру
+   значення, а не уламок посеред порожнечі: чесний пропуск виглядає як
+   незаповнений слот форми. У проході тексту (тріо, хінти) [TBD] лишається
+   інлайновим чипом — там він частина речення. */
+body:has(.wf-states a[href^="solution-detail"]) table.spec td > .tbd {
+  display: block; padding: 5px 10px;
+}
+
+/* ── (б) «Закриває → папір»: реєстр норм, не стос карток · R1 ───────────
+   Код норми — код, а не заголовок: моно 1.05rem/500 — та сама роль і кегль,
+   що .tier в орбітальній схемі Entry (моно зарезервовано під величини й
+   коди; заголовок-код — код на всю сутність). На ≥720 всередині ряду
+   двоколонковий реєстр: рейка кодів ліворуч, «You keep …» праворуч на одній
+   осі всіх рядів — парність «код ↔ папір» видно при вертикальному скані,
+   а геометрія повторює th|td spec-таблиці нижче: сторінка читається одним
+   документом, як і обіцяє інтро секції («the regulation, the solution that
+   answers it, and what is left on your desk»). */
+body:has(.wf-states a[href^="solution-detail"]) .reg-row h3 {
+  font-family: var(--font-mono); font-size: 1.05rem; font-weight: 500;
+  letter-spacing: 0;
+}
+@media (min-width: 720px) {
+  body:has(.wf-states a[href^="solution-detail"]) .reg-row > div {
+    display: grid; grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+    gap: 4px 24px; align-items: baseline;
+  }
+  body:has(.wf-states a[href^="solution-detail"]) .reg-row > div h3 { margin: 0; }
+}
+
+/* Ряд без власної кнопки читання (IEC 62443 — рамка специфікації, не пара
+   «закриває → папір») відступає на крок: ghost-панель — заливка йде, межа
+   лишається. Це A1 мовою кнопок (вторинна дія тримається межею), перенесене
+   на панель. Гачок структурний — відсутність виходу на norm-сторінку, — а не
+   позиційний, тому переживає інший інстанс шаблону. */
+body:has(.wf-states a[href^="solution-detail"]) .reg-row:not(:has(> .btn)) {
+  background: transparent;
+}
+
+/* ── (в) «What stands behind it»: три типи доказу нерівні · R2 ──────────
+   Ранг без кольору, трьома кроками наявних засобів A1 (концепт:
+   «--line-strong — межа рангу, не декор»; «первинна тримається контрастом,
+   вторинна межею»):
+   1. Regulation-anchored — робочий доказ саме цієї сторінки (реєстр норм і
+      spec над тріо його матеріалізують): спільний шар уже дає ширину
+      (1.35fr), додається межа рангу.
+   2. Accredited, not self-declared — найсильніший ТИП доказу з порожнім
+      ФАКТОМ: панель лишається суцільною (сила типу), пунктирний [TBD]-чип
+      усередині несе чесність факту — два сигнали не змішуються.
+   3. Support commitment — своє зобов'язання, не чуже ім'я («доказ — чуже
+      ім'я; своє — зобов'язання»): ghost-панель, найнижчий крок драбини. */
+body:has(.wf-states a[href^="solution-detail"]) .trio-l > div:first-child {
+  border-color: var(--line-strong);
+}
+body:has(.wf-states a[href^="solution-detail"]) .trio-l > div:last-child {
+  background: transparent;
+}
+
+/* ── (г) Розвилка в кінці веде далі, а не затухає · MAIN/R3 ─────────────
+   Ряд CTA закривального рішення (yes → Inquiry · not sure → Norm · no →
+   Matching) не має flex-мови шапки (.gm-head p:has(>.btn) — скоуп спільного
+   шару) і злипався в рядок тексту. Три виходи рішення стоять трьома
+   окремими цілями з тим самим ритмом 12px, що в шапці. Секційний скоуп
+   не зачіпає станів: у error кнопка Reload живе в div.notice, не в section. */
+body:has(.wf-states a[href^="solution-detail"]) .stack-s > section p:has(> .btn) {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;
+}
+
+/* Стрілка на первинній дії, що веде далі, — той самий прийом A1, що
+   .match > p > .btn у стрічці matching: «Talk to an expert» — єдиний хід
+   уперед по головному флоу (шапка і розвилка; шапка однакова в усіх трьох
+   станах — стрілка теж). Ghost-виходи (norm — убік, matching — назад) і
+   Reload у стані error стрілки не отримують: вони не «далі». */
+body:has(.wf-states a[href^="solution-detail"]) :is(.gm-head, .stack-s > section) p > .btn:not(.btn-ghost)::after {
+  content: ""; width: 16px; height: 16px; flex: none;
+  background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+}
+
+/* Другий вихід хвоста — R3: «approval materials library packages what you
+   send up» — ядрова робота MVP, а рядок про неї стояв дрібним хінтом
+   упритул до кнопок і затухав. Відбивка межею і крок кегля до 0.94 (шкала
+   .meta) відділяють «іди говорити» від «спершу пронеси нагору»; лінки
+   отримують чорнило --ink, щоб виходи (approval-materials, Maritime)
+   було видно в проході тексту. Тільки закривальна секція: хінти під spec
+   і trio — примітки, їм належить лишатися дрібними. */
+body:has(.wf-states a[href^="solution-detail"]) .stack-s > section:last-of-type .hint-sm {
+  font-size: 0.94rem; max-width: 68ch;
+  border-top: 1px solid var(--line); padding-top: 14px; margin-top: 22px;
+}
+body:has(.wf-states a[href^="solution-detail"]) .stack-s > section:last-of-type :is(.hint-sm, .body) a {
+  color: var(--ink); text-underline-offset: 3px;
+}

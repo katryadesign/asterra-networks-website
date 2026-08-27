@@ -1,0 +1,139 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   _parts/approval-materials.css — екран Approval materials, 4 сторінки
+   (base · empty · error · loading), поверх _wireframe.css + _panel.css.
+
+   Робота екрана: R3 «зібрати обґрунтування, яке переживе людину з
+   бюджетом» (jtbd.md §3, MVP-ядро). P2 готує, P4 отримує; «усе, що людина
+   бачить, вона переказуватиме нагору — кожне твердження мусить бути
+   відтворюваним і самоузгодженим» (jtbd §10.4). Зміст, який лейаут
+   обслуговує: БІБЛІОТЕКА з п'яти позицій-артефактів (.reg-row), дві з
+   яких — чесні незаповнені слоти [TBD — no source]; хвіст .fallback,
+   навмисно ідентичний у всіх чотирьох станах. Реєстр документів, не
+   сторінка-розповідь: сканованість > наративу, документний регістр без
+   прикрас.
+
+   Скоуп кожного правила — body:has(.wf-states a[href^="approval-materials"]):
+   смуга станів лінкує тільки сторінки власного екрана (перевірено по всіх
+   28 файлах), тож жоден чужий екран не зачеплений. Станові сторінки не
+   мають .reg-row, тому правила бібліотеки на них інертні самі собою.
+   Жодних анімацій і transition, sticky, світлих блоків, тіней, нових
+   іконок; --signal не вживається ніде (незаповнений слот — не подія).
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · Бібліотека — робоча зона екрана, піднята тоном ────────────────
+   Зміст: секція am-list — єдине місце, де лежать речі, які беруть у кейс
+   (O6 Approval Artifact). _panel.css дає тональну смугу-підкладку
+   доказовим секціям (table.spec, .trio-l, .rows), але секцію з .reg-row
+   вона не ловить — бібліотека стояла в одному ряду з наративними
+   секціями am-why і am-how. Та сама смуга тим самим значенням підіймає
+   робочу зону над розповіддю: око P2 сідає на реєстр раніше, ніж на
+   абзаци. Тональний зсув у межах темної схеми, не колір і не інверсія. */
+body:has(.wf-states a[href^="approval-materials"]) .stack-s > section:has(.reg-row) {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 36px);
+}
+/* Крок глибини всередині смуги — як .rows li у спільному шарі:
+   заповнений артефакт = панель на щабель світліша за підкладку смуги. */
+body:has(.wf-states a[href^="approval-materials"]) .stack-s > section:has(.reg-row) .reg-row {
+  background: var(--surface-2);
+}
+
+/* ── 2 · Нумерація реєстру ─────────────────────────────────────────────
+   Зміст: «The set for one solution» — п'ять позицій одного набору, які
+   P2 переказуватиме нагору. Відтворюваність (jtbd §10.4) вимагає
+   адресованості: «позиція 03, compliance mapping» — рядок, на який можна
+   послатись у листі до P4. Номер — величина, тому моно з підлоги шкали
+   (0.8rem), як усі коди й дати мови. Порядок несе сама розмітка; CSS
+   лише показує його — жодного вигаданого факту. Слоти теж нумеруються:
+   набір має п'ять позицій, і те, що дві з них порожні, — частина
+   чесної розповіді, а не причина випасти з реєстру. */
+body:has(.wf-states a[href^="approval-materials"]) .stack-s > section:has(.reg-row) {
+  counter-reset: am-item;
+}
+body:has(.wf-states a[href^="approval-materials"]) .reg-row {
+  counter-increment: am-item;
+}
+body:has(.wf-states a[href^="approval-materials"]) .reg-row h3::before {
+  content: counter(am-item, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  margin-right: 10px;
+}
+
+/* ── 3 · Чесний слот проти заповненого артефакту ───────────────────────
+   Зміст: два рядки з [TBD — no source] — «порожній слот чесніший за
+   вигадку» (voice.md, принцип 4); hint-sm під списком каже це словами.
+   Слот успадковує конвенцію самого чипа .tbd — той самий пунктир
+   line-strong на масштабі цілого рядка: контур речі, якої ще немає,
+   замість панелі речі, яка є. Сканованість роботи R3: що можна взяти в
+   кейс уже зараз, видно до читання. Кольору немає — слот не подія;
+   заголовок слота притишений на один крок (--ink-2, ≥4.5:1 тримається). */
+body:has(.wf-states a[href^="approval-materials"]) .reg-row:has(.tbd) {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--line-strong);
+}
+body:has(.wf-states a[href^="approval-materials"]) .reg-row:has(.tbd) h3 {
+  color: var(--ink-2);
+}
+
+/* ── 4 · Ранг першої позиції ───────────────────────────────────────────
+   Зміст: «Forward the solution page first» (am-how) — форвардна сторінка
+   рішення є первинним носієм R3 (sitemap.md §6.4, знятий борг [Г1]);
+   бібліотека її доповнює, не замінює. A1 спільної мови: ранг читається
+   контрастом межі (як .rows li:first-child у смузі), не кольором і не
+   кеглем. Перший div секції — саме рядок форвардного самарі. */
+body:has(.wf-states a[href^="approval-materials"]) .stack-s > section:has(.reg-row) .reg-row:first-of-type {
+  border-color: var(--line-strong);
+}
+
+/* ── 5 · Напрям переходу на кнопках-носіях ─────────────────────────────
+   Зміст: два виходи з бібліотеки до сторінок-носіїв (solution-detail,
+   norm) — «напис називає, що на тому боці» (voice.md, принцип 5). Той
+   самий знак тією ж маскою, що спільний шар уже ставить на дії «веде
+   далі» (.match > p > .btn, .fallback .btn-ghost): іконка з наявного
+   набору сторінки, нової не додано. Побічний ефект для сканування:
+   рядок-носій відрізняється від слота ще й дією з напрямом. */
+body:has(.wf-states a[href^="approval-materials"]) .reg-row > .btn-ghost::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+}
+
+/* ── 6 · Виноска до набору, не хвіст останнього рядка ──────────────────
+   Зміст: hint-sm пояснює обидва пунктирні слоти разом («Unfilled slots
+   are deliberate…»). Відступ відводить її від останнього рядка, щоб вона
+   читалась приміткою до всього реєстру, а не метою п'ятої позиції. */
+body:has(.wf-states a[href^="approval-materials"]) .stack-s > section:has(.reg-row) .hint-sm {
+  margin-top: 12px;
+}
+
+/* ── 7 · Хвіст-відкат: один регістр у всіх чотирьох станах ─────────────
+   Зміст: aFallback навмисно ідентичний на base/empty/error/loading
+   (анотація екрана), але base розмічає його заголовок як h3 (1.25rem з
+   _panel.css), а стани — як h2 (17px з _wireframe.css). Один і той самий
+   блок — один кегль і колір, інакше «ідентичний» ламається між станами. */
+body:has(.wf-states a[href^="approval-materials"]) .fallback :is(h2, h3) {
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+/* ── 8 · Скелет підказує ієрархію сторінки, яку заміщає ────────────────
+   Зміст: loading веде до Base або Error; спільний принцип скелета — «та
+   сама форма, що й картка, яку він заміщає». _panel.css підіймає
+   заголовкові кістки (.sk-title, .sk-btn) до oklch(0.26 0 0), але клас
+   .sk-h2, яким розмічений цей екран, у той перелік не потрапив — усі
+   кістки злипаються в один тон --surface-2. Те саме значення спільного
+   шару, перенесене на кістку цього екрана. */
+body:has(.wf-states a[href^="approval-materials"]) .sk-h2 {
+  background: oklch(0.26 0 0);
+}

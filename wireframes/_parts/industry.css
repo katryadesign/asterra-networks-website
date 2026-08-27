@@ -1,0 +1,170 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   _parts/industry.css — Industry screen (інстанс Maritime), base + error +
+   loading. Скоуп кожного правила: body:has(.wf-states a[href^="industry"])
+   — той самий інваріант ідентичності екрана, яким _panel.css вішає
+   фото-героя. Смуга станів лінкує лише стани власного екрана, тому чужі
+   сторінки під селектор не потрапляють.
+
+   Роботи екрана (wf-doc, jtbd.md): MAIN — самоідентифікація сектором;
+   R1 — дедлайни з датами як найсильніший секторний аргумент; E1 — мова
+   сектора; S1 — crew як окремий детур. Читач P1/P2: щільні фактурні
+   блоки, не маркетингові простори.
+
+   Розмітка і текст не чіпані. Жодних анімацій, sticky, світлих блоків,
+   тіней. --signal не вживається: дати в рядках вимог — прозовий текст без
+   окремого вузла, фарбувати цілі рядки = п'ять постійних «тривог».
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · Верхній відступ зони станів ──────────────────────────────────
+   Робота: стабільність рамки між base/error/loading (усі три мають
+   .wrap.pad-b одразу під .gm-head). Мотив: блок 2 підіймає першу секцію
+   base до смуги з border-block — впритул до border-bottom шапки вона
+   читалась би як подвійна лінійка; error/loading і зараз кладуть панель
+   .notice / скелет упритул до межі шапки. Один спільний відступ ставить
+   зону станів на однакову висоту в усіх трьох станах. */
+body:has(.wf-states a[href^="industry"]) .wrap.pad-b {
+  padding-top: clamp(36px, 5vw, 56px);
+}
+
+/* ── 2 · Секція вимог із датами = головна смуга сторінки (R1) ─────────
+   Робота: «дедлайни з датами — найсильніший секторний аргумент; їхній
+   блок мусить композиційно важити більше за загальні слова». Елемент:
+   section#dl-h із п'ятьма .reg-row (MSC.428(98) до DOC-верифікації,
+   MLC 2006 із датою 23.12.2024, UR E26/E27 з 01.07.2024…). Спільний шар
+   дає тональні смуги лише під .spec/.trio-l/.rows — секція .reg-row
+   лишалась на --bg і важила МЕНШЕ за каталожну. Тут доказова смуга
+   (значення 1:1 зі спільною) переходить до рядків вимог; картки
+   всередині смуги стають --surface-2 за спільною ж конвенцією
+   «смуга без рамки — картки з рамками всередині». */
+body:has(.wf-states a[href^="industry"]) .stack-s > section:has(.reg-row) {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 36px);
+}
+body:has(.wf-states a[href^="industry"]) .stack-s > section:has(.reg-row) .reg-row {
+  background: var(--surface-2);
+}
+
+/* ── 3 · Рядки вимог на всю ширину рейкової сітки ─────────────────────
+   Робота: та сама R1-домінанта. Елемент: п'ять рядків «ситуація → норма →
+   що закриває» з CTA праворуч. У рейці 250px+1fr рядки сиділи в правій
+   колонці; розгорнуті на обидві колонки вони стають найширшим змістом
+   стосу — блок дат буквально переважує колонково-обмежені секції, а флекс
+   «речення зліва — кнопка справа» отримує довжину, на якій не ламається.
+   Заголовок і led-абзац лишаються в рейковому першому ряду. Реєстровий
+   лінк R1 (.hint-sm → norm.html) стає підвалом смуги, теж на всю ширину. */
+@media (min-width: 980px) {
+  body:has(.wf-states a[href^="industry"]) .stack-s > section:has(.reg-row) > .reg-row,
+  body:has(.wf-states a[href^="industry"]) .stack-s > section:has(.reg-row) > .hint-sm {
+    grid-column: 1 / -1;
+  }
+}
+body:has(.wf-states a[href^="industry"]) .stack-s > section:has(.reg-row) > .hint-sm {
+  margin-top: 14px;
+}
+
+/* ── 4 · Стрілка на CTA рядків вимог ──────────────────────────────────
+   Робота: вузол рішення екрана — recog «Do they recognize their
+   situation?», yes → Solution detail. Елемент: п'ять кнопок «See what
+   closes it» — саме вони і є виходи впізнавання. Спільний шар уже маркує
+   «первинну дію, що веде далі» стрілкою (A1, .fallback .btn-ghost::after);
+   тут той самий прийом і та сама наявна іконка переносяться на виходи
+   recog=yes. Кнопки читання (.duo-even «Read …») стрілки не отримують —
+   інакше маркер рангу перестає ранжувати. */
+body:has(.wf-states a[href^="industry"]) .reg-row .btn-ghost::after {
+  content: ""; width: 16px; height: 16px; flex: none;
+  background: currentColor;
+  -webkit-mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+          mask: url("https://api.iconify.design/solar/alt-arrow-right-linear.svg") center/contain no-repeat;
+}
+
+/* ── 5 · Каталожна секція без доказової смуги ─────────────────────────
+   Робота: порядок ваги R1 > «загальні слова». Елемент: section#of-h
+   «The six areas, written in fleet terms» — дві пропозиції прозою plus
+   компактний перелік. Спільна смуга ключується на структуру (.rows) як
+   проксі доказу; тут проксі хибить — каталожний перелік отримував
+   доказову вагу, а датовані вимоги (справжній секторний доказ) — ні.
+   Смуга знімається; доказовими смугами лишаються вимоги (блок 2) і тріо
+   доказу (спільний шар), два докази беруть прозову середину в дужки.
+   Панелі переліку нижче (блок 6) секція зберігає. */
+body:has(.wf-states a[href^="industry"]) .stack-s > section:has(.rows) {
+  background: transparent;
+  border-block: 0;
+  padding: 0;
+}
+
+/* ── 6 · Чотири рівні напрямки = компактний реєстр, не бенто ──────────
+   Робота: анотація екрана фіксує реєстр «the remaining four areas as a
+   compact list». Елемент: ul.rows з ЧОТИРМА рівноправними напрямками
+   (Intelligence, Assure, Equip, Care). Спільне бенто «перший ряд на всю
+   ширину» правдиве на solution-detail (там перший ряд — головний тригер),
+   а тут воно (а) підносить Intelligence без жодної змістової підстави і
+   (б) на чотирьох елементах лишає сирітську піврядкову дірку після Care.
+   Повертається базова форма _panel: один контейнер --surface-2 з
+   лінійками між рядами «назва | що це у флотських термінах» — щільний
+   реєстр тієї ж фактури, що й смуга вимог вище. */
+@media (min-width: 760px) {
+  body:has(.wf-states a[href^="industry"]) .stack-s .rows {
+    display: block;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+  }
+  body:has(.wf-states a[href^="industry"]) .stack-s .rows li {
+    border: 0; border-top: 1px solid var(--line);
+    border-radius: 0; background: transparent;
+  }
+  body:has(.wf-states a[href^="industry"]) .stack-s .rows li:first-child {
+    border-top: 0; background: transparent;
+    padding-top: 12px; padding-bottom: 12px;
+  }
+}
+
+/* ── 7 · Лінійка зіставлення у парі пропозицій ────────────────────────
+   Робота: E1 — «ті самі рішення мовою сектора»; елемент: .duo-even із
+   двома рівновеликими пропозиціями (Connect для екіпажу й офісу / Shield
+   для DOC-верифікації). Після зняття смуги (блок 5) дві прозові колонки
+   на --bg висіли б у порожнечі 64px; вертикальна лінійка по центру — той
+   самий прийом, яким entry тримає пару major-напрямів (border-left між
+   article) — робить зіставлення читабельним як зіставлення. Сумарний
+   проміжок 32+1+32 зберігає колишній ритм. Тільки ≥1081px: нижче
+   _wireframe складає .duo-even в одну колонку. */
+@media (min-width: 1081px) {
+  body:has(.wf-states a[href^="industry"]) .duo-even { gap: 0 32px; }
+  body:has(.wf-states a[href^="industry"]) .duo-even > div + div {
+    border-left: 1px solid var(--line);
+    padding-left: 32px;
+  }
+}
+
+/* ── 8 · Стани: відкат тримає свій ранг ───────────────────────────────
+   Робота: flows.md малює iError → fallback як ЄДИНИЙ вихід (вузла retry
+   немає, кнопки reload немає). Елементи: на error/loading .fallback несе
+   h2, який _wireframe глушить до 17px — нижче за ранг того самого блока
+   на base (h3 = 1.25rem); заголовок єдиного живого шляху не має падати
+   при перемиканні стану. На error єдина жива дія «Find what fits your
+   fleet» піднімається до первинної кнопки (A1): контент .notice сам
+   каже, що guided matching «is served separately and still works».
+   :has(.notice) у скоупі industry = тільки error (base без .notice,
+   loading — скелет без .notice); hover віддзеркалює спільний .btn:hover. */
+body:has(.wf-states a[href^="industry"]) .fallback h2 {
+  font-size: 1.25rem;
+}
+body:has(.wf-states a[href^="industry"]):has(.notice) .fallback .btn-ghost {
+  background: var(--ink); color: var(--bg); border-color: var(--ink);
+}
+body:has(.wf-states a[href^="industry"]):has(.notice) .fallback .btn-ghost:hover {
+  background: oklch(0.85 0 0); border-color: oklch(0.85 0 0); color: var(--bg);
+}
+
+/* ── Свідомо НЕ чіпано (спільний шар достатній) ───────────────────────
+   · .gm-head — галузева рамка «ти в правильному місці»: бейдж
+     «Industries · Maritime», клейм-H1 з .dim-другою половиною, секторне
+     фото (щогла з радаром, ідентичність Maritime у _panel) уже стоять;
+     додатковий прийом був би динамічністю заради динамічності.
+   · Секція crew (S1) — детур зі своїм екраном; після P2-switch вона
+     свідомо тихіша за ядро, рейкова сітка їй достатня.
+   · Тріо доказу (.trio-l) — спільна смуга + бенто 1.35fr уже ранжують;
+     [TBD]-слот несе спільний пунктир.
+   · Скелети loading і сигнальна евристика error-notice — спільні,
+     коректно спрацьовують на цій розкладці станів.
+   ═══════════════════════════════════════════════════════════════════════ */
