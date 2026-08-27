@@ -618,9 +618,15 @@ management system»). Усе, що читається підметом і при
 **SMS** (safety management system) · **DOC** (Document of Compliance) · **PSC** (Port State
 Control) · **ISM** (ISM Code).
 
-⚠️ **Зараз це правило порушено:** Entry вживає «annual DOC verification» і «Closes
-MSC.428(98) · UR E26/E27 · IEC 62443» без розкриття на цій сторінці; селект Guided matching —
-«Cyber risk has to be in the SMS by the next DOC verification», де не розкрито жодного з двох.
+✅ *Порушення, зафіксовані тут при написанні правила (Entry, селект Guided matching), закриті
+переписом 2026-08-27.*
+
+**Де жити розкриттю (додано 2026-08-27, за реглядками Industry).** Якщо повна форма роздуває
+рядок-реглядку чи заголовок, розкриття переноситься в **підводку секції** у формі з дужками —
+«a Port State Control (PSC) inspection, the annual Document of Compliance (DOC) audit» — і
+рядки нижче одразу пишуть коротко. Переносити можна лише туди, де термін стоїть чесно:
+розкриття не вигадує зв'язки, якої в тексті немає (тому «safety management system» на Industry
+лишилося в самому рядку — у підводці про нього сказати нічого правдивого).
 
 ### ✅ Дозволено без розкриття — це словник самого покупця
 

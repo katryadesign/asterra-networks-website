@@ -333,6 +333,9 @@ treatment…]» (службовий слот).
 |---|---|---|---|---|
 | base | 7 тверджувальних заголовків (H2 ситуацій, 5 H3 реглядок, H2 екіпажу) | без крапки | з крапкою | Р1 |
 | base | екіпаж · H2 | …before they ask about the ship. | …before they ask about the vessel. | Д3 / Н1-7 |
+| base | ситуації · підводка | A docking window, an inspection, an audit, a newbuild contract. | A docking window, a Port State Control (PSC) inspection, the annual Document of Compliance (DOC) audit, a newbuild contract. | розкриття переїхало в підводку (voice.md §4) |
+| base | ситуації · рядок 1, H3 | Cyber has to be in the safety management system before the next **Document of Compliance** verification. *(100)* | …before the next **DOC** verification. *(81; SMS лишається повним — у підводці йому немає чесного місця)* | довжина реглядки |
+| base | ситуації · рядок 2, H3 | …since 23 December 2024 **Port State Control** can ask too. *(88)* | …since 23 December 2024 **PSC** can ask too. *(73)* | довжина реглядки |
 
 
 | Екран | Стан | Зона | Рядок | Тип рядка | Позначки |
