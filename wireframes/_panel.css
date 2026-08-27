@@ -3,10 +3,10 @@
 /* ═══════════════════════════════════════════════════════════════════════
    _panel.css — мова напряму B «Панель», застосована поверх _wireframe.css.
 
-   Підключається до guided-matching.html (+ empty · error · loading) і
-   solution-detail.html (+ error · loading) — двох кінців головного стрибка
-   стрічка → сторінка рішення. _wireframe.css лишається сірою мовою решти
-   21 сторінки і не чіпається.
+   Підключається до ВСІХ 28 сторінок wireframes/ (розкатка 2026-08-27,
+   рішення користувача; пілотом були два кінці головного стрибка —
+   guided-matching і solution-detail). _wireframe.css лишається базовим
+   шаром структури і не чіпається.
 
    Джерело кожного значення: concept/concept.html.
    Атрибути: A1 ранжовано · A2 чуже ім'я · A3 одна поверхня · A4 схема ·
@@ -135,26 +135,47 @@ body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
 .gm-head .wrap { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
 .gm-head h1 { max-width: 18ch; }
 .gm-head .body { margin: 0; }
+/* Фото героя — ТІЛЬКИ на екранах, де воно тематично назване (A4), і те саме
+   для всіх станів екрана. Ідентичність екрана читається зі смуги станів
+   (a[href^="…"]) — тому sd-error несе той самий знімок, що sd-base, а не
+   інший (перший пілот хукався на .spec і на станах фото з'їжджало).
+   Norm, Approval, Inquiry і гігієнічна четвірка фото НЕ отримують:
+   типографічний hero без порожньої рамки. Entry героя будує сам (.hero). */
 @media (min-width: 900px) {
-  .gm-head .wrap { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
-  /* Явне розміщення: увесь текст у першу колонку, фото у другу на всю висоту.
-     Без цього діти розкладаються по клітинках автоматично і абзац
-     від'їжджає праворуч, а фото падає у другий ряд. Так само правильно
-     працює на solution-detail, де дітей чотири, а не два. */
-  .gm-head .wrap > * { grid-column: 1; }
-  .gm-head .wrap::after {
+  body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap,
+  body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap,
+  body:has(.wf-states a[href^="industry"]) .gm-head .wrap,
+  body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+  body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap > *,
+  body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap > *,
+  body:has(.wf-states a[href^="industry"]) .gm-head .wrap > *,
+  body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap > * { grid-column: 1; }
+  body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap::after,
+  body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap::after,
+  body:has(.wf-states a[href^="industry"]) .gm-head .wrap::after,
+  body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap::after {
     content: ""; display: block; grid-column: 2; grid-row: 1 / -1;
     align-self: stretch; min-height: 210px;
     border: 1px solid var(--line); border-radius: var(--r);
-    background: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80")
-                center/cover no-repeat, var(--surface);
+    background: var(--surface) center/cover no-repeat;
     filter: grayscale(0.35) contrast(1.03) brightness(0.82);
   }
-  /* Solution detail несе той самий знімок, що й картка Shield у стрічці:
-     одна річ на двох поверхнях має виглядати як одна річ.
-     Гачок — таблиця .spec, якої немає на guided-matching. Розмітка не чіпана. */
-  body:has(.spec) .gm-head .wrap::after {
+  /* Стрічка — антена як об'єкт; Shield — той самий знімок, що на його
+     картці в стрічці; Maritime — щогла з радаром (= картка Equip);
+     Crew connectivity — параболічна антена в полі. Усі 4 ID перевірені. */
+  body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap::after {
+    background-image: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80");
+  }
+  body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap::after {
     background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=900&q=80");
+  }
+  body:has(.wf-states a[href^="industry"]) .gm-head .wrap::after {
+    background-image: url("https://images.unsplash.com/photo-1781449511066-01f1181ac87c?auto=format&fit=crop&w=900&q=80");
+  }
+  body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap::after {
+    background-image: url("https://images.unsplash.com/photo-1526666923127-b2970f64b422?auto=format&fit=crop&w=900&q=80");
   }
 }
 
@@ -304,7 +325,7 @@ body:has(.notice):not(:has(.wf-states a[href$="-error.html"])) .result-head .cou
 
 /* EMPTY — чесна відповідь, а не збій. Кольору не отримує: подією не є.
    Розрізняють форма іконки і слово. */
-body:has(.notice):has(.wf-states a[href$="-error.html"]):not(:has(.wf-states a[href$="-empty.html"])) .notice :is(h2,h3)::before {
+body:has(.notice):has(.wf-states a[href$="-error.html"]):not(:has(.wf-states a[href$="-empty.html"])):not(:has(.notice .kv)):not(:has(.sk)) .notice :is(h2,h3)::before {
   -webkit-mask-image: url("https://api.iconify.design/solar/info-circle-linear.svg");
           mask-image: url("https://api.iconify.design/solar/info-circle-linear.svg");
 }
@@ -481,3 +502,119 @@ table.spec td { color: var(--ink); font-size: 0.94rem; }
    Падінг доводить ціль до ≥24px, не змінюючи кегля.                    */
 .nav-top a, .nav-main a { display: inline-block; padding-top: 4px; padding-bottom: 4px; }
 body > footer a, .foot-bar a { display: inline-block; padding-block: 3px; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   РОЗКАТКА НА ВСІ 28 СТОРІНОК — 2026-08-27, рішення користувача.
+   Жодного нового рішення мови: тільки перенос уже ухвалених значень на
+   компоненти екранів, яких пілот не покривав. Розмітка й текст не чіпані.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Entry · hero ──────────────────────────────────────────────────────
+   Героя Entry будує схема (.orbit), не фото — A4 у найчистішому вигляді. */
+.hero { border-bottom: 1px solid var(--line); padding: 80px 0 64px; }
+/* _wireframe дає .backdrop бічну смугу 2px — заборонений патерн. Тут це
+   службова нотатка дизайн-етапу: оформлюємо як [TBD]-слот. */
+.hero .backdrop {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-2);
+  border: 1px dashed var(--line-strong); border-left: 1px dashed var(--line-strong);
+  border-radius: var(--r); padding: 8px 12px;
+}
+
+/* Схема орбіт — «engineered, not decorative». Ярус як величина: моно. */
+.orbit { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.orbit-row { border-bottom: 1px solid var(--line); }
+.orbit-row .tier { font-family: var(--font-mono); font-weight: 500; font-size: 0.94rem; color: var(--ink); }
+.orbit-row .bar { background: var(--line-strong); }
+.orbit-row .desc { font-size: 0.94rem; color: var(--ink-2); }
+
+/* Індекс напрямів: major-ряд тримає ранг розміром (A1), не кольором. */
+.index-major h3 { font-size: 1.953rem; letter-spacing: -0.025em; }
+.index .tag {
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.index .req {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-2);
+  border-top: 1px solid var(--line); font-variant-numeric: tabular-nums;
+}
+
+/* Партнерська стрічка — комірка з межею, як у references.md §4:
+   позиція в переліку акредитацій, не стіна клієнтів. */
+.logo-row { grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); }
+.logo-slot {
+  border: 1px solid var(--line); border-radius: var(--r); background: var(--surface);
+  min-height: 56px; font-family: var(--font-mono); font-size: 0.8rem;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2);
+}
+
+/* Позиційна секція і сітка «що тримаєте» */
+.statement p { color: var(--ink); }
+.statement .after { color: var(--ink-2); font-size: 1rem; }
+.pos-label { color: var(--ink-3); font-family: var(--font-mono); font-size: 0.8rem;
+  letter-spacing: 0.04em; text-transform: uppercase; }
+.held, .held > div + div { border-color: var(--line); }
+.sector-list, .sector-list li { border-color: var(--line); }
+.sector-list .dt { color: var(--ink-3); }
+.sector-list a:hover .nm { color: var(--ink); }
+
+/* ── Форма Inquiry · ті самі контроли, що в інтерв'ю ────────────────── */
+.request {
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--surface); padding: 24px;
+}
+.request .field { margin: 0 0 16px; }
+.request label { display: block; font-size: 0.9rem; font-weight: 500; color: var(--ink); margin: 0 0 6px; }
+.request input, .request select, .request textarea {
+  width: 100%; background: var(--surface-2); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: var(--r);
+  padding: 9px 11px; font: 400 0.9rem var(--font-sans);
+}
+.request select { appearance: none; }
+.request option, .request optgroup { background: var(--surface-2); color: var(--ink); }
+.request .routing { font-size: 0.8rem; color: var(--ink-2); }
+.h-small { font-size: 1.5625rem; letter-spacing: -0.02em; }
+
+/* Пара dt/dd підсумку — одна поверхня для всіх величин (A3),
+   та сама роль, що dl у картці стрічки. */
+.kv {
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 14px 16px; grid-template-columns: minmax(0, auto) minmax(0, 1fr); gap: 8px 18px;
+}
+.kv dt {
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.03em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.kv dd { color: var(--ink-2); }
+
+/* ── Уточнення станів після розкатки ──────────────────────────────────
+   Inquiry ламає першу евристику: .notice живе і в success, і в loading.
+   Розрізняє вміст: .kv = підсумок надісланого, .sk = скелет. */
+
+/* SUCCESS — кінцевий стан головної роботи. Кольору не отримує:
+   він не подія, що вимагає дії. Форма: check-circle. */
+body:has(.notice .kv):not(:has(.sk)) .notice { border-color: var(--line); }
+body:has(.notice .kv):not(:has(.sk)) .notice :is(h2,h3) { color: var(--ink); }
+body:has(.notice .kv):not(:has(.sk)) .notice :is(h2,h3)::before {
+  -webkit-mask-image: url("https://api.iconify.design/solar/check-circle-linear.svg");
+          mask-image: url("https://api.iconify.design/solar/check-circle-linear.svg");
+}
+
+/* LOADING з повідомленням (inquiry): годинник, не подія. */
+body:has(.sk) .notice { border-color: var(--line); }
+body:has(.sk) .notice :is(h2,h3) { color: var(--ink); }
+body:has(.sk) .notice :is(h2,h3)::before {
+  -webkit-mask-image: url("https://api.iconify.design/solar/clock-circle-linear.svg");
+          mask-image: url("https://api.iconify.design/solar/clock-circle-linear.svg");
+}
+
+/* EMPTY-правило звужується: без підсумку і без скелета. */
+body:has(.notice .kv) .result-head .count,
+body:has(.sk) .result-head .count { color: var(--ink-3); }
+
+/* ── Підлога кегля на успадкованих дрібницях ────────────────────────── */
+.foot-legal { font-size: 0.8rem; }
+.hero .backdrop, .index .tag, .index .req, .kv dt, .logo-slot { line-height: 1.5; }
+
+/* Дата новини — величина: моно, підлога шкали. */
+.date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.norm .date, .news-item .date { font-size: 0.8rem; }

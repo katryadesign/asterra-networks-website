@@ -22,7 +22,7 @@ concept → tokens → components → the assembled system → developer handoff
 |---|---|---|---|
 | 1 | [`research/`](./research/) | Discovery: [`research.md`](./research/research.md) (competitor audit) + [`screens/`](./research/screens/) captures · evidence about people: [`people.md`](./research/people.md), [`people-desk.md`](./research/people-desk.md), [`personas.md`](./research/personas.md) (proto-personas — validation pending), [`jtbd.md`](./research/jtbd.md), [`audit.md`](./research/audit.md) (evidence audit) | 🟡 In progress |
 | 2 | [`wireframes/`](./wireframes/) | Low-fi wireframes: 12 screens · 28 pages (every confirmed state), clickable end-to-end | 🟢 Done |
-| 3 | [`concept/`](./concept/) | Visual concept / art direction: Refero references, designer taste + 5 attribute pairs, three contrasted directions, chosen direction B «Panel» as a live test stand, language applied to two wireframe screens | 🟡 In progress |
+| 3 | [`concept/`](./concept/) | Visual concept / art direction: Refero references, designer taste + 5 attribute pairs, three contrasted directions, chosen direction B «Panel» as a live test stand, language applied to all 28 wireframe pages | 🟡 In progress |
 | 4 | [`tokens/`](./tokens/) | Design tokens — color, type, spacing, motion (source of truth) | ⚪ Planned |
 | 5 | [`components/`](./components/) | Component inventory & specs (variants, states, a11y) | ⚪ Planned |
 | 6 | [`design-system/`](./design-system/) | Assembled system: foundations + components + patterns + guidelines | ⚪ Planned |
@@ -138,10 +138,12 @@ other layer: each decision anchored to a research line, hypotheses labelled, not
   construction), three live components with canonical strings from `microcopy.md`. All ten
   contrast pairs pass WCAG 2.2 AA, computed in the browser at load.
 - **Applied to wireframes:** [`wireframes/_panel.css`](./wireframes/_panel.css) on top of the
-  grey `_wireframe.css` — guided-matching (4 states) and solution-detail (3 states), the two
-  ends of the main jump. Markup and copy untouched; states are detected via `:has()` on the
-  states bar. Shared components verified identical by computed-style fingerprints. The other
-  21 pages stay grey deliberately.
+  grey `_wireframe.css` — **all 28 pages** (piloted on guided-matching and solution-detail,
+  the two ends of the main jump, then rolled out the same day). Markup and copy untouched;
+  screen identity and states are detected via `:has()` on the states bar. Hero photos appear
+  only on the four screens where the theme names one, identical across a screen's states;
+  the Entry hero is carried by the orbit schematic, not a photo. Post-rollout verification:
+  28/28 pages, zero contrast failures, type floor 12.8px, no overflow at 375/1280.
 
 Deliberately open at this stage: brief §9 “bold color blocks” vs the one-accent discipline
 of the entire reference set (taste sides 4/4 with discipline); error live-region and the
