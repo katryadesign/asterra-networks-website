@@ -1,0 +1,364 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   tokens.css — токени Asterra Networks. Урок 08, крок 2.
+   Зібрано з ui/kit.css (урок 07) за аудитом tokens/tokens-audit.md і мовою DESIGN.md.
+
+   ДВА РІВНІ
+   1. PRIMITIVE — сирі значення без ролей. Назва описує значення, не місце
+      (--gray-21, --space-14, --font-size-14). Сюди переїхали ВСІ значення
+      з kit.css; нових не додано, крім зведеного дрейфу (позначено «ЗВЕДЕНО»).
+   2. SEMANTIC — лише ролі КОЛЬОРУ. Кожна посилається на primitive через var()
+      і має коментар, з яких вживань аудиту виросла.
+
+   ПРАВИЛА
+   — Геометрія (відступ, розмір, радіус, кегль) семантичного рівня не має:
+     компонент читає primitive напряму.
+   — Колір компонент читає ЛИШЕ через семантику (або блок «одиничні»).
+     Колір-primitive у components/ — дефект.
+   — Колір, що в аудиті стоїть в одному місці, роллю не стає: блок
+     «ОДИНИЧНІ» внизу, кожен записано в ui/_process/critique.md (урок 08).
+
+   ЧОГО ТУТ НЕМАЄ — І ЧОМУ
+   — Пороги @media (18 різних): CSS не приймає var() в умовах. Лишаються
+     числами в components/, реєстр — tokens-audit.md §4 В3.
+   — 241 токен «компонент-властивість» з kit.css зникає: на кроці 3 компонент
+     бере primitive напряму, а складені вирази (minmax(0, …), min(…, 72%))
+     пишуться в самому компоненті зі значеннями через var().
+   — Слоти --icon і --photo — API компонента, не значення: переїдуть у components/.
+   — Фокус і стани (hover, error) як ролі — урок 09, разом з обома темами.
+     Поки фокус читає --text, фокус первинної кнопки — --event (борг Б9).
+
+   ДРЕЙФ, НЕ ЗВЕДЕНИЙ СВІДОМО (змінює геометрію, а крок 4 — «ні на піксель»; звірка
+   вітрини на кроці 3 це підтвердила; на рішення — ui/_process/critique.md, урок 08):
+     А7 трекінг дисплея −0.033em (шапка) проти −0.035em (герой)
+     А2 міжрядковий моно-мітки 1.68 проти 1.5
+     А3 трекінг моно-мітки 0.04em (бейдж) проти 0.03em (dt/th) — 0.04 переносить мітку таблиці
+     А4 внутрішній відступ панелі 16 · 20 · 22 · 24 · clamp(16–24)
+     А6 заголовок смуги тверджень 19px проти кроку шкали 20px
+     А9 кеглі поза шкалою 13 · 14 · 18 · 24px
+     А10 відступи поза 4px-сіткою 1 · 3 · 5 · 7 · 9 · 11 · 13 · 15px
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  color-scheme: dark;   /* крок 6 (I2, A13): нативні скролбари, автозаповнення й список select знають, що ґрунт темний */
+
+  /* ═══ PRIMITIVE ═════════════════════════════════════════════════════════ */
+
+
+  /* ── КОЛІР · нейтраль chroma 0 і одна хроматика (hue 25). Назва = світлота × 100. Роль тут не пишеться — її дає семантичний рівень нижче ── */
+  --gray-12:  oklch(0.12 0 0);  /* ← --bg */
+  --gray-17:  oklch(0.17 0 0);  /* ← --surface */
+  --gray-21:  oklch(0.21 0 0);  /* ← --surface-2 */
+  --gray-26:  oklch(0.26 0 0);  /* ← --bone */
+  --gray-30:  oklch(0.30 0 0);  /* ← --line */
+  --gray-42:  oklch(0.42 0 0);  /* ← --line-strong */
+  --gray-55:  oklch(0.55 0 0);  /* ← --ink-dim, --field-border */
+  --gray-64:  oklch(0.64 0 0);  /* ← --ink-3 */
+  --gray-78:  oklch(0.78 0 0);  /* ← --ink-2 */
+  --gray-85:  oklch(0.85 0 0);  /* ← --ink-hover */
+  --gray-97:  oklch(0.97 0 0);  /* ← --ink */
+  --red-34:   oklch(0.34 0.09 25);  /* ← --signal-dim */
+  --red-68:   oklch(0.68 0.19 25);  /* ← --signal */
+
+  /* ── ГАРНІТУРА ── */
+  --font-grotesk:      "Familjen Grotesk", system-ui, sans-serif;  /* ← --font-sans */
+  --font-jetbrains:    "JetBrains Mono", ui-monospace, monospace;  /* ← --font-mono */
+  --font-system-mono:  ui-monospace, "Consolas", monospace;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+
+  /* ── КЕГЛЬ · назва = px при 16px кореня. Шкала 1.25×: 12.8 · 16 · 20 · 25 · 31.25 · 39.06; решта — поза шкалою, записано в критиці (А9) ── */
+  --font-size-12-8:   0.8rem;  /* ← --fs-micro, --section-numbered-counter-font-size */
+  --font-size-13:     0.8125rem;  /* ← --foot-bar-font-size */
+  --font-size-13-76:  0.86rem;  /* ← --fs-label */
+  --font-size-14:     0.875rem;  /* ← --fs-sm, --site-footer-font-size, --values-font-size +5 · ЗВЕДЕНО крок 6 (N4, рішення користувача 2026-09-17): 0.94rem (мета, кнопка, навігація, ім’я партнера) і 0.9375rem/15px (панелі величин документа, квитанції, сторінки) → 0.875rem. Закриває й А1: панель величин тепер одна — 14px скрізь */
+  --font-size-14-4:   0.9rem;  /* ← --fs-field */
+  --font-size-16:     1rem;  /* ← --fs-body */
+  --font-size-16-8:   1.05rem;  /* ← --fs-code */
+  --font-size-18:     1.125rem;  /* ← --values-event-font-size-narrow */
+  --font-size-19:     1.1875rem;  /* ← --held-h3-font-size · одиниця: 19px → 1.1875rem, Δ 0. Крок шкали 1.25rem НЕ зведено (А6: +1px кегля) */
+  --font-size-20:     1.25rem;  /* ← --fs-3, --values-event-font-size, --context-panel-h2-font-size */
+  --font-size-24:     1.5rem;  /* ← --stack-h2-font-size */
+  --font-size-25:     1.5625rem;  /* ← --fs-2 */
+  --font-size-31-25:  1.953rem;  /* ← --fs-1 */
+  --font-size-39-06:  2.441rem;  /* ← --band-areas-h2-font-size, --duo-cap-h2-font-size, --index-major-h3-font-size · ЗВЕДЕНО А9: 2.441rem був записаний трьома окремими токенами → один. Δ 0 */
+
+  /* ── КЕГЛЬ ПЛИННИЙ · назва = межі в px ── */
+  --font-fluid-28-44:  clamp(1.75rem, 3vw, 2.75rem);  /* ← --statement-p-font-size */
+  --font-fluid-31-39:  clamp(1.953rem, 1.1rem + 1.9vw, 2.441rem);  /* ← --match-h3-font-size, --sk-title-height */
+  --font-fluid-35-64:  clamp(2.2rem, 4.5vw, 4rem);  /* ← --code-h1-font-size */
+  --font-fluid-39-49:  clamp(2.441rem, 3.4vw, 3.052rem);  /* ← --screen-head-compact-h1-font-size */
+  --font-fluid-42-69:  clamp(2.6rem, 5vw, 4.3rem);  /* ← --fs-display */
+  --font-fluid-45-88:  clamp(2.8rem, 6.2vw, 5.5rem);  /* ← --fs-hero */
+
+  /* ── МІЖРЯДКОВИЙ ── */
+  --leading-0-98:  0.98;  /* ← --hero-h1-line-height */
+  --leading-1-06:  1.06;  /* ← --lh-display */
+  --leading-1-08:  1.08;  /* ← --statement-p-line-height */
+  --leading-1-15:  1.15;  /* ← --lh-tight */
+  --leading-1-2:   1.2;  /* ← --lh-title, --lh-h3 · ЗВЕДЕНО: --lh-title і --lh-h3 (K2) — те саме 1.2. Δ 0 */
+  --leading-1-35:  1.35;  /* ← --news-item-h3-line-height */
+  --leading-1-4:   1.4;  /* ← --values-event-line-height */
+  --leading-1-5:   1.5;  /* ← --backdrop-line-height, --chip-tag-line-height, --chip-req-line-height +4 · ЗВЕДЕНО: сім окремих 1.5 → один. Δ 0. Моно-мітки на 1.68 НЕ зведено (А2: +2.3px на рядок) */
+  --leading-1-55:  1.55;  /* ← --lh-lede */
+  --leading-1-6:   1.6;  /* ← --statement-after-line-height */
+  --leading-1-68:  1.68;  /* ← --lh-body, --sk-title-height */
+
+  /* ── ТРЕКІНГ · назва = em × 1000 ── */
+  --tracking-neg-035:  -0.035em;  /* ← --hero-h1-letter-spacing · НЕ ЗВЕДЕНО А7: −0.033em на H1 героя розширює рядок на 2px (перевірено на кроці 3) */
+  --tracking-neg-033:  -0.033em;  /* ← --ls-display */
+  --tracking-neg-030:  -0.03em;  /* ← --ls-3 */
+  --tracking-neg-025:  -0.025em;  /* ← --ls-1 */
+  --tracking-neg-020:  -0.02em;  /* ← --ls-2 */
+  --tracking-neg-015:  -0.015em;  /* ← --ls-4 */
+  --tracking-neg-010:  -0.01em;  /* ← --brand-letter-spacing */
+  --tracking-030:      0.03em;  /* ← --ls-mono-tight · НЕ ЗВЕДЕНО А3: 0.04em переносить мітку table.values th у 220px на другий рядок (+18px) — перевірено на кроці 3 */
+  --tracking-040:      0.04em;  /* ← --ls-mono */
+
+  /* ── ВАГА ── */
+  --weight-400:  400;  /* ← --w-regular */
+  --weight-500:  500;  /* ← --w-medium */
+  --weight-600:  600;  /* ← --w-strong */
+
+  /* ── МІРА РЯДКА · ch ── */
+  --measure-16:  16ch;  /* ← --hero-h1-max-width */
+  --measure-18:  18ch;  /* ← --screen-head-h1-max-width */
+  --measure-22:  22ch;  /* ← --rows-li-grid-template-columns */
+  --measure-52:  52ch;  /* ← --routing-max-width */
+  --measure-58:  58ch;  /* ← --statement-after-max-width */
+  --measure-60:  60ch;  /* ← --backdrop-max-width */
+  --measure-68:  68ch;  /* ← --measure */
+  --measure-70:  70ch;  /* ← --values-doc-dd-max-width, --values-receipt-dd-max-width, --values-page-dd-max-width · ЗВЕДЕНО: три 70ch (doc · receipt · page) → один. Δ 0 */
+  --measure-72:  72ch;  /* ← --foot-legal-max-width */
+
+  /* ── ПРОСТІР · відступи, проміжки, зсуви. Назва = px. Сітка 4px + історичні кроки; числа поза сіткою (1·3·5·7·9·11·13·15) НЕ зведено — змінили б пікселі (А10) ── */
+  --space-1:   1px;  /* ← --values-passport-key-margin-bottom */
+  --space-2:   2px;  /* ← --focus-outline-offset, --btn-outline-offset, --btn-ghost-outline-offset +7 · ЗВЕДЕНО А8: відступ фокус-рамки первинної кнопки 3px → 2px, як усі. Видно лише у фокусі */
+  --space-3:   3px;  /* ← --foot-bar-a-padding-block, --section-close-link-offset, --values-dt-padding-top +2 */
+  --space-4:   4px;  /* ← --s-1, --values-event-icon-offset, --values-ruled-narrow-key-bottom */
+  --space-5:   5px;  /* ← --chip-boxed-padding-block, --tbd-block-padding-block, --chip-date-margin +1 */
+  --space-6:   6px;  /* ← --hint-margin, --navs-gap, --field-label-margin +3 */
+  --space-7:   7px;  /* ← --badge-gap, --chip-gap, --index-minor-btn-padding-block */
+  --space-8:   8px;  /* ← --s-2, --skip-link-offset, --values-ruled-padding-bottom +1 */
+  --space-9:   9px;  /* ← --badge-padding-inline, --chip-record-padding-block, --field-input-padding-block */
+  --space-10:  10px;  /* ← --section-head-row-gap, --chip-boxed-padding-inline, --values-th-padding-top-narrow +15 */
+  --space-11:  11px;  /* ← --btn-padding-block, --values-cell-padding-block, --field-input-padding-inline +2 */
+  --space-12:  12px;  /* ← --s-3, --values-ruled-val-padding-top, --values-ruled-narrow-key-top +6 */
+  --space-13:  13px;  /* ← --values-receipt-dt-padding-top */
+  --space-14:  14px;  /* ← --h2-margin-bottom, --body-margin, --stack-h2-padding-top +13 */
+  --space-15:  15px;  /* ← --values-ruled-key-padding-top */
+  --space-16:  16px;  /* ← --s-4, --body-slot-padding-inline, --form-panel-request-gap */
+  --space-18:  18px;  /* ← --s-5, --values-ruled-key-padding-right, --form-panel-request-column-gap +1 */
+  --space-20:  20px;  /* ← --s-6, --context-panel-padding */
+  --space-22:  22px;  /* ← --stack-h2-margin-bottom, --section-close-hint-margin-top, --trio-div-padding +3 */
+  --space-24:  24px;  /* ← --s-7, --section-after-block, --anchored-cta-gap +4 */
+  --space-26:  26px;  /* ← --index-minor-article-padding, --body-object-padding-inline */
+  --space-28:  28px;  /* ← --section-head-margin, --pair-ruled-div-padding-top, --pair-ruled-div-margin-top +5 */
+  --space-32:  32px;  /* ← --s-8, --logo-row-lead-gap */
+  --space-36:  36px;  /* ← --foot-cols-gap, --held-cell-padding-right, --held-cell-padding-left +2 */
+  --space-40:  40px;  /* ← --foot-bar-margin-top, --hero-gap, --hero-photo-width +2 */
+  --space-44:  44px;  /* ← --lede-margin-bottom, --logo-row-margin-top */
+  --space-48:  48px;  /* ← --split-padding-top, --statement-panel-gap, --duo-cap-gap +3 */
+  --space-52:  52px;  /* ← --site-footer-padding-top, --band-tight-padding */
+  --space-56:  56px;  /* ← --s-section */
+  --space-64:  64px;  /* ← --wrap-pad-padding-bottom, --pair-gap, --hero-padding-bottom +2 */
+  --space-72:  72px;  /* ← --s-band */
+  --space-80:  80px;  /* ← --hero-padding-top */
+  --space-88:  88px;  /* ← --s-head */
+
+  /* ── ПРОСТІР ПЛИННИЙ · назва = межі в px ── */
+  --space-fluid-16-40:  clamp(16px, 3vw, 40px);  /* ← --gutter, --hero-photo-width */
+  --space-fluid-16-24:  clamp(16px, 4vw, 24px);  /* ← --card-pad */
+  --space-fluid-20-36:  clamp(20px, 3vw, 36px);  /* ← --section-band-padding-inline */
+  --space-fluid-20-48:  clamp(20px, 4vw, 48px);  /* ← --statement-panel-padding-inline */
+  --space-fluid-28-44:  clamp(28px, 4vw, 44px);  /* ← --section-band-padding-block, --band-proof-padding, --statement-panel-padding-block · ЗВЕДЕНО: смуга · доказова смуга · панель заяви — той самий clamp. Δ 0 */
+  --space-fluid-28-48:  clamp(28px, 4vw, 48px);  /* ← --stack-diptych-first-margin */
+  --space-fluid-32-72:  clamp(32px, 4.5vw, 72px);  /* ← --rail-gap */
+  --space-fluid-32-56:  clamp(32px, 4vw, 56px);  /* ← --fallback-fork-gap, --stack-diptych-side-padding · ЗВЕДЕНО: розвилка відкату і бічне поле диптиха — той самий clamp. Δ 0 */
+  --space-fluid-36-56:  clamp(36px, 5vw, 56px);  /* ← --wrap-pad-padding-top */
+  --space-fluid-40-72:  clamp(40px, 6vw, 72px);  /* ← --statement-padding */
+  --space-fluid-40-64:  clamp(40px, 4.5vw, 64px);  /* ← --work-rail-column-gap */
+
+  /* ── РОЗМІР · ширини, висоти, треки колонок, іконки. Назва = px. Висоти скелета дзеркалять реальні елементи (31 = бейдж; кнопку скелет рахує з її метрик) ── */
+  --size-12:    12px;  /* ← --sk-value-height-plain */
+  --size-13:    13px;  /* ← --icon-sm */
+  --size-14:    14px;  /* ← --sk-line-height-plain, --notice-sk-line-height */
+  --size-16:    16px;  /* ← --icon-md */
+  --size-19:    19px;  /* ← --values-event-icon */
+  --size-22:    22px;  /* ← --icon-lg */
+  --size-24:    24px;  /* ← --sk-h2-height */
+  --size-31:    31px;  /* ← --sk-rank-height */
+  --size-42:    42px;  /* ← --sk-btn-height-plain, --sk-dd-height */
+  --size-44:    44px;  /* ← --field-min-height-touch */
+  --size-56:    56px;  /* ← --logo-slot-min-height */
+  --size-64:    64px;  /* ← --sk-values-columns */
+  --size-96:    96px;  /* ← --sk-values-plain-columns */
+  --size-110:   110px;  /* ← --field-textarea-min-height */
+  --size-140:   140px;  /* ← --orbit-tier-width */
+  --size-146:   146px;  /* ← --sk-rank-width */
+  --size-150:   150px;  /* ← --sk-area-width, --index-major-article-height */
+  --size-160:   160px;  /* ← --foot-cols-grid-template-columns */
+  --size-180:   180px;  /* ← --reg-row-code-div-grid-template-columns */
+  --size-200:   200px;  /* ← --sk-btn-width, --statement-label-column */
+  --size-210:   210px;  /* ← --photo-h-head */
+  --size-220:   220px;  /* ← --values-th-width, --sk-values-plain-columns-wide */
+  --size-230:   230px;  /* ← --sector-list-grid-template-columns */
+  --size-240:   240px;  /* ← --trio-grid-template-columns, --duo-grid-template-columns */
+  --size-250:   250px;  /* ← --rail */
+  --size-280:   280px;  /* ← --hero-photo-min-height */
+  --size-300:   300px;  /* ← --sk-title-width, --work-rail-columns */
+  --size-320:   320px;  /* ← --reg-row-div-flex */
+  --size-340:   340px;  /* ← --split-grid-template-columns */
+  --size-360:   360px;  /* ← --orbit-desc-width */
+  --size-380:   380px;  /* ← --sk-h2-width */
+  --size-660:   660px;  /* ← --offset-grid-template-columns */
+  --size-680:   680px;  /* ← --work-rail-trace */
+  --size-780:   780px;  /* ← --values-max-width */
+  --size-1020:  1020px;  /* ← --statement-panel-max-width */
+  --size-1240:  1240px;  /* ← --maxw */
+
+  /* ── РОЗМІР ПЛИННИЙ ── */
+  --size-fluid-148-188:  clamp(148px, 13vw, 188px);  /* ← --photo-h-card */
+
+  /* ── ФОРМА · радіус і товщина лінії ── */
+  --stroke-1:  1px;  /* ← --bw */
+  --radius-2:  2px;  /* ← --r */
+  --stroke-2:  2px;  /* ← --focus-outline, --btn-outline */
+
+  /* ── ЧАСТКИ Й МНОЖНИКИ · для min()/calc() компонентів ── */
+  --fr-1-35:     1.35fr;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+  --fr-1-4:      1.4fr;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+  --fr-1-45:     1.45fr;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+  --fr-1-55:     1.55fr;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+  --fr-2:        2fr;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+  --ratio-2-35:  2.35;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+  --ratio-2-4:   2.4;  /* ← --hero-photo-width */
+  --share-48:    48%;  /* ← --orbit-desc-width */
+  --share-58:    58%;  /* ← --sk-h2-width */
+  --share-64:    64%;  /* ← клас kit.css (урок 07 лишив числом, крок 3 виніс) */
+  --share-72:    72%;  /* ← --sk-title-width */
+
+  /* ── ПРОЗОРІСТЬ ── */
+  --opacity-62:  0.62;  /* ← --sk-pulse-opacity */
+
+  /* ── РУХ ── */
+  --ease-out-expo:     cubic-bezier(0.16, 1, 0.3, 1);  /* ← --ease */
+  --duration-200:      0.2s;  /* ← --dur, --dur-slow · ЗВЕДЕНО: --dur-slow 0.22s (кнопка) → 0.2s. Δ 20ms */
+  --duration-1600:     1.6s;  /* ← --sk-animation */
+  --duration-instant:  0.01ms;  /* ← --dur-instant, --dur-instant-anim · ЗВЕДЕНО: --dur-instant і --dur-instant-anim — те саме 0.01ms */
+
+  /* ── ЗОБРАЖЕННЯ · обробка знімка ── */
+  --filter-desaturate:  grayscale(0.35) contrast(1.06) brightness(0.9);  /* ← --photo-filter, --photo-filter-card · ЗВЕДЕНО А5: brightness 0.88 (фото картки) → 0.9, як шапка й герой. Той самий знімок Shield стоїть в обох слотах */
+
+  /* ── ІКОНКИ · Solar linear, локально ui/icons/. Шлях відносний до файлу — тека на тому ж рівні, що й ui/ ── */
+  --solar-shield-check:     url("../ui/icons/shield-check-linear.svg");  /* ← --i-shield */
+  --solar-routing-2:        url("../ui/icons/routing-2-linear.svg");  /* ← --i-routing */
+  --solar-widget-4:         url("../ui/icons/widget-4-linear.svg");  /* ← --i-area */
+  --solar-alt-arrow-right:  url("../ui/icons/alt-arrow-right-linear.svg");  /* ← --i-arrow */
+  --solar-danger-triangle:  url("../ui/icons/danger-triangle-linear.svg");  /* ← --i-danger */
+  --solar-info-circle:      url("../ui/icons/info-circle-linear.svg");  /* ← --i-info */
+  --solar-clock-circle:     url("../ui/icons/clock-circle-linear.svg");  /* ← --i-clock */
+  --solar-check-circle:     url("../ui/icons/check-circle-linear.svg");  /* ← --i-check */
+  --chevron-down-gray-78:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23b7b7b7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='m19 9-7 6-7-6'/%3E%3C/svg%3E");  /* ← --i-chevron · ПОВЗ ТОКЕН (В2): штрих зашитий у SVG як gray-78 (#b7b7b7) — var() у data-URI не працює */
+  --chevron-down-gray-30:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%232e2e2e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='m19 9-7 6-7-6'/%3E%3C/svg%3E");  /* крок 5 · той самий SVG, штрих = gray-30 (#2e2e2e). Діра стрес-тесту: без варіанта шеврон на світлому колодязі 1.27:1. Нового кольору не додано — лише наявний primitive у SVG */
+
+
+  /* ═══ SEMANTIC · ролі кольору ═══════════════════════════════════════════
+     Назви — з мови DESIGN.md: ґрунт, панель, смуга, колодязь, лінійка, ранг,
+     дія, подія. Вживання — tokens-audit.md §1 і §5. */
+
+  /* ── фони ── */
+  --bg-ground:          var(--gray-12);   /* ґрунт сторінки: body · .statement під знімком (аудит §1 --bg, роль 1) */
+  --bg-panel:           var(--gray-17);   /* піднята панель: .match · .reg-row · .trio > div · .news-item · .form-panel · .notice · .skeleton · .orbit · .context-panel · .body--object · .rows li:first-child · .statement > .wrap · підкладка під знімком ::after (§1 --surface, ролі 1, 3, 4) */
+  --bg-band:            var(--gray-17);   /* доказова смуга на всю ширину: .section--band · .band--raised · .band--proof. Зараз збігається з панеллю, але це зона, не коробка (Б5) */
+  --bg-panel-on-band:   var(--gray-21);   /* панель, що лежить на смузі — крок тону вище: .section--band .reg-row · .section--band .trio > div · .band--proof .reg-row (§1 --surface-2, роль 4) */
+  --bg-well:            var(--gray-21);   /* колодязь — місце, куди кладеться величина: .values · table.values · .rows · .chip--boxed · .chip--record · поле вводу .field input/select/textarea/option · основа скелета .sk, .sk-values · плейсхолдер знімка .match::before, .skeleton--photo::before (§1 --surface-2, ролі 1, 2, 3, 5, 6). Поле і скелет злито з колодязем свідомо: поле — теж колодязь, скелет обіцяє його форму (Б4) */
+
+  /* ── текст ── */
+  --text:               var(--gray-97);   /* основний текст і заголовки: body · h1–h4 · .name · table td · .field label/input · заголовок .notice · .nav-main a · ховер посилань (§1 --ink, роль 1) */
+  --text-quiet:         var(--gray-78);   /* другорядний текст: .body · .meta · .hint · .note · .routing · .field-optional · .values dd · .badge · .tbd · .logo-slot · .nav-utility · .site-footer · .dim · .band--tone-lift .dim (§1 --ink-2, ролі 1–5; Б7) */
+  --text-label:         var(--gray-64);   /* мітка й службовий напис, моно: .values dt · table.values th · .chip · .foot-cols h2 · .foot-legal · .backdrop · .sector-list .dt · .logo-cat · лічильники ::before (§1 --ink-3, ролі 1–6; Б8) */
+
+  /* ── лінійки й межі ── */
+  --rule:               var(--gray-30);   /* межа панелі, розділювач, вісь зіставлення: 65 вживань — .reg-row · .trio > div · .news-item · .form-panel · .notice · .values · .badge · .chip--boxed · .screen-head · .site-footer · .rows li · .orbit-row · .held · .pair--ruled · .index-major/minor (§1 --line, ролі 1–4). Розділ «межа» / «лінійка» — кандидат на крок 5 (Б6) */
+  --rule-rank:          var(--gray-55);   /* крок 6 (C1): було gray-42 — 2.40:1 до ґрунту, нижче 3:1 для межі кнопки (WCAG 1.4.11, A15); gray-55 — 4.18:1. Ранг і структура: межа обраного .match · .skeleton · .rows li:first-child · .trio--ranked · .reg-row--lead/--answer · .notice--receipt · межа другорядної дії .btn--ghost · лінійка над заголовком .stack > section > h2 · .fallback · .index · активна навігація .nav-main a[aria-current] · вісь .hint--aside · .section--diptych-end (§1 --line-strong, ролі 1, 2, 3, 5, 6, 7; Б3) · заливка ярусу .orbit-row .bar — злито сюди з --solo-tier-fill (N1) */
+  --rule-gap:           var(--gray-42);   /* пунктир чесного пропуску: .tbd · .body--slot · .logo-slot:nth-child(even) (§1 --line-strong, роль 4). Порожній слот тихіший за обране — після C1 розійшовся з --rule-rank */
+
+  /* ── дія · інверсія до ґрунту, без хроматики ── */
+  --action:             var(--gray-97);   /* фон і межа первинної дії: .btn · .badge--selected · .skip-link · ::selection · межа .btn--ghost:hover (§1 --ink, ролі 2, 3; Б1) */
+  --on-action:          var(--gray-12);   /* текст на дії: .btn · .badge--selected · .skip-link · ::selection (§1 --bg, роль 2; Б2) */
+
+  /* ── подія · єдина хроматика ── */
+  --event:              var(--red-68);    /* збій і строк: .notice--error h2/h3 · .chip--event · .values-key--event · іконка строку .values-val--event::before (§1 --signal, ролі 1, 2). Борг Б9: .btn:focus-visible теж читає цей токен до уроку 09 */
+
+
+  /* ═══ ОДИНИЧНІ · колір одного місця — ще не роль ═══════════════════════
+     Кожен стоїть в одному компоненті й більше ніде. Семантикою не є, але й
+     primitive компонент напряму не читає — тому окремий блок. Записано в
+     ui/_process/critique.md (урок 08): можливо, справжня роль, що ще не
+     повторилась; або стан, який прийде уроком 09. */
+  --solo-heading-dim:     var(--gray-55);   /* h1 .dim, h2 .dim — пригашена половина двотонного заголовка */
+  --solo-field-edge:      var(--gray-55);   /* .field input/select/textarea — межа поля ≥3:1 (K1). Те саме значення, що й --solo-heading-dim, але інша роль (Б10) */
+  --solo-action-hover:    var(--gray-85);   /* .btn:hover — фон і межа. Стан, урок 09 */
+  --solo-event-edge:      var(--red-34);    /* .notice--error — межа панелі помилки. Стан, урок 09 */
+  --solo-skeleton-bone:   var(--gray-26);   /* .sk-title · .sk-btn · .sk-values .sk · .sk--bone — кістка скелета поверх колодязя */
+  --solo-field-chevron:   var(--chevron-down-gray-78);   /* .field select — шеврон. Колір зашитий у SVG (В2) */
+  --solo-statement-scrim: linear-gradient(105deg,
+                            color-mix(in oklch, var(--bg-ground) 78%, transparent) 0%,
+                            color-mix(in oklch, var(--bg-ground) 42%, transparent) 55%,
+                            color-mix(in oklch, var(--bg-ground) 62%, transparent) 100%);
+                          /* .statement — затемнення знімка під заявою. Було літералом oklch(0.12 0 0 / …) тричі (В1); тепер виводиться з ґрунту */
+}
+
+/* ═══ СТРЕС-ТЕСТ ТЕМИ · урок 08, крок 5 ═══════════════════════════════════
+   Доказ архітектури, не фіча продукту. Продукт dark-first (бриф §9), тому
+   перевірка — СВІТЛОЮ темою. Перевизначено ЛИШЕ semantic і --solo-*;
+   primitive і components/ не змінені, нових значень немає — лише інші
+   primitive з тієї ж палітри. Лишати тему в продукті — окреме рішення.
+   Вмикається атрибутом data-theme="light" на <html> (перемикач — смуга
+   станів кожного екрана, wireframes/_theme.js).
+
+   КОНТРАСТ WCAG 2.2 AA · рахунок sRGB з oklch, та сама формула, що в
+   concept.html. Текст ≥4.5:1; великий текст, межа поля й межа рангу ≥3:1.
+                                  темна               світла
+     --text        / ґрунт         18.61               18.61
+     --text        / колодязь      16.24               12.84
+     --text-quiet  / панель         9.55               12.50
+     --text-quiet  / колодязь       8.85                8.63
+     --text-label  / ґрунт          6.03                7.76
+     --text-label  / колодязь       5.27                5.35   ← найслабша текстова пара, AA
+     --on-action   / --action      18.61               18.61
+     --on-action   / hover         12.84               12.50
+     --event       / панель         6.08               11.23
+     --event       / колодязь       5.64                7.75
+     --solo-heading-dim / ґрунт     4.18 (великий)      4.45 (великий)
+     --solo-field-edge  / колодязь  3.65                5.35
+     --rule-rank   / ґрунт          4.18 (було 2.40 ✗)  4.45   ← темна виправлена на кроці 6 (C1)
+     --rule-rank   / панель         3.94                4.45
+     --solo-event-edge  / панель    1.56 ✗             11.23   ← темна: межа не єдиний носій стану (іконка + слово + тон заголовка)
+     --rule (декоративна лінійка)   1.49                1.84   — не носій інформації, поріг не застосовується */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-ground:          var(--gray-97);
+  --bg-panel:           var(--gray-97);   /* панель тримає межа, не тон — як і в темній, зсув тону малий */
+  --bg-band:            var(--gray-85);
+  --bg-panel-on-band:   var(--gray-97);
+  --bg-well:            var(--gray-85);
+
+  --text:               var(--gray-12);
+  --text-quiet:         var(--gray-30);
+  --text-label:         var(--gray-42);
+
+  --rule:               var(--gray-78);
+  --rule-rank:          var(--gray-55);
+  --rule-gap:           var(--gray-55);
+
+  --action:             var(--gray-12);
+  --on-action:          var(--gray-97);
+
+  --event:              var(--red-34);    /* red-68 на світлому — 3.1:1, для чіпа 12.8px замало */
+
+  --solo-heading-dim:     var(--gray-55);
+  --solo-field-edge:      var(--gray-42);
+  --solo-action-hover:    var(--gray-30);
+  --solo-event-edge:      var(--red-34);  /* red-68 — 2.88:1 */
+  --solo-skeleton-bone:   var(--gray-78);
+  --solo-field-chevron:   var(--chevron-down-gray-30);   /* ДІРА, знайдена тестом (В2): колір шеврона зашитий у SVG; gray-78 на світлому колодязі — 1.27:1, gray-30 — 8.63:1 */
+}
