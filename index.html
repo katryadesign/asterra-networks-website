@@ -249,7 +249,7 @@
     <p class="lede">A redesign worked <b>lesson by lesson</b>, from competitive research through personas and jobs to a design system and developer handoff. Each lesson ships as a readable one-page view, with its full working files underneath.</p>
     <div class="meta">
       <span><b>Phase</b> concept complete; UI assembly next</span>
-      <span><b>Lessons published</b> <span class="mono">6 of 12</span></span>
+      <span><b>Lessons published</b> <span class="mono">8 of 12</span></span>
       <span><b>Last updated</b> <span class="mono">2026-09-17</span></span>
       <span><b>Brief</b> <a href="/CLAUDE.md">CLAUDE.md</a></span>
     </div>
@@ -420,19 +420,58 @@
     </div>
   </article>
 
-  <article class="lesson soon">
+  <article class="lesson live">
     <div class="lnum">07</div>
     <div>
-      <div class="lhead"><h3>UI Assembly</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">From concept to finished screens: components composed into the real thing, with actual imagery and icons instead of "illustration goes here" placeholders.</p>
+      <div class="lhead">
+        <h3><a href="/ui/kit">UI Assembly</a></h3>
+        <span class="status st-done">Published</span>
+      </div>
+      <p class="ldesc">From concept to finished screens, with the language <b>documented from the painted code</b>, not from memory. A component inventory read off every wireframe, then one flat kit: values in variables, state and variant as explicit classes, the shell as markup. Nine generated photographs replace stock (<b>equipment as a documented object</b>, one sea-green colourway held in the material) and Solar icons are served locally. <b>All 28 pages reassembled from the kit</b> with no page-level styles, and the render compared element by element against the original before anything else changed. Then a five-group critique and a full audit, with invented partner marks leading the proof strip.</p>
+      <div class="lfacts">
+        <span class="fact"><b>28/28</b> pages from one kit, no own styles</span>
+        <span class="fact"><b>11,445</b> element checks, <b>0</b> differences</span>
+        <span class="fact"><b>9</b> generated photographs</span>
+        <span class="fact"><b>8</b> Solar icons, local</span>
+        <span class="fact">audit <b>15/20</b>, all P1&ndash;P2 fixed</span>
+        <span class="fact">compiled <b>2026-09-17</b></span>
+      </div>
+      <div class="lctas">
+        <a class="btn" href="/ui/kit">Open the showcase</a>
+        <a class="btn ghost" href="/wireframes/entry">See the screens</a>
+        <a class="btn ghost" href="/DESIGN.md">DESIGN.md</a>
+        <a class="btn ghost" href="/ui/inventory.md">Inventory</a>
+        <a class="btn ghost" href="/visuals/README.md">Imagery</a>
+      </div>
+      <p class="lfiles"><b>Inside:</b> DESIGN.md generated from the screens, with every kept change signed by its reason &middot; the inventory with the old &rarr; kit class map and variant registry &middot; the shell as markup (skip link, two-tier header, footer) &middot; the live showcase of every component on canonical copy &middot; the imagery prompt pack and selection log &middot; the critique by five parallel sub-agents and the defect-table audit &middot; the microcopy canon taken from the finished screens.</p>
     </div>
   </article>
 
-  <article class="lesson soon">
+  <article class="lesson live">
     <div class="lnum">08</div>
     <div>
-      <div class="lhead"><h3>Design Tokens &amp; Components</h3><span class="status st-soon">Planned</span></div>
-      <p class="ldesc">Tokens pulled out of the concept into CSS variables across three levels (primitive, semantic, component), then a set of clean, semantic base components with no hardcoded values.</p>
+      <div class="lhead">
+        <h3><a href="/tokens/tokens-audit.md">Design Tokens &amp; Components</a></h3>
+        <span class="status st-done">Published</span>
+      </div>
+      <p class="ldesc">The flat kit split into architecture, with one test of honesty: <b>the product must look exactly the same</b>. First the facts, an audit of every variable with the role it plays in each place. Then two tiers: <b>primitives named by value</b>, and a semantic tier that holds <b>colour roles only</b>, each tracing the usages it grew from; geometry is read straight from primitives, so the planned component tier was dissolved into the components themselves. Classes moved into one file per component, all 28 pages switched over and compared pixel for pixel before the old kit was deleted. The proof: <b>a light theme swapped in by overriding the semantic tier alone</b>, without touching a single component.</p>
+      <div class="lfacts">
+        <span class="fact"><b>328</b> variables audited</span>
+        <span class="fact"><b>14</b> colour roles, each traced</span>
+        <span class="fact"><b>40</b> component files, no raw values</span>
+        <span class="fact"><b>22,629</b> element checks, <b>0</b> differences</span>
+        <span class="fact">text AA in <b>both themes</b>, 28/28 pages</span>
+        <span class="fact">audit <b>17/20</b></span>
+        <span class="fact">compiled <b>2026-09-17</b></span>
+      </div>
+      <div class="lctas">
+        <a class="btn" href="/tokens/tokens-audit.md">Read the audit</a>
+        <a class="btn ghost" href="/tokens/tokens.css">tokens.css</a>
+        <a class="btn ghost" href="/components/index.css">Components</a>
+        <a class="btn ghost" href="/wireframes/guided-matching">Try the theme test</a>
+        <a class="btn ghost" href="/ui/_process/defects-08.md">Defect table</a>
+      </div>
+      <p class="lfiles"><b>Inside:</b> the audit: value drift, one variable carrying several roles, values bypassing variables, role candidates &middot; tokens.css with a comment of origin on every line and drift unified only where the comparison proved nothing moves &middot; one-place colours kept outside the role set and logged for a decision &middot; 40 component files reading colour through roles only &middot; the light-theme stress block with a WCAG contrast table, and the hole it found (a colour baked into an SVG) &middot; the defect table and the fixes: rank line to 4.18:1, a duplicate role merged, two near-identical type sizes unified.</p>
     </div>
   </article>
 
