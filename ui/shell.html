@@ -5,18 +5,22 @@
      Таб-бару в Asterra немає: це сайт, а не застосунок.
 
      Текст і склад пунктів — дослівно з wireframes/ (нічого не вигадано).
-     Класи — з ui/kit.css. Шляхи посилань лишені відносними до wireframes/,
+     Класи — з components/ (tokens/tokens.css + components/index.css; урок 08 —
+     до того плаский ui/kit.css). Шляхи посилань лишені відносними до wireframes/,
      бо саме туди оболонка вставляється на кроці 5.
 
      ЯК КОРИСТУВАТИСЬ: скопіювати блок <header> на початок <body> екрана і
      блок <footer> у кінець; `<main>` отримує id="main" — туди веде skip-link. Активний пункт позначається aria-current="page"
-     на посиланні головного ряду — саме його чекає правило кіта.
+     на посиланні головного ряду — саме його чекає правило components/site-header.css.
      ═══════════════════════════════════════════════════════════════════════ -->
 
-<!-- У <head> сторінки, ПЕРЕД ../ui/kit.css (шрифти не через @import — A6):
+<!-- У <head> сторінки саме в такому порядку: шрифти (не через @import — A6), потім
+     токени, потім компоненти. Компоненти без токенів не мають жодного значення.
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../components/index.css">
 -->
 
 <a class="skip-link" href="#main">Skip to content</a>

@@ -3,14 +3,16 @@
    Урок 07, крок 5.
 
    Дерево екранів (.wf-tree), смуга станів (.wf-states) і документація
-   (.wf-doc) — інструмент перегляду макетів (_conventions.md §8). У кіт
-   ui/kit.css вони свідомо не входять: кіт — мова продукту.
+   (.wf-doc) — інструмент перегляду макетів (_conventions.md §8). У
+   components/ вони свідомо не входять: компоненти — мова продукту.
 
-   Сторінка, переведена на кіт, підключає:
-     <link rel="stylesheet" href="../ui/kit.css">
+   Кожна сторінка підключає (урок 08, крок 4):
+     <link rel="stylesheet" href="../tokens/tokens.css">
+     <link rel="stylesheet" href="../components/index.css">
      <link rel="stylesheet" href="_chrome.css">
-   і більше нічого. _wireframe.css, _panel.css і _parts/*.css лишаються
-   тільки для сторінок, ще не переведених на кіт.
+   і більше нічого. Хром — інструмент, не продукт: тема його не перефарбовує,
+   тому кольори він бере з primitive напряму (--svc-*), а не з ролей.
+   Скрипт _theme.js ставить перемикач теми в смугу станів (урок 08, крок 5).
 
    Значення перенесені з _wireframe.css і службового блоку _panel.css
    без змін — геометрія хрому не мусить зрушити, бо від ширини дерева
@@ -21,9 +23,11 @@
   --svc-bg:   oklch(0.16 0 0);
   --svc-ink:  oklch(0.72 0 0);
   --svc-line: oklch(0.28 0 0);
-  --svc-mid:  var(--ink-2);
-  --svc-soft: var(--ink-3);
-  --svc-rule: var(--line);
+  --svc-mid:  var(--gray-78);
+  --svc-soft: var(--gray-64);
+  --svc-rule: var(--gray-30);
+  --svc-hi:   var(--gray-97);
+  --svc-lo:   var(--gray-12);
   font-family: ui-monospace, "Consolas", monospace;
   background: var(--svc-bg);
   color: var(--svc-ink);
@@ -47,50 +51,55 @@ body { display: flex; align-items: flex-start; }
   line-height: 1.5;
 }
 .wf-tree .tree-head { padding: 0 14px 12px; border-bottom: 1px solid var(--svc-rule); margin-bottom: 10px; }
-.wf-tree .tree-head b { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.wf-tree .tree-head b { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--svc-hi); }
 .wf-tree .tree-head span { color: var(--svc-soft); font-size: 10px; }
 .wf-tree ul { list-style: none; margin: 0; padding: 0; }
 .wf-tree .grp { margin: 0 0 4px; }
 .wf-tree .grp > .grp-name {
   display: block; padding: 10px 14px 4px;
   font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--ink); font-weight: 700;
+  color: var(--svc-hi); font-weight: 700;
 }
 .wf-tree .grp > .grp-name em { display: block; font-style: normal; font-weight: 400; color: var(--svc-soft); text-transform: none; letter-spacing: 0; }
 .wf-tree .scr > a, .wf-tree .scr > span { display: block; padding: 4px 14px 4px 24px; text-decoration: none; color: var(--svc-ink); }
 .wf-tree .st > a,  .wf-tree .st > span  { display: block; padding: 3px 14px 3px 40px; text-decoration: none; color: var(--svc-ink); }
-.wf-tree a:hover { background: var(--svc-rule); color: var(--ink); }
+.wf-tree a:hover { background: var(--svc-rule); color: var(--svc-hi); }
 .wf-tree .planned > span, .wf-tree .out > span { color: var(--svc-soft); }
 .wf-tree .planned > span::after { content: " ·planned"; font-size: 9px; color: var(--svc-rule); }
 .wf-tree .out > span::after { content: " ·not in batch"; font-size: 9px; color: var(--svc-rule); }
 /* Поточний екран у дереві: інверсія. У _panel.css текст мав той самий
    колір, що й фон, і пункт читався білою смугою без напису — тут
    прочитується. Це хром, не продукт: на геометрію не впливає. */
-.wf-tree [aria-current="page"] { background: var(--ink); color: var(--bg); font-weight: 700; }
+.wf-tree [aria-current="page"] { background: var(--svc-hi); color: var(--svc-lo); font-weight: 700; }
 .wf-tree [aria-current="page"]::before { content: "▸ "; }
 .wf-tree .tree-foot { padding: 14px 14px 0; margin-top: 12px; border-top: 1px solid var(--svc-rule); font-size: 10px; color: var(--svc-soft); }
 
 /* ── смуга станів ───────────────────────────────────────────────────── */
 .wf-states { border-bottom: 1px solid var(--svc-rule); font-size: 11px; }
 .wf-states .wrap { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
-.wf-states b { color: var(--ink); letter-spacing: .1em; text-transform: uppercase; font-size: 10px; }
+.wf-states b { color: var(--svc-hi); letter-spacing: .1em; text-transform: uppercase; font-size: 10px; }
 .wf-states a, .wf-states .cur { padding: 2px 8px; border: 1px solid var(--svc-rule); text-decoration: none; color: var(--svc-ink); }
-.wf-states a:hover { color: var(--ink); }
-.wf-states .cur { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.wf-states a:hover { color: var(--svc-hi); }
+.wf-states .cur { background: var(--svc-hi); color: var(--svc-lo); border-color: var(--svc-hi); }
 .wf-states .off { color: var(--svc-soft); border-style: dashed; }
 .wf-states em { font-style: normal; color: var(--svc-soft); flex: 1 1 340px; }
+/* Перемикач теми — стрес-тест семантичного шару (урок 08, крок 5). */
+.wf-theme { font: inherit; cursor: pointer; padding: 2px 8px; border: 1px solid var(--svc-rule); background: transparent; color: var(--svc-ink); }
+.wf-theme:hover { color: var(--svc-hi); border-color: var(--svc-mid); }
+.wf-theme[aria-pressed="true"] { background: var(--svc-hi); color: var(--svc-lo); border-color: var(--svc-hi); }
+.wf-theme:focus-visible { outline: 2px solid var(--svc-hi); outline-offset: 2px; }
 
 /* ── документація під екраном ───────────────────────────────────────── */
 .wf-doc { border-top: 4px solid var(--svc-line); padding: 40px 0 56px; font-size: 11px; line-height: 1.55; }
 .wf-doc .wrap { max-width: 980px; }
-.wf-doc h2, .wf-doc h3 { font-family: inherit; font-size: 0.86rem; font-weight: 600; letter-spacing: 0; line-height: 1.55; color: var(--ink); }
+.wf-doc h2, .wf-doc h3 { font-family: inherit; font-size: 0.86rem; font-weight: 600; letter-spacing: 0; line-height: 1.55; color: var(--svc-hi); }
 .wf-doc h2 { text-transform: uppercase; margin: 0 0 18px; }
 .wf-doc h3 { margin: 20px 0 4px; }
 .wf-doc p { margin: 0 0 6px; max-width: 112ch; color: var(--svc-ink); }
 .wf-doc code { color: var(--svc-ink); }
-.wf-doc strong { color: var(--ink); }
+.wf-doc strong { color: var(--svc-hi); }
 .wf-doc a { color: var(--svc-ink); }
-.wf-doc a:hover { color: var(--ink); }
+.wf-doc a:hover { color: var(--svc-hi); }
 
 /* ── вузькі екрани: дерево стає смугою зверху ───────────────────────── */
 @media (max-width: 1080px) {
