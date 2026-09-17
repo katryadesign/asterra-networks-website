@@ -22,7 +22,7 @@ concept → tokens → components → the assembled system → developer handoff
 |---|---|---|---|
 | 1 | [`research/`](./research/) | Discovery: [`research.md`](./research/research.md) (competitor audit) + [`screens/`](./research/screens/) captures · evidence about people: [`people.md`](./research/people.md), [`people-desk.md`](./research/people-desk.md), [`personas.md`](./research/personas.md) (proto-personas — validation pending), [`jtbd.md`](./research/jtbd.md), [`audit.md`](./research/audit.md) (evidence audit) | 🟡 In progress |
 | 2 | [`wireframes/`](./wireframes/) | Low-fi wireframes: 12 screens · 28 pages (every confirmed state), clickable end-to-end | 🟢 Done |
-| 3 | [`concept/`](./concept/) | Visual concept / art direction: Refero references, designer taste + 5 attribute pairs, three contrasted directions, chosen direction B «Panel» as a live test stand, language applied to all 28 wireframe pages | 🟡 In progress |
+| 3 | [`concept/`](./concept/) | Visual concept / art direction: Refero references, designer taste + 5 attribute pairs, three contrasted directions, chosen direction B «Panel» as a live test stand, language applied to all 28 wireframe pages | 🟢 Done |
 | 4 | [`tokens/`](./tokens/) | Design tokens — color, type, spacing, motion (source of truth) | ⚪ Planned |
 | 5 | [`components/`](./components/) | Component inventory & specs (variants, states, a11y) | ⚪ Planned |
 | 6 | [`design-system/`](./design-system/) | Assembled system: foundations + components + patterns + guidelines | ⚪ Planned |
@@ -155,9 +155,14 @@ other layer: each decision anchored to a research line, hypotheses labelled, not
   at 1440/375 — zero failures. Journal: [`concept/_audit.md`](./concept/_audit.md)
   Appendix 5.
 
-Deliberately open at this stage: brief §9 “bold color blocks” vs the one-accent discipline
-of the entire reference set (taste sides 4/4 with discipline); error live-region and the
-service-tree tab order (wireframe markup level — not to be fixed in passing).
+Taste-vs-data decisions, all closed: K1 imagery is equipment-as-object, no people (2026-08-27);
+brief §9 “bold color blocks” read as tonal-shift bands inside the dark scheme, no light insets
+(2026-08-27); K2 neutral chroma-0 black, the warm `#0b0405` stays a source description only
+(2026-09-17); K3 display weight 500 with local density per A5 (2026-09-17); anti-references:
+“grey gradients instead of imagery” kept, “screens without icons” dropped (2026-09-17).
+
+Deliberately open at this stage: error live-region and the service-tree tab order (wireframe
+markup level — not to be fixed in passing).
 
 ---
 

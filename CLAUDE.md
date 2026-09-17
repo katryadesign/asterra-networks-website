@@ -361,9 +361,9 @@ brief §9 (dark-first, editorial tech) and is deliberately absent here.
 Наступні етапи (concept → tokens → components → білд) беруть кожен рядок тексту з
 `voice.md`/`microcopy.md`, а не винаходять заново.
 
-## 18. Концепт (stage in progress, 2026-08-27)
+## 18. Концепт (stage complete, 2026-09-17)
 
-Етап concept розпочато; артефакти в [`concept/`](./concept/):
+Етап concept завершено 2026-09-17 (урок 06 опубліковано); артефакти в [`concept/`](./concept/):
 
 - **Референси:** [`concept/references.md`](./concept/references.md) — зібрано через MCP Refero.
   Основа Andercore + прийоми HashiCorp / Apollo / Langbase / Resend / Cartesia / Vercel / Mapbox;
@@ -371,8 +371,11 @@ brief §9 (dark-first, editorial tech) and is deliberately absent here.
   (Stripe, Vercel) — світлі; темний §9 наповнюється носіями прийому, не бенчмарками.
 - **Смак і атрибути:** [`concept/concept.md`](./concept/concept.md) — «Смак дизайнера»
   (Oxide · Linear · Invisible · Composio; анти-референс — теплий теракотовий editorial),
-  5 пар атрибутів A1–A5 з якорями в ресерчі, три розбіжності смак/дані (К1 закрито:
-  **обладнання як об'єкт — так, людей і краєвид прибрано**; §9 брифу свідомо звужено).
+  5 пар атрибутів A1–A5 з якорями в ресерчі, три розбіжності смак/дані, **усі закрито**: К1 (2026-08-27) —
+  **обладнання як об'єкт — так, людей і краєвид прибрано**; §9 брифу свідомо звужено ·
+  К2 (2026-09-17) — **нейтральний чорний chroma 0**, теплий `#0b0405` лишається описом джерела ·
+  К3 (2026-09-17) — **дисплей у вазі 500, щільність локальна** (A5). Анти-референси: «сірі
+  градієнти замість зображення» лишено, «екрани без іконок» прибрано (2026-09-17).
 - **Напрями:** [`concept/directions.html`](./concept/directions.html) — три контрастні мови
   (A «Штамп» · B «Панель» · C «Схема»), кожна виходить із забороненої лінії
   editorial-typographic окремим механізмом. **Обрано B «Панель»**: chroma 0 на підкладці,
@@ -402,6 +405,7 @@ brief §9 (dark-first, editorial tech) and is deliberately absent here.
   [`concept/_audit.md`](./concept/_audit.md) Додаток 5.
 - **Скіл /impeccable** підключено; PRODUCT.md синтезовано з підтверджених документів.
   Critique 32/40, детектор чистий; знімок в `.impeccable/critique/`.
-- **Свідомо відкрите рівня concept:** «bold color blocks» §9 проти одноакцентної
-  дисципліни (references.md §1; смак 4/4 на боці дисципліни) · error без live-region і
+- **Закрито рівня concept:** «bold color blocks» §9 — широкі смуги тонального зсуву в межах
+  темної схеми, без світлих інсетів (2026-08-27, concept.md §5).
+- **Свідомо відкрите рівня concept:** error без live-region і
   tab-порядок через службове дерево (рівень розмітки вайрфреймів — не чіпати мимохідь).
