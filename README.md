@@ -23,9 +23,9 @@ concept → tokens → components → the assembled system → developer handoff
 | 1 | [`research/`](./research/) | Discovery: [`research.md`](./research/research.md) (competitor audit) + [`screens/`](./research/screens/) captures · evidence about people: [`people.md`](./research/people.md), [`people-desk.md`](./research/people-desk.md), [`personas.md`](./research/personas.md) (proto-personas — validation pending), [`jtbd.md`](./research/jtbd.md), [`audit.md`](./research/audit.md) (evidence audit) | 🟡 In progress |
 | 2 | [`wireframes/`](./wireframes/) | Low-fi wireframes: 12 screens · 28 pages (every confirmed state), clickable end-to-end | 🟢 Done |
 | 3 | [`concept/`](./concept/) | Visual concept / art direction: Refero references, designer taste + 5 attribute pairs, three contrasted directions, chosen direction B «Panel» as a live test stand, language applied to all 28 wireframe pages | 🟢 Done |
-| 3a | [`ui/`](./ui/) · [`visuals/`](./visuals/) | **UI kit (lesson 07):** flat [`kit.css`](./ui/kit.css) + shell markup + live showcase, component inventory, product imagery; all 28 wireframe pages assembled from the kit | 🟢 Done |
-| 4 | [`tokens/`](./tokens/) | Design tokens — color, type, spacing, motion (source of truth) | ⚪ Planned |
-| 5 | [`components/`](./components/) | Component inventory & specs (variants, states, a11y) | ⚪ Planned |
+| 3a | [`ui/`](./ui/) · [`visuals/`](./visuals/) | **UI kit (lesson 07):** shell markup + live [showcase](./ui/kit.html), component inventory, product imagery; all 28 wireframe pages assembled from the kit (the flat `kit.css` was split in lesson 08) | 🟢 Done |
+| 4 | [`tokens/`](./tokens/) | **Tokens (lesson 08):** [audit](./tokens/tokens-audit.md) + [`tokens.css`](./tokens/tokens.css) — primitive values and semantic color roles, light-theme stress test | 🟢 Done |
+| 5 | [`components/`](./components/) | **Component CSS (lesson 08):** one file per component on tokens. Specs & states — lesson 09 | 🟡 In progress |
 | 6 | [`design-system/`](./design-system/) | Assembled system: foundations + components + patterns + guidelines | ⚪ Planned |
 | 7 | [`handoff/`](./handoff/) | Developer-ready specs, token exports, asset exports | ⚪ Planned |
 
@@ -200,22 +200,53 @@ The screens are assembled from one kit — no page carries its own styles.
   change is signed with its reason (critique fixes, audit fixes).
 - **Inventory:** [`ui/inventory.md`](./ui/inventory.md) — components of the whole product read
   from the wireframes, old → kit class map, variant registry.
-- **Kit (flat):** [`ui/kit.css`](./ui/kit.css) — variables in `:root` + component classes, no
-  raw values inside classes; state and variant are explicit classes. Shell as markup:
-  [`ui/shell.html`](./ui/shell.html). Showcase: [`ui/kit.html`](./ui/kit.html). Icons (Solar
-  linear) local in `ui/icons/`. Two-tier tokens are the next lesson.
+- **Kit:** built flat in lesson 07 (`ui/kit.css`), split in lesson 08 into
+  [`tokens/`](./tokens/) and [`components/`](./components/) — see **Tokens** below. State and
+  variant are explicit classes. Shell as markup: [`ui/shell.html`](./ui/shell.html). Showcase:
+  [`ui/kit.html`](./ui/kit.html). Icons (Solar linear) local in `ui/icons/`.
 - **Imagery:** [`visuals/`](./visuals/) — nine generated photographs (equipment as a documented
   object, one sea-green colourway held in the material, blue cast neutralised), prompt pack
   and selection log in [`visuals/README.md`](./visuals/README.md).
 - **Screens:** all 28 pages in [`wireframes/`](./wireframes/) link only the fonts,
-  `../ui/kit.css` and `_chrome.css` (review chrome). The migration was verified automatically —
+  `../tokens/tokens.css`, `../components/index.css` and `_chrome.css` (review chrome). The migration was verified automatically —
   11,445 element comparisons at 1440/1024/375, zero differences from the original render.
   Pre-kit stylesheets are archived in [`wireframes/_archive/`](./wireframes/_archive/).
 - **Checks:** critique by five parallel sub-agents and a full audit (15/20) —
   [`ui/_process/`](./ui/_process/). All P1 and P2 fixed; text canon now lives in
   [`microcopy.md`](./microcopy.md) → «Поточний канон».
-- **Rule «keep it»:** a kept visual change updates the kit and showcase, is signed in
-  DESIGN.md, and its markup is carried to every screen that uses the component.
+- **Rule «keep it»:** a kept value change goes into the token of the right tier in
+  `tokens/tokens.css` (color → semantic role, geometry → primitive); a markup change goes into the
+  showcase and every screen that uses the component; the reason is signed in DESIGN.md.
+
+---
+
+## Tokens
+
+Lesson 08: the flat kit split into two token tiers and per-component files. **The product looks
+the same** — before `ui/kit.css` was deleted, all 28 pages were compared against it
+automatically: 84 runs at 1440/1024/375, 22,629 elements, zero differences.
+
+- **Audit:** [`tokens/tokens-audit.md`](./tokens/tokens-audit.md) — all 328 kit variables with
+  value, usages and the role in each place; value drift, one variable carrying several roles,
+  values bypassing variables; role candidates.
+- **Primitive tier** ([`tokens/tokens.css`](./tokens/tokens.css)) — raw values without roles,
+  named by value: `--gray-12…97`, `--red-34/68`, `--space-N`, `--size-N`, `--font-size-N`,
+  leading, tracking, radius, stroke, motion, Solar icons. Drift was unified only where the
+  comparison proved geometry does not move.
+- **Semantic tier — color roles only**, named from the design language: `--bg-ground`,
+  `--bg-panel`, `--bg-band`, `--bg-panel-on-band`, `--bg-well`, `--text`, `--text-quiet`,
+  `--text-label`, `--rule`, `--rule-rank`, `--rule-gap`, `--action`, `--on-action`, `--event`.
+  Each carries a comment naming the usages it grew from. Colors used in exactly one place stay
+  outside the role set as `--solo-*` and are logged for a decision. Geometry has no semantic tier.
+- **Components:** [`components/`](./components/) — 40 files + `index.css`. Color only through
+  roles, geometry straight from primitives, no hex / px / font names inside classes.
+- **Theme stress test:** `[data-theme="light"]` overrides only the semantic tier with existing
+  primitives; no component file changed. Toggle in every screen's review bar
+  ([`wireframes/_theme.js`](./wireframes/_theme.js)). Text contrast passes WCAG AA in both themes on
+  all 28 pages. Decision: **kept as a test, not a product feature** — the product stays dark-first.
+- **Checks:** [`ui/_process/defects-08.md`](./ui/_process/defects-08.md) — `/impeccable audit`
+  17/20. All P1/P2 fixed: rank line raised to 4.18:1 (WCAG 1.4.11), duplicate role merged, the
+  0.94rem / 0.9375rem pair unified to 0.875rem, `color-scheme` declared.
 
 ---
 

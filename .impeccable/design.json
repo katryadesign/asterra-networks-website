@@ -9,7 +9,7 @@
       "surface-2": { "role": "neutral", "displayName": "Readout Well", "canonical": "oklch(0.21 0 0)" },
       "skeleton-bone": { "role": "neutral", "displayName": "Bone", "canonical": "oklch(0.26 0 0)" },
       "line": { "role": "neutral", "displayName": "Hairline", "canonical": "oklch(0.30 0 0)" },
-      "line-strong": { "role": "neutral", "displayName": "Rank Line", "canonical": "oklch(0.42 0 0)" },
+      "line-strong": { "role": "neutral", "displayName": "Rank Line", "canonical": "oklch(0.55 0 0)" },
       "ink": { "role": "neutral", "displayName": "Chalk", "canonical": "oklch(0.97 0 0)" },
       "ink-hover": { "role": "neutral", "displayName": "Chalk Pressed", "canonical": "oklch(0.85 0 0)" },
       "ink-2": { "role": "neutral", "displayName": "Dim Chalk", "canonical": "oklch(0.78 0 0)" },
@@ -44,7 +44,7 @@
       "refersTo": "button-primary",
       "description": "Хід уперед по флоу; стрілка тільки на «далі».",
       "html": "<button class=\"ds-btn\">Talk to an expert <span class=\"ds-arrow\" aria-hidden=\"true\"></span></button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;font:600 0.94rem 'Familjen Grotesk',system-ui,sans-serif;padding:11px 18px;border-radius:2px;background:var(--ink,oklch(0.97 0 0));color:var(--bg,oklch(0.12 0 0));border:1px solid var(--ink,oklch(0.97 0 0));cursor:pointer;transition:background .22s cubic-bezier(0.16,1,0.3,1),border-color .22s cubic-bezier(0.16,1,0.3,1)}.ds-btn:hover{background:oklch(0.85 0 0);border-color:oklch(0.85 0 0)}.ds-btn:focus-visible{outline:2px solid oklch(0.68 0.19 25);outline-offset:3px}.ds-arrow{width:16px;height:16px;background:currentColor;-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22none%22 stroke=%22black%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22m9 5l7 7l-7 7%22/></svg>') center/contain no-repeat;mask:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22none%22 stroke=%22black%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22m9 5l7 7l-7 7%22/></svg>') center/contain no-repeat}"
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;font:600 0.875rem 'Familjen Grotesk',system-ui,sans-serif;padding:11px 18px;border-radius:2px;background:var(--ink,oklch(0.97 0 0));color:var(--bg,oklch(0.12 0 0));border:1px solid var(--ink,oklch(0.97 0 0));cursor:pointer;transition:background .22s cubic-bezier(0.16,1,0.3,1),border-color .22s cubic-bezier(0.16,1,0.3,1)}.ds-btn:hover{background:oklch(0.85 0 0);border-color:oklch(0.85 0 0)}.ds-btn:focus-visible{outline:2px solid oklch(0.68 0.19 25);outline-offset:3px}.ds-arrow{width:16px;height:16px;background:currentColor;-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22none%22 stroke=%22black%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22m9 5l7 7l-7 7%22/></svg>') center/contain no-repeat;mask:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22none%22 stroke=%22black%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22m9 5l7 7l-7 7%22/></svg>') center/contain no-repeat}"
     },
     {
       "name": "Ghost Button",
@@ -52,7 +52,7 @@
       "refersTo": "button-ghost",
       "description": "Підпорядкована дія: убік, назад, retry.",
       "html": "<button class=\"ds-btn-ghost\">Read IMO MSC.428(98)</button>",
-      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:8px;font:600 0.94rem 'Familjen Grotesk',system-ui,sans-serif;padding:11px 18px;border-radius:2px;background:transparent;color:var(--ink,oklch(0.97 0 0));border:1px solid var(--line-strong,oklch(0.42 0 0));cursor:pointer;transition:border-color .22s cubic-bezier(0.16,1,0.3,1)}.ds-btn-ghost:hover{border-color:var(--ink,oklch(0.97 0 0))}.ds-btn-ghost:focus-visible{outline:2px solid var(--ink,oklch(0.97 0 0));outline-offset:2px}"
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:8px;font:600 0.875rem 'Familjen Grotesk',system-ui,sans-serif;padding:11px 18px;border-radius:2px;background:transparent;color:var(--ink,oklch(0.97 0 0));border:1px solid var(--line-strong,oklch(0.42 0 0));cursor:pointer;transition:border-color .22s cubic-bezier(0.16,1,0.3,1)}.ds-btn-ghost:hover{border-color:var(--ink,oklch(0.97 0 0))}.ds-btn-ghost:focus-visible{outline:2px solid var(--ink,oklch(0.97 0 0));outline-offset:2px}"
     },
     {
       "name": "Rank Badge",
@@ -68,7 +68,7 @@
       "refersTo": "value-surface",
       "description": "Усі величини однієї речі в одній коробці.",
       "html": "<dl class=\"ds-dl\"><dt>Closes</dt><dd>MSC.428(98) · IACS UR E26/E27 · IEC 62443</dd><dt>Fits</dt><dd>A managed fleet standardising across vessels</dd></dl>",
-      "css": ".ds-dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;background:var(--surface-2,oklch(0.21 0 0));border:1px solid var(--line,oklch(0.30 0 0));border-radius:2px;padding:14px 16px}.ds-dl dt{font:400 0.8rem 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3,oklch(0.64 0 0))}.ds-dl dd{margin:0;font:400 0.94rem 'Familjen Grotesk',system-ui,sans-serif;color:var(--ink-2,oklch(0.78 0 0));font-variant-numeric:tabular-nums}"
+      "css": ".ds-dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;background:var(--surface-2,oklch(0.21 0 0));border:1px solid var(--line,oklch(0.30 0 0));border-radius:2px;padding:14px 16px}.ds-dl dt{font:400 0.8rem 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3,oklch(0.64 0 0))}.ds-dl dd{margin:0;font:400 0.875rem 'Familjen Grotesk',system-ui,sans-serif;color:var(--ink-2,oklch(0.78 0 0));font-variant-numeric:tabular-nums}"
     },
     {
       "name": "Select Field",
@@ -100,7 +100,7 @@
       "refersTo": "nav-link",
       "description": "Двошарова шапка: утилітний і головний ряд.",
       "html": "<nav class=\"ds-nav\"><a href=\"#\">Solutions &amp; Services</a><a href=\"#\">Industries</a><a href=\"#\">Regulations</a></nav>",
-      "css": ".ds-nav{display:flex;gap:24px;font:400 0.94rem 'Familjen Grotesk',system-ui,sans-serif}.ds-nav a{color:var(--ink,oklch(0.97 0 0));text-decoration:none;padding:4px 0 2px;border-bottom:1px solid transparent;transition:border-color .2s cubic-bezier(0.16,1,0.3,1)}.ds-nav a:hover{border-bottom-color:var(--ink,oklch(0.97 0 0))}.ds-nav a:focus-visible{outline:2px solid var(--ink,oklch(0.97 0 0));outline-offset:2px}"
+      "css": ".ds-nav{display:flex;gap:24px;font:400 0.875rem 'Familjen Grotesk',system-ui,sans-serif}.ds-nav a{color:var(--ink,oklch(0.97 0 0));text-decoration:none;padding:4px 0 2px;border-bottom:1px solid transparent;transition:border-color .2s cubic-bezier(0.16,1,0.3,1)}.ds-nav a:hover{border-bottom-color:var(--ink,oklch(0.97 0 0))}.ds-nav a:focus-visible{outline:2px solid var(--ink,oklch(0.97 0 0));outline-offset:2px}"
     }
   ],
   "narrative": {
