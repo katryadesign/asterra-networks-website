@@ -1103,3 +1103,667 @@ jtbd.md **свідомо не чищено**: датовані артефакт�
 > «lands…landed») · careers → «This work keeps the systems answerable.» (78→39 — перелік
 > напрямів уже несуть H3 під заголовком). Таблиця вище оновлена на фінальні значення; правило
 > довжини дописане у voice.md «Заборонене» §8.
+
+
+## Урок 07 · крок 6 — нові й змінені рядки (2026-09-17)
+
+Рішення користувача R1–R3 і P1-правка E1 з [`ui/_process/critique.md`](./ui/_process/critique.md).
+
+| Де | Було | Стало | Чому |
+|---|---|---|---|
+| Guided matching ×4 · hero | Three questions about the situation, not about the technology. | **Two questions** about the situation, not about the technology. | R2: у формі два поля; число — буквальне (voice.md §8) |
+| Industry ×3 · відкат | A match is still three questions away. · Three questions about what actually landed on the fleet… | A match is still **two** questions away. · **Two** questions about what actually landed on the fleet… | R2 |
+| Guided matching · картка Shield · Fits | A managed fleet standardising across vessels, which matches the situation you described | Cyber risk that has to be in the safety management system before the next Document of Compliance verification: the situation you described | E1: рядок стверджував хибне про введене (обрано cyber risk у SMS) |
+| Industry · рядок 1 | IMO MSC.428(98) · closed by Asterra Shield | IMO MSC.428(98), **checked from 1 January 2021** · closed by Asterra Shield | R3: дата належить нормі — публічний факт |
+| Entry · рядок норми 1 | Checked at the annual Document of Compliance verification · closed by Asterra Shield | …verification **from 1 January 2021** · closed by Asterra Shield | R3 |
+| Entry ×3 · Insights ×5 · чип новини | Regulation / Accreditation | Regulation · [TBD — no source] | R3: дата публікації вигаданої новини була б вигаданим фактом |
+| Approval · 3 живі рядки бібліотеки | — | Dated [TBD — no source] | R3: шапка обіцяє «each one dated» |
+| Approval · примітка набору | …a figure, a client or a partner brand for a fictional company would be an invented fact. | …a figure or a named client for a fictional company would be an invented fact. | R1: марки партнерів тепер дозволено як вигадані на етапі дизайну |
+| Оболонка ×28 | — | Skip to content | K17 |
+| Смуга акредитацій ×4 (entry, solution-detail, crew-access, industry) | категорії без імен | **Skarnholt Orbital**, **Telquist Satcom** — Satellite capacity partner · **Keelwright Marine**, **Vessark Navigation** — Navigation and bridge OEM · **Brenholm Safety**, **Saltmere Lifesaving** — Safety equipment manufacturer | R1: вигадані марки; кожну назву перевірено пошуком — збігів із реальними компаніями немає (Orvane і Tessaline відкинуто: реальні бренди) |
+
+
+## Урок 07 · крок 7 — нові й змінені рядки (2026-09-17)
+
+| Де | Було | Стало | Чому |
+|---|---|---|---|
+| Guided matching ×4 · відкат | …faster than answering three questions. | …faster than answering **two** questions. | A1: доведення R2 |
+| Solution detail · розвилка | …guided matching takes three questions. | …guided matching takes **two** questions. | A1 |
+| Guided matching ×4 · список «What started this requirement?» | Cyber risk has to be in the safety management system before the next Document of Compliance verification | **Cyber risk in the SMS** | A3: не вміщалось у поле; та сама формула, що в записі відповіді |
+| те саме | The connectivity budget line is up for defence | **Connectivity budget up for defence** | A3 |
+| те саме | A crew access policy has been asked for | **Crew access policy requested** | A3 |
+| Inquiry ×2 · мітки Industry, Solution of interest, Your role or request type | — | … **(optional)** | A2 |
+
+
+## Поточний канон — знято з екранів (урок 07, крок 7, 2026-09-17)
+
+**Одне джерело для звірки тексту.** Таблиці «було/стало» вище — історія проходів; пізніші
+глобальні правки (voice.md §8–§9, словник, кроки 5–7 уроку 07) оновлювали екрани, не кожен
+рядок тих таблиць. Цей розділ знято скриптом з `wireframes/*.html` після кроку 7 і він
+**перемагає** таблиці вище, якщо вони розходяться. Службовий хром (дерево, смуга станів,
+анотація) не входить. Стани показують лише рядки, яких немає в base. Наступна зміна тексту —
+спершу тут, потім на екрані.
+
+### Оболонка (усі 28)
+
+- посилання · Skip to content
+- посилання · Asterra Networks
+- пункт · Events
+- пункт · Careers
+- пункт · Contact Us
+- пункт · About
+- пункт · Solutions & Services
+- пункт · Industries
+- пункт · Regulations
+- пункт · Crew connectivity
+- пункт · Latest news
+- H2 · About us
+- пункт · Leadership team
+- H2 · Solutions & Services
+- пункт · Connectivity
+- пункт · Cybersecurity
+- пункт · Digital Solutions
+- пункт · Safety & Compliance
+- пункт · Equipment
+- пункт · Technical Services
+- H2 · Industries
+- пункт · Maritime
+- пункт · Government
+- пункт · Enterprise
+- пункт · Energy
+- пункт · Research
+- пункт · Emergency Response
+- пункт · Transportation
+- пункт · Aerospace
+- H2 · Regulations
+- пункт · IMO MSC.428(98)
+- пункт · IACS UR E26/E27
+- пункт · MLC 2006
+- пункт · Talk to an expert
+- посилання · Terms of Use
+- посилання · Privacy Policy
+- посилання · Cookies Policy
+- текст · Asterra Networks is a fictional brand created for an independent UX/UI case study. Regulatory references (MLC 2006, IMO MSC.428(98), IACS UR E26/E27, ISO 27001, IEC 62443) are real and dated. All product names, partner marks, news items and commitments are invented for the study.
+
+### Entry
+
+- H1 · The fleet answers to a surveyor, an auditor and a budget. So do we.
+- текст · Asterra Networks specifies, supplies, installs and services connectivity, cyber, digital, safety and equipment systems for fleets and remote operations across eight industries. One party stays accountable for all of it, and is held to it.
+- кнопка · Find what fits your fleet
+- кнопка · See the six areas
+- текст · [Backdrop treatment behind the type. Design stage.]
+- H2 · The proof is never our own name.
+- текст · We do not launch the satellites or build the bridge hardware. We are the party accredited to carry them, and the party you call when they stop.
+- текст · Which is why the proof on this site is never a claim about ourselves. It is whose capacity we are authorised to resell, whose equipment we are approved to survey, and which dated requirement each system closes.
+- H2 · GEO, LEO and terrestrial, run as one service.
+- текст · Failover between them is built into the design.
+- кнопка · Read Asterra Connect
+- H2 · Connectivity and cybersecurity carry the deadlines.
+- текст · An area is one decision, and where it closes a requirement with a date attached, it says which one.
+- H3 · Asterra Connect
+- текст · Satellite and terrestrial capacity as one managed service. OrbitReach covers satellite, GroundLink covers terrestrial and mobile, and the usage rules stay with you.
+- кнопка · Read Asterra Connect
+- текст · Closes MLC 2006 crew connectivity
+- H3 · Asterra Shield
+- текст · Network, device, data and operational protection, specified against the framework your auditor names, and documented before the verification rather than after it.
+- кнопка · Read Asterra Shield
+- текст · Closes IMO MSC.428(98) · IACS UR E26/E27 · IEC 62443
+- H3 · Asterra Intelligence
+- текст · IoT, monitoring and cloud transfer. Engine data and voyage records reach shore without anyone emailing a spreadsheet.
+- кнопка · Read Asterra Intelligence
+- H3 · Asterra Assure
+- текст · Safety systems, certification and survey. The paper trail an inspection asks to see.
+- кнопка · Read Asterra Assure
+- H3 · Asterra Equip
+- текст · Navigation and bridge systems, safety equipment, onboard hardware. Supplied and surveyed under manufacturer accreditation.
+- кнопка · Read Asterra Equip
+- H3 · Asterra Care
+- текст · Installation, maintenance and support, 24x7x365 and multilingual. The part that decides whether the rest holds at 03:00.
+- кнопка · Read Asterra Care
+- H2 · Your industry reads its own page.
+- текст · The same six areas, re-framed in the regulations, situations and proof of whoever is asking. The company started in Maritime and goes deepest there.
+- пункт · Maritime Fleet operators, technical management, ship managers
+- пункт · GovernmentPublic sector, defence
+- пункт · EnterpriseDistributed and remote sites
+- пункт · EnergyOffshore, critical infrastructure
+- пункт · ResearchSurvey and expedition
+- пункт · Emergency ResponseRapid deployment
+- пункт · TransportationLogistics and fleet movement
+- пункт · AerospaceAirborne and ground segment
+- H2 · Deadlines land on your fleet, not on ours.
+- текст · A dated requirement arrives and the question is always the same. What does it mean for these vessels, what closes it, and what will the inspector accept as evidence? Class societies answer the first part well. We answer the other two.
+- кнопка · See the regulations we close
+- H3 · Cyber risk inside the safety management system
+- текст · Checked at the annual Document of Compliance verification from 1 January 2021 · closed by Asterra Shield
+- кнопка · Read MSC.428(98)
+- H3 · Cyber resilience for newbuilds
+- текст · Ships contracted from 1 July 2024 · closed by Asterra Shield and Asterra Equip
+- кнопка · Read UR E26/E27
+- H3 · Crew connectivity at a reasonable charge
+- текст · In force 23 December 2024, verified by Port State Control · closed by Asterra Connect
+- кнопка · Read MLC 2006
+- H2 · What we are held to
+- H3 · Accredited, not self-declared
+- текст · Satellite capacity partners, navigation and bridge OEMs, safety equipment manufacturers. A partner name belongs to a third party and cannot be asserted by us.
+- H3 · Nothing behind a form
+- текст · Specifications, certificates and the figures you will have to defend upward sit on the page. Nothing needs to be requested first.
+- H3 · One canonical value per figure
+- текст · Every number here has a single source. A figure that reads differently on two pages is a reliability signal, and we treat it as one.
+- H2 · Latest news
+- кнопка · All news
+- H3 · UR E26/E27 now apply to every newbuild contracted from 1 July 2024
+- текст · Regulation · [TBD — no source]
+- кнопка · Read the announcement
+- H3 · New capacity accreditation extends hybrid coverage in high latitudes
+- текст · Accreditation · [TBD — no source]
+- кнопка · Read the announcement
+- H3 · What Port State Control asks for under the MLC 2006 connectivity amendments
+- текст · Regulation · [TBD — no source]
+- кнопка · Read the announcement
+- H2 · Arrive with a position, not a question.
+- текст · Name what landed on the fleet, an audit date, a newbuild spec, a budget to defend, and we will show what closes it before anyone calls you.
+- кнопка · Find what fits your fleet
+- кнопка · See the regulations we close
+
+### Guided matching
+
+- H1 · Tell us what landed on the fleet.
+- текст · Two questions about the situation, not about the technology. You will get the area that closes it, the paper you keep, and where to read the detail.
+- H2 · Your situation
+- текст · Change an answer to run the match again.
+- поле · Where do you operate?
+- варіант · Maritime
+- варіант · Government
+- варіант · Enterprise
+- варіант · Energy
+- варіант · Research
+- варіант · Emergency Response
+- варіант · Transportation
+- варіант · Aerospace
+- текст · The next question changes with the industry. These are the situations recorded for Maritime.
+- поле · What started this requirement?
+- варіант · Cyber risk in the SMS
+- варіант · A Port State Control inspection
+- варіант · Crew connectivity under MLC 2006
+- варіант · Newbuild ICT specification
+- варіант · Standardising IT across the fleet
+- варіант · An IT upgrade or refresh
+- варіант · A dry-docking window is coming up
+- варіант · Connectivity budget up for defence
+- варіант · A cyber budget that has to stretch
+- варіант · Crew access policy requested
+- кнопка · Match my situation
+- текст · Answered: Maritime · cyber risk in the SMS
+- H2 · What closes it
+- текст · 2 areas matched
+- H3 · Asterra Shield
+- текст · Cybersecurity
+- текст · IMO MSC.428(98) requires cyber risk to be addressed inside the safety management system, and it is checked at the annual Document of Compliance verification. Shield is specified against that verification, so the evidence exists before the auditor asks for it rather than after.
+- мітка · Closes
+- значення · MSC.428(98) · IACS UR E26/E27 · IEC 62443
+- мітка · You keep
+- значення · A documented cyber risk assessment, procedures written into the SMS, and the accreditation of the manufacturers whose systems are installed
+- мітка · Fits
+- значення · Cyber risk that has to be in the safety management system before the next Document of Compliance verification: the situation you described
+- кнопка · Read Asterra Shield
+- H3 · Asterra Equip
+- текст · Equipment
+- текст · Cyber resilience under UR E26/E27 reaches onboard systems, so bridge and navigation equipment is inside the same scope on newbuilds and on replacements fitted during a docking window.
+- кнопка · Read Asterra Equip
+- H3 · Recognition beats guidance for some buyers.
+- текст · Finding your own industry on the page can be faster than answering two questions. An open question is worth a conversation either way.
+- кнопка · Read the Maritime page
+- кнопка · Talk to an expert
+
+**Стан `empty`** — додатково:
+
+- текст · No confident match
+- H3 · We cannot name an area for this with confidence.
+- текст · What you described does not map cleanly onto one of the six areas. Saying so is more useful than a recommendation you would have to unpick later, in front of an auditor or a budget holder.
+- кнопка · Change your answer
+
+**Стан `error`** — додатково:
+
+- текст · Matching unavailable
+- H3 · The match did not run.
+- текст · Your answers are still on the left and were not lost. Sending them again runs the match a second time.
+- кнопка · Match my situation again
+
+**Стан `loading`** — додатково:
+
+- текст · Matching your situation
+
+### Industry · Maritime
+
+- текст · Industries · Maritime
+- H1 · Run the fleet. We answer for the systems.
+- текст · Connectivity, cyber, digital, safety and bridge equipment for fleet operators, technical management and ship managers. Specified, installed, surveyed and supported by one accountable party, and written up in the language the requirement arrives in: class, certificate, survey, budget.
+- кнопка · Find what fits your fleet
+- H2 · The requirement usually arrives with a date on it.
+- текст · A docking window, a Port State Control (PSC) inspection, the annual Document of Compliance (DOC) audit, a newbuild contract. It rarely asks which technology you prefer; it names a regulation, sets a deadline and expects paper. This is what lands on fleets now, and what closes each one.
+- H3 · Cyber has to be in the safety management system before the next DOC verification.
+- текст · IMO MSC.428(98), checked from 1 January 2021 · closed by Asterra Shield
+- кнопка · See what closes it
+- H3 · Crew are asking for internet, and since 23 December 2024 PSC can ask too.
+- текст · MLC 2006 amendments · closed by Asterra Connect
+- кнопка · See what closes it
+- H3 · A newbuild contract brings IACS UR E26/E27 with it.
+- текст · Ships contracted from 1 July 2024 · closed by Asterra Shield and Asterra Equip
+- кнопка · See what closes it
+- H3 · The docking window is when hardware actually happens.
+- текст · Installation and survey planned around the dock · Asterra Equip and Asterra Care
+- кнопка · See what closes it
+- H3 · The connectivity line is up for defence again.
+- текст · Figures that survive the budget review · Asterra Connect and Asterra Care
+- кнопка · See what closes it
+- текст · Every regulation, with the paper you keep: see the regulations we close.
+- H2 · The six areas, written in fleet terms.
+- H3 · Connectivity the crew can use and the office can defend
+- текст · Satellite and terrestrial capacity as one managed service: OrbitReach on the satellite side, GroundLink in port and along the coast, failover between them designed in. The usage rules stay with you, and the invoice holds no surprises for whoever signs it.
+- кнопка · Read Asterra Connect
+- H3 · Cyber that survives the DOC verification
+- текст · Network, device, data and operational protection specified against IEC 62443, with the risk assessment and SMS procedures prepared before the auditor asks. The evidence exists first; the verification reads it.
+- кнопка · Read Asterra Shield
+- пункт · Asterra Intelligence Engine data, condition monitoring and voyage records ashore
+- пункт · Asterra Assure Safety systems and certification, survey-ready
+- пункт · Asterra Equip Bridge and navigation equipment under OEM accreditation
+- пункт · Asterra Care Installation in the dock, support 24x7x365 and multilingual
+- H2 · Crew ask about the internet before they ask about the vessel.
+- текст · Connectivity has become part of why crew choose an employer and why they stay, and since 23 December 2024 it is also a compliance matter: MLC 2006 requires crew internet access at a reasonable charge, verified by PSC. Giving crew what they ask for without losing control of cost is a rule set of its own, and it has its own page.
+- кнопка · Read the crew connectivity rules
+- H2 · What stands behind this
+- H3 · Regulation-anchored
+- текст · MLC 2006, MSC.428(98) and UR E26/E27, each dated, each naming the paper you keep on the solution page it belongs to.
+- H3 · Accredited, not self-declared
+- текст · Satellite capacity partners, navigation and bridge OEMs, safety equipment manufacturers. Third-party names, not our own claims.
+- H3 · Support commitment
+- текст · 24x7x365 and multilingual, carried as a commitment rather than a claim of scale.
+- текст · Named-fleet scale and an industry case would be invented facts for a fictional brand and stay empty: [TBD — no source]
+- H3 · A match is still two questions away.
+- текст · Two questions about what actually landed on the fleet, and you get the area that closes it.
+- кнопка · Find what fits your fleet
+
+**Стан `error`** — додатково:
+
+- H2 · The industry content did not load.
+- текст · The Maritime industry content, situations, regulations and proof, did not arrive. Guided matching below is served separately and still works.
+- H2 · A match is still two questions away.
+
+**Стан `loading`** — додатково:
+
+- текст · Loading the Maritime industry content
+- H2 · A match is still two questions away.
+
+### Solution detail · Asterra Shield
+
+- текст · Solutions & Services · Cybersecurity
+- H1 · Asterra Shield
+- текст · Cyber protection for fleets, specified against the framework your auditor names, with the evidence prepared before the verification rather than after it.
+- кнопка · Talk to an expert
+- кнопка · See the regulations it closes
+- H2 · The audit is where cyber fails first.
+- текст · An attack on a vessel is survivable; most are contained. What sinks budgets and reputations is the annual Document of Compliance verification, when the auditor asks where cyber risk lives in the safety management system and the honest answer is nowhere yet. Newbuilds contracted from 1 July 2024 arrive with IACS UR E26/E27 on top.
+- текст · Shield is the protection and the evidence in one specification: what runs on the network, what runs on devices, and what the auditor reads.
+- H2 · A situation brings a fleet here.
+- пункт · The DOC verification is booked Cyber risk has to be readable in the SMS before that date
+- пункт · A newbuild is contracted UR E26/E27 applies to ships contracted from 1 July 2024
+- пункт · The fleet is being standardised One specification across vessels, not per-vessel improvisation
+- пункт · The cyber budget has to stretch One decision, sized against everything else the budget carries
+- пункт · Port State Control named cyber in a finding Findings close with evidence, not assurances
+- H2 · What it closes, and the paper you keep
+- текст · The link the market does not publish: the regulation, the solution that answers it, and what is left on your desk once it is closed.
+- H3 · IMO MSC.428(98)
+- текст · You keep: a documented cyber risk assessment and SMS procedures, read at the annual DOC verification
+- кнопка · Read MSC.428(98)
+- H3 · UR E26/E27
+- текст · You keep: the newbuild cyber resilience file for ships contracted from 1 July 2024
+- кнопка · Read UR E26/E27
+- H3 · IEC 62443
+- текст · The framework the whole specification is written against
+- H2 · These figures do not change when you retell them.
+- текст · Written to be pasted into the case you will have to defend, one canonical value per figure.
+- мітка · Scope of protection
+- значення · Network, device, data and operational systems
+- мітка · Deployment
+- значення · Per vessel and fleet-wide; newbuild and retrofit
+- мітка · Specified against
+- значення · IEC 62443; evidence structured for MSC.428(98) and UR E26/E27
+- мітка · Monitoring and response
+- значення · [TBD — no source]
+- мітка · Sizing and throughput
+- значення · [TBD — no source]
+- мітка · Support
+- значення · 24x7x365, multilingual
+- текст · Empty cells are deliberate: a figure for a fictional brand would be an invented fact.
+- H2 · What stands behind it
+- H3 · Regulation-anchored
+- текст · Every claim above maps to a dated requirement, and the paper is named next to the claim it belongs to.
+- H3 · Accredited, not self-declared
+- текст · The certifying body is named beside each approval. A specific approval for a fictional product is not claimed: [TBD — no source]
+- H3 · Support commitment
+- текст · 24x7x365 and multilingual, carried as a commitment rather than a claim of scale.
+- текст · Uptime figures and named client cases stay empty by rule: [TBD — no source]
+- H2 · Does it close your requirement?
+- текст · If the evidence looks right, talk to an expert; your context, this solution and your industry, goes with the request. If you want the paper verified first, read the regulation it answers. If it does not fit, guided matching takes two questions. Framed for each industry it serves, Maritime first.
+- кнопка · Talk to an expert
+- кнопка · Read MSC.428(98)
+- кнопка · Find what fits your fleet
+- текст · Written to be forwarded upward: self-contained, dated, one canonical value per figure. Need internal approval first? The approval materials library packages what you send up.
+
+**Стан `error`** — додатково:
+
+- H2 · The page did not load.
+- текст · The solution content and its proof load together; neither arrived. Reloading fetches the same page once more.
+- кнопка · Reload this page
+
+**Стан `loading`** — додатково:
+
+- текст · Loading the page and its proof
+
+### Norm · IMO MSC.428(98)
+
+- текст · Regulations · IMO MSC.428(98)
+- H1 · IMO MSC.428(98)
+- текст · Maritime cyber risk management in the safety management system. What it means for your vessels, what closes it, and the paper you keep.
+- H2 · The requirement returns every year.
+- мітка · What it is
+- значення · An IMO resolution, adopted by the Maritime Safety Committee.
+- мітка · In effect
+- значення · Cyber risks addressed in the safety management system no later than the first annual Document of Compliance verification after 1 January 2021.
+- мітка · Recurrence
+- значення · Read at every annual DOC verification.
+- мітка · Applies to
+- значення · Companies and ships operating under the ISM Code.
+- мітка · Verified through
+- значення · The DOC audit.
+- H2 · What the auditor actually asks
+- текст · Cyber risk has to be identified and addressed inside the safety management system, the same system that already carries every other operational risk. The auditor does not ask whether you bought a product. They ask where cyber risk lives in the SMS and what evidence sits behind it.
+- текст · This is a working summary. The authoritative interpretation belongs to your classification society; bring their guidance to the audit, not ours.
+- H2 · One decision closes it.
+- H3 · Asterra Shield
+- текст · Protection and audit evidence in one specification, so the answer to the auditor's question exists before the question is asked
+- кнопка · Read Asterra Shield
+- H2 · The paper you keep
+- текст · A documented cyber risk assessment and procedures written into the SMS. That is what the DOC auditor reads, and what this regulation leaves on your desk once it is closed.
+- H2 · Does the paper check out?
+- текст · If this is the evidence your auditor accepts, bring the regulation with you and start the conversation from a position.
+- кнопка · Talk to an expert about this regulation
+
+### Crew access & control
+
+- текст · Solutions & Services · Crew connectivity
+- H1 · Give the crew what it asks for. Keep the rules yours.
+- текст · Crew internet is decided as a set of rules: who gets how much and when, what a top-up costs, what is filtered, where access switches off, and what the office sees. The connection itself is the easy part. This page is about the rules, because the rules are what you answer for.
+- кнопка · Talk to an expert about your policy
+- кнопка · Read Asterra Connect
+- H2 · You are buying rules, not bandwidth.
+- текст · Bandwidth is what every vendor sells. What you answer for is the rule set on top of it, and every dimension of that rule set is a decision your office already owns. These are the dimensions a crew access policy is written in.
+- мітка · Data quotas
+- значення · Set daily or monthly, per person or per vessel. The quota is the budget's first line of defence, agreed before anyone connects rather than discovered on the invoice.
+- мітка · Rank and role tiers
+- значення · Officers and crew can carry different allowances. Whether they should on your vessels is a policy choice, and the rule set holds either answer.
+- мітка · Content filtering
+- значення · What is filtered is stated, and the firewall is mandatory. Order on board is part of what the policy protects, not an afterthought to it.
+- мітка · Time windows
+- значення · Access can follow the watch pattern, closed during shifts and open off watch, so the connection fits the working day instead of competing with it.
+- мітка · Geographic rules
+- значення · Off in port or in defined waters. Where the vessel is can change what the crew can reach, and the rule says so in advance.
+- мітка · Per-user distribution
+- значення · A captive portal signs each seafarer in as themselves, so allowances, top-ups and filtering apply to a person, not to a shared password.
+- мітка · Top-up pricing
+- значення · What a top-up costs is stated before anyone buys one. Crews compare employers on this, and opaque pricing reads as an expensive one.
+- мітка · Backup channel
+- значення · A second path carries the policy when the primary drops, so the rules survive an outage instead of pausing with it.
+- мітка · Cost visibility
+- значення · The office sees usage while it happens. The invoice confirms what you already knew instead of opening a negotiation.
+- H2 · Crews arrive knowing the market's numbers.
+- текст · None of the figures below are Asterra parameters. They are what crews report across the market today, from the deck: the vocabulary your policy will be measured against when crew compare vessels.
+- мітка · Daily caps
+- значення · Allowances around 450 MB per day are reported.
+- мітка · Monthly allowances
+- значення · Around 80 GB per person per month is reported at the generous end.
+- мітка · Rank splits
+- значення · 12 GB for crew against 40 GB for officers is one reported split.
+- мітка · Top-up prices
+- значення · $2.50 per GB is reported, and crews call it expensive.
+- текст · Our parameters: [TBD — no source]. Asterra quotas and tariffs are agreed per fleet in the policy conversation; this page sets the dimensions, not the values.
+- H2 · Since 23 December 2024 the request has an inspector behind it.
+- текст · The MLC 2006 amendments, in force 23 December 2024, require crew internet access at a reasonable charge, verified by Port State Control. The crew's request and the office's obligation now point the same way, and the policy is how both are met without the invoice deciding for you.
+- кнопка · Read MLC 2006
+- H2 · Crew ask about it before they sign on.
+- текст · Connectivity has become part of why crew choose an employer and why they stay. A generous answer that collapses at the first invoice retains nobody; a stated policy does, because the fleet can keep saying yes to it. Access the crew can plan around, at a cost the office can defend, year after year.
+- H2 · What stands behind the policy
+- H3 · Support commitment
+- текст · 24x7x365 and multilingual, carried as a commitment rather than a claim of scale.
+- H3 · Costs stay visible.
+- текст · Usage visibility for the office is part of the offer, carried as a commitment: consumption is seen while it happens, not at the invoice.
+- H3 · Type-approval-grade proof lives on the solution page.
+- текст · When commitment claims are not enough for class or the office, the approvals that carry a certifying body's name are read on the solution page.
+- кнопка · Read Asterra Connect
+- текст · A usage stat or a named fleet case would be invented facts for a fictional brand and stay empty: [TBD — no source]
+- H3 · Policy needs differ by fleet.
+- текст · Describe the rule you need to set, and the answer comes back about your policy: quotas, tiers, windows, costs, not a package name.
+- кнопка · Talk to an expert about your policy need
+- кнопка · Read Asterra Connect
+
+**Стан `empty`** — додатково:
+
+- H2 · The rule set does not cover your case yet.
+- текст · What you need to govern does not map onto the dimensions published here. Saying so is more useful than stretching the nearest rule until it looks like yours: an uncovered policy need, stated plainly, is exactly the question to bring to an expert.
+- H2 · Policy needs differ by fleet.
+
+**Стан `error`** — додатково:
+
+- H2 · The policy content did not load.
+- текст · The policy content, the rule dimensions, the market numbers and the MLC tie, did not arrive. Reload to ask for it again; the route to an expert below is served separately and still works.
+- кнопка · Reload this page
+- H2 · Policy needs differ by fleet.
+
+**Стан `loading`** — додатково:
+
+- текст · Loading policy content
+- H2 · Policy needs differ by fleet.
+
+### Approval materials
+
+- текст · Prepare internal approval
+- H1 · The decision is yours. The approval is not.
+- текст · Materials for the case you carry to whoever holds the budget: each one dated, self-consistent, and open without a form. Forward them as they are, or build on the page they package.
+- кнопка · Read Asterra Shield
+- H2 · Made to leave this site and still hold.
+- текст · A business case is read by someone who was not in the room where it was assembled. Everything here is packaged for that reader: each artifact is self-contained, carries its date, and names its source next to the claim, so it can be checked without calling you back.
+- текст · None of it sits behind a form. The argument these artifacts package already stands on the solution page, and gating the packaged version would only tax the person preparing the approval. Your email address is not the price of your own business case.
+- текст · One canonical value per figure, wherever the figure appears: a number that drifts between documents reads as unreliability, and it is your standing that carries it upward. And a date on every artifact: an undated document is a stale one by default.
+- H2 · Each item forwards on its own.
+- текст · The set for one solution, Asterra Shield here. Where a value would have to be invented, the slot says so instead of pretending.
+- H3 · The forwardable solution summary (Asterra Shield)
+- текст · The live page itself: the problem, the regulations it closes, the paper you keep and the facts for the budget file
+- текст · Dated [TBD — no source]
+- кнопка · Read Asterra Shield
+- H3 · Budget-grade specification sheet
+- текст · The spec table as one attachable sheet, one canonical value per figure: [TBD — no source]
+- H3 · Compliance mapping: IMO MSC.428(98) · IACS UR E26/E27 · MLC 2006 and the paper you keep from each
+- текст · Regulation by regulation: what applies to which vessels, from when, and the evidence each verification reads
+- текст · Dated [TBD — no source]
+- кнопка · See the regulations we close
+- H3 · Outcome case with a named figure
+- текст · A named client and a named number would both be invented facts: [TBD — no source]
+- H3 · Accreditation overview: satellite capacity partners, navigation and bridge OEMs, safety equipment manufacturers
+- текст · The integrator's proof, listed by category: whose capacity, bridge systems and safety equipment the fleet is served with
+- текст · Dated [TBD — no source]
+- текст · Unfilled slots are deliberate: a figure or a named client for a fictional company would be an invented fact.
+- H2 · The solution page argues. The artifacts document it.
+- текст · Forward the solution page first: it carries the whole rationale, the problem, the regulations and the paper, and it survives being read without you. Attach the artifacts your chain will ask for next, the sheet for the budget line, the mapping for the audit question.
+- текст · Then expect the chain to shape the conversation. CAPEX sits with the owner, an approval matrix decides who signs, and a frame agreement can decide whether a supplier may be bought from at all. The request form carries a role field so that this surfaces in the first conversation rather than in the third meeting.
+- H3 · The rationale is already on the solution page.
+- текст · If the library gives you nothing for your case, the page it packages still argues it: dated, self-consistent, forwardable as it stands. An open question after that is worth a conversation.
+- кнопка · Read Asterra Shield
+- кнопка · Talk to an expert
+
+**Стан `empty`** — додатково:
+
+- H2 · Nothing packaged for your case yet.
+- текст · An honest gap beats a near-miss attachment: a case assembled for someone else's situation gets unpicked upstairs, at the cost of your own standing.
+- текст · The rationale itself is not missing. The forwardable solution page carries the same argument, the problem, the regulations it closes and the paper you keep, dated and self-consistent. Take it upward as it stands, and bring what remains open to an expert.
+- H2 · The rationale is already on the solution page.
+
+**Стан `error`** — додатково:
+
+- H2 · The library did not load.
+- текст · The materials list did not come back. The case you came to assemble does not depend on it: the solution page below carries the same rationale, dated and self-consistent, and it forwards as it stands.
+- H2 · The rationale is already on the solution page.
+
+**Стан `loading`** — додатково:
+
+- текст · Loading the materials list
+- H2 · The rationale is already on the solution page.
+
+### Inquiry
+
+- H1 · Talk to an expert.
+- текст · One step. No wizard, no gate.
+- H2 · Your context travels with the request.
+- текст · Carried from the page you came from, so the conversation starts where you already are: Asterra Shield, Cybersecurity · Maritime. Edit either in the form if that is not what you are asking about.
+- поле · Your name
+- поле · Company
+- поле · Work email
+- поле · Industry (optional)
+- варіант · Maritime
+- варіант · Government
+- варіант · Enterprise
+- варіант · Energy
+- варіант · Research
+- варіант · Emergency Response
+- варіант · Transportation
+- варіант · Aerospace
+- поле · Solution of interest (optional)
+- текст · Filled in from the page you came from; edit it if you mean a different solution.
+- поле · Your role or request type (optional)
+- варіант · Select a role
+- варіант · Fleet IT / IT manager
+- варіант · Technical superintendent
+- варіант · Owner or operator
+- варіант · Procurement
+- варіант · Reseller or partnership
+- варіант · Other
+- текст · Frame agreements and reseller requests route differently; saying so here saves the third meeting.
+- поле · What landed on your fleet?
+- кнопка · Send the request
+- текст · The request goes to a specialist for your industry. The reply comes from that specialist.
+
+**Стан `error`** — додатково:
+
+- H2 · The request did not send.
+- текст · Everything you typed is still here. Sending again submits the same request once.
+- кнопка · Send the request again
+
+**Стан `loading`** — додатково:
+
+- H2 · Sending your request
+- текст · This takes a moment; do not resend. Everything below travels with it.
+- мітка · Solution
+- значення · Asterra Shield (Cybersecurity)
+- мітка · Industry
+- значення · Maritime
+- мітка · Role
+- значення · Fleet IT / IT manager
+- мітка · Message
+- значення · Cyber risk has to be in the SMS before our next DOC verification. What changes on board, and what evidence do we hold afterwards?
+
+**Стан `success`** — додатково:
+
+- H2 · Request sent. You arrive with a position.
+- текст · The request went out with your context attached, so the conversation does not start from "so what do you offer?".
+- мітка · Solution
+- значення · Asterra Shield (Cybersecurity)
+- мітка · Industry
+- значення · Maritime
+- мітка · Role
+- значення · Fleet IT / IT manager
+- мітка · Message
+- значення · Cyber risk has to be in the SMS before our next DOC verification. What changes on board, and what evidence do we hold afterwards?
+- мітка · Next
+- значення · Routed to a specialist for your industry; the reply comes from that specialist
+
+### Company
+
+- текст · Company
+- H1 · Maritime is where we started. Accountability is what we kept.
+- текст · Asterra Networks grew from a maritime business into a global connectivity provider. The operating model survived that growth unchanged: one accredited party that specifies, supplies, installs and services what named manufacturers build.
+- H2 · Accredited to integrate. Accountable for the result.
+- мітка · What we do
+- значення · Specify, supply, install and service connectivity, cyber, digital, safety and equipment systems for fleets and remote operations.
+- мітка · What we do not do
+- значення · Own satellite constellations or manufacture the hardware we install.
+- мітка · Why that holds
+- значення · Accreditation is granted by third parties: satellite capacity partners, navigation and bridge OEMs, safety equipment manufacturers. Their names cannot be self-asserted, which is what makes them proof.
+- мітка · Where we grew from
+- значення · A maritime business that became a global provider. Maritime remains the deepest competence, not the boundary.
+- H3 · These roles answer for the operating model.
+- мітка · Managing Director
+- значення · [TBD — no source]
+- мітка · Technical Director
+- значення · [TBD — no source]
+- мітка · Head of Partner Accreditation
+- значення · [TBD — no source]
+- мітка · Head of Global Support Network
+- значення · [TBD — no source]
+- текст · The empty rows above are deliberate: a name for a fictional brand would be an invented fact. A question about your fleet does not start on this page. It starts with an expert who can name what closes it.
+- кнопка · Talk to an expert
+
+### Careers
+
+- текст · Careers
+- H1 · Fleets hand us their systems. That is the job description.
+- текст · Asterra Networks installs and services the connectivity, cyber, digital, safety and equipment systems that fleets and remote operations run on. The work below exists because that accountability does.
+- H2 · This work keeps the systems answerable.
+- H3 · Field engineering
+- текст · Installation, integration and survey of onboard systems, carried out under manufacturer accreditation, on vessels and at remote sites.
+- H3 · Support
+- текст · The support commitment is 24x7x365 and multilingual. It is kept by people, and those people work here.
+- H3 · Network operations
+- текст · Satellite and terrestrial capacity run as one managed service, watched continuously so a fleet never has to.
+- текст · Open positions: [TBD — no source]. The empty slot is deliberate: a vacancy for a fictional brand would be an invented fact, and the real description of the job is the three kinds of work above.
+- кнопка · Read how the company operates
+- кнопка · Talk to an expert
+
+### Insights
+
+- текст · Insights / News
+- H1 · News here is a deadline or an accreditation. Nothing else qualifies.
+- текст · Regulation items say when a dated requirement lands and what closes it. Accreditation items record whose capacity or equipment we are approved to carry. The feed is not a content programme.
+- H2 · Both kinds can be checked outside this site.
+- H3 · UR E26/E27 now apply to every newbuild contracted from 1 July 2024
+- текст · Regulation · [TBD — no source]
+- кнопка · Read the announcement
+- H3 · New capacity accreditation extends hybrid coverage in high latitudes
+- текст · Accreditation · [TBD — no source]
+- кнопка · Read the announcement
+- H3 · What Port State Control asks for under the MLC 2006 connectivity amendments
+- текст · Regulation · [TBD — no source]
+- кнопка · Read the announcement
+- H3 · Cyber risk in the safety management system is read at every annual Document of Compliance verification
+- текст · Regulation · [TBD — no source]
+- кнопка · Read the announcement
+- H3 · Survey accreditation renewed with a navigation and bridge OEM
+- текст · Accreditation · [TBD — no source]
+- кнопка · Read the announcement
+- текст · If a deadline here lands on your fleet, the regulation page names what closes it and the paper you keep.
+- кнопка · See the regulations we close
+
+### Legal · Privacy Policy
+
+- текст · Legal · Privacy Policy
+- H1 · Privacy Policy
+- текст · How Asterra Networks collects, uses and retains personal data, and how to reach us about it. The legal copy itself arrives at build stage.
+- H2 · What we collect
+- текст · [TBD — legal copy, build stage]
+- H2 · How we use it
+- текст · [TBD — legal copy, build stage]
+- H2 · Retention
+- текст · [TBD — legal copy, build stage]
+- H2 · Your rights
+- текст · [TBD — legal copy, build stage]
+- H2 · Contact
+- текст · [TBD — legal copy, build stage]
+
