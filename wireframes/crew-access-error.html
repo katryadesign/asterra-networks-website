@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Crew access &amp; control screen (error) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/crew-access.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -107,11 +109,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -132,28 +135,28 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="ca-h">
+  <section class="screen-head screen-head--photo photo--dish" aria-labelledby="ca-h">
     <div class="wrap">
-      <p class="obj-line">Solutions &amp; Services · Crew connectivity</p>
-      <h1 id="ca-h">Give the crew what it asks for. <span class="dim">Keep the rules yours.</span></h1>
+      <p class="badge">Solutions &amp; Services · Crew connectivity</p>
+      <h1 id="ca-h">Give the crew what it asks for. <span class="dim dim--even">Keep the rules yours.</span></h1>
       <p class="body">Crew internet is decided as a set of rules: who gets how much and when, what
          a top-up costs, what is filtered, where access switches off, and what the office sees.
          The connection itself is the easy part. This page is about the rules, because the rules
          are what you answer for.</p>
       <p>
         <a class="btn" href="inquiry.html">Talk to an expert about your policy</a>
-        <a class="btn btn-ghost" href="solution-detail.html">Read Asterra Connect</a>
+        <a class="btn btn--ghost" href="solution-detail.html">Read Asterra Connect</a>
       </p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap wrap--pad wrap--pad-flush">
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="stack-s">
+      <div class="stack stack--diptych">
 
-        <div class="notice">
+        <div class="notice notice--error notice--flush">
           <h2>The policy content did not load.</h2>
           <p class="body">The policy content, the rule dimensions, the market numbers and the MLC
              tie, did not arrive. Reload to ask for it again; the route to an expert below is served separately
@@ -167,7 +170,7 @@
              policy: quotas, tiers, windows, costs, not a package name.</p>
           <p>
             <a class="btn" href="inquiry.html">Talk to an expert about your policy need</a>
-            <a class="btn btn-ghost" href="solution-detail.html">Read Asterra Connect</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">Read Asterra Connect</a>
           </p>
         </div>
 
@@ -177,12 +180,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -190,7 +193,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -201,7 +204,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -214,7 +217,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

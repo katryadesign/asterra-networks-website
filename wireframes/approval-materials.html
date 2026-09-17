@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Approval materials screen (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/approval-materials.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -107,11 +109,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -132,22 +135,22 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="am-h">
+  <section class="screen-head" aria-labelledby="am-h">
     <div class="wrap">
-      <p class="obj-line">Prepare internal approval</p>
+      <p class="badge">Prepare internal approval</p>
       <h1 id="am-h">The decision is yours. The approval is not.</h1>
       <p class="body">Materials for the case you carry to whoever holds the budget: each one
          dated, self-consistent, and open without a form. Forward them as they are, or build on
          the page they package.</p>
-      <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Shield</a></p>
+      <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Shield</a></p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap wrap--pad">
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="stack-s">
+      <div class="stack">
 
         <section aria-labelledby="am-why-h">
           <h2 id="am-why-h">Made to leave this site and still hold.</h2>
@@ -165,49 +168,51 @@
              artifact: an undated document is a stale one by default.</p>
         </section>
 
-        <section aria-labelledby="am-list-h">
+        <section class="section--band section--numbered" aria-labelledby="am-list-h">
           <h2 id="am-list-h">Each item forwards on its own.</h2>
           <p class="body">The set for one solution, Asterra Shield here. Where a value would have
              to be invented, the slot says so instead of pretending.</p>
-          <div class="reg-row">
+          <div class="reg-row reg-row--stacked reg-row--lead">
             <div>
               <h3>The forwardable solution summary (Asterra Shield)</h3>
               <p class="meta">The live page itself: the problem, the regulations it closes,
                  the paper you keep and the facts for the budget file</p>
+              <p class="chip chip--date">Dated <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="solution-detail.html">Read Asterra Shield</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">Read Asterra Shield</a>
           </div>
-          <div class="reg-row">
+          <div class="reg-row reg-row--stacked reg-row--slot">
             <div>
               <h3>Budget-grade specification sheet</h3>
               <p class="meta">The spec table as one attachable sheet, one canonical value per
                  figure: <span class="tbd">[TBD — no source]</span></p>
             </div>
           </div>
-          <div class="reg-row">
+          <div class="reg-row reg-row--stacked">
             <div>
               <h3>Compliance mapping: IMO MSC.428(98) · IACS UR E26/E27 · MLC 2006 and the paper you keep from each</h3>
               <p class="meta">Regulation by regulation: what applies to which vessels, from when, and the
                  evidence each verification reads</p>
+              <p class="chip chip--date">Dated <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="norm.html">See the regulations we close</a>
+            <a class="btn btn--ghost btn--next" href="norm.html">See the regulations we close</a>
           </div>
-          <div class="reg-row">
+          <div class="reg-row reg-row--stacked reg-row--slot">
             <div>
               <h3>Outcome case with a named figure</h3>
               <p class="meta">A named client and a named number would both be invented facts:
                  <span class="tbd">[TBD — no source]</span></p>
             </div>
           </div>
-          <div class="reg-row">
+          <div class="reg-row reg-row--stacked">
             <div>
               <h3>Accreditation overview: satellite capacity partners, navigation and bridge OEMs, safety equipment manufacturers</h3>
               <p class="meta">The integrator's proof, listed by category: whose capacity, bridge
                  systems and safety equipment the fleet is served with</p>
+              <p class="chip chip--date">Dated <span class="tbd">[TBD — no source]</span></p>
             </div>
           </div>
-          <p class="hint-sm">Unfilled slots are deliberate: a figure, a client or a partner brand
-             for a fictional company would be an invented fact.</p>
+          <p class="hint hint--set">Unfilled slots are deliberate: a figure or a named client for a fictional company would be an invented fact.</p>
         </section>
 
         <section aria-labelledby="am-how-h">
@@ -230,7 +235,7 @@
              after that is worth a conversation.</p>
           <p>
             <a class="btn" href="solution-detail.html">Read Asterra Shield</a>
-            <a class="btn btn-ghost" href="inquiry.html">Talk to an expert</a>
+            <a class="btn btn--ghost btn--next" href="inquiry.html">Talk to an expert</a>
           </p>
         </div>
 
@@ -240,12 +245,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -253,7 +258,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -264,7 +269,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -277,7 +282,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

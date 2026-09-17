@@ -4,8 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Careers screen (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -105,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -130,11 +134,11 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="ca-h">
+  <section class="screen-head" aria-labelledby="ca-h">
     <div class="wrap">
-      <p class="obj-line">Careers</p>
+      <p class="badge">Careers</p>
       <h1 id="ca-h">Fleets hand us their systems. <span class="dim">That is the job description.</span></h1>
       <p class="body">Asterra Networks installs and services the connectivity, cyber, digital,
          safety and equipment systems that fleets and remote operations run on. The work below
@@ -142,12 +146,12 @@
     </div>
   </section>
 
-  <div class="wrap pad-b">
-    <div class="stack-s">
+  <div class="wrap wrap--pad wrap--pad-compact">
+    <div class="stack">
 
-      <section aria-labelledby="rk-h">
+      <section class="section--band" aria-labelledby="rk-h">
         <h2 id="rk-h">This work keeps the systems answerable.</h2>
-        <div class="trio-l">
+        <div class="trio">
           <div>
             <h3>Field engineering</h3>
             <p class="body">Installation, integration and survey of onboard systems, carried out
@@ -164,11 +168,11 @@
                continuously so a fleet never has to.</p>
           </div>
         </div>
-        <p class="body">Open positions: <span class="tbd">[TBD — no source]</span>. The empty
+        <p class="body">Open positions: <span class="tbd tbd--flow">[TBD — no source]</span>. The empty
            slot is deliberate: a vacancy for a fictional brand would be an invented fact, and
            the real description of the job is the three kinds of work above.</p>
         <p>
-          <a class="btn btn-ghost" href="company.html">Read how the company operates</a>
+          <a class="btn btn--ghost" href="company.html">Read how the company operates</a>
           <a class="btn" href="inquiry.html">Talk to an expert</a>
         </p>
       </section>
@@ -178,12 +182,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -191,7 +195,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -202,7 +206,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -215,7 +219,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

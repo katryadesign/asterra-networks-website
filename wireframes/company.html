@@ -4,8 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Company screen (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -105,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -130,11 +134,11 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="co-h">
+  <section class="screen-head" aria-labelledby="co-h">
     <div class="wrap">
-      <p class="obj-line">Company</p>
+      <p class="badge">Company</p>
       <h1 id="co-h">Maritime is where we started. <span class="dim">Accountability is what we kept.</span></h1>
       <p class="body">Asterra Networks grew from a maritime business into a global connectivity
          provider. The operating model survived that growth unchanged: one accredited party that
@@ -142,12 +146,12 @@
     </div>
   </section>
 
-  <div class="wrap pad-b">
-    <div class="stack-s">
+  <div class="wrap wrap--pad wrap--pad-compact">
+    <div class="stack">
 
       <section aria-labelledby="om-h">
         <h2 id="om-h">Accredited to integrate. Accountable for the result.</h2>
-        <dl class="kv">
+        <dl class="values values--page values--stack">
           <dt>What we do</dt>
           <dd>Specify, supply, install and service connectivity, cyber, digital, safety and
               equipment systems for fleets and remote operations.</dd>
@@ -163,7 +167,7 @@
         </dl>
 
         <h3>These roles answer for the operating model.</h3>
-        <dl class="kv">
+        <dl class="values values--page values--stack">
           <dt>Managing Director</dt>
           <dd><span class="tbd">[TBD — no source]</span></dd>
           <dt>Technical Director</dt>
@@ -185,12 +189,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -198,7 +202,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -209,7 +213,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -222,7 +226,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

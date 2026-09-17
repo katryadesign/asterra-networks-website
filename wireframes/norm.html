@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Norm screen, IMO MSC.428(98) (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/norm.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -105,11 +107,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -130,30 +133,30 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="nm-h">
+  <section class="screen-head screen-head--code" aria-labelledby="nm-h">
     <div class="wrap">
-      <p class="obj-line">Regulations · IMO MSC.428(98)</p>
+      <p class="badge">Regulations · IMO MSC.428(98)</p>
       <h1 id="nm-h">IMO MSC.428(98)</h1>
       <p class="body">Maritime cyber risk management in the safety management system. What it
          means for your vessels, what closes it, and the paper you keep.</p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
-      <div class="stack-s">
+  <div class="wrap wrap--pad">
+      <div class="stack stack--route">
 
-        <section aria-labelledby="f-h">
+        <section class="section--band section--bleed section--lead" aria-labelledby="f-h">
           <h2 id="f-h">The requirement returns every year.</h2>
-          <dl class="kv">
+          <dl class="values values--doc values--passport">
             <dt>What it is</dt>
             <dd>An IMO resolution, adopted by the Maritime Safety Committee.</dd>
             <dt>In effect</dt>
-            <dd>Cyber risks addressed in the safety management system no later than the first
+            <dd class="values-val--lift">Cyber risks addressed in the safety management system no later than the first
                 annual Document of Compliance verification after 1 January 2021.</dd>
-            <dt>Recurrence</dt>
-            <dd>Read at every annual DOC verification.</dd>
+            <dt class="values-key--event">Recurrence</dt>
+            <dd class="values-val--event">Read at every annual DOC verification.</dd>
             <dt>Applies to</dt>
             <dd>Companies and ships operating under the ISM Code.</dd>
             <dt>Verified through</dt>
@@ -167,25 +170,25 @@
              management system, the same system that already carries every other operational risk.
              The auditor does not ask whether you bought a product. They ask where cyber risk
              lives in the SMS and what evidence sits behind it.</p>
-          <p class="hint-sm">This is a working summary. The authoritative interpretation belongs to
+          <p class="hint hint--aside">This is a working summary. The authoritative interpretation belongs to
              your classification society; bring their guidance to the audit, not ours.</p>
         </section>
 
         <section aria-labelledby="c-h">
           <h2 id="c-h">One decision closes it.</h2>
-          <div class="reg-row">
+          <div class="reg-row reg-row--answer">
             <div>
               <h3>Asterra Shield</h3>
               <p class="meta">Protection and audit evidence in one specification, so the answer
                  to the auditor's question exists before the question is asked</p>
             </div>
-            <a class="btn btn-ghost" href="solution-detail.html">Read Asterra Shield</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">Read Asterra Shield</a>
           </div>
         </section>
 
         <section aria-labelledby="p-h">
           <h2 id="p-h">The paper you keep</h2>
-          <p class="body">A documented cyber risk assessment and procedures written into the SMS.
+          <p class="body body--object">A documented cyber risk assessment and procedures written into the SMS.
              That is what the DOC auditor reads, and what this regulation leaves on your desk once it is
              closed.</p>
         </section>
@@ -195,7 +198,7 @@
           <p class="body">If this is the evidence your auditor accepts, bring the regulation with you and
              start the conversation from a position.</p>
           <p>
-            <a class="btn" href="inquiry.html">Talk to an expert about this regulation</a>
+            <a class="btn btn--next" href="inquiry.html">Talk to an expert about this regulation</a>
           </p>
         </section>
 
@@ -204,12 +207,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -217,7 +220,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -228,7 +231,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -241,7 +244,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

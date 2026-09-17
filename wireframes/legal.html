@@ -4,8 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Legal screen, Privacy Policy (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -105,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -130,43 +134,43 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="lg-h">
+  <section class="screen-head" aria-labelledby="lg-h">
     <div class="wrap">
-      <p class="obj-line">Legal · Privacy Policy</p>
+      <p class="badge">Legal · Privacy Policy</p>
       <h1 id="lg-h">Privacy Policy</h1>
       <p class="body">How Asterra Networks collects, uses and retains personal data, and how to
          reach us about it. The legal copy itself arrives at build stage.</p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
-    <div class="stack-s">
+  <div class="wrap wrap--pad wrap--pad-compact">
+    <div class="stack stack--document">
 
       <section aria-labelledby="pc-h">
         <h2 id="pc-h">What we collect</h2>
-        <p class="body"><span class="tbd">[TBD — legal copy, build stage]</span></p>
+        <p class="body"><span class="tbd tbd--flow">[TBD — legal copy, build stage]</span></p>
       </section>
 
       <section aria-labelledby="pu-h">
         <h2 id="pu-h">How we use it</h2>
-        <p class="body"><span class="tbd">[TBD — legal copy, build stage]</span></p>
+        <p class="body"><span class="tbd tbd--flow">[TBD — legal copy, build stage]</span></p>
       </section>
 
       <section aria-labelledby="pr-h">
         <h2 id="pr-h">Retention</h2>
-        <p class="body"><span class="tbd">[TBD — legal copy, build stage]</span></p>
+        <p class="body"><span class="tbd tbd--flow">[TBD — legal copy, build stage]</span></p>
       </section>
 
       <section aria-labelledby="py-h">
         <h2 id="py-h">Your rights</h2>
-        <p class="body"><span class="tbd">[TBD — legal copy, build stage]</span></p>
+        <p class="body"><span class="tbd tbd--flow">[TBD — legal copy, build stage]</span></p>
       </section>
 
       <section aria-labelledby="pk-h">
         <h2 id="pk-h">Contact</h2>
-        <p class="body"><span class="tbd">[TBD — legal copy, build stage]</span></p>
+        <p class="body"><span class="tbd tbd--flow">[TBD — legal copy, build stage]</span></p>
       </section>
 
     </div>
@@ -174,12 +178,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -187,7 +191,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -198,7 +202,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -211,7 +215,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

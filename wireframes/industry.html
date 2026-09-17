@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Industry screen, Maritime (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/industry.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -106,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -131,11 +134,11 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="ind-h">
+  <section class="screen-head screen-head--photo photo--mast" aria-labelledby="ind-h">
     <div class="wrap">
-      <p class="obj-line">Industries · Maritime</p>
+      <p class="badge">Industries · Maritime</p>
       <h1 id="ind-h">Run the fleet. <span class="dim">We answer for the systems.</span></h1>
       <p class="body">Connectivity, cyber, digital, safety and bridge equipment for fleet
          operators, technical management and ship managers. Specified, installed, surveyed and
@@ -147,11 +150,11 @@
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap wrap--pad">
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="stack-s">
+      <div class="stack">
 
-        <section aria-labelledby="dl-h">
+        <section class="section--band section--wide" aria-labelledby="dl-h">
           <h2 id="dl-h">The requirement usually arrives with a date on it.</h2>
           <p class="body">A docking window, a Port State Control (PSC) inspection, the annual Document of
              Compliance (DOC) audit, a newbuild contract. It rarely asks which technology you
@@ -160,63 +163,63 @@
           <div class="reg-row">
             <div>
               <h3>Cyber has to be in the safety management system before the next DOC verification.</h3>
-              <p class="meta">IMO MSC.428(98) · closed by Asterra Shield</p>
+              <p class="meta">IMO MSC.428(98), checked from 1 January 2021 · closed by Asterra Shield</p>
             </div>
-            <a class="btn btn-ghost" href="solution-detail.html">See what closes it</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">See what closes it</a>
           </div>
           <div class="reg-row">
             <div>
               <h3>Crew are asking for internet, and since 23 December 2024 PSC can ask too.</h3>
               <p class="meta">MLC 2006 amendments · closed by Asterra Connect</p>
             </div>
-            <a class="btn btn-ghost" href="solution-detail.html">See what closes it</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">See what closes it</a>
           </div>
           <div class="reg-row">
             <div>
               <h3>A newbuild contract brings IACS UR E26/E27 with it.</h3>
               <p class="meta">Ships contracted from 1 July 2024 · closed by Asterra Shield and Asterra Equip</p>
             </div>
-            <a class="btn btn-ghost" href="solution-detail.html">See what closes it</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">See what closes it</a>
           </div>
           <div class="reg-row">
             <div>
               <h3>The docking window is when hardware actually happens.</h3>
               <p class="meta">Installation and survey planned around the dock · Asterra Equip and Asterra Care</p>
             </div>
-            <a class="btn btn-ghost" href="solution-detail.html">See what closes it</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">See what closes it</a>
           </div>
           <div class="reg-row">
             <div>
               <h3>The connectivity line is up for defence again.</h3>
               <p class="meta">Figures that survive the budget review · Asterra Connect and Asterra Care</p>
             </div>
-            <a class="btn btn-ghost" href="solution-detail.html">See what closes it</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">See what closes it</a>
           </div>
 
-          <p class="hint-sm">Every regulation, with the paper you keep:
+          <p class="hint">Every regulation, with the paper you keep:
              <a href="norm.html">see the regulations we close</a>.</p>
         </section>
 
         <section aria-labelledby="of-h">
           <h2 id="of-h">The six areas, written in fleet terms.</h2>
-          <div class="duo-even">
+          <div class="pair pair--ruled">
             <div>
               <h3>Connectivity the crew can use and the office can defend</h3>
               <p class="body">Satellite and terrestrial capacity as one managed service: OrbitReach
                  on the satellite side, GroundLink in port and along the coast, failover between
                  them designed in. The usage rules stay with you, and the invoice holds no
                  surprises for whoever signs it.</p>
-              <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Connect</a></p>
+              <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Connect</a></p>
             </div>
             <div>
               <h3>Cyber that survives the DOC verification</h3>
               <p class="body">Network, device, data and operational protection specified against
                  IEC 62443, with the risk assessment and SMS procedures prepared before the
                  auditor asks. The evidence exists first; the verification reads it.</p>
-              <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Shield</a></p>
+              <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Shield</a></p>
             </div>
           </div>
-          <ul class="rows">
+          <ul class="rows rows--register">
             <li><span class="name"><a href="solution-detail.html">Asterra Intelligence</a></span>
                 <span class="meta">Engine data, condition monitoring and voyage records ashore</span></li>
             <li><span class="name"><a href="solution-detail.html">Asterra Assure</a></span>
@@ -235,12 +238,20 @@
              internet access at a reasonable charge, verified by PSC. Giving crew
              what they ask for without losing control of cost is a rule set of its own, and it has
              its own page.</p>
-          <p><a class="btn btn-ghost" href="crew-access.html">Read the crew connectivity rules</a></p>
+          <p><a class="btn btn--ghost" href="crew-access.html">Read the crew connectivity rules</a></p>
         </section>
 
-        <section aria-labelledby="prf-h">
+        <section class="section--band" aria-labelledby="prf-h">
           <h2 id="prf-h">What stands behind this</h2>
-          <div class="trio-l">
+          <div class="logo-row logo-row--lead" aria-label="Accredited partners">
+            <div class="logo-slot"><span class="logo-name">Skarnholt Orbital</span><span class="logo-cat">Satellite capacity partner</span></div>
+            <div class="logo-slot"><span class="logo-name">Telquist Satcom</span><span class="logo-cat">Satellite capacity partner</span></div>
+            <div class="logo-slot"><span class="logo-name">Keelwright Marine</span><span class="logo-cat">Navigation and bridge OEM</span></div>
+            <div class="logo-slot"><span class="logo-name">Vessark Navigation</span><span class="logo-cat">Navigation and bridge OEM</span></div>
+            <div class="logo-slot"><span class="logo-name">Brenholm Safety</span><span class="logo-cat">Safety equipment manufacturer</span></div>
+            <div class="logo-slot"><span class="logo-name">Saltmere Lifesaving</span><span class="logo-cat">Safety equipment manufacturer</span></div>
+          </div>
+          <div class="trio">
             <div>
               <h3>Regulation-anchored</h3>
               <p class="body">MLC 2006, MSC.428(98) and UR E26/E27, each dated, each naming the
@@ -257,15 +268,15 @@
                  claim of scale.</p>
             </div>
           </div>
-          <p class="hint-sm">Named-fleet scale and an industry case would be invented facts for a
+          <p class="hint">Named-fleet scale and an industry case would be invented facts for a
              fictional brand and stay empty: <span class="tbd">[TBD — no source]</span></p>
         </section>
 
         <div class="fallback">
-          <h3>A match is still three questions away.</h3>
-          <p class="body">Three questions about what actually landed on the fleet, and you get the
+          <h3>A match is still two questions away.</h3>
+          <p class="body">Two questions about what actually landed on the fleet, and you get the
              area that closes it.</p>
-          <p><a class="btn btn-ghost" href="guided-matching.html">Find what fits your fleet</a></p>
+          <p><a class="btn btn--ghost btn--next" href="guided-matching.html">Find what fits your fleet</a></p>
         </div>
 
       </div>
@@ -274,12 +285,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -287,7 +298,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -298,7 +309,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -311,7 +322,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

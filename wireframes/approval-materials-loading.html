@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Approval materials screen (loading) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/approval-materials.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -107,11 +109,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -132,39 +135,39 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="am-h">
+  <section class="screen-head" aria-labelledby="am-h">
     <div class="wrap">
-      <p class="obj-line">Prepare internal approval</p>
+      <p class="badge">Prepare internal approval</p>
       <h1 id="am-h">The decision is yours. The approval is not.</h1>
       <p class="body">Materials for the case you carry to whoever holds the budget: each one
          dated, self-consistent, and open without a form. Forward them as they are, or build on
          the page they package.</p>
-      <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Shield</a></p>
+      <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Shield</a></p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap wrap--pad">
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="stack-s">
+      <div class="stack">
 
-        <p class="status-line" role="status">Loading the materials list</p>
-        <div class="sk-block">
-          <span class="sk sk-h2"></span>
+        <p class="chip chip--wait chip--status" role="status">Loading the materials list</p>
+        <div class="skeleton skeleton--plain">
+          <span class="sk sk-h2 sk--bone"></span>
           <span class="sk sk-line"></span>
           <span class="sk sk-line"></span>
           <span class="sk sk-line short"></span>
         </div>
-        <div class="sk-block">
-          <span class="sk sk-h2"></span>
+        <div class="skeleton skeleton--plain">
+          <span class="sk sk-h2 sk--bone"></span>
           <span class="sk sk-line"></span>
           <span class="sk sk-line short"></span>
           <span class="sk sk-line"></span>
           <span class="sk sk-line short"></span>
         </div>
-        <div class="sk-block last">
-          <span class="sk sk-h2"></span>
+        <div class="skeleton skeleton--plain skeleton--last">
+          <span class="sk sk-h2 sk--bone"></span>
           <span class="sk sk-line"></span>
           <span class="sk sk-line short"></span>
         </div>
@@ -176,7 +179,7 @@
              after that is worth a conversation.</p>
           <p>
             <a class="btn" href="solution-detail.html">Read Asterra Shield</a>
-            <a class="btn btn-ghost" href="inquiry.html">Talk to an expert</a>
+            <a class="btn btn--ghost btn--next" href="inquiry.html">Talk to an expert</a>
           </p>
         </div>
 
@@ -186,12 +189,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -199,7 +202,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -210,7 +213,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -223,7 +226,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

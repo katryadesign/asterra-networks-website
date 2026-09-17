@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Industry screen, Maritime (error) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/industry.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -106,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -131,11 +134,11 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="ind-h">
+  <section class="screen-head screen-head--photo photo--mast" aria-labelledby="ind-h">
     <div class="wrap">
-      <p class="obj-line">Industries · Maritime</p>
+      <p class="badge">Industries · Maritime</p>
       <h1 id="ind-h">Run the fleet. <span class="dim">We answer for the systems.</span></h1>
       <p class="body">Connectivity, cyber, digital, safety and bridge equipment for fleet
          operators, technical management and ship managers. Specified, installed, surveyed and
@@ -147,21 +150,21 @@
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap wrap--pad">
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="stack-s">
+      <div class="stack">
 
-        <div class="notice">
+        <div class="notice notice--error">
           <h2>The industry content did not load.</h2>
           <p class="body">The Maritime industry content, situations, regulations and proof, did not arrive.
              Guided matching below is served separately and still works.</p>
         </div>
 
         <div class="fallback">
-          <h2>A match is still three questions away.</h2>
-          <p class="body">Three questions about what actually landed on the fleet, and you get the
+          <h2>A match is still two questions away.</h2>
+          <p class="body">Two questions about what actually landed on the fleet, and you get the
              area that closes it.</p>
-          <p><a class="btn btn-ghost" href="guided-matching.html">Find what fits your fleet</a></p>
+          <p><a class="btn btn--next" href="guided-matching.html">Find what fits your fleet</a></p>
         </div>
 
       </div>
@@ -170,12 +173,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -183,7 +186,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -194,7 +197,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -207,7 +210,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

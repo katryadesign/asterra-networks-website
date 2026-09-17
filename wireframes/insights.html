@@ -4,8 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Insights / News screen (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -105,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -130,11 +134,11 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="in-h">
+  <section class="screen-head" aria-labelledby="in-h">
     <div class="wrap">
-      <p class="obj-line">Insights / News</p>
+      <p class="badge">Insights / News</p>
       <h1 id="in-h">News here is a deadline or an accreditation. <span class="dim">Nothing else qualifies.</span></h1>
       <p class="body">Regulation items say when a dated requirement lands and what closes it.
          Accreditation items record whose capacity or equipment we are approved to carry. The feed
@@ -142,8 +146,8 @@
     </div>
   </section>
 
-  <div class="wrap pad-b">
-    <div class="stack-s">
+  <div class="wrap wrap--pad wrap--pad-compact">
+    <div class="stack">
 
       <section aria-labelledby="ni-h">
         <h2 id="ni-h">Both kinds can be checked outside this site.</h2>
@@ -152,43 +156,43 @@
           <article class="news-item">
             <div>
               <h3>UR E26/E27 now apply to every newbuild contracted from 1 July 2024</h3>
-              <p class="date">Regulation</p>
+              <p class="chip chip--date">Regulation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
           <article class="news-item">
             <div>
               <h3>New capacity accreditation extends hybrid coverage in high latitudes</h3>
-              <p class="date">Accreditation</p>
+              <p class="chip chip--date">Accreditation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
           <article class="news-item">
             <div>
               <h3>What Port State Control asks for under the MLC 2006 connectivity amendments</h3>
-              <p class="date">Regulation</p>
+              <p class="chip chip--date">Regulation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
           <article class="news-item">
             <div>
               <h3>Cyber risk in the safety management system is read at every annual Document of Compliance verification</h3>
-              <p class="date">Regulation</p>
+              <p class="chip chip--date">Regulation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
           <article class="news-item">
             <div>
               <h3>Survey accreditation renewed with a navigation and bridge OEM</h3>
-              <p class="date">Accreditation</p>
+              <p class="chip chip--date">Accreditation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
         </div>
 
         <p class="body">If a deadline here lands on your fleet, the regulation page names what
            closes it and the paper you keep.</p>
-        <p><a class="btn btn-ghost" href="norm.html">See the regulations we close</a></p>
+        <p><a class="btn btn--ghost" href="norm.html">See the regulations we close</a></p>
       </section>
 
     </div>
@@ -196,12 +200,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -209,7 +213,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -220,7 +224,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -233,7 +237,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

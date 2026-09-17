@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Crew access &amp; control screen (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/crew-access.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -107,11 +109,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -132,33 +135,33 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="ca-h">
+  <section class="screen-head screen-head--photo photo--dish" aria-labelledby="ca-h">
     <div class="wrap">
-      <p class="obj-line">Solutions &amp; Services · Crew connectivity</p>
-      <h1 id="ca-h">Give the crew what it asks for. <span class="dim">Keep the rules yours.</span></h1>
+      <p class="badge">Solutions &amp; Services · Crew connectivity</p>
+      <h1 id="ca-h">Give the crew what it asks for. <span class="dim dim--even">Keep the rules yours.</span></h1>
       <p class="body">Crew internet is decided as a set of rules: who gets how much and when, what
          a top-up costs, what is filtered, where access switches off, and what the office sees.
          The connection itself is the easy part. This page is about the rules, because the rules
          are what you answer for.</p>
       <p>
         <a class="btn" href="inquiry.html">Talk to an expert about your policy</a>
-        <a class="btn btn-ghost" href="solution-detail.html">Read Asterra Connect</a>
+        <a class="btn btn--ghost" href="solution-detail.html">Read Asterra Connect</a>
       </p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap wrap--pad wrap--pad-flush">
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="stack-s">
+      <div class="stack stack--diptych">
 
-        <section aria-labelledby="pol-h">
+        <section class="section--band" aria-labelledby="pol-h">
           <h2 id="pol-h">You are buying rules, not bandwidth.</h2>
           <p class="body">Bandwidth is what every vendor sells. What you answer for is the rule
              set on top of it, and every dimension of that rule set is a decision your office
              already owns. These are the dimensions a crew access policy is written in.</p>
-          <dl class="kv">
+          <dl class="values values--doc values--ruled values--numbered">
             <dt>Data quotas</dt>
             <dd>Set daily or monthly, per person or per vessel. The quota is the budget's first
                 line of defence, agreed before anyone connects rather than discovered on the
@@ -190,12 +193,12 @@
           </dl>
         </section>
 
-        <section aria-labelledby="num-h">
+        <section class="section--slot" aria-labelledby="num-h">
           <h2 id="num-h">Crews arrive knowing the market's numbers.</h2>
           <p class="body">None of the figures below are Asterra parameters. They are what crews
              report across the market today, from the deck: the vocabulary your policy will be
              measured against when crew compare vessels.</p>
-          <dl class="kv">
+          <dl class="values values--doc values--ruled">
             <dt>Daily caps</dt>
             <dd>Allowances around 450 MB per day are reported.</dd>
             <dt>Monthly allowances</dt>
@@ -205,21 +208,21 @@
             <dt>Top-up prices</dt>
             <dd>$2.50 per GB is reported, and crews call it expensive.</dd>
           </dl>
-          <p class="body">Our parameters: <span class="tbd">[TBD — no source]</span>. Asterra
+          <p class="body body--slot">Our parameters: <span class="tbd tbd--bare">[TBD — no source]</span>. Asterra
              quotas and tariffs are agreed per fleet in the policy conversation; this page sets
              the dimensions, not the values.</p>
         </section>
 
-        <section aria-labelledby="mlc-h">
+        <section class="section--diptych-start" aria-labelledby="mlc-h">
           <h2 id="mlc-h">Since 23 December 2024 the request has an inspector behind it.</h2>
           <p class="body">The MLC 2006 amendments, in force 23 December 2024, require crew
              internet access at a reasonable charge, verified by Port State Control. The crew's
              request and the office's obligation now point the same way, and the policy is how
              both are met without the invoice deciding for you.</p>
-          <p><a class="btn btn-ghost" href="norm.html">Read MLC 2006</a></p>
+          <p><a class="btn btn--ghost" href="norm.html">Read MLC 2006</a></p>
         </section>
 
-        <section aria-labelledby="s1-h">
+        <section class="section--diptych-end" aria-labelledby="s1-h">
           <h2 id="s1-h">Crew ask about it before they sign on.</h2>
           <p class="body">Connectivity has become part of why crew choose an employer and why
              they stay. A generous answer that collapses at the first invoice retains nobody; a
@@ -227,9 +230,17 @@
              plan around, at a cost the office can defend, year after year.</p>
         </section>
 
-        <section aria-labelledby="prf-h">
+        <section class="section--band" aria-labelledby="prf-h">
           <h2 id="prf-h">What stands behind the policy</h2>
-          <div class="trio-l">
+          <div class="logo-row logo-row--lead" aria-label="Accredited partners">
+            <div class="logo-slot"><span class="logo-name">Skarnholt Orbital</span><span class="logo-cat">Satellite capacity partner</span></div>
+            <div class="logo-slot"><span class="logo-name">Telquist Satcom</span><span class="logo-cat">Satellite capacity partner</span></div>
+            <div class="logo-slot"><span class="logo-name">Keelwright Marine</span><span class="logo-cat">Navigation and bridge OEM</span></div>
+            <div class="logo-slot"><span class="logo-name">Vessark Navigation</span><span class="logo-cat">Navigation and bridge OEM</span></div>
+            <div class="logo-slot"><span class="logo-name">Brenholm Safety</span><span class="logo-cat">Safety equipment manufacturer</span></div>
+            <div class="logo-slot"><span class="logo-name">Saltmere Lifesaving</span><span class="logo-cat">Safety equipment manufacturer</span></div>
+          </div>
+          <div class="trio trio--pair-branch">
             <div>
               <h3>Support commitment</h3>
               <p class="body">24x7x365 and multilingual, carried as a commitment rather than a
@@ -244,10 +255,10 @@
               <h3>Type-approval-grade proof lives on the solution page.</h3>
               <p class="body">When commitment claims are not enough for class or the office, the
                  approvals that carry a certifying body's name are read on the solution page.</p>
-              <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Connect</a></p>
+              <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Connect</a></p>
             </div>
           </div>
-          <p class="hint-sm">A usage stat or a named fleet case would be invented facts for a
+          <p class="hint">A usage stat or a named fleet case would be invented facts for a
              fictional brand and stay empty: <span class="tbd">[TBD — no source]</span></p>
         </section>
 
@@ -257,7 +268,7 @@
              policy: quotas, tiers, windows, costs, not a package name.</p>
           <p>
             <a class="btn" href="inquiry.html">Talk to an expert about your policy need</a>
-            <a class="btn btn-ghost" href="solution-detail.html">Read Asterra Connect</a>
+            <a class="btn btn--ghost btn--next" href="solution-detail.html">Read Asterra Connect</a>
           </p>
         </div>
 
@@ -267,12 +278,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -280,7 +291,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -291,7 +302,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -304,7 +315,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

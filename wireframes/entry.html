@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Entry screen (base) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/entry.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -109,11 +111,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -134,9 +137,9 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="hero" aria-labelledby="hero-h">
+  <section class="hero hero--photo photo--station" aria-labelledby="hero-h">
     <div class="wrap">
       <h1 id="hero-h">The fleet answers to a surveyor, an auditor and a budget.
         <span class="dim">So do we.</span></h1>
@@ -145,13 +148,13 @@
          industries. One party stays accountable for all of it, and is held to it.</p>
       <p>
         <a class="btn" href="guided-matching.html">Find what fits your fleet</a>
-        <a class="btn btn-ghost" href="#areas">See the six areas</a>
+        <a class="btn btn--ghost" href="#areas">See the six areas</a>
       </p>
       <p class="backdrop">[Backdrop treatment behind the type. Design stage.]</p>
     </div>
   </section>
 
-  <section class="statement on-dark" aria-labelledby="pos-h">
+  <section class="statement photo--aisle" aria-labelledby="pos-h">
     <div class="wrap">
       <h2 id="pos-h" class="pos-label">The proof is never our own name.</h2>
       <p>We do not launch the satellites or build the bridge hardware. We are the party accredited
@@ -162,9 +165,9 @@
     </div>
   </section>
 
-  <section class="band on-dark cap" aria-labelledby="cap-h">
+  <section class="band band--tone-lift" aria-labelledby="cap-h">
     <div class="wrap">
-      <div class="duo">
+      <div class="duo duo--cap duo--anchored">
         <div>
           <h2 id="cap-h">GEO, LEO and terrestrial,<br><span class="dim">run as one service.</span></h2>
           <p class="body">Failover between them is built into the design.</p>
@@ -184,7 +187,7 @@
     </div>
   </section>
 
-  <section class="band" id="areas" aria-labelledby="areas-h">
+  <section class="band band--raised band--areas" id="areas" aria-labelledby="areas-h">
     <div class="wrap">
       <h2 id="areas-h">Connectivity and cybersecurity <span class="dim">carry the deadlines.</span></h2>
       <p class="body lede">An area is one decision, and where it
@@ -192,60 +195,60 @@
 
       <div class="index">
         <div class="index-major">
-          <article>
-            <span class="tag">Connectivity</span>
+          <article class="photo--slew-ring">
+            <span class="chip chip--tag">Connectivity</span>
             <h3>Asterra Connect</h3>
             <p class="body">Satellite and terrestrial capacity as one managed service. OrbitReach
                covers satellite, GroundLink covers terrestrial and mobile, and the usage rules stay
                with you.</p>
-            <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Connect</a></p>
-            <p class="req">Closes MLC 2006 crew connectivity</p>
+            <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Connect</a></p>
+            <p class="chip chip--req">Closes MLC 2006 crew connectivity</p>
           </article>
-          <article>
-            <span class="tag">Cybersecurity</span>
+          <article class="photo--patch">
+            <span class="chip chip--tag">Cybersecurity</span>
             <h3>Asterra Shield</h3>
             <p class="body">Network, device, data and operational protection, specified against the
                framework your auditor names, and documented before the verification rather than
                after it.</p>
-            <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Shield</a></p>
-            <p class="req">Closes IMO MSC.428(98) · IACS UR E26/E27 · IEC 62443</p>
+            <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Shield</a></p>
+            <p class="chip chip--req">Closes IMO MSC.428(98) · IACS UR E26/E27 · IEC 62443</p>
           </article>
         </div>
         <div class="index-minor">
           <article>
-            <span class="tag">Digital Solutions</span>
+            <span class="chip chip--tag">Digital Solutions</span>
             <h3>Asterra Intelligence</h3>
             <p class="body">IoT, monitoring and cloud transfer. Engine data and voyage records
                reach shore without anyone emailing a spreadsheet.</p>
-            <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Intelligence</a></p>
+            <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Intelligence</a></p>
           </article>
           <article>
-            <span class="tag">Safety &amp; Compliance</span>
+            <span class="chip chip--tag">Safety &amp; Compliance</span>
             <h3>Asterra Assure</h3>
             <p class="body">Safety systems, certification and survey. The paper trail an inspection
                asks to see.</p>
-            <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Assure</a></p>
+            <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Assure</a></p>
           </article>
           <article>
-            <span class="tag">Equipment</span>
+            <span class="chip chip--tag">Equipment</span>
             <h3>Asterra Equip</h3>
             <p class="body">Navigation and bridge systems, safety equipment, onboard hardware.
                Supplied and surveyed under manufacturer accreditation.</p>
-            <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Equip</a></p>
+            <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Equip</a></p>
           </article>
           <article>
-            <span class="tag">Technical Services</span>
+            <span class="chip chip--tag">Technical Services</span>
             <h3>Asterra Care</h3>
             <p class="body">Installation, maintenance and support, 24x7x365 and multilingual. The
                part that decides whether the rest holds at 03:00.</p>
-            <p><a class="btn btn-ghost" href="solution-detail.html">Read Asterra Care</a></p>
+            <p><a class="btn btn--ghost" href="solution-detail.html">Read Asterra Care</a></p>
           </article>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band on-panel" aria-labelledby="sec-h">
+  <section class="band" aria-labelledby="sec-h">
     <div class="wrap">
       <h2 id="sec-h">Your industry reads <span class="dim">its own page.</span></h2>
       <p class="body lede">The same six areas, re-framed in the regulations, situations and proof
@@ -264,7 +267,7 @@
     </div>
   </section>
 
-  <section class="band" aria-labelledby="reg-h">
+  <section class="band band--proof band--ruled" aria-labelledby="reg-h">
     <div class="wrap">
       <div class="offset">
         <div>
@@ -272,38 +275,46 @@
           <p class="body">A dated requirement arrives and the question is always the same. What
              does it mean for these vessels, what closes it, and what will the inspector accept as
              evidence? Class societies answer the first part well. We answer the other two.</p>
-          <p><a class="btn btn-ghost" href="norm.html">See the regulations we close</a></p>
+          <p><a class="btn btn--ghost" href="norm.html">See the regulations we close</a></p>
         </div>
         <div>
           <div class="reg-row">
             <div>
               <h3>Cyber risk inside the safety management system</h3>
-              <p class="meta">Checked at the annual Document of Compliance verification · closed by Asterra Shield</p>
+              <p class="meta">Checked at the annual Document of Compliance verification from 1 January 2021 · closed by Asterra Shield</p>
             </div>
-            <a class="btn btn-ghost" href="norm.html">Read MSC.428(98)</a>
+            <a class="btn btn--ghost" href="norm.html">Read MSC.428(98)</a>
           </div>
           <div class="reg-row">
             <div>
               <h3>Cyber resilience for newbuilds</h3>
               <p class="meta">Ships contracted from 1 July 2024 · closed by Asterra Shield and Asterra Equip</p>
             </div>
-            <a class="btn btn-ghost" href="norm.html">Read UR E26/E27</a>
+            <a class="btn btn--ghost" href="norm.html">Read UR E26/E27</a>
           </div>
           <div class="reg-row">
             <div>
               <h3>Crew connectivity at a reasonable charge</h3>
               <p class="meta">In force 23 December 2024, verified by Port State Control · closed by Asterra Connect</p>
             </div>
-            <a class="btn btn-ghost" href="norm.html">Read MLC 2006</a>
+            <a class="btn btn--ghost" href="norm.html">Read MLC 2006</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band on-dark" aria-labelledby="held-h">
+  <section class="band band--raised band--tone-lift" aria-labelledby="held-h">
     <div class="wrap">
       <h2 id="held-h">What we are held to</h2>
+      <div class="logo-row logo-row--lead" aria-label="Accredited partners">
+        <div class="logo-slot"><span class="logo-name">Skarnholt Orbital</span><span class="logo-cat">Satellite capacity partner</span></div>
+        <div class="logo-slot"><span class="logo-name">Telquist Satcom</span><span class="logo-cat">Satellite capacity partner</span></div>
+        <div class="logo-slot"><span class="logo-name">Keelwright Marine</span><span class="logo-cat">Navigation and bridge OEM</span></div>
+        <div class="logo-slot"><span class="logo-name">Vessark Navigation</span><span class="logo-cat">Navigation and bridge OEM</span></div>
+        <div class="logo-slot"><span class="logo-name">Brenholm Safety</span><span class="logo-cat">Safety equipment manufacturer</span></div>
+        <div class="logo-slot"><span class="logo-name">Saltmere Lifesaving</span><span class="logo-cat">Safety equipment manufacturer</span></div>
+      </div>
       <div class="held">
         <div>
           <h3>Accredited, not self-declared</h3>
@@ -321,71 +332,63 @@
              two pages is a reliability signal, and we treat it as one.</p>
         </div>
       </div>
-      <div class="logo-row spaced">
-        <div class="logo-slot">Satellite capacity partner</div>
-        <div class="logo-slot">Satellite capacity partner</div>
-        <div class="logo-slot">Navigation and bridge OEM</div>
-        <div class="logo-slot">Navigation and bridge OEM</div>
-        <div class="logo-slot">Safety equipment manufacturer</div>
-        <div class="logo-slot">Safety equipment manufacturer</div>
-      </div>
     </div>
   </section>
 
-  <section class="band-tight on-panel" aria-labelledby="news-h">
+  <section class="band-tight" aria-labelledby="news-h">
     <div class="wrap">
-      <div class="duo">
+      <div class="duo duo--anchored">
         <div>
           <h2 id="news-h" class="h-small">Latest news</h2>
-          <p><a class="btn btn-ghost" href="insights.html">All news</a></p>
+          <p><a class="btn btn--ghost" href="insights.html">All news</a></p>
         </div>
         <div>
           <article class="news-item">
             <div>
               <h3>UR E26/E27 now apply to every newbuild contracted from 1 July 2024</h3>
-              <p class="date">Regulation</p>
+              <p class="chip chip--date">Regulation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
           <article class="news-item">
             <div>
               <h3>New capacity accreditation extends hybrid coverage in high latitudes</h3>
-              <p class="date">Accreditation</p>
+              <p class="chip chip--date">Accreditation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
           <article class="news-item">
             <div>
               <h3>What Port State Control asks for under the MLC 2006 connectivity amendments</h3>
-              <p class="date">Regulation</p>
+              <p class="chip chip--date">Regulation · <span class="tbd">[TBD — no source]</span></p>
             </div>
-            <a class="btn btn-ghost" href="insights.html">Read the announcement</a>
+            <a class="btn btn--ghost" href="insights.html">Read the announcement</a>
           </article>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band" aria-labelledby="close-h">
+  <section class="band band--ruled band--cta" aria-labelledby="close-h">
     <div class="wrap">
       <h2 id="close-h">Arrive with a position, <span class="dim">not a question.</span></h2>
       <p class="body">Name what landed on the fleet, an audit date, a newbuild spec, a budget to
          defend, and we will show what closes it before anyone calls you.</p>
       <p>
         <a class="btn" href="guided-matching.html">Find what fits your fleet</a>
-        <a class="btn btn-ghost" href="norm.html">See the regulations we close</a>
+        <a class="btn btn--ghost" href="norm.html">See the regulations we close</a>
       </p>
     </div>
   </section>
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -393,7 +396,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -404,7 +407,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -417,7 +420,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

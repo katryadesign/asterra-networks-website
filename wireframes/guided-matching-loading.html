@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Guided matching screen (loading) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/guided-matching.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -107,11 +109,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -132,21 +135,21 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="gm-h">
+  <section class="screen-head screen-head--photo photo--radome" aria-labelledby="gm-h">
     <div class="wrap">
       <h1 id="gm-h">Tell us what landed on the fleet.</h1>
-      <p class="body">Three questions about the situation, not about the technology. You will get
+      <p class="body">Two questions about the situation, not about the technology. You will get
          the area that closes it, the paper you keep, and where to read the detail.</p>
     </div>
   </section>
 
   <div class="wrap">
-    <div class="gm-grid">
+    <div class="split">
 
       <!-- INTERVIEW: permanent, identical in every state -->
-      <form class="interview" action="guided-matching.html" method="get">
+      <form class="form-panel form-panel--sticky" action="guided-matching.html" method="get">
         <h2>Your situation</h2>
         <p class="note">Change an answer to run the match again.</p>
 
@@ -162,7 +165,7 @@
             <option value="transport">Transportation</option>
             <option value="aerospace">Aerospace</option>
           </select>
-          <p class="hint-sm">The next question changes with the industry. These are the situations
+          <p class="hint">The next question changes with the industry. These are the situations
              recorded for Maritime.</p>
         </div>
 
@@ -170,7 +173,7 @@
           <label for="trigger">What started this requirement?</label>
           <select id="trigger" name="trigger">
             <optgroup label="Compliance and audit">
-              <option value="cyber-sms" selected>Cyber risk has to be in the safety management system before the next Document of Compliance verification</option>
+              <option value="cyber-sms" selected>Cyber risk in the SMS</option>
               <option value="psc">A Port State Control inspection</option>
               <option value="mlc">Crew connectivity under MLC 2006</option>
             </optgroup>
@@ -181,35 +184,35 @@
               <option value="docking">A dry-docking window is coming up</option>
             </optgroup>
             <optgroup label="Commercial">
-              <option value="budget-line">The connectivity budget line is up for defence</option>
+              <option value="budget-line">Connectivity budget up for defence</option>
               <option value="cyber-budget">A cyber budget that has to stretch</option>
-              <option value="crew-policy">A crew access policy has been asked for</option>
+              <option value="crew-policy">Crew access policy requested</option>
             </optgroup>
           </select>
         </div>
 
-        <button class="btn" type="submit">Match my situation</button>
+        <button class="btn btn--block" type="submit">Match my situation</button>
 
-        <p class="answered">Answered: Maritime · cyber risk in the SMS</p>
+        <p class="chip chip--record">Answered: Maritime · cyber risk in the SMS</p>
       </form>
 
       <!-- ==================== RESULT REGION START ==================== -->
       <!-- The only zone that differs between base, empty, error and loading. -->
       <div class="result">
 
-        <div class="result-head">
+        <div class="section-head">
           <h2>What closes it</h2>
-          <p class="count" role="status">Matching your situation</p>
+          <p class="chip chip--boxed chip--wait" role="status">Matching your situation</p>
         </div>
 
-        <div class="sk-block">
+        <div class="skeleton skeleton--photo">
           <span class="sk sk-rank"></span>
           <span class="sk sk-title"></span>
           <span class="sk sk-area"></span>
           <span class="sk sk-line"></span>
           <span class="sk sk-line"></span>
           <span class="sk sk-line short"></span>
-          <div class="sk-dl">
+          <div class="sk-values">
             <span class="sk sk-dt"></span><span class="sk sk-dd"></span>
             <span class="sk sk-dt"></span><span class="sk sk-dd"></span>
             <span class="sk sk-dt"></span><span class="sk sk-dd short"></span>
@@ -217,7 +220,7 @@
           <span class="sk sk-btn"></span>
         </div>
 
-        <div class="sk-block last">
+        <div class="skeleton skeleton--subordinate skeleton--last">
           <span class="sk sk-rank"></span>
           <span class="sk sk-title"></span>
           <span class="sk sk-area"></span>
@@ -226,13 +229,13 @@
           <span class="sk sk-btn"></span>
         </div>
 
-        <div class="fallback">
+        <div class="fallback fallback--fork">
           <h3>Recognition beats guidance for some buyers.</h3>
-          <p class="body">Finding your own industry on the page can be faster than answering three
+          <p class="body">Finding your own industry on the page can be faster than answering two
              questions. An open question is worth a conversation either way.</p>
           <p>
-            <a class="btn btn-ghost" href="industry.html">Read the Maritime page</a>
-            <a class="btn btn-ghost" href="inquiry.html">Talk to an expert</a>
+            <a class="btn btn--ghost btn--next btn--sign" href="industry.html">Read the Maritime page</a>
+            <a class="btn btn--ghost btn--next btn--sign" href="inquiry.html">Talk to an expert</a>
           </p>
         </div>
 
@@ -244,12 +247,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -257,7 +260,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -268,7 +271,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -281,7 +284,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>
@@ -316,7 +319,7 @@
       <strong>Leads to:</strong> <code>mResult "yes" to Solution detail</code>.</p>
 
     <h3>Zones</h3>
-    <p><strong>Interview (left, sticky).</strong> Three questions about the situation. sitemap.md §5
+    <p><strong>Interview (left, sticky).</strong> Two questions about the situation. sitemap.md §5
       requires this screen to ask about the trigger, not the technology, so no question names a
       technology, a bandwidth tier or a product. Triggers are P2's documented arrival situations
       (personas.md P2 Context, plus newbuild ICT, standardisation and upgrade from the

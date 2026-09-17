@@ -174,22 +174,22 @@ body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
     min-height: 210px;
     border: 1px solid var(--line); border-radius: var(--r);
     background: var(--surface) center/cover no-repeat;
-    filter: grayscale(0.55) contrast(1.06) brightness(0.9);
+    filter: grayscale(0.35) contrast(1.06) brightness(0.9);
   }
   /* Стрічка — антена як об'єкт; Shield — той самий знімок, що на його
      картці в стрічці; Maritime — щогла з радаром (= картка Equip);
      Crew connectivity — параболічна антена в полі. Усі 4 ID перевірені. */
   body:has(.wf-states a[href^="guided-matching"]) .gm-head .wrap::after {
-    background-image: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80");
+    background-image: url("../visuals/head-matching-antenna.jpg");
   }
   body:has(.wf-states a[href^="solution-detail"]) .gm-head .wrap::after {
-    background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=900&q=80");
+    background-image: url("../visuals/head-solution-cabinet.jpg");
   }
   body:has(.wf-states a[href^="industry"]) .gm-head .wrap::after {
-    background-image: url("https://images.unsplash.com/photo-1781449511066-01f1181ac87c?auto=format&fit=crop&w=900&q=80");
+    background-image: url("../visuals/head-industry-mast.jpg");
   }
   body:has(.wf-states a[href^="crew-access"]) .gm-head .wrap::after {
-    background-image: url("https://images.unsplash.com/photo-1526666923127-b2970f64b422?auto=format&fit=crop&w=900&q=80");
+    background-image: url("../visuals/head-crew-dish.jpg");
   }
 }
 
@@ -241,13 +241,13 @@ body > header { border-bottom: 1px solid var(--line); background: var(--bg); }
   margin: 0 calc(-1 * var(--pad)) 0;
   border-bottom: 1px solid var(--line);
   background: var(--surface-2) center/cover no-repeat;
-  filter: grayscale(0.55) contrast(1.06) brightness(0.88);
+  filter: grayscale(0.35) contrast(1.06) brightness(0.88);
 }
 .match:not(.match-secondary)::before {   /* Shield · Cybersecurity */
-  background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1000&q=80");
+  background-image: url("../visuals/card-shield-cabinet.jpg");
 }
 .match-secondary::before {               /* Equip · bridge and navigation */
-  background-image: url("https://images.unsplash.com/photo-1781449511066-01f1181ac87c?auto=format&fit=crop&w=1000&q=80");
+  background-image: url("../visuals/card-equip-bridge.jpg");
   height: 116px;                          /* A1 — вторинна картка нижча */
 }
 .match > .rank { margin-top: 20px; }
@@ -728,9 +728,9 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
     width: calc((100% - clamp(16px, 3vw, 40px) * 2 - 40px) / 2.4);
     min-height: 280px;
     border: 1px solid var(--line); border-radius: var(--r);
-    background: url("https://images.unsplash.com/photo-1526666923127-b2970f64b422?auto=format&fit=crop&w=1000&q=80")
+    background: url("../visuals/hero-entry-dish.jpg")
                 center/cover no-repeat, var(--surface);
-    filter: grayscale(0.55) contrast(1.06) brightness(0.9);
+    filter: grayscale(0.35) contrast(1.06) brightness(0.9);
   }
 }
 
@@ -741,7 +741,7 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
   padding: 72px 0;
   background:
     linear-gradient(105deg, oklch(0.12 0 0 / 0.78) 0%, oklch(0.12 0 0 / 0.42) 55%, oklch(0.12 0 0 / 0.62) 100%),
-    url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=1600&q=80")
+    url("../visuals/band-statement-room.jpg")
     center/cover no-repeat, var(--bg);
 }
 /* Панель — структурний грід: службовий підпис зліва як рейка, заява великим
@@ -777,13 +777,13 @@ body:has(.sk) .result-head .count { color: var(--ink-3); }
   content: ""; display: block; height: 150px; margin: 0 0 18px;
   border: 1px solid var(--line); border-radius: var(--r);
   background: var(--surface-2) center/cover no-repeat;
-  filter: grayscale(0.55) contrast(1.06) brightness(0.9);
+  filter: grayscale(0.35) contrast(1.06) brightness(0.9);
 }
 .index-major > article:first-child::before {
-  background-image: url("https://images.unsplash.com/photo-1590433332541-12e70dd1d4a6?auto=format&fit=crop&w=900&q=80");
+  background-image: url("../visuals/card-connect-antenna.jpg");
 }
 .index-major > article:nth-child(2)::before {
-  background-image: url("https://images.unsplash.com/photo-1680992046626-418f7e910589?auto=format&fit=crop&w=900&q=80");
+  background-image: url("../visuals/card-shield-cabinet.jpg");
 }
 .index-major h3 { font-size: 2.441rem; letter-spacing: -0.03em; }
 

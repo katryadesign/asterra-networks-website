@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Inquiry screen (error) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/inquiry.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -106,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -131,46 +134,46 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="iq-h">
+  <section class="screen-head screen-head--compact" aria-labelledby="iq-h">
     <div class="wrap">
       <h1 id="iq-h">Talk to an expert.</h1>
       <p class="body">One step. No wizard, no gate.</p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap work-rail work-rail--stacked">
 
-      <section class="band-tight" aria-labelledby="ctx-h">
-        <h2 id="ctx-h" class="h-small">Your context travels with the request.</h2>
+      <section class="context-panel" aria-labelledby="ctx-h">
+        <h2 id="ctx-h">Your context travels with the request.</h2>
         <p class="body">Carried from the page you came from, so the conversation starts where you
            already are: <strong>Asterra Shield, Cybersecurity · Maritime</strong>. Edit either in
            the form if that is not what you are asking about.</p>
       </section>
 
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="notice">
+      <div class="notice notice--error">
           <h2>The request did not send.</h2>
           <p class="body">Everything you typed is still here. Sending again submits the same
              request once.</p>
         </div>
 
-      <form class="request" action="inquiry-success.html" method="get">
+      <form class="form-panel form-panel--request" action="inquiry-success.html" method="get">
         <div class="field">
           <label for="q-name">Your name</label>
-          <input id="q-name" name="name" type="text" value="D. Petrou">
+          <input id="q-name" type="text" autocomplete="name" required value="D. Petrou">
         </div>
         <div class="field">
           <label for="q-company">Company</label>
-          <input id="q-company" name="company" type="text" value="Ship management company, 18 vessels">
+          <input id="q-company" type="text" autocomplete="organization" required value="Ship management company, 18 vessels">
         </div>
         <div class="field">
           <label for="q-email">Work email</label>
-          <input id="q-email" name="email" type="email" value="name@company.com">
+          <input id="q-email" type="email" autocomplete="email" required value="name@company.com">
         </div>
         <div class="field">
-          <label for="q-industry">Industry</label>
+          <label for="q-industry">Industry <span class="field-optional">(optional)</span></label>
           <select id="q-industry" name="industry">
             <option selected>Maritime</option>
             <option>Government</option>
@@ -183,14 +186,14 @@
           </select>
         </div>
         <div class="field">
-          <label for="q-solution">Solution of interest</label>
-          <input id="q-solution" name="solution" type="text" value="Asterra Shield (Cybersecurity)">
-          <p class="hint-sm">Filled in from the page you came from; edit it if you mean a different
+          <label for="q-solution">Solution of interest <span class="field-optional">(optional)</span></label>
+          <input id="q-solution" name="solution" type="text" aria-describedby="q-solution-hint" value="Asterra Shield (Cybersecurity)">
+          <p class="hint" id="q-solution-hint">Filled in from the page you came from; edit it if you mean a different
              solution.</p>
         </div>
         <div class="field">
-          <label for="q-role">Your role or request type</label>
-          <select id="q-role" name="role">
+          <label for="q-role">Your role or request type <span class="field-optional">(optional)</span></label>
+          <select id="q-role" name="role" aria-describedby="q-role-hint">
             <option value="">Select a role</option>
             <option selected>Fleet IT / IT manager</option>
             <option>Technical superintendent</option>
@@ -199,12 +202,12 @@
             <option>Reseller or partnership</option>
             <option>Other</option>
           </select>
-          <p class="hint-sm">Frame agreements and reseller requests route differently; saying so
+          <p class="hint" id="q-role-hint">Frame agreements and reseller requests route differently; saying so
              here saves the third meeting.</p>
         </div>
-        <div class="field">
+        <div class="field field--wide">
           <label for="q-msg">What landed on your fleet?</label>
-          <textarea id="q-msg" name="message">Cyber risk has to be in the SMS before our next DOC verification. What changes on board, and what evidence do we hold afterwards?</textarea>
+          <textarea id="q-msg" required>Cyber risk has to be in the SMS before our next DOC verification. What changes on board, and what evidence do we hold afterwards?</textarea>
         </div>
         <button class="btn" type="submit">Send the request again</button>
         <p class="routing">The request goes to a specialist for your industry. The reply comes
@@ -216,12 +219,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -229,7 +232,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -240,7 +243,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -253,7 +256,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>

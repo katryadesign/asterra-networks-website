@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asterra Networks — Inquiry screen (success) [wireframe]</title>
-<link rel="stylesheet" href="_wireframe.css">
-<link rel="stylesheet" href="_panel.css">
-<link rel="stylesheet" href="_parts/inquiry.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../ui/kit.css">
+<link rel="stylesheet" href="_chrome.css">
 </head>
 <body>
 
@@ -106,11 +108,12 @@
   </div>
 </div>
 
-<header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="wrap">
-    <span class="brand">Asterra Networks</span>
+    <a class="brand" href="entry.html">Asterra Networks</a>
     <div class="navs">
-      <nav class="nav-top" aria-label="Utility">
+      <nav class="nav-utility" aria-label="Utility">
         <ul>
           <li><a href="#">Events</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -131,30 +134,30 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="gm-head" aria-labelledby="iq-h">
+  <section class="screen-head screen-head--compact" aria-labelledby="iq-h">
     <div class="wrap">
       <h1 id="iq-h">Talk to an expert.</h1>
       <p class="body">One step. No wizard, no gate.</p>
     </div>
   </section>
 
-  <div class="wrap pad-b">
+  <div class="wrap work-rail">
 
-      <section class="band-tight" aria-labelledby="ctx-h">
-        <h2 id="ctx-h" class="h-small">Your context travels with the request.</h2>
+      <section class="context-panel" aria-labelledby="ctx-h">
+        <h2 id="ctx-h">Your context travels with the request.</h2>
         <p class="body">Carried from the page you came from, so the conversation starts where you
            already are: <strong>Asterra Shield, Cybersecurity · Maritime</strong>. Edit either in
            the form if that is not what you are asking about.</p>
       </section>
 
       <!-- ==================== STATE REGION START ==================== -->
-      <div class="notice">
+      <div class="notice notice--success notice--receipt">
         <h2>Request sent. You arrive with a position.</h2>
         <p class="body">The request went out with your context attached, so the conversation
            does not start from "so what do you offer?".</p>
-        <dl class="kv">
+        <dl class="values values--receipt">
           <dt>Solution</dt><dd>Asterra Shield (Cybersecurity)</dd>
           <dt>Industry</dt><dd>Maritime</dd>
           <dt>Role</dt><dd>Fleet IT / IT manager</dd>
@@ -170,12 +173,12 @@
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
       <div><span class="brand">Asterra Networks</span></div>
       <div>
-        <h4>About us</h4>
+        <h2>About us</h2>
         <ul>
           <li><a href="company.html">About</a></li>
           <li><a href="company.html">Leadership team</a></li>
@@ -183,7 +186,7 @@
         </ul>
       </div>
       <div>
-        <h4>Solutions &amp; Services</h4>
+        <h2>Solutions &amp; Services</h2>
         <ul>
           <li><a href="solution-detail.html">Connectivity</a></li>
           <li><a href="solution-detail.html">Cybersecurity</a></li>
@@ -194,7 +197,7 @@
         </ul>
       </div>
       <div>
-        <h4>Industries</h4>
+        <h2>Industries</h2>
         <ul>
           <li><a href="industry.html">Maritime</a></li>
           <li><a href="#">Government</a></li>
@@ -207,7 +210,7 @@
         </ul>
       </div>
       <div>
-        <h4>Regulations</h4>
+        <h2>Regulations</h2>
         <ul>
           <li><a href="norm.html">IMO MSC.428(98)</a></li>
           <li><a href="norm.html">IACS UR E26/E27</a></li>
