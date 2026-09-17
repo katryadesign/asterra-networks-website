@@ -1,0 +1,106 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     shell.html — оболонка продукту як РОЗМІТКА. Урок 07, крок 3.
+
+     Двошарова шапка (бренд · утилітний ряд · головний ряд) і підвал.
+     Таб-бару в Asterra немає: це сайт, а не застосунок.
+
+     Текст і склад пунктів — дослівно з wireframes/ (нічого не вигадано).
+     Класи — з ui/kit.css. Шляхи посилань лишені відносними до wireframes/,
+     бо саме туди оболонка вставляється на кроці 5.
+
+     ЯК КОРИСТУВАТИСЬ: скопіювати блок <header> на початок <body> екрана і
+     блок <footer> у кінець; `<main>` отримує id="main" — туди веде skip-link. Активний пункт позначається aria-current="page"
+     на посиланні головного ряду — саме його чекає правило кіта.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<!-- У <head> сторінки, ПЕРЕД ../ui/kit.css (шрифти не через @import — A6):
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+-->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="entry.html">Asterra Networks</a>
+    <div class="navs">
+      <nav class="nav-utility" aria-label="Utility">
+        <ul>
+          <li><a href="#">Events</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="inquiry.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <nav class="nav-main" aria-label="Global">
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="guided-matching.html">Solutions &amp; Services</a></li>
+          <li><a href="industry.html">Industries</a></li>
+          <li><a href="norm.html">Regulations</a></li>
+          <li><a href="crew-access.html">Crew connectivity</a></li>
+          <li><a href="insights.html">Latest news</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div><span class="brand">Asterra Networks</span></div>
+      <div>
+        <h2>About us</h2>
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="company.html">Leadership team</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Solutions &amp; Services</h2>
+        <ul>
+          <li><a href="solution-detail.html">Connectivity</a></li>
+          <li><a href="solution-detail.html">Cybersecurity</a></li>
+          <li><a href="solution-detail.html">Digital Solutions</a></li>
+          <li><a href="solution-detail.html">Safety &amp; Compliance</a></li>
+          <li><a href="solution-detail.html">Equipment</a></li>
+          <li><a href="solution-detail.html">Technical Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Industries</h2>
+        <ul>
+          <li><a href="industry.html">Maritime</a></li>
+          <li><a href="#">Government</a></li>
+          <li><a href="#">Enterprise</a></li>
+          <li><a href="#">Energy</a></li>
+          <li><a href="#">Research</a></li>
+          <li><a href="#">Emergency Response</a></li>
+          <li><a href="#">Transportation</a></li>
+          <li><a href="#">Aerospace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Regulations</h2>
+        <ul>
+          <li><a href="norm.html">IMO MSC.428(98)</a></li>
+          <li><a href="norm.html">IACS UR E26/E27</a></li>
+          <li><a href="norm.html">MLC 2006</a></li>
+          <li><a href="inquiry.html">Talk to an expert</a></li>
+          <li><a href="insights.html">Latest news</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <a href="legal.html">Terms of Use</a>
+      <a href="legal.html">Privacy Policy</a>
+      <a href="legal.html">Cookies Policy</a>
+    </div>
+    <p class="foot-legal">Asterra Networks is a fictional brand created for an independent UX/UI
+       case study. Regulatory references (MLC 2006, IMO MSC.428(98), IACS UR E26/E27, ISO 27001,
+       IEC 62443) are real and dated. All product names, partner marks, news items and commitments
+       are invented for the study.</p>
+  </div>
+</footer>
