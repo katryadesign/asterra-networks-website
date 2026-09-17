@@ -1,0 +1,25 @@
+/* Новинний рядок
+   components/news-item.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── новинний рядок ─────────────────────────────────────────────────── */
+.news-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-22);
+  padding: var(--space-16) var(--space-18);
+  margin: 0 0 var(--space-8);
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  transition: border-color var(--duration-200) var(--ease-out-expo);
+}
+
+.news-item h3 { font-size: var(--font-size-20); line-height: var(--leading-1-35); margin: 0; }
+
+@media (max-width: 720px) {
+  .news-item { grid-template-columns: 1fr; gap: var(--space-12); }
+  .news-item .btn { justify-self: start; }
+}

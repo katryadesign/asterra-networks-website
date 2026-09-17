@@ -1,0 +1,17 @@
+/* Заголовок ліворуч, реєстр праворуч
+   components/offset.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── заголовок ліворуч, реєстр норм праворуч ───────────────────────────── */
+.offset { display: grid; grid-template-columns: 1fr minmax(0, var(--size-660)); gap: var(--space-56); align-items: start; }
+
+@media (max-width: 1080px) {
+  .offset { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 1081px) {
+  .offset { grid-template-columns: minmax(0, 1fr) minmax(0, var(--fr-1-55)); align-items: stretch; }
+  .offset > div:first-child { display: flex; flex-direction: column; align-items: flex-start; }
+  .offset > div:first-child p:has(> .btn) { margin-top: var(--space-24); margin-bottom: 0; }
+}

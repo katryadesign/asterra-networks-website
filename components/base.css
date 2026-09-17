@@ -1,0 +1,51 @@
+/* База — скидання, елементи, фокус, рух
+   components/base.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+:root {
+  /* Слоти компонентів — API, не значення: іконка і знімок за замовчуванням порожні. */
+  --icon: none;
+  --photo: none;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-ground);
+  color: var(--text);
+  font-family: var(--font-grotesk);
+  font-size: var(--font-size-16);
+  line-height: var(--leading-1-68);
+}
+
+::selection { background: var(--action); color: var(--on-action); }
+
+h1, h2, h3, h4 { margin: 0 0 var(--space-8); font-weight: var(--weight-500); }
+
+h1, h2 { text-wrap: balance; }
+
+h1 { font-size: var(--font-size-31-25); letter-spacing: var(--tracking-neg-030); line-height: var(--leading-1-06); margin-bottom: var(--space-16); }
+
+h2 { font-size: var(--font-size-31-25); letter-spacing: var(--tracking-neg-025); line-height: var(--leading-1-15); margin-bottom: var(--space-14); }
+
+h3 { font-size: var(--font-size-25); letter-spacing: var(--tracking-neg-020); line-height: var(--leading-1-2); }
+
+h4 { font-size: var(--font-size-16); letter-spacing: 0; color: var(--text); }
+
+a { color: inherit; }
+
+:where(a, button, select, input, textarea, [tabindex]):focus-visible {
+  outline: var(--stroke-2) solid var(--text);
+  outline-offset: var(--space-2);
+}
+
+/* ── кінець групи hygiene ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: var(--duration-instant) !important;
+    animation-duration: var(--duration-instant) !important;
+    animation-iteration-count: 1 !important;
+  }
+}

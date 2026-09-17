@@ -1,0 +1,103 @@
+/* Модифікатори секції: --close, --band, --bleed, --wide, --lead, --slot, --numbered
+   components/section.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── закривальна секція: розвилка рішення і вихід на погодження ──────────
+   Примітка тут — не дрібна виноска, а другий вихід (R3), тому більша й
+   відбита межею. Лінки в ній — чорнилом.                               */
+.section--close .hint {
+  font-size: var(--font-size-14);
+  max-width: var(--measure-68);
+  border-top: var(--stroke-1) solid var(--rule);
+  padding-top: var(--space-14);
+  margin-top: var(--space-22);
+}
+
+.section--close :is(.hint, .body) a { color: var(--text); text-underline-offset: var(--space-3); }
+
+.section--close p:has(> .btn) { display: flex; flex-wrap: wrap; gap: var(--space-12); margin-top: var(--space-24); }
+
+/* ── смуга: доказова зона на піднятій поверхні ───────────────────────────
+   У _panel.css вмикалась селектором `:has(table.spec/.trio/.rows)`.
+   У кіті це ЯВНИЙ клас: тон позначає онтологію, і екран мусить її назвати.
+   Дві смуги на сторінку — типова стеля (DESIGN.md, The Two Bands Rule).  */
+.stack > section.section--band, .section--band {
+  background: var(--bg-band);
+  border-block: var(--stroke-1) solid var(--rule);
+  padding: var(--space-fluid-28-44) var(--space-fluid-20-36);
+}
+
+/* Смуга на всю ширину обгортки: рейки всіх секцій стають в одну вісь. */
+.stack > section.section--bleed, .section--bleed {
+  margin-inline: calc(-1 * var(--space-fluid-16-40));
+  padding-inline: var(--space-fluid-16-40);
+}
+
+/* Широка секція: рядки під заголовком займають обидві колонки рейки. */
+@media (min-width: 980px) {
+  .stack > section.section--wide > :is(.reg-row, .hint) { grid-column: 1 / -1; }
+}
+
+.section--wide > .hint { margin-top: var(--space-14); }
+
+.section--band .reg-row { background: var(--bg-panel-on-band); }
+
+.section--band .trio > div { background: var(--bg-panel-on-band); }
+
+@media (min-width: 760px) {
+  .section--band .rows li, .section--band .rows li:first-child { background: var(--bg-panel-on-band); }
+}
+
+@media (min-width: 980px) {
+  /* Перший запис (паспорт) домінує: заголовок на крок шкали вищий. */
+  .stack > section.section--lead > h2 { font-size: var(--font-size-31-25); }
+}
+
+@media (min-width: 980px) {
+  .stack--diptych > section.section--diptych-start {
+    grid-column: 1;
+    display: block;
+    padding-right: var(--space-fluid-32-56);
+  }
+  .stack--diptych > section.section--diptych-end {
+    grid-column: 2;
+    display: block;
+    border-left: var(--stroke-1) solid var(--rule-rank);
+    padding-left: var(--space-fluid-32-56);
+  }
+  .stack--diptych > section:is(.section--diptych-start, .section--diptych-end) > h2 { margin-bottom: var(--space-14); }
+}
+
+@media (min-width: 980px) {
+  .stack > section.section--slot > h2 { margin-bottom: var(--space-12); }
+  .stack > section.section--slot > .values { grid-column: 1; grid-row: 2; }
+  .stack > section.section--slot > .body--slot { grid-column: 2; grid-row: 2; align-self: stretch; margin: 0; }
+}
+
+/* Нумерований реєстр: позиції набору адресовані номером («позиція 03»),
+   щоб на рядок можна було послатись у листі до того, хто погоджує.
+   Порядок несе розмітка; CSS лише показує його. Нумеруються й слоти. */
+/* Ім'я лічильника лишено з еталона (am-item): звірка порівнює content. */
+.section--numbered { counter-reset: am-item; }
+
+.section--numbered .reg-row { counter-increment: am-item; }
+
+.section--numbered .reg-row h3::before {
+  content: counter(am-item, decimal-leading-zero);
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  font-weight: var(--weight-400);
+  letter-spacing: var(--tracking-040);
+  color: var(--text-label);
+  margin-right: var(--space-10);
+}
+
+/* Чесний слот [TBD]: контур речі, якої ще немає, — пунктир без заливки,
+   заголовок притишений на крок. Кольору немає: слот не подія. */
+.reg-row--slot,
+.section--band .reg-row--slot {
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--rule-gap);
+}

@@ -1,0 +1,29 @@
+/* Робоча колонка + рейка контексту
+   components/work-rail.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── робоча колонка + вузька рейка контексту праворуч ────────────────────
+   Рейка в DOM перша (без фокусованих елементів), ≥980 стає праворуч на
+   рівні першого поля. --stacked: у колонці два блоки (notice + форма),
+   тоді рейка тягнеться на обидва ряди.                                  */
+.work-rail { padding-top: var(--space-24); padding-bottom: var(--space-64); }
+
+.work-rail > :is(.notice, .form-panel) { max-width: var(--size-680); }
+
+@media (max-width: 979px) {
+  .work-rail--stacked { display: flex; flex-direction: column; }
+  .work-rail--stacked > .notice { order: -1; }
+}
+
+@media (min-width: 980px) {
+  .work-rail {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--size-300));
+    gap: var(--space-24) var(--space-fluid-40-64);
+    align-items: start;
+  }
+  .work-rail > .context-panel { grid-column: 2; grid-row: 1; margin: 0; }
+  .work-rail--stacked > .context-panel { grid-row: 1 / span 2; }
+  .work-rail > :is(.notice, .form-panel) { grid-column: 1; margin-bottom: 0; }
+}

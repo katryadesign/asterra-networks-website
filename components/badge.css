@@ -1,0 +1,40 @@
+/* Бейдж
+   components/badge.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── бейдж: категорія · ранг · напрям. Стоїть НАД заголовком ───────────── */
+.badge {
+  justify-self: start;
+  --icon: var(--solar-shield-check);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-7);
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  font-weight: var(--weight-400);
+  line-height: var(--leading-1-68);
+  letter-spacing: var(--tracking-040);
+  text-transform: uppercase;
+  color: var(--text-quiet);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-4) var(--space-9);
+  margin: 0 0 var(--space-12);
+}
+
+.badge::before {
+  content: "";
+  width: var(--size-13);
+  height: var(--size-13);
+  background: currentColor;
+  -webkit-mask: var(--icon) center/contain no-repeat;
+          mask: var(--icon) center/contain no-repeat;
+}
+
+.badge--none::before { content: none; }
+
+/* Обране системою позначено так само, як обрана дія: інверсією. */
+.badge--selected { background: var(--action); color: var(--on-action); border-color: var(--action); }
+
+.badge--routing { --icon: var(--solar-routing-2); }

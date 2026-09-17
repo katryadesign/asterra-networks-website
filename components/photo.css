@@ -1,0 +1,35 @@
+/* Знімки — слоти --photo, одне місце заміни
+   components/photo.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── знімки · один слот, одне місце заміни ──────────────────────────────
+   Модифікатор ставиться на .screen-head--photo або на .match. Тема — за
+   змістом екрана (К1: обладнання як задокументований об'єкт). Власний набір
+   visuals/ (урок 07, крок 4): один колорит — приглушена морська зелень
+   у матеріалі, синій відлив неба нейтралізовано (Р3, visuals/README.md).
+   Разові слоти головної (герой, смуга-заява) у кіт не входять.            */
+.photo--radome { --photo: url("../visuals/head-matching-antenna.jpg"); }
+
+/* шапка · guided matching */
+.photo--cabinet { --photo: url("../visuals/head-solution-cabinet.jpg"); }
+
+/* шапка · solution detail */
+.photo--mast { --photo: url("../visuals/head-industry-mast.jpg"); }
+
+/* шапка · industry */
+.photo--dish { --photo: url("../visuals/head-crew-dish.jpg"); }
+
+/* шапка · crew access */
+.photo--patch { --photo: url("../visuals/card-shield-cabinet.jpg"); }
+
+/* картка · Asterra Shield */
+.photo--slew-ring { --photo: url("../visuals/card-connect-antenna.jpg"); }
+
+/* картка · Asterra Connect */
+.photo--console { --photo: url("../visuals/card-equip-bridge.jpg"); }
+
+.photo--station { --photo: url("../visuals/hero-entry-dish.jpg"); }
+
+/* герой · entry */
+.photo--aisle { --photo: url("../visuals/band-statement-room.jpg"); }

@@ -1,0 +1,51 @@
+/* Тріо панелей
+   components/trio.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── тріо панелей: три типи доказу нерівні ──────────────────────────── */
+.trio {
+  display: grid;
+  gap: var(--space-12);
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--size-240), 100%), 1fr));
+}
+
+.trio > div {
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-22);
+  transition: border-color var(--duration-200) var(--ease-out-expo);
+}
+
+.trio > div { min-width: 0; overflow-wrap: break-word; }
+
+.trio h3 { font-size: var(--font-size-20); color: var(--text); }
+
+@media (min-width: 900px) {
+  .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .trio--ranked { grid-template-columns: minmax(0, var(--fr-1-35)) minmax(0, 1fr) minmax(0, 1fr); }
+}
+
+@media (max-width: 899px) {
+  .trio { grid-template-columns: 1fr; }
+}
+
+/* Ранг: робочий доказ сторінки тримається межею, своє зобов'язання — ghost. */
+.trio--ranked > div:first-child { border-color: var(--rule-rank); }
+
+.trio--ranked > div:last-child { background: transparent; }
+
+/* У вузькій рейковій колонці тріо перескладається бенто. */
+@media (min-width: 980px) and (max-width: 1366px) {
+  .trio--ranked { grid-template-columns: 1fr 1fr; }
+  .trio--ranked > div:first-child { grid-column: 1 / -1; }
+}
+
+/* ── тріо як пара + гілка: два зобов'язання поруч, маршрут окремим рядом ── */
+@media (min-width: 900px) {
+  .trio--pair-branch { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .trio--pair-branch > div:last-child { grid-column: 1 / -1; }
+}
+
+.trio--pair-branch > div p:last-child { margin-bottom: 0; }

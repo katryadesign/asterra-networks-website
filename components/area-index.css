@@ -1,0 +1,49 @@
+/* Індекс напрямів (.index)
+   components/area-index.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── індекс напрямів: два головні з фото, чотири компактні ─────────────── */
+.index { border-top: var(--stroke-1) solid var(--rule-rank); }
+
+.index-major { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: var(--stroke-1) solid var(--rule); }
+
+.index-major > article { padding: var(--space-40) var(--space-48) var(--space-40) 0; }
+
+.index-major > article + article { padding-left: var(--space-48); border-left: var(--stroke-1) solid var(--rule); }
+
+.index-major > article::before {
+  content: "";
+  display: block;
+  height: var(--size-150);
+  margin: 0 0 var(--space-18);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  background: var(--photo) center/cover no-repeat, var(--bg-well);
+  filter: var(--filter-desaturate);
+}
+
+.index-major h3 { font-size: var(--font-size-39-06); letter-spacing: var(--tracking-neg-030); margin-bottom: var(--space-12); }
+
+.index-minor { display: grid; grid-template-columns: repeat(4, 1fr); }
+
+.index-minor > article { padding: var(--space-26) var(--space-24) var(--space-26) 0; border-bottom: var(--stroke-1) solid var(--rule); }
+
+.index-minor > article + article { padding-left: var(--space-24); border-left: var(--stroke-1) solid var(--rule); }
+
+.index-minor h3 { font-size: var(--font-size-20); }
+
+.index-minor .body { font-size: var(--font-size-14); }
+
+.index-minor :where(.btn--ghost) { padding: var(--space-7) var(--space-14); font-size: var(--font-size-13-76); border-color: var(--rule); }
+
+@media (max-width: 1080px) {
+  .index-major, .index-minor { grid-template-columns: 1fr; }
+  .index-major > article + article, .index-minor > article + article { padding-left: 0; border-left: 0; }
+}
+
+@media (min-width: 721px) and (max-width: 1240px) {
+  .index-minor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .index-minor > article:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .index-minor > article:nth-child(even) { border-left: var(--stroke-1) solid var(--rule); padding-left: var(--space-24); }
+}

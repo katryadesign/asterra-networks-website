@@ -1,0 +1,53 @@
+/* Текстові ролі: абзац, мета, ім'я, примітка, двотон
+   components/text.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── текстові ролі ──────────────────────────────────────────────────── */
+.body { font-size: var(--font-size-16); color: var(--text-quiet); max-width: var(--measure-68); margin: 0 0 var(--space-14); text-wrap: pretty; }
+
+.meta { font-size: var(--font-size-14); color: var(--text-quiet); }
+
+.name { color: var(--text); font-weight: var(--weight-500); }
+
+.hint { font-size: var(--font-size-12-8); color: var(--text-quiet); margin: var(--space-6) 0 0; max-width: var(--measure-68); }
+
+.dim { color: var(--text-quiet); font-weight: var(--weight-500); }
+
+/* Двотон у великому заголовку: пригашена половина падає глибше.
+   Великий кегль тримає AA-large; на дрібному тексті цей тон не вживається. */
+h1 .dim, h2 .dim { color: var(--solo-heading-dim); font-weight: inherit; }
+
+.lede { margin-bottom: var(--space-44); }
+
+.h-small { font-size: var(--font-size-25); letter-spacing: var(--tracking-neg-020); }
+
+/* ── примітка чужим голосом: відведена в поле волосяною лінійкою ─────── */
+.hint--aside {
+  border-left: var(--stroke-1) solid var(--rule-rank);
+  padding-left: var(--space-14);
+  margin-top: var(--space-14);
+}
+
+/* ── абзац-предмет: кінцева точка маршруту як річ на поверхні ────────── */
+.body--object {
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-22) var(--space-26);
+}
+
+/* ── двотон, що не ранжує: обидві половини рівні, межу тримає рядок ─── */
+h1 .dim--even { display: block; color: var(--text); }
+
+/* ── секція «заповнене ↔ порожній слот»: слот у протилежній рейці ────── */
+.body--slot {
+  border: var(--stroke-1) dashed var(--rule-gap);
+  border-radius: var(--radius-2);
+  padding: var(--space-14) var(--space-16);
+  font-size: var(--font-size-14);
+  margin: var(--space-12) 0 0;
+}
+
+/* Виноска до всього набору, а не хвіст останнього рядка. */
+.hint--set { margin-top: var(--space-12); }

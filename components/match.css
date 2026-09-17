@@ -1,0 +1,50 @@
+/* Картка-відповідь
+   components/match.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── картка-відповідь ───────────────────────────────────────────────────
+   Порядок анатомії фіксований: фото → бейдж → ім'я → напрям → текст →
+   панель величин → дії. Ранг тримають межа, тон, кегль і фото — не колір. */
+.match {
+  --pad: var(--space-fluid-16-24);
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule-rank);
+  border-radius: var(--radius-2);
+  padding: 0 var(--pad) var(--space-24);
+  margin: 0 0 var(--space-20);
+  overflow: hidden;
+  transition: border-color var(--duration-200) var(--ease-out-expo);
+}
+
+.match::before {
+  content: "";
+  display: block;
+  height: var(--size-fluid-148-188);
+  margin: 0 calc(-1 * var(--pad));
+  border-bottom: var(--stroke-1) solid var(--rule);
+  background: var(--photo) center/cover no-repeat, var(--bg-well);
+  filter: var(--filter-desaturate);
+}
+
+.match > .badge { margin-top: var(--space-20); }
+
+.match h3 { font-size: var(--font-fluid-31-39); letter-spacing: var(--tracking-neg-030); margin: 0 0 var(--space-2); }
+
+.match .chip { margin: 0 0 var(--space-14); }
+
+.match .body { margin: 0 0 var(--space-18); }
+
+.match p:has(> .btn) { display: flex; flex-wrap: wrap; gap: var(--space-12); }
+
+/* Підпорядкована: фото — привілей рішення, тому його немає; картка сідає
+   на ґрунт, ранг читається тональним зсувом, а не дрібнішим шрифтом самим. */
+.match--secondary {
+  background: transparent;
+  border-color: var(--rule);
+  padding-top: var(--space-4);
+}
+
+.match--secondary::before { content: none; }
+
+.match--secondary h3 { font-size: var(--font-size-25); letter-spacing: var(--tracking-neg-020); }

@@ -1,0 +1,54 @@
+/* Шапка сайту: бренд і дві навігації (розмітка — ui/shell.html)
+   components/site-header.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ЗНАХІДКА КРОКУ 5 (на рішення в кроці 6): у вайрфреймах правила шапки й
+   підвалу були записані як `body > header` / `body > footer`, але обидва
+   блоки лежать усередині службової обгортки .wf-page — тож ті правила не
+   спрацьовували ніколи. Кіт повторює РЕАЛЬНИЙ рендер еталона: шапка без
+   межі й фону, бренд окремим рядком над навігацією, у підвалі сірі
+   підкреслені посилання 14px. Змінювати — рішенням «залишаємо», у кіті. */
+.site-header { }
+
+.brand {
+  font-size: var(--font-size-16);
+  font-weight: var(--weight-600);
+  letter-spacing: var(--tracking-neg-010);
+  text-decoration: none;
+}
+
+.navs { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-6); min-width: 0; }
+
+.nav-utility, .nav-main { min-width: 0; }
+
+.nav-utility ul, .nav-main ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-24);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-utility { font-size: var(--font-size-12-8); color: var(--text-quiet); }
+
+.nav-main { font-size: var(--font-size-14); }
+
+.nav-utility a, .nav-main a {
+  display: inline-block;
+  padding-block: var(--space-4);
+  text-decoration: none;
+  border-bottom: var(--stroke-1) solid transparent;
+  transition: color var(--duration-200) var(--ease-out-expo), border-color var(--duration-200) var(--ease-out-expo);
+}
+
+.nav-utility a { color: var(--text-quiet); }
+
+.nav-main a { color: var(--text); }
+
+.nav-utility a:hover, .nav-main a:hover { color: var(--text); border-bottom-color: var(--text); }
+
+/* Активний пункт: у вайрфреймах не позначений ніде (inventory §1) —
+   кіт дає форму, екрани проставляють на кроці 5. */
+.nav-main a[aria-current="page"] { color: var(--text); border-bottom-color: var(--rule-rank); }

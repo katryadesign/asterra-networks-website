@@ -1,0 +1,60 @@
+/* Повідомлення стану
+   components/notice.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+.notice {
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-24);
+  margin: 0 0 var(--space-28);
+}
+
+.notice :is(h2, h3) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  font-size: var(--font-size-25);
+  letter-spacing: var(--tracking-neg-015);
+  margin: 0 0 var(--space-10);
+  color: var(--text);
+}
+
+.notice :is(h2, h3)::before {
+  content: "";
+  width: var(--size-22);
+  height: var(--size-22);
+  flex: none;
+  margin-top: var(--space-4);
+  background: currentColor;
+  -webkit-mask: var(--icon) center/contain no-repeat;
+          mask: var(--icon) center/contain no-repeat;
+}
+
+.notice .body { margin: 0 0 var(--space-18); }
+
+.notice ul { color: var(--text-quiet); }
+
+.notice--error { --icon: var(--solar-danger-triangle); border-color: var(--solo-event-edge); }
+
+.notice--error :is(h2, h3) { color: var(--event); }
+
+.notice--empty { --icon: var(--solar-info-circle); }
+
+.notice--loading { --icon: var(--solar-clock-circle); }
+
+.notice--success { --icon: var(--solar-check-circle); }
+
+/* ── симетричне дно: останній абзац / кістка віддає відступ панелі ───── */
+.notice--flush > p:last-child { margin-bottom: 0; }
+
+/* Підтверджена квитанція: найтвердіший контур сторінки, значення — чорнилом. */
+.notice--receipt { border-color: var(--rule-rank); }
+
+.notice--receipt .values dd { color: var(--text); }
+
+/* Скелет усередині повідомлення: тонкі рядки, як у рейкової сторінки. */
+.notice .sk-line { height: var(--size-14); margin: 0 0 var(--space-10); }
+
+.notice .sk-line.short { margin-bottom: var(--space-24); }

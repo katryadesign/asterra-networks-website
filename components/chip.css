@@ -1,0 +1,83 @@
+/* Чіп величини (+ --area, --status, --wait, --event, --boxed, --record, --tag, --req, --date)
+   components/chip.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── чіп величини: лічильник · запис · статус · дата · напрям ─────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-7);
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  line-height: var(--leading-1-68);
+  color: var(--text-label);
+  margin: 0;
+}
+
+/* Іконку несуть лише названі варіанти: нейтральний чіп — просто величина. */
+.chip::before { content: none; }
+
+:is(.chip--area, .chip--wait, .chip--event)::before {
+  content: "";
+  width: var(--chip-icon, var(--size-14));
+  height: var(--chip-icon, var(--size-14));
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--icon) center/contain no-repeat;
+          mask: var(--icon) center/contain no-repeat;
+}
+
+.chip--area { --icon: var(--solar-widget-4); --chip-icon: var(--size-13); }
+
+.chip--status { margin: 0 0 var(--space-18); }
+
+.chip--wait { --icon: var(--solar-clock-circle); }
+
+/* Подія: єдине місце хроматики. Ані «recommended», ані дата її не беруть. */
+.chip--event { --icon: var(--solar-danger-triangle); color: var(--event); }
+
+/* Коробка запису: та сама поверхня, що панель величин. */
+.chip--boxed {
+  background: var(--bg-well);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-5) var(--space-10);
+}
+
+.chip--record {
+  display: block;
+  background: var(--bg-well);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-9) var(--space-12);
+  color: var(--text-label);
+  border-top: var(--stroke-1) solid var(--rule);
+  margin-top: var(--space-16);
+}
+
+.chip--record::before { content: none; }
+
+/* Мітка напряму і вимога, яку напрям закриває. */
+.chip--tag {
+  display: block;
+  line-height: var(--leading-1-5);
+  letter-spacing: var(--tracking-040);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-10);
+}
+
+.chip--req {
+  display: block;
+  line-height: var(--leading-1-5);
+  color: var(--text-quiet);
+  border-top: var(--stroke-1) solid var(--rule);
+  padding-top: var(--space-10);
+  margin: var(--space-16) 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ЗНАХІДКА КРОКУ 5: у еталоні дата новини рендериться системним моно
+   (ui-monospace), а не JetBrains Mono — правило _wireframe.css перебило
+   правило мови за специфічністю. Кіт повторює рендер; на рішення в кроці 6. */
+.chip--date { display: block; margin: var(--space-5) 0 0; font-family: var(--font-system-mono); font-variant-numeric: tabular-nums; }

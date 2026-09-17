@@ -7,7 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../components/index.css">
+<script src="../wireframes/_theme.js"></script>
 <style>
 /* СЛУЖБОВЕ — каркас вітрини, не продукт. Тією ж конвенцією, що .wf-* у
    wireframes/: без брендових шрифтів і без сигнального кольору.          */
@@ -19,6 +21,7 @@
 .doc-scale small {
   font-family: ui-monospace, Consolas, monospace;
 }
+.wf-theme { font: inherit; font-size: 11px; cursor: pointer; margin-top: 10px; padding: 2px 8px; border: 1px solid oklch(0.28 0 0); background: oklch(0.16 0 0); color: oklch(0.72 0 0); }
 .doc-head { border-bottom: 1px solid oklch(0.28 0 0); padding: 20px 0; }
 .doc-head h1 { font-family: ui-monospace, Consolas, monospace; font-size: 15px; font-weight: 600; letter-spacing: 0; line-height: 1.5; margin: 0 0 6px; }
 .doc-head p, .doc-note { font-size: 11px; line-height: 1.6; color: oklch(0.72 0 0); margin: 0; max-width: 92ch; }
@@ -45,49 +48,76 @@
     <h1>Asterra Networks — component kit</h1>
     <p>Урок 07, крок 3. Джерела: ui/inventory.md (склад) · DESIGN.md (мова) · concept/concept.md (рішення) ·
        microcopy.md і wireframes/ (усі написи нижче — дослівні з екранів, нічого не вигадано).
-       Стилі — тільки з <b>ui/kit.css</b>; розмітка оболонки — <b>ui/shell.html</b>.
+       Стилі — тільки <b>tokens/tokens.css</b> + <b>components/index.css</b> (урок 08; до того — плаский ui/kit.css); розмітка оболонки — <b>ui/shell.html</b>.
        Каркас цієї сторінки (сірі пунктири й підписи) — службовий, у продукт не входить.</p>
   </div>
 
   <!-- ══ ТОКЕНИ ══════════════════════════════════════════════════════ -->
   <section class="doc-sec">
     <h2>Токени</h2>
-    <p class="doc-note">Усі значення кіта живуть у :root. Компонент не має жодного числа й жодного кольору в собі.</p>
+    <p class="doc-note">tokens/tokens.css — два рівні. Primitive: сирі значення без ролей (назва = значення). Semantic: лише ролі кольору.
+       Компонент читає колір тільки через роль, геометрію — з primitive напряму. Числа й кольори в components/ не пишуться.</p>
 
     <div class="doc-item">
-      <h3>Поверхні й чорнило <span>— chroma рівно 0</span></h3>
+      <h3>Ролі кольору <span>— semantic, те, що читають компоненти</span></h3>
       <div class="doc-swatches">
-        <div class="doc-sw"><i style="background:var(--bg)"></i><b>--bg · 0.12</b></div>
-        <div class="doc-sw"><i style="background:var(--surface)"></i><b>--surface · 0.17</b></div>
-        <div class="doc-sw"><i style="background:var(--surface-2)"></i><b>--surface-2 · 0.21</b></div>
-        <div class="doc-sw"><i style="background:var(--bone)"></i><b>--bone · 0.26</b></div>
-        <div class="doc-sw"><i style="background:var(--line)"></i><b>--line · 0.30</b></div>
-        <div class="doc-sw"><i style="background:var(--line-strong)"></i><b>--line-strong · 0.42</b></div>
-        <div class="doc-sw"><i style="background:var(--ink-dim)"></i><b>--ink-dim · 0.55</b></div>
-        <div class="doc-sw"><i style="background:var(--ink-3)"></i><b>--ink-3 · 0.64</b></div>
-        <div class="doc-sw"><i style="background:var(--ink-2)"></i><b>--ink-2 · 0.78</b></div>
-        <div class="doc-sw"><i style="background:var(--ink)"></i><b>--ink · 0.97</b></div>
+        <div class="doc-sw"><i style="background:var(--bg-ground)"></i><b>--bg-ground → gray-12</b></div>
+        <div class="doc-sw"><i style="background:var(--bg-panel)"></i><b>--bg-panel → gray-17</b></div>
+        <div class="doc-sw"><i style="background:var(--bg-band)"></i><b>--bg-band → gray-17</b></div>
+        <div class="doc-sw"><i style="background:var(--bg-panel-on-band)"></i><b>--bg-panel-on-band → gray-21</b></div>
+        <div class="doc-sw"><i style="background:var(--bg-well)"></i><b>--bg-well → gray-21</b></div>
+        <div class="doc-sw"><i style="background:var(--text)"></i><b>--text → gray-97</b></div>
+        <div class="doc-sw"><i style="background:var(--text-quiet)"></i><b>--text-quiet → gray-78</b></div>
+        <div class="doc-sw"><i style="background:var(--text-label)"></i><b>--text-label → gray-64</b></div>
+        <div class="doc-sw"><i style="background:var(--rule)"></i><b>--rule → gray-30</b></div>
+        <div class="doc-sw"><i style="background:var(--rule-rank)"></i><b>--rule-rank → gray-55</b></div>
+        <div class="doc-sw"><i style="background:var(--rule-gap)"></i><b>--rule-gap → gray-42</b></div>
+        <div class="doc-sw"><i style="background:var(--action)"></i><b>--action → gray-97</b></div>
+        <div class="doc-sw"><i style="background:var(--on-action)"></i><b>--on-action → gray-12</b></div>
+        <div class="doc-sw"><i style="background:var(--event)"></i><b>--event → red-68 · строк і збій</b></div>
       </div>
     </div>
 
     <div class="doc-item">
-      <h3>Хроматика <span>— подія, не тип</span></h3>
+      <h3>Одиничні <span>— колір одного місця, ще не роль (ui/_process/critique.md §6)</span></h3>
       <div class="doc-swatches">
-        <div class="doc-sw"><i style="background:var(--signal)"></i><b>--signal · строк і збій</b></div>
-        <div class="doc-sw"><i style="background:var(--signal-dim)"></i><b>--signal-dim · тільки межа</b></div>
+        <div class="doc-sw"><i style="background:var(--solo-heading-dim)"></i><b>--solo-heading-dim → gray-55</b></div>
+        <div class="doc-sw"><i style="background:var(--solo-field-edge)"></i><b>--solo-field-edge → gray-55</b></div>
+        <div class="doc-sw"><i style="background:var(--solo-action-hover)"></i><b>--solo-action-hover → gray-85</b></div>
+        <div class="doc-sw"><i style="background:var(--solo-event-edge)"></i><b>--solo-event-edge → red-34</b></div>
+        <div class="doc-sw"><i style="background:var(--solo-skeleton-bone)"></i><b>--solo-skeleton-bone → gray-26</b></div>
+      </div>
+    </div>
+
+    <div class="doc-item">
+      <h3>Primitive кольору <span>— chroma 0 і одна хроматика; компонентам не видно</span></h3>
+      <div class="doc-swatches">
+        <div class="doc-sw"><i style="background:var(--gray-12)"></i><b>--gray-12</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-17)"></i><b>--gray-17</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-21)"></i><b>--gray-21</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-26)"></i><b>--gray-26</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-30)"></i><b>--gray-30</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-42)"></i><b>--gray-42</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-55)"></i><b>--gray-55</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-64)"></i><b>--gray-64</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-78)"></i><b>--gray-78</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-85)"></i><b>--gray-85</b></div>
+        <div class="doc-sw"><i style="background:var(--gray-97)"></i><b>--gray-97</b></div>
+        <div class="doc-sw"><i style="background:var(--red-34)"></i><b>--red-34</b></div>
+        <div class="doc-sw"><i style="background:var(--red-68)"></i><b>--red-68</b></div>
       </div>
     </div>
 
     <div class="doc-item doc-scale">
       <h3>Типографічна шкала 1.25× <span>— підлога 0.8rem = 12.8px</span></h3>
-      <div><small>--fs-display · 500</small><span style="font-size:var(--fs-display);font-weight:500;letter-spacing:var(--ls-display);line-height:1.06">Tell us what landed</span></div>
-      <div><small>--fs-1 · 500</small><span style="font-size:var(--fs-1);font-weight:500;letter-spacing:var(--ls-1)">Asterra Shield</span></div>
-      <div><small>--fs-2 · 500</small><span style="font-size:var(--fs-2);font-weight:500;letter-spacing:var(--ls-2)">What closes it</span></div>
-      <div><small>--fs-3 · 500</small><span style="font-size:var(--fs-3);font-weight:500">Your situation</span></div>
-      <div><small>--fs-body · 400</small><span class="body">Three questions about the situation, not about the technology.</span></div>
-      <div><small>--fs-sm · 400</small><span class="meta">Documented cyber risk assessment</span></div>
-      <div><small>--fs-micro · mono</small><span class="chip">2 areas matched</span></div>
-      <div><small>--fs-code · mono 500</small><span style="font-family:var(--font-mono);font-size:var(--fs-code);font-weight:500">IMO MSC.428(98)</span></div>
+      <div><small>--font-fluid-42-69 · 500</small><span style="font-size:var(--font-fluid-42-69);font-weight:var(--weight-500);letter-spacing:var(--tracking-neg-033);line-height:var(--leading-1-06)">Tell us what landed</span></div>
+      <div><small>--font-size-31-25 · 500</small><span style="font-size:var(--font-size-31-25);font-weight:var(--weight-500);letter-spacing:var(--tracking-neg-025)">Asterra Shield</span></div>
+      <div><small>--font-size-25 · 500</small><span style="font-size:var(--font-size-25);font-weight:var(--weight-500);letter-spacing:var(--tracking-neg-020)">What closes it</span></div>
+      <div><small>--font-size-20 · 500</small><span style="font-size:var(--font-size-20);font-weight:var(--weight-500)">Your situation</span></div>
+      <div><small>--font-size-16 · 400</small><span class="body">Three questions about the situation, not about the technology.</span></div>
+      <div><small>--font-size-14 · 400</small><span class="meta">Documented cyber risk assessment</span></div>
+      <div><small>--font-size-12-8 · mono</small><span class="chip">2 areas matched</span></div>
+      <div><small>--font-size-16-8 · mono 500</small><span style="font-family:var(--font-jetbrains);font-size:var(--font-size-16-8);font-weight:var(--weight-500)">IMO MSC.428(98)</span></div>
     </div>
   </section>
 

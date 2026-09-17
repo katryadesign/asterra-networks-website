@@ -1,0 +1,216 @@
+/* Панель величин (dl і table; --doc, --passport, --ruled, --numbered, --receipt, --page, --stack)
+   components/values.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── панель величин: усі числа однієї речі в одній коробці ────────────── */
+.values {
+  font-size: var(--font-size-14);
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: var(--space-8) var(--space-18);
+  margin: 0 0 var(--space-18);
+  padding: var(--space-14) var(--space-16);
+  background: var(--bg-well);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+}
+
+.values dt, .values dd { min-width: 0; overflow-wrap: anywhere; }
+
+.values dt {
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  line-height: var(--leading-1-68);
+  padding-top: var(--space-3);                 /* вирівнює моно-мітку по базовій лінії значення */
+  letter-spacing: var(--tracking-030);
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+.values dd {
+  margin: 0;
+  font-size: var(--font-size-14);
+  color: var(--text-quiet);
+}
+
+/* Табличний варіант: цитований документ не дихає — жолоб міток сталий. */
+table.values {
+  display: table;
+  width: 100%;
+  max-width: var(--size-780);
+  margin: var(--space-4) 0 var(--space-12);
+  border-collapse: collapse;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+table.values th, table.values td {
+  text-align: left;
+  padding: var(--space-11) var(--space-16);
+  border-top: var(--stroke-1) solid var(--rule);
+  vertical-align: top;
+}
+
+table.values tr:first-child :is(th, td) { border-top: 0; }
+
+table.values tr:last-child :is(th, td) { border-bottom: var(--stroke-1) solid var(--rule); }
+
+table.values th {
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  font-weight: var(--weight-500);
+  letter-spacing: var(--tracking-030);
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+table.values td {
+  color: var(--text);
+  font-size: var(--font-size-14);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 720px) {
+  table.values th { width: var(--size-220); }
+}
+
+/* Нижче 720 мітка стає над значенням: кожен рядок — самостійний запис. */
+@media (max-width: 719px) {
+  table.values, table.values tbody, table.values tr { display: block; }
+  table.values th, table.values td { display: block; width: auto; }
+  table.values th { padding: var(--space-10) var(--space-16) 0; }
+  table.values td { border-top: 0; padding: var(--space-3) var(--space-16) var(--space-12); }
+}
+
+/* ── панель величин документа: текстові значення в кеглі абзацу ────────
+   norm · crew-access. Колишній `.kv`: мітка з щільнішим інтерліньяжем,
+   значення не дрібнішає і тримає міру. */
+.values--doc { font-size: var(--font-size-14); margin: 0; }
+
+.values--doc dt { line-height: var(--leading-1-5); }
+
+.values--doc dd { font-size: inherit; max-width: var(--measure-70); }
+
+/* Паспорт норми: рядок строку — подія (сигнал + годинник), дата набуття
+   чинності — на півкроку світліша. Нижче 560 — мітка над значенням. */
+.values dt.values-key--event { color: var(--event); }
+
+.values dd.values-val--lift { color: var(--text); }
+
+.values dd.values-val--event {
+  font-size: var(--font-size-20);
+  line-height: var(--leading-1-4);
+  font-weight: var(--weight-500);
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+}
+
+.values dd.values-val--event::before {
+  content: "";
+  width: var(--size-19);
+  height: var(--size-19);
+  flex: none;
+  margin-top: var(--space-4);
+  background: var(--event);
+  -webkit-mask: var(--solar-clock-circle) center/contain no-repeat;
+          mask: var(--solar-clock-circle) center/contain no-repeat;
+}
+
+@media (max-width: 560px) {
+  .values dd.values-val--event { font-size: var(--font-size-18); }
+}
+
+@media (max-width: 559px) {
+  .values--passport { display: block; }
+  .values--passport dt { margin: var(--space-14) 0 var(--space-1); padding-top: 0; }
+  .values--passport dt:first-of-type { margin-top: 0; }
+}
+
+/* ── реєстр пунктами: волосяна лінія суцільна через обидві клітинки ──── */
+.values--ruled {
+  gap: 0;
+  padding: var(--space-6) var(--space-16) var(--space-8);
+}
+
+.values--ruled dt {
+  border-top: var(--stroke-1) solid var(--rule);
+  padding: var(--space-15) var(--space-18) var(--space-10) 0;
+}
+
+.values--ruled dd {
+  border-top: var(--stroke-1) solid var(--rule);
+  padding: var(--space-12) 0 var(--space-10);
+}
+
+.values--ruled dt:first-of-type { border-top: 0; padding-top: var(--space-5); }
+
+.values--ruled dd:first-of-type { border-top: 0; padding-top: var(--space-2); }
+
+@media (max-width: 719px) {
+  .values--ruled { grid-template-columns: minmax(0, 1fr); }
+  .values--ruled dt { padding: var(--space-12) 0 var(--space-4); }
+  .values--ruled dd { border-top: 0; padding: 0 0 var(--space-12); }
+  .values--ruled dt:first-of-type { padding-top: var(--space-2); }
+  .values--ruled dd:first-of-type { padding-top: 0; }
+}
+
+/* Пункти власної політики зліченні: 01…09, номер не читається вголос. */
+.values--numbered { counter-reset: ca-clause; }
+
+.values--numbered dt { color: var(--text-quiet); }
+
+.values--numbered dt::before {
+  counter-increment: ca-clause;
+  content: counter(ca-clause, decimal-leading-zero);
+  content: counter(ca-clause, decimal-leading-zero) / "";
+  color: var(--text-label);
+  margin-right: var(--space-12);
+}
+
+/* ── квитанція: панель величин, розлініяна наскрізь ──────────────────────
+   Лінію несуть dt і dd разом — вона суцільна. Той самий прийом на loading:
+   той самий вантаж у дорозі.                                            */
+.values--receipt { font-size: var(--font-size-14); gap: 0; margin: 0; }
+
+.values--receipt dt {
+  line-height: var(--leading-1-5);
+  border-top: var(--stroke-1) solid var(--rule);
+  padding: var(--space-13) var(--space-18) 0 0;
+  overflow-wrap: normal;
+}
+
+.values--receipt dd {
+  font-size: var(--font-size-14);
+  max-width: var(--measure-70);
+  border-top: var(--stroke-1) solid var(--rule);
+  padding: var(--space-10) 0;
+  overflow-wrap: normal;
+}
+
+.values--receipt dt:first-of-type { border-top: 0; padding-top: var(--space-3); }
+
+.values--receipt dd:first-of-type { border-top: 0; padding-top: 0; }
+
+.values--receipt dd:last-of-type { padding-bottom: 0; }
+
+/* Панель величин просто на сторінці (не в картці): у еталоні це `dl.kv` —
+   кегль 15px на всю панель, значення його успадковують, мітка на ритмі 1.5,
+   без нижнього поля (відступ дає наступний блок секції). */
+.values--page { font-size: var(--font-size-14); margin: 0; }
+
+.values--page dt { line-height: var(--leading-1-5); }
+
+.values--page dd { font-size: inherit; max-width: var(--measure-70); }
+
+/* Панель величин, що на вузькій ширині стає стосом: мітка над значенням.
+   Company: довга мітка «Head of Partner Accreditation» інакше витискає
+   значення з панелі. Поріг 560 — з еталона. */
+@media (max-width: 560px) {
+  .values--stack { grid-template-columns: 1fr; gap: var(--space-2) 0; }
+  .values--stack dd { margin-bottom: var(--space-10); }
+  .values--stack dd:last-child { margin-bottom: 0; }
+}

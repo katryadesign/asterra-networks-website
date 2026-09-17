@@ -1,0 +1,25 @@
+/* Чесний пропуск
+   components/tbd.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── чесний пропуск ─────────────────────────────────────────────────── */
+.tbd {
+  display: inline-block;
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  line-height: var(--leading-1-68);
+  color: var(--text-quiet);
+  border: var(--stroke-1) dashed var(--rule-gap);
+  border-radius: var(--radius-2);
+  padding: var(--space-2) var(--space-8);
+}
+
+/* У клітинці значення — зарезервоване поле на всю міру, не уламок. */
+.tbd--block { display: block; padding: var(--space-5) var(--space-10); }
+
+.tbd--bare { border: 0; padding: 0; }
+
+/* Чесний пропуск усередині абзацу: бере ритм рядка батька, а не власний.
+   Legal: пропуск стоїть у лід-абзаці секції (1.55), і рядок не має рости. */
+.tbd--flow { line-height: inherit; }

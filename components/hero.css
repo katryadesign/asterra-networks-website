@@ -1,0 +1,46 @@
+/* Герой і службова нотатка
+   components/hero.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── герой ─────────────────────────────────────────────────────────────── */
+.hero { border-bottom: var(--stroke-1) solid var(--rule); padding: var(--space-80) 0 var(--space-64); }
+
+.hero h1 {
+  font-size: var(--font-fluid-45-88);
+  letter-spacing: var(--tracking-neg-035);
+  line-height: var(--leading-0-98);
+  max-width: var(--measure-16);
+}
+
+.hero > .wrap { display: grid; gap: var(--space-40); align-items: center; }
+
+.hero p:has(> .btn) { display: flex; flex-wrap: wrap; gap: var(--space-12); }
+
+@media (min-width: 900px) {
+  .hero--photo > .wrap { grid-template-columns: minmax(0, var(--fr-1-4)) minmax(0, 1fr); position: relative; }
+  .hero--photo > .wrap > * { grid-column: 1; }
+  .hero--photo > .wrap::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    right: var(--space-fluid-16-40);
+    width: calc((100% - var(--space-fluid-16-40) * 2 - var(--space-40)) / var(--ratio-2-4));
+    min-height: var(--size-280);
+    border: var(--stroke-1) solid var(--rule);
+    border-radius: var(--radius-2);
+    background: var(--photo) center/cover no-repeat, var(--bg-panel);
+    filter: var(--filter-desaturate);
+  }
+}
+
+/* Службова нотатка дизайн-етапу під героєм. */
+.backdrop {
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  line-height: var(--leading-1-5);
+  color: var(--text-label);
+  border-radius: var(--radius-2);
+  margin-top: var(--space-28);
+  max-width: var(--measure-60);
+}

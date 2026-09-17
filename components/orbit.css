@@ -1,0 +1,30 @@
+/* Схема орбіт
+   components/orbit.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── схема орбіт: ярус як величина ─────────────────────────────────────── */
+.orbit { border: var(--stroke-1) solid var(--rule); border-radius: var(--radius-2); background: var(--bg-panel); }
+
+.orbit-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  padding: var(--space-14) var(--space-24);
+  border-bottom: var(--stroke-1) solid var(--rule);
+  transition: background var(--duration-200) var(--ease-out-expo);
+}
+
+.orbit-row:last-child { border-bottom: 0; }
+
+.orbit-row .tier { flex: 0 0 var(--size-140); font-family: var(--font-jetbrains); font-weight: var(--weight-500); font-size: var(--font-size-16-8); color: var(--text); }
+
+.orbit-row .bar { flex: 1; height: var(--stroke-1); background: var(--rule-rank); }
+
+.orbit-row .desc { flex: 0 1 min(var(--size-360), var(--share-48)); font-size: var(--font-size-14); color: var(--text-quiet); text-align: left; }
+
+@media (max-width: 720px) {
+  .orbit-row { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-6) var(--space-16); align-items: center; }
+  .orbit-row .tier { flex: none; }
+  .orbit-row .desc { grid-column: 1 / -1; }
+}

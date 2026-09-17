@@ -1,0 +1,53 @@
+/* Підвал сайту (розмітка — ui/shell.html)
+   components/site-footer.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+.site-footer {
+  border-top: var(--stroke-1) solid var(--rule);
+  padding: var(--space-52) 0 var(--space-32);
+  font-size: var(--font-size-14);
+  color: var(--text-quiet);
+}
+
+.foot-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--size-160), 100%), 1fr));
+  gap: var(--space-36);
+}
+
+.foot-cols :is(h2, h4) {
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-12-8);
+  font-weight: var(--weight-500);
+  letter-spacing: var(--tracking-040);
+  line-height: var(--leading-1-68);
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin: 0 0 var(--space-12);
+}
+
+.foot-cols ul { margin: 0; padding: 0; list-style: none; }
+
+.foot-cols li { margin-bottom: var(--space-8); }
+
+.site-footer a:hover { color: var(--text); }
+
+.foot-bar a { display: inline-block; padding-block: var(--space-3); }
+
+.foot-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  margin-top: var(--space-40);
+  padding-top: var(--space-20);
+  border-top: var(--stroke-1) solid var(--rule);
+  font-size: var(--font-size-13);
+}
+
+.foot-legal {
+  margin-top: var(--space-16);
+  font-size: var(--font-size-12-8);
+  color: var(--text-label);
+  max-width: var(--measure-72);
+}

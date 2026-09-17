@@ -1,0 +1,67 @@
+/* Шапка екрана (+ --photo, --code, --compact)
+   components/screen-head.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── шапка екрана ───────────────────────────────────────────────────── */
+.screen-head {
+  border-bottom: var(--stroke-1) solid var(--rule);
+  padding: var(--space-88) 0 var(--space-72);
+}
+
+.screen-head > .wrap { display: grid; grid-template-columns: 1fr; gap: var(--space-32); align-items: center; }
+
+.screen-head h1 {
+  font-size: var(--font-fluid-42-69);
+  letter-spacing: var(--tracking-neg-033);
+  line-height: var(--leading-1-06);
+  max-width: var(--measure-18);
+}
+
+.screen-head .body { margin: 0; }
+
+.screen-head .badge::before { content: none; }
+
+.screen-head .badge { margin-bottom: var(--space-16); }
+
+.screen-head p:has(> .btn) { display: flex; flex-wrap: wrap; gap: var(--space-12); margin-top: var(--space-24); }
+
+/* Фото-панель на правому треку. Тільки там, де об'єкт тематично названий
+   (DESIGN.md · рішення 2026-09-17 Р2). Знімок задається модифікатором. */
+@media (min-width: 900px) {
+  .screen-head--photo > .wrap {
+    position: relative;
+    grid-template-columns: minmax(0, var(--fr-1-35)) minmax(0, 1fr);
+  }
+  .screen-head--photo > .wrap > * { grid-column: 1; }
+  .screen-head--photo > .wrap::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    right: var(--space-fluid-16-40);
+    width: calc((100% - var(--space-fluid-16-40) * 2 - var(--space-32)) / var(--ratio-2-35));
+    min-height: var(--size-210);
+    border: var(--stroke-1) solid var(--rule);
+    border-radius: var(--radius-2);
+    background: var(--photo) center/cover no-repeat, var(--bg-panel);
+    filter: var(--filter-desaturate);
+  }
+}
+
+/* ── шапка екрана-норми: заголовок і є код ─────────────────────────────
+   norm. Код норми — величина, тому моно; трекінг дисплея для моно знято. */
+.screen-head--code h1 {
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-fluid-35-64);
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── шапка екрана, стиснута до фолда ─────────────────────────────────────
+   Inquiry: «One step» мусить бути видно одним кроком — форма з дією
+   в першому фолді. Рядок-претензія піднятий до регістру tagline.        */
+.screen-head--compact { padding: var(--space-40) 0 var(--space-24); }
+
+.screen-head--compact h1 { font-size: var(--font-fluid-39-49); margin-bottom: var(--space-12); }
+
+.screen-head--compact .body { font-size: var(--font-size-20); }

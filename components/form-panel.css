@@ -1,0 +1,45 @@
+/* Панель форми
+   components/form-panel.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+.form-panel {
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-24);
+}
+
+.form-panel h2 { font-size: var(--font-size-20); color: var(--text); margin: 0 0 var(--space-4); }
+
+.form-panel .note { font-size: var(--font-size-12-8); color: var(--text-quiet); margin: 0 0 var(--space-20); }
+
+/* Робочий інструмент перезапуску тримається в полі зору при скролі. */
+@media (min-width: 980px) {
+  .form-panel--sticky { position: sticky; top: var(--space-16); }
+}
+
+/* ── форма заявки: один короткий крок ────────────────────────────────────
+   Пари коротких полів у два стовпчики, повідомлення — на всю ширину,
+   кнопка і routing-рядок в одному ряду. <700 — одна колонка.            */
+.form-panel--request { display: grid; gap: var(--space-16); }
+
+.form-panel--request .field { margin: 0; }
+
+.form-panel--request .field > label { font-size: var(--font-size-14-4); }
+
+.form-panel--request .field textarea { min-height: var(--size-110); resize: vertical; }
+
+.form-panel--request .btn { justify-self: start; align-self: center; }
+
+.form-panel--request .routing { margin: 0; max-width: var(--measure-52); }
+
+@media (min-width: 700px) {
+  .form-panel--request {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16) var(--space-18);
+  }
+  .form-panel--request .field--wide { grid-column: 1 / -1; }
+  .form-panel--request .btn { grid-column: 1; }
+  .form-panel--request .routing { grid-column: 2; align-self: center; }
+}

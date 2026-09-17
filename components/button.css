@@ -1,0 +1,56 @@
+/* Кнопка (+ --ghost, --block, --sign, --next)
+   components/button.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+p:has(> .btn + .btn) { display: flex; flex-wrap: wrap; gap: var(--space-12); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-grotesk);
+  font-size: var(--font-size-14);
+  font-weight: var(--weight-600);
+  line-height: var(--leading-1-68);
+  padding: var(--space-11) var(--space-18);
+  border: var(--stroke-1) solid var(--action);
+  border-radius: var(--radius-2);
+  background: var(--action);
+  color: var(--on-action);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--duration-200) var(--ease-out-expo),
+              border-color var(--duration-200) var(--ease-out-expo),
+              color var(--duration-200) var(--ease-out-expo);
+}
+
+.btn:hover { background: var(--solo-action-hover); border-color: var(--solo-action-hover); }
+
+.btn:focus-visible { outline: var(--stroke-2) solid var(--event); outline-offset: var(--space-2); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--rule-rank);
+}
+
+.btn--ghost:hover { background: transparent; border-color: var(--action); }
+
+.btn--ghost:focus-visible { outline-color: var(--text); outline-offset: var(--space-2); }
+
+.btn--block { width: 100%; justify-content: center; }
+
+/* Дороговказ: текст ліворуч, стрілка праворуч — як на дорожньому знаку. */
+.btn--sign { justify-content: space-between; }
+
+/* Стрілка — ТІЛЬКИ хід уперед по флоу. Убік, назад і retry її не мають. */
+.btn--next::after {
+  content: "";
+  width: var(--size-16);
+  height: var(--size-16);
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--solar-alt-arrow-right) center/contain no-repeat;
+          mask: var(--solar-alt-arrow-right) center/contain no-repeat;
+}

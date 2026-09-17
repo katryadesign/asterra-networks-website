@@ -1,0 +1,33 @@
+/* Смуги головної
+   components/band.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+.band { padding: var(--space-72) 0; }
+
+.band-tight { padding: var(--space-52) 0; }
+
+/* ── смуги сторінки: тон і лінійки ─────────────────────────────────────── */
+.band--raised { background: var(--bg-band); }
+
+.band--ruled { border-top: var(--stroke-1) solid var(--rule); }
+
+.band--areas { padding: var(--space-88) 0; }
+
+.band--areas > .wrap > h2 { font-size: var(--font-size-39-06); letter-spacing: var(--tracking-neg-030); }
+
+/* Доказова смуга реєстру норм: поверхня, межі зверху й знизу, без бічних полів. */
+.band--proof {
+  background: var(--bg-band);
+  border-block: var(--stroke-1) solid var(--rule);
+  padding: var(--space-fluid-28-44) 0;
+}
+
+.band--proof .reg-row { background: var(--bg-panel-on-band); }
+
+.band--cta p:has(> .btn) { display: flex; flex-wrap: wrap; gap: var(--space-12); }
+
+.band--tone-lift p { color: var(--text-quiet); }
+
+/* Пригашена половина заголовка на піднятій поверхні — світліша, щоб не тонути. */
+.band--tone-lift :is(h1, h2) .dim { color: var(--text-quiet); }

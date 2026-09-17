@@ -1,0 +1,63 @@
+/* Рядок норми
+   components/reg-row.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── рядок норми: код ↔ папір ───────────────────────────────────────── */
+.reg-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  margin: 0 0 var(--space-8);
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+  transition: border-color var(--duration-200) var(--ease-out-expo);
+}
+
+.reg-row > div { min-width: 0; flex: 1 1 var(--size-320); }
+
+.reg-row h3 { font-size: var(--font-size-20); margin: 0 0 var(--space-4); color: var(--text); }
+
+/* Код норми як заголовок рядка — реєстр «код ↔ папір» (solution detail). */
+.reg-row--code h3 {
+  font-family: var(--font-jetbrains);
+  font-size: var(--font-size-16-8);
+  font-weight: var(--weight-500);
+  letter-spacing: 0;
+}
+
+.reg-row .meta { margin: 0; }
+
+/* Рядок-рамка (специфікація без власного паперу) відступає на крок:
+   заливка йде, межа лишається. */
+.reg-row--framework { background: transparent; }
+
+@media (min-width: 760px) and (max-width: 979px), (min-width: 1367px) {
+  .reg-row--code > div {
+    display: grid;
+    grid-template-columns: minmax(0, var(--size-180)) minmax(0, 1fr);
+    gap: var(--space-4) var(--space-24);
+    align-items: baseline;
+  }
+  .reg-row--code > div h3 { margin: 0; }
+}
+
+/* ── єдина відповідь маршруту: межа рангу і заголовок на крок вищий ─── */
+.reg-row--answer { border-color: var(--rule-rank); padding: var(--space-22); }
+
+.reg-row--answer h3 { font-size: var(--font-size-25); }
+
+/* Ведуча позиція реєстру: ранг тримає межа, не колір і не кегль. */
+.reg-row--lead { border-color: var(--rule-rank); }
+
+.reg-row--slot h3 { color: var(--text-quiet); }
+
+/* Двоярусний рядок: до 1379px дія завжди під текстом, щоб у межах одного
+   реєстру носій не стрибав між «у рядку» і «під рядком». */
+@media (max-width: 1379px) {
+  .reg-row--stacked > div { flex: 1 1 100%; }
+}

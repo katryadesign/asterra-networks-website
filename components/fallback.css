@@ -1,0 +1,31 @@
+/* Розвилка-відкат
+   components/fallback.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── розвилка-відкат: рівноправний шлях, не втішний приз ─────────────── */
+.fallback {
+  border-top: var(--stroke-1) solid var(--rule-rank);
+  padding-top: var(--space-24);
+  margin-top: var(--space-32);
+}
+
+.fallback :is(h2, h3) { font-size: var(--font-size-20); color: var(--text); margin: 0 0 var(--space-6); }
+
+.fallback > p:last-child { display: flex; flex-wrap: wrap; gap: var(--space-12); }
+
+/* Розвилка з двох рівноправних дороговказів: текст ліворуч, колонка
+   однакових за шириною кнопок праворуч (guided matching). */
+.fallback--fork > p:last-child { flex-direction: column; align-items: stretch; }
+
+@media (min-width: 900px) {
+  .fallback--fork {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 var(--space-fluid-32-56);
+    align-items: center;
+  }
+  .fallback--fork > :is(h2, h3), .fallback--fork > .body { grid-column: 1; }
+  .fallback--fork > .body { margin: 0; }
+  .fallback--fork > p:last-child { grid-column: 2; grid-row: 1 / span 2; margin: 0; justify-self: end; }
+}

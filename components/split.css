@@ -1,0 +1,19 @@
+/* Розкладка «робоча рейка + результат»
+   components/split.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── розкладка: робоча рейка форми + зона результату ─────────────────────
+   Guided matching. Рейка 340px тримає інтерв'ю (селекти з довгими
+   формулюваннями), результат бере решту. Нижче 980 — стос.              */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-56);
+  align-items: start;
+  padding: var(--space-48) 0 var(--space-72);
+}
+
+@media (min-width: 980px) {
+  .split { grid-template-columns: minmax(0, var(--size-340)) minmax(0, 1fr); }
+}

@@ -1,0 +1,20 @@
+/* Посилання «до змісту»
+   components/skip-link.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* K17 · посилання «до змісту»: невидиме, доки не отримає фокус. */
+.skip-link {
+  position: absolute;
+  left: var(--space-fluid-16-40);
+  top: var(--space-8);
+  transform: translateY(-200%);
+  padding: var(--space-8) var(--space-16);
+  background: var(--action);
+  color: var(--on-action);
+  border-radius: var(--radius-2);
+  font-weight: var(--weight-600);
+  text-decoration: none;
+}
+
+.skip-link:focus-visible { transform: none; outline-offset: var(--space-2); }

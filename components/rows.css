@@ -1,0 +1,68 @@
+/* Ранжований перелік
+   components/rows.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── ранжований перелік ситуацій ────────────────────────────────────── */
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-well);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+}
+
+.rows li {
+  display: grid;
+  gap: var(--space-2) var(--space-20);
+  padding: var(--space-12) var(--space-16);
+  border-top: var(--stroke-1) solid var(--rule);
+}
+
+.rows li:first-child { border-top: 0; }
+
+.rows .name { font-weight: var(--weight-600); }
+
+.rows .name a { text-decoration: none; }
+
+.rows .meta { font-size: var(--font-size-14); }
+
+@media (min-width: 720px) {
+  .rows li { grid-template-columns: minmax(0, var(--measure-22)) minmax(0, 1fr); align-items: baseline; }
+}
+
+/* Бенто: головний тригер на весь ряд, решта по половині. */
+@media (min-width: 760px) {
+  .rows {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    background: transparent;
+    border: 0;
+  }
+  .rows li {
+    background: var(--bg-well);
+    border: var(--stroke-1) solid var(--rule);
+    border-radius: var(--radius-2);
+  }
+  .rows li:first-child {
+    grid-column: 1 / -1;
+    background: var(--bg-panel);
+    border-color: var(--rule-rank);
+    padding-block: var(--space-16);
+  }
+}
+
+/* Реєстр рівноправних позицій: одна коробка з лінійками, без бенто —
+   перший рядок не підноситься, бо змістової підстави немає. */
+@media (max-width: 759px) {
+  .rows--register > li:last-child { border-bottom: var(--stroke-1) solid var(--rule); }
+}
+
+@media (min-width: 760px) {
+  .rows--register { display: block; background: var(--bg-well); border: var(--stroke-1) solid var(--rule); }
+  .rows--register li,
+  .rows--register li:first-child { border: 0; border-top: var(--stroke-1) solid var(--rule); border-radius: 0; background: transparent; }
+  .rows--register li:first-child { border-top: 0; padding-block: var(--space-12); }
+}

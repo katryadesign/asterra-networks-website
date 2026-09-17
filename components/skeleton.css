@@ -1,0 +1,116 @@
+/* Скелет
+   components/skeleton.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── скелет: обіцяє ту форму, в яку розв'яжеться вміст ──────────────── */
+.skeleton {
+  background: var(--bg-panel);
+  border: var(--stroke-1) solid var(--rule-rank);
+  border-radius: var(--radius-2);
+  padding: var(--space-24) var(--space-fluid-16-24);
+  margin: 0 0 var(--space-20);
+}
+
+.skeleton--photo { padding-top: 0; }
+
+.skeleton--photo::before {
+  content: "";
+  display: block;
+  height: var(--size-fluid-148-188);
+  margin: 0 calc(-1 * var(--space-fluid-16-24)) var(--space-20);
+  background: var(--bg-well);
+  border-bottom: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2) var(--radius-2) 0 0;
+}
+
+/* Підпорядкований блок повторює тон вторинної картки — інакше ранг
+   стрибав би в момент резолву. */
+.skeleton--subordinate { background: transparent; border-color: var(--rule); }
+
+.skeleton--plain { border-color: var(--rule); padding: var(--space-24); }
+
+.skeleton--last { margin-bottom: 0; }
+
+/* Скелет рейкової сторінки стоїть у тій самій колонці, що секція, яку він
+   заміщає: непарна — рейка ліворуч, парна — праворуч. */
+@media (min-width: 980px) {
+  .skeleton--offset-start { margin-left: calc(var(--size-250) + var(--space-fluid-32-72)); }
+  .skeleton--offset-end { margin-right: calc(var(--size-250) + var(--space-fluid-32-72)); }
+}
+
+.sk { display: block; background: var(--bg-well); border-radius: var(--radius-2); animation: sk-pulse var(--duration-1600) var(--ease-out-expo) infinite; }
+
+.sk-title, .sk-btn { background: var(--solo-skeleton-bone); }
+
+.sk-rank { width: var(--size-146); height: var(--size-31); margin: 0 0 var(--space-12); }
+
+.sk-title { width: min(var(--size-300), var(--share-72)); height: calc(var(--font-fluid-31-39) * var(--leading-1-68)); margin: 0 0 var(--space-4); }
+
+.skeleton--subordinate .sk-title { height: calc(var(--font-size-25) * var(--leading-1-68)); }
+
+.sk-h2 { width: min(var(--size-380), var(--share-58)); height: var(--size-24); margin: 0 0 var(--space-18); }
+
+.sk-area { width: var(--size-150); height: calc(var(--font-size-12-8) * var(--leading-1-68)); margin: 0 0 var(--space-14); }
+
+.sk-line { height: var(--space-16); margin: 0 0 var(--space-11); }
+
+.sk-line.short { width: var(--share-58); margin-bottom: var(--space-18); }
+
+.sk-btn { height: calc(var(--font-size-14) * var(--leading-1-68) + var(--space-11) * 2 + var(--stroke-1) * 2); width: min(var(--size-200), 100%); margin: var(--space-16) 0; }
+
+/* Рейкова сторінка: кістки тексту без калібру картки — тонші рядки. */
+.skeleton--plain .sk-line { height: var(--size-14); margin: 0 0 var(--space-10); }
+
+.skeleton--plain .sk-line.short { margin-bottom: var(--space-24); }
+
+.skeleton--plain .sk-btn { height: var(--size-42); margin: var(--space-4) 0 0; }
+
+.sk-values--plain :is(.sk-dt, .sk-dd) { height: var(--size-12); }
+
+.sk-values {
+  display: grid;
+  grid-template-columns: minmax(0, var(--size-64)) minmax(0, 1fr);
+  gap: var(--space-8) var(--space-18);
+  padding: var(--space-14) var(--space-16);
+  margin: 0 0 var(--space-18);
+  background: var(--bg-well);
+  border: var(--stroke-1) solid var(--rule);
+  border-radius: var(--radius-2);
+}
+
+.sk-values .sk { background: var(--solo-skeleton-bone); }
+
+/* Без коробки — скелет spec-таблиці на рейковій сторінці: жолоб міток той самий 220px. */
+.sk-values--plain {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  gap: var(--space-10) var(--space-20);
+  margin: 0 0 var(--space-24);
+  grid-template-columns: minmax(0, var(--size-96)) minmax(0, 1fr);
+}
+
+.sk-values--plain .sk { background: var(--bg-well); }
+
+@media (min-width: 720px) {
+  .sk-values--plain { grid-template-columns: minmax(0, var(--size-220)) minmax(0, 1fr); }
+}
+
+.sk-dt { height: calc(var(--font-size-12-8) * var(--leading-1-68)); }
+
+.sk-dd { height: var(--size-42); }
+
+.sk-dd.short { width: var(--share-64); }
+
+@keyframes sk-pulse { 0%, 100% { opacity: 1; } 50% { opacity: var(--opacity-62); } }
+
+.skeleton--flush .sk:last-child { margin-bottom: 0; }
+
+/* Кістка заголовка на тоні кістки (як .sk-title / .sk-btn). */
+.sk--bone { background: var(--solo-skeleton-bone); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sk { opacity: 1; }
+}

@@ -1,0 +1,22 @@
+/* Пара пропозицій
+   components/pair.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── пара пропозицій: дві рівні колонки з лінійкою зіставлення ───────── */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-64); align-items: start; }
+
+@media (max-width: 1080px) {
+  .pair { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 1081px) {
+  .pair--ruled { gap: 0 var(--space-32); }
+  .pair--ruled > div + div { border-left: var(--stroke-1) solid var(--rule); padding-left: var(--space-32); }
+}
+
+/* У стосі вісь зіставлення повертається горизонталлю: 28 + 1 + 28 ≈ ритм 56. */
+@media (max-width: 1080px) {
+  .pair--ruled { gap: 0; }
+  .pair--ruled > div + div { border-top: var(--stroke-1) solid var(--rule); padding-top: var(--space-28); margin-top: var(--space-28); }
+}

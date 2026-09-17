@@ -1,0 +1,22 @@
+/* Обгортка сторінки
+   components/wrap.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+/* ── обгортка ───────────────────────────────────────────────────────── */
+.wrap {
+  max-width: var(--size-1240);
+  margin-inline: auto;
+  padding-inline: var(--space-fluid-16-40);
+}
+
+.wrap--pad { padding-top: var(--space-fluid-36-56); padding-bottom: var(--space-64); }
+
+/* ── обгортка без верхнього відступу: регіон стоїть впритул до шапки ── */
+.wrap--pad-flush { padding-top: 0; }
+
+/* Компактний верх рейкової обгортки: гігієнічна четвірка (company · careers ·
+   insights · legal). Шапка екрана одразу над першою секцією — крок 48 між
+   ритмом секцій 56 і мінімалізмом четвірки. У еталоні — екранний скоуп
+   `body:has(a[aria-current][href^="company"]) .wrap.pad-b` у _panel.css. */
+.wrap--pad-compact { padding-top: var(--space-48); }

@@ -1,0 +1,47 @@
+/* Поле
+   components/field.css · урок 08, крок 3 — перенесено з ui/kit.css без зміни розмітки.
+   Колір — лише semantic (або --solo-*) з tokens/tokens.css; геометрія — primitive напряму.
+   Числа лишились тільки в умовах @media: CSS не приймає там var(). */
+
+.field { margin: 0 0 var(--space-16); }
+
+.field > label {
+  display: block;
+  margin: 0 0 var(--space-6);
+  font-size: var(--font-size-13-76);
+  font-weight: var(--weight-500);
+  color: var(--text);
+}
+
+.field input, .field select, .field textarea {
+  width: 100%;
+  background: var(--bg-well);
+  color: var(--text);
+  border: var(--stroke-1) solid var(--solo-field-edge);
+  border-radius: var(--radius-2);
+  padding: var(--space-9) var(--space-11);
+  font: var(--weight-400) var(--font-size-14-4) var(--font-grotesk);
+}
+
+/* K7 · шеврон: список не має виглядати як текстове поле. */
+.field select {
+  appearance: none;
+  background-image: var(--solo-field-chevron);
+  background-repeat: no-repeat;
+  background-position: right var(--space-11) center;
+  background-size: var(--size-16);
+  padding-right: var(--space-36);
+}
+
+@media (max-width: 720px) {
+  .field :is(input, select) { min-height: var(--size-44); }
+}
+
+.field option, .field optgroup { background: var(--bg-well); color: var(--text); }
+
+.field .hint { margin: var(--space-6) 0 0; }
+
+.routing { font-size: var(--font-size-12-8); color: var(--text-quiet); }
+
+/* A2 · необов'язкове поле підписане словом у мітці; обов'язкові — без позначки (їх більшість). */
+.field-optional { font-weight: var(--weight-400); color: var(--text-quiet); }

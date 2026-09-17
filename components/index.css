@@ -1,0 +1,44 @@
+/* components/index.css — усі компоненти Asterra Networks. Урок 08, крок 3.
+   Підключати ПІСЛЯ tokens/tokens.css. Порядок імпорту = порядок у колишньому
+   ui/kit.css: від нього залежить каскад між контекстними правилами. */
+
+@import "base.css";
+@import "text.css";
+@import "wrap.css";
+@import "skip-link.css";
+@import "site-header.css";
+@import "site-footer.css";
+@import "screen-head.css";
+@import "photo.css";
+@import "stack.css";
+@import "split.css";
+@import "section-head.css";
+@import "section.css";
+@import "button.css";
+@import "band.css";
+@import "badge.css";
+@import "chip.css";
+@import "values.css";
+@import "tbd.css";
+@import "match.css";
+@import "reg-row.css";
+@import "rows.css";
+@import "pair.css";
+@import "trio.css";
+@import "news-item.css";
+@import "form-panel.css";
+@import "field.css";
+@import "notice.css";
+@import "skeleton.css";
+@import "fallback.css";
+@import "hero.css";
+@import "statement.css";
+@import "duo.css";
+@import "orbit.css";
+@import "area-index.css";
+@import "sector-list.css";
+@import "offset.css";
+@import "held.css";
+@import "logo-row.css";
+@import "work-rail.css";
+@import "context-panel.css";
