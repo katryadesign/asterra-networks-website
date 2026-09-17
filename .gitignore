@@ -27,3 +27,6 @@ next-env.d.ts
 
 # Playwright MCP temp output
 .playwright-mcp/
+
+# Visuals: generator originals (38 MB PNG); only the graded JPGs ship
+visuals/_source/

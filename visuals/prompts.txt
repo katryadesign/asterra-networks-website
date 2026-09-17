@@ -1,0 +1,167 @@
+ASTERRA NETWORKS - PROMPTS FOR IMAGE GENERATION (Gemini / Nano Banana)
+
+Nine prompts, ready to copy. Run each one twice, save everything into visuals/.
+
+Canon and rules: visuals/README.md
+
+
+========================================================================
+PROMPT 1  ->  head-matching-antenna
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+A white VSAT satellite antenna radome mounted on a ship's mast platform, photographed slightly from below against a flat overcast sky. Weathered steel railings and a patinated copper-green grounding strap visible at the base. 4:3.
+
+
+========================================================================
+PROMPT 2  ->  head-solution-cabinet
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+A closed network equipment cabinet in a ship's technical room: matte metal door, cable glands, neatly dressed cable trunking along a sea-green painted bulkhead. Doors shut, nothing blinking. 4:3.
+
+
+========================================================================
+PROMPT 3  ->  head-industry-mast
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+A vessel's mast head with a rotating radar scanner and two antennas, seen against flat grey cloud. Paint chipped to primer, insulators dulled by salt. 4:3.
+
+
+========================================================================
+PROMPT 4  ->  head-crew-dish
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+A parabolic satellite dish on a deck pedestal, seen in three-quarter view, its rim streaked with salt and its mount painted faded sea-green. Cold green-grey sea as a flat band far behind, out of focus. 4:3.
+
+
+========================================================================
+PROMPT 5  ->  hero-entry-dish
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+A large parabolic satellite antenna on a shore station pedestal, photographed head-on from a low angle against an overcast sky. Bolted steel ribs, oxidised copper-green fittings, condensation on the cast housing. 4:3.
+
+
+========================================================================
+PROMPT 6  ->  band-statement-room
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+Wide view down a narrow equipment room aisle: two rows of closed metal cabinets, cable ladders overhead, teal-green painted deck plating. Deliberately empty centre so a panel can sit over it. Darker overall exposure. 21:9.
+
+
+========================================================================
+PROMPT 7  ->  card-shield-cabinet
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+Close crop of a cable termination panel inside a network cabinet: patch leads dressed in parallel, copper earthing bar with green oxidation, port numbering blanked out. 3:1 horizontal crop. 3:1.
+
+
+========================================================================
+PROMPT 8  ->  card-connect-antenna
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+Close crop of a satellite antenna mount: the machined azimuth ring, greased gear teeth, bolted flange with sea-green paint worn to bare metal. 3:1.
+
+
+========================================================================
+PROMPT 9  ->  card-equip-bridge
+========================================================================
+
+Documentary equipment photography, single consistent look across the whole set:
+overcast maritime daylight, soft even light, no direct sun, no lens flare, no bokeh sparkle.
+Muted sea-green and teal palette held by the materials themselves - oxidised copper and brass,
+weathered sea-green marine paint, cold green-grey water, salt-hazed glass - low saturation,
+never vivid, never neon. Deep neutral near-black shadows with no colour cast.
+Matter-of-fact, engineering-record framing; the object is centred in importance, not staged.
+Sharp detail on the object, quiet uncluttered background.
+No people, no hands, no silhouettes. No text, no logos, no brand marks, no readable labels.
+No gradients, no glowing indicators, no UI overlays, no globes, no orbital diagrams.
+No golden hour, no sunset, no dramatic sky, no scenic landscape mood.
+Photorealistic, 35mm, f/8, natural depth of field.
+Close crop of a ship's bridge console: unlit instrument bezels, a dimmed compass repeater, brushed metal panel with teal-green backlit glass switched off. No readable screens. 3:1.
