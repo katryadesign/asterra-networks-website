@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T12:00:00Z",
+  "title": "Design System: Asterra Networks",
+  "extensions": {
+    "colorMeta": {
+      "bg": { "role": "neutral", "displayName": "Night Ground", "canonical": "oklch(0.12 0 0)", "tonalRamp": ["oklch(0.12 0 0)", "oklch(0.17 0 0)", "oklch(0.21 0 0)", "oklch(0.26 0 0)", "oklch(0.30 0 0)", "oklch(0.42 0 0)", "oklch(0.64 0 0)", "oklch(0.97 0 0)"] },
+      "surface": { "role": "neutral", "displayName": "Instrument Face", "canonical": "oklch(0.17 0 0)" },
+      "surface-2": { "role": "neutral", "displayName": "Readout Well", "canonical": "oklch(0.21 0 0)" },
+      "skeleton-bone": { "role": "neutral", "displayName": "Bone", "canonical": "oklch(0.26 0 0)" },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "oklch(0.30 0 0)" },
+      "line-strong": { "role": "neutral", "displayName": "Rank Line", "canonical": "oklch(0.42 0 0)" },
+      "ink": { "role": "neutral", "displayName": "Chalk", "canonical": "oklch(0.97 0 0)" },
+      "ink-hover": { "role": "neutral", "displayName": "Chalk Pressed", "canonical": "oklch(0.85 0 0)" },
+      "ink-2": { "role": "neutral", "displayName": "Dim Chalk", "canonical": "oklch(0.78 0 0)" },
+      "ink-3": { "role": "neutral", "displayName": "Graphite Label", "canonical": "oklch(0.64 0 0)" },
+      "signal": { "role": "primary", "displayName": "Signal Coral", "canonical": "oklch(0.68 0.19 25)", "tonalRamp": ["oklch(0.20 0.06 25)", "oklch(0.34 0.09 25)", "oklch(0.45 0.13 25)", "oklch(0.56 0.17 25)", "oklch(0.68 0.19 25)", "oklch(0.77 0.14 25)", "oklch(0.86 0.08 25)", "oklch(0.94 0.03 25)"] },
+      "signal-dim": { "role": "primary", "displayName": "Signal Ember", "canonical": "oklch(0.34 0.09 25)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 шапки екрана, ≤18ch." },
+      "headline": { "displayName": "Headline", "purpose": "H2 контенту; ім'я первинного збігу." },
+      "title": { "displayName": "Title", "purpose": "Рейковий H2 секції, заголовок повідомлення стану." },
+      "label": { "displayName": "Mono Label", "purpose": "Бейдж рангу, dt, th — uppercase, до 4 слів." },
+      "value": { "displayName": "Mono Value", "purpose": "Лічильник, area-рядок, [TBD], дата — tabular-nums." },
+      "code": { "displayName": "Regulation Code", "purpose": "Код норми як заголовок рядка." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-panel", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Переходи кольору й межі, 0.2–0.22s." },
+      { "name": "skeleton-pulse", "value": "opacity 1 → 0.62, 1.6s infinite", "purpose": "Єдина анімація; статична при prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "rows-stack", "value": "720px" },
+      { "name": "bento", "value": "760px" },
+      { "name": "hero-photo", "value": "900px" },
+      { "name": "rail", "value": "980px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Хід уперед по флоу; стрілка тільки на «далі».",
+      "html": "<button class=\"ds-btn\">Talk to an expert <span class=\"ds-arrow\" aria-hidden=\"true\"></span></button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;font:600 0.94rem 'Familjen Grotesk',system-ui,sans-serif;padding:11px 18px;border-radius:2px;background:var(--ink,oklch(0.97 0 0));color:var(--bg,oklch(0.12 0 0));border:1px solid var(--ink,oklch(0.97 0 0));cursor:pointer;transition:background .22s cubic-bezier(0.16,1,0.3,1),border-color .22s cubic-bezier(0.16,1,0.3,1)}.ds-btn:hover{background:oklch(0.85 0 0);border-color:oklch(0.85 0 0)}.ds-btn:focus-visible{outline:2px solid oklch(0.68 0.19 25);outline-offset:3px}.ds-arrow{width:16px;height:16px;background:currentColor;-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22none%22 stroke=%22black%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22m9 5l7 7l-7 7%22/></svg>') center/contain no-repeat;mask:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22none%22 stroke=%22black%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 d=%22m9 5l7 7l-7 7%22/></svg>') center/contain no-repeat}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Підпорядкована дія: убік, назад, retry.",
+      "html": "<button class=\"ds-btn-ghost\">Read IMO MSC.428(98)</button>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:8px;font:600 0.94rem 'Familjen Grotesk',system-ui,sans-serif;padding:11px 18px;border-radius:2px;background:transparent;color:var(--ink,oklch(0.97 0 0));border:1px solid var(--line-strong,oklch(0.42 0 0));cursor:pointer;transition:border-color .22s cubic-bezier(0.16,1,0.3,1)}.ds-btn-ghost:hover{border-color:var(--ink,oklch(0.97 0 0))}.ds-btn-ghost:focus-visible{outline:2px solid var(--ink,oklch(0.97 0 0));outline-offset:2px}"
+    },
+    {
+      "name": "Rank Badge",
+      "kind": "chip",
+      "refersTo": "badge-rank",
+      "description": "Стоїть над заголовком; обраний — інвертований.",
+      "html": "<span class=\"ds-rank ds-rank--sel\">Primary match</span> <span class=\"ds-rank\">Also relevant</span>",
+      "css": ".ds-rank{display:inline-flex;align-items:center;font:400 0.8rem 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2,oklch(0.78 0 0));border:1px solid var(--line,oklch(0.30 0 0));border-radius:2px;padding:4px 9px}.ds-rank--sel{background:var(--ink,oklch(0.97 0 0));color:var(--bg,oklch(0.12 0 0));border-color:var(--ink,oklch(0.97 0 0))}"
+    },
+    {
+      "name": "Value Surface",
+      "kind": "card",
+      "refersTo": "value-surface",
+      "description": "Усі величини однієї речі в одній коробці.",
+      "html": "<dl class=\"ds-dl\"><dt>Closes</dt><dd>MSC.428(98) · IACS UR E26/E27 · IEC 62443</dd><dt>Fits</dt><dd>A managed fleet standardising across vessels</dd></dl>",
+      "css": ".ds-dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;background:var(--surface-2,oklch(0.21 0 0));border:1px solid var(--line,oklch(0.30 0 0));border-radius:2px;padding:14px 16px}.ds-dl dt{font:400 0.8rem 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3,oklch(0.64 0 0))}.ds-dl dd{margin:0;font:400 0.94rem 'Familjen Grotesk',system-ui,sans-serif;color:var(--ink-2,oklch(0.78 0 0));font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Select Field",
+      "kind": "input",
+      "refersTo": "input-select",
+      "description": "Поле інтерв'ю й форми запиту.",
+      "html": "<label class=\"ds-field\"><span>Where do you operate?</span><select><option>Maritime</option></select></label>",
+      "css": ".ds-field{display:grid;gap:6px;font:500 0.86rem 'Familjen Grotesk',system-ui,sans-serif;color:var(--ink,oklch(0.97 0 0))}.ds-field select{appearance:none;background:var(--surface-2,oklch(0.21 0 0));color:var(--ink,oklch(0.97 0 0));border:1px solid var(--line-strong,oklch(0.42 0 0));border-radius:2px;padding:9px 11px;font:400 0.9rem 'Familjen Grotesk',system-ui,sans-serif}.ds-field select:focus-visible{outline:2px solid var(--ink,oklch(0.97 0 0));outline-offset:2px}"
+    },
+    {
+      "name": "Error Notice",
+      "kind": "card",
+      "refersTo": "notice-error",
+      "description": "Єдине місце хроматики: подія збою.",
+      "html": "<div class=\"ds-notice\"><h3>The match did not run.</h3><p>Your answers are still on the left and were not lost.</p></div>",
+      "css": ".ds-notice{background:var(--surface,oklch(0.17 0 0));border:1px solid var(--signal-dim,oklch(0.34 0.09 25));border-radius:2px;padding:24px}.ds-notice h3{margin:0 0 8px;font:500 1.5625rem/1.2 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.02em;color:var(--signal,oklch(0.68 0.19 25))}.ds-notice p{margin:0;font:400 1rem/1.68 'Familjen Grotesk',system-ui,sans-serif;color:var(--ink-2,oklch(0.78 0 0))}"
+    },
+    {
+      "name": "TBD Slot",
+      "kind": "custom",
+      "refersTo": "slot-tbd",
+      "description": "Чесний пропуск на місці факту, який був би вигадкою.",
+      "html": "<span class=\"ds-tbd\">[TBD] accreditation body</span>",
+      "css": ".ds-tbd{display:inline-block;font:400 0.8rem 'JetBrains Mono',ui-monospace,monospace;color:var(--ink-2,oklch(0.78 0 0));border:1px dashed var(--line-strong,oklch(0.42 0 0));border-radius:2px;padding:2px 8px}"
+    },
+    {
+      "name": "Global Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Двошарова шапка: утилітний і головний ряд.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Solutions &amp; Services</a><a href=\"#\">Industries</a><a href=\"#\">Regulations</a></nav>",
+      "css": ".ds-nav{display:flex;gap:24px;font:400 0.94rem 'Familjen Grotesk',system-ui,sans-serif}.ds-nav a{color:var(--ink,oklch(0.97 0 0));text-decoration:none;padding:4px 0 2px;border-bottom:1px solid transparent;transition:border-color .2s cubic-bezier(0.16,1,0.3,1)}.ds-nav a:hover{border-bottom-color:var(--ink,oklch(0.97 0 0))}.ds-nav a:focus-visible{outline:2px solid var(--ink,oklch(0.97 0 0));outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Панель на нічному містку",
+    "overview": "Прилади притлумлені, підкладка нейтрально-чорна, і єдине яскраве на всьому екрані — та величина, що змінилась. Ранг показано контрастом і межею, доказ зібрано на одній поверхні, колір з'являється лише як подія. Щільність локальна: робоча зона щільна, герої й переходи просторі; домінанта — розривом масштабу, не вагою. Тіней немає — тільки тональний зсув і межа 1px.",
+    "keyCharacteristics": [
+      "Нейтраль рівно chroma 0; одна хроматика signal, і лише на подію.",
+      "Ранг механізмом primary/ghost: інверсія або line-strong проти прозорої панелі.",
+      "Моно — реєстр величин, кодів і службових міток; ніколи — тіло тексту.",
+      "Панелі 2px, межа 1px, без тіней.",
+      "Фото — обладнання як задокументований об'єкт, окремою смугою, ніколи під текстом.",
+      "Кожен стан екрана несе ту саму форму, що й base.",
+      "Рейкова сітка секцій: заголовок у лівій рейці 250px, зміст праворуч, парні секції дзеркальні."
+    ],
+    "rules": [
+      { "name": "The Event-Only Rule", "body": "Хроматика — тільки строк або збій.", "section": "colors" },
+      { "name": "The Chroma Zero Rule", "body": "Жодна нейтраль не отримує відтінку — ні теплого, ні холодного.", "section": "colors" },
+      { "name": "The Shape-and-Word Rule", "body": "Стан ніколи не кодується самим кольором: іконка + слово.", "section": "colors" },
+      { "name": "The 12.8 Floor Rule", "body": "Нижче 0.8rem не опускається ніщо в продукті.", "section": "typography" },
+      { "name": "The Weight-500 Rule", "body": "Домінанта — розривом масштабу, не вагою; 700 не завантажується.", "section": "typography" },
+      { "name": "The Mono-Is-a-Register Rule", "body": "Моно = величина, код, мітка поля; проза лишається гротеском.", "section": "typography" },
+      { "name": "The Flat Panel Rule", "body": "box-shadow на контентній панелі заборонений.", "section": "elevation" },
+      { "name": "The Two Bands Rule", "body": "Широка смуга surface позначає доказову зону; дві на сторінку — стеля.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do тримати всю підкладку на chroma 0.",
+      "Do показувати ранг механізмом primary/ghost.",
+      "Do ставити бейдж із чужим ім'ям або категорією над заголовком.",
+      "Do збирати всі величини однієї речі в одну surface-2-коробку; значення — tabular-nums.",
+      "Do показувати чесний пропуск [TBD]-слотом із пунктиром.",
+      "Do давати кожному стану форму і слово; колір — лише на error.",
+      "Do тримати кегль ≥0.8rem і кожну текстову пару ≥4.5:1.",
+      "Do ставити фото тільки за темою змісту, окремою смугою, з фільтром grayscale(0.55)."
+    ],
+    "donts": [
+      "Don't використовувати signal поза збоєм або строком.",
+      "Don't класти box-shadow на панелі й не робити світлих інсетів у темній темі.",
+      "Don't опускати дисплей у вагу 700 і не підіймати H1 вище 96px.",
+      "Don't писати моно тілом тексту.",
+      "Don't класти текст на фото і не заливати слот зображення сірим градієнтом.",
+      "Don't показувати людей у контексті й атмосферний краєвид.",
+      "Don't робити м'який теракотовий editorial.",
+      "Don't падати в перший рефлекс категорії: темно-синій, бірюзові градієнти, глобус, орбітальні діаграми.",
+      "Don't падати в другий рефлекс: майже чорне + один неоновий акцент + моносітка.",
+      "Don't збирати лінію editorial-typographic.",
+      "Don't розкидати цифри по картках-острівцях.",
+      "Don't ставити логостіну без осі.",
+      "Don't ставити стрілку на кнопку, що веде вбік або назад.",
+      "Don't референсити візуально Marlink, Navarino, Speedcast, NSSLGlobal, IEC Telecom."
+    ]
+  }
+}
